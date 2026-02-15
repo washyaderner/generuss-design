@@ -29,7 +29,7 @@ export interface BlogPost {
   title: string;
   slug: string;
   excerpt: string;
-  body: any;
+  content: string;
   featuredImage: {
     url: string;
     title: string;
@@ -38,29 +38,26 @@ export interface BlogPost {
   };
   publishDate: string;
   tags: string[];
-  seoTitle?: string;
-  seoDescription?: string;
 }
 
 function parsePost(entry: any): BlogPost {
   const fields = entry.fields;
-  const image = fields.featuredImage?.fields?.file;
+  const asset = fields.headerImage;
+  const image = asset?.fields?.file;
 
   return {
     title: fields.title,
     slug: fields.slug,
-    excerpt: fields.excerpt,
-    body: fields.body,
+    excerpt: fields.summary || "",
+    content: fields.content || "",
     featuredImage: {
       url: image ? `https:${image.url}` : "/images/placeholder.webp",
-      title: fields.featuredImage?.fields?.title || fields.title,
+      title: asset?.fields?.title || fields.title,
       width: image?.details?.image?.width || 1200,
       height: image?.details?.image?.height || 630,
     },
-    publishDate: fields.publishDate,
-    tags: fields.tags || [],
-    seoTitle: fields.seoTitle,
-    seoDescription: fields.seoDescription,
+    publishDate: entry.sys.createdAt,
+    tags: [],
   };
 }
 
@@ -68,7 +65,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
   const client = getClient();
   const entries = await client.getEntries({
     content_type: "blogPost",
-    order: ["-fields.publishDate"],
+    order: ["-sys.createdAt"],
   });
 
   return entries.items.map(parsePost);
@@ -90,16 +87,4 @@ export function getReadingTime(text: string): number {
   const wordsPerMinute = 200;
   const words = text.trim().split(/\s+/).length;
   return Math.max(1, Math.ceil(words / wordsPerMinute));
-}
-
-export function richTextToPlainText(richText: any): string {
-  if (!richText || !richText.content) return "";
-
-  return richText.content
-    .map((node: any) => {
-      if (node.nodeType === "text") return node.value;
-      if (node.content) return richTextToPlainText(node);
-      return "";
-    })
-    .join(" ");
 }

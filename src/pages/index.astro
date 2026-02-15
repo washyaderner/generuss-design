@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 
-const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "FORM_ID";
+const formspreeId = "xgolkboq";
 ---
 
 <BaseLayout title="generuss design | Web Design & AI Automation">
@@ -659,7 +659,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "FORM_ID";
         >
           &#10005;
         </button>
-        <div class="max-w-4xl w-full mx-8">
+        <div class="max-w-4xl w-full mx-4 sm:mx-8 max-h-[90vh] overflow-y-auto">
           <div class="neu-raised rounded-2xl overflow-hidden bg-bg-secondary">
             <div id="modal-image" class="aspect-video bg-bg overflow-hidden">
               <img
@@ -1123,10 +1123,18 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "FORM_ID";
       // Contact form handling
       const form = document.getElementById("contact-form") as HTMLFormElement;
       const successMsg = document.getElementById("form-success");
+      const submitBtn = form?.querySelector(
+        'button[type="submit"]',
+      ) as HTMLButtonElement;
+      const submitText = submitBtn?.textContent;
 
       form?.addEventListener("submit", async (e) => {
         e.preventDefault();
         const data = new FormData(form);
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        submitBtn.classList.add("opacity-50", "cursor-not-allowed");
 
         try {
           const res = await fetch(form.action, {
@@ -1139,9 +1147,15 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "FORM_ID";
             form.classList.add("hidden");
             successMsg?.classList.remove("hidden");
           } else {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitText ?? "Send Message →";
+            submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
             alert("Something went wrong. Please try again.");
           }
         } catch {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitText ?? "Send Message →";
+          submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
           alert("Network error. Please try again.");
         }
       });

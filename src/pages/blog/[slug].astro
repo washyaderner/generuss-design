@@ -5,10 +5,9 @@ import {
   getAllPosts,
   getPostBySlug,
   getReadingTime,
-  richTextToPlainText,
   isConfigured,
 } from "../../lib/contentful";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { marked } from "marked";
 
 export async function getStaticPaths() {
   if (!isConfigured()) return [];
@@ -32,18 +31,11 @@ if (!post) {
   return Astro.redirect("/blog");
 }
 
-const plainText = richTextToPlainText(post.body);
-const readingTime = getReadingTime(plainText);
+const readingTime = getReadingTime(post.content);
+const bodyHtml = await marked.parse(post.content);
 
-let bodyHtml = "";
-try {
-  bodyHtml = documentToHtmlString(post.body);
-} catch {
-  bodyHtml = "<p>Content rendering error.</p>";
-}
-
-const title = `${post.seoTitle || post.title} | generuss design`;
-const description = post.seoDescription || post.excerpt;
+const title = `${post.title} | generuss design`;
+const description = post.excerpt;
 ---
 
 <BlogLayout

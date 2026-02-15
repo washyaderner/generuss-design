@@ -178,13 +178,25 @@ const { alwaysVisible = false } = Astro.props;
     link.addEventListener("click", closeMenu);
   });
 
-  // Close on Escape
+  // Close on Escape + focus trap
   document.addEventListener("keydown", (e) => {
-    if (
-      e.key === "Escape" &&
-      hamburger?.getAttribute("aria-expanded") === "true"
-    ) {
+    if (hamburger?.getAttribute("aria-expanded") !== "true") return;
+
+    if (e.key === "Escape") {
       closeMenu();
+      return;
+    }
+
+    if (e.key === "Tab" && mobileLinks?.length) {
+      const first = mobileLinks[0] as HTMLElement;
+      const last = mobileLinks[mobileLinks.length - 1] as HTMLElement;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 
