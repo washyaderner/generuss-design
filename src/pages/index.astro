@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 
-const formspreeId = "xgolkboq";
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 ---
 
 <BaseLayout title="generuss design | Web Design & AI Automation">
@@ -280,7 +280,7 @@ const formspreeId = "xgolkboq";
             <span class="block text-3xl mb-4">&#128241;</span>
             <h3 class="text-xl font-bold text-white mb-1">Mobile-First</h3>
             <p class="font-mono text-xs text-accent mb-3">
-              Nearly 60% of web traffic is mobile
+              63%+ of web traffic is mobile
             </p>
             <p class="text-sm text-text-muted leading-relaxed">
               Designed for thumbs first, then scaled up. Not the other way
@@ -304,7 +304,7 @@ const formspreeId = "xgolkboq";
             <span class="block text-3xl mb-4">&#128269;</span>
             <h3 class="text-xl font-bold text-white mb-1">SEO Built In</h3>
             <p class="font-mono text-xs text-accent mb-3">
-              93% of online experiences start with search
+              68% of online experiences start with search
             </p>
             <p class="text-sm text-text-muted leading-relaxed">
               Structured data, meta tags, fast loads, clean code. Google finds
@@ -1035,10 +1035,13 @@ const formspreeId = "xgolkboq";
       </div>
 
       <!-- Cal.com Inline Embed (lazy loaded) -->
-      <div class="relative z-10 w-full max-w-3xl mt-10">
+      <div
+        class="relative z-10 w-full max-w-3xl mx-auto mt-10 rounded-2xl overflow-hidden"
+      >
+        <!-- Skeleton overlay (absolute, hides when iframe loads) -->
         <div
           id="cal-skeleton"
-          class="flex flex-col items-center justify-center min-h-[500px] rounded-2xl neu-inset"
+          class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-bg rounded-2xl neu-inset"
         >
           <svg
             class="h-6 w-6 animate-spin text-accent"
@@ -1062,8 +1065,8 @@ const formspreeId = "xgolkboq";
             >Loading calendar&hellip;</span
           >
         </div>
-        <div id="cal-embed" style="width:100%;min-height:500px;overflow:auto">
-        </div>
+        <!-- Cal.com renders its iframe here -->
+        <div id="cal-embed" style="min-height:500px"></div>
       </div>
 
       <!-- Secondary CTA: Contact Form -->
@@ -1211,13 +1214,13 @@ const formspreeId = "xgolkboq";
             loadCalEmbed();
           }
         },
-        { rootMargin: "400px" },
+        { rootMargin: "600px" },
       );
 
       if (contactSection) observer.observe(contactSection);
 
       function loadCalEmbed() {
-        // Cal.com embed snippet (must run as plain script, not ES module)
+        // Cal.com official embed snippet
         (function (C, A, L) {
           var p = function (a, ar) {
             a.q.push(ar);
@@ -1251,15 +1254,15 @@ const formspreeId = "xgolkboq";
             };
         })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        Cal("init", "discovery-call", { origin: "https://app.cal.com" });
+        window.Cal("init", "discovery-call", { origin: "https://app.cal.com" });
 
-        Cal.ns["discovery-call"]("inline", {
+        window.Cal.ns["discovery-call"]("inline", {
           elementOrSelector: "#cal-embed",
           calLink: "generuss/discovery-call",
           layout: "month_view",
         });
 
-        Cal.ns["discovery-call"]("ui", {
+        window.Cal.ns["discovery-call"]("ui", {
           theme: "dark",
           hideEventTypeDetails: false,
           layout: "month_view",

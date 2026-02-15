@@ -159,6 +159,14 @@ function setupProblemSolution(isMobile) {
             }
           }
         });
+
+        // Fade out entire pinned section during last 15%
+        if (progress > 0.85) {
+          const fadeProgress = (progress - 0.85) / 0.15;
+          pinSection.style.opacity = String(1 - fadeProgress);
+        } else {
+          pinSection.style.opacity = "1";
+        }
       },
     });
   }
@@ -219,6 +227,27 @@ function setupPrinciples(isMobile, isTablet) {
         start: "top bottom",
         end: "top 20%",
         scrub: 0.5,
+      },
+    });
+  }
+
+  // Pin .principles-pin for +=100% scroll distance
+  const pinWrap = document.querySelector(".principles-pin");
+  if (pinWrap) {
+    ScrollTrigger.create({
+      trigger: ".principles-pin",
+      start: "top top",
+      end: "+=100%",
+      pin: true,
+      scrub: true,
+      onUpdate: (self) => {
+        // Fade out during last 30% of pin (progress 0.7 -> 1.0)
+        if (self.progress > 0.7) {
+          const fadeProgress = (self.progress - 0.7) / 0.3;
+          pinWrap.style.opacity = String(1 - fadeProgress);
+        } else {
+          pinWrap.style.opacity = "1";
+        }
       },
     });
   }
