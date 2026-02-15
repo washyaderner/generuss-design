@@ -1,0 +1,35 @@
+---
+import BlogMeta from "./BlogMeta.astro";
+import type { BlogPost } from "../lib/contentful";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+---
+
+<a
+  href={`/blog/${post.slug}`}
+  class="group block neu-raised rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[6px_6px_14px_var(--shadow-dark),-6px_-6px_14px_var(--shadow-light),0_0_30px_var(--color-accent-dim)] hover:scale-[1.02]"
+>
+  <div class="aspect-video overflow-hidden rounded-t-2xl">
+    <img
+      src={post.featuredImage.url}
+      alt={post.featuredImage.title}
+      width={post.featuredImage.width}
+      height={post.featuredImage.height}
+      loading="lazy"
+      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+  </div>
+  <div class="p-6">
+    <h3
+      class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors"
+    >
+      {post.title}
+    </h3>
+    <BlogMeta date={post.publishDate} tags={post.tags} />
+    <p class="mt-3 text-sm text-text-muted line-clamp-3">{post.excerpt}</p>
+  </div>
+</a>

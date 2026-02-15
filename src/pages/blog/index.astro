@@ -1,0 +1,99 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import { getAllPosts, isConfigured } from "../../lib/contentful";
+
+let posts = [];
+let error = null;
+
+if (isConfigured()) {
+  try {
+    posts = await getAllPosts();
+  } catch (e) {
+    // Fail loudly in production when Contentful IS configured but unreachable
+    if (import.meta.env.PROD) {
+      throw new Error(`Contentful API unreachable: ${e}`);
+    }
+    error = e;
+  }
+} else {
+  error = new Error("Contentful not configured");
+}
+
+const POSTS_PER_PAGE = 10;
+const page = Number(Astro.url.searchParams.get("page") || "1");
+const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+const paginatedPosts = posts.slice(
+  (page - 1) * POSTS_PER_PAGE,
+  page * POSTS_PER_PAGE,
+);
+---
+
+<BlogLayout
+  title="Blog | generuss design"
+  description="Thoughts on web design, AI automation, and building things that work."
+  wide={true}
+  ogType="website"
+>
+  <a href="/" class="text-accent hover:underline text-sm mb-8 inline-block"
+    >&larr; Back to Home</a
+  >
+
+  <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8">
+    Blog
+  </h1>
+
+  {
+    error && (
+      <div class="rounded-xl bg-bg-secondary p-6 text-text-muted">
+        <p>Blog content is currently unavailable. Please check back soon.</p>
+        <p class="text-xs mt-2 font-mono">Connect Contentful to see posts.</p>
+      </div>
+    )
+  }
+
+  {
+    !error && posts.length === 0 && (
+      <div class="rounded-xl bg-bg-secondary p-6 text-text-muted text-center">
+        <p>No posts yet. Check back soon.</p>
+      </div>
+    )
+  }
+
+  {
+    paginatedPosts.length > 0 && (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {paginatedPosts.map((post) => (
+          <BlogCard post={post} />
+        ))}
+      </div>
+    )
+  }
+
+  {
+    totalPages > 1 && (
+      <div class="flex justify-between items-center mt-8">
+        {page > 1 ? (
+          <a
+            href={`/blog?page=${page - 1}`}
+            class="text-accent hover:underline"
+          >
+            &larr; Newer Posts
+          </a>
+        ) : (
+          <span />
+        )}
+        {page < totalPages ? (
+          <a
+            href={`/blog?page=${page + 1}`}
+            class="text-accent hover:underline"
+          >
+            Older Posts &rarr;
+          </a>
+        ) : (
+          <span />
+        )}
+      </div>
+    )
+  }
+</BlogLayout>

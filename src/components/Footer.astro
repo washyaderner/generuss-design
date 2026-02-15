@@ -1,0 +1,102 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="border-t border-border px-8 sm:px-12 lg:px-20 py-12"
+  style={`padding-bottom: max(3rem, env(safe-area-inset-bottom, 0px));`}
+>
+  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Brand -->
+    <div>
+      <a href="/" class="text-lg font-bold text-text">
+        generuss<span class="text-accent">.</span>
+      </a>
+      <p class="mt-2 text-sm text-text-muted">AI Automation & Web Design</p>
+    </div>
+
+    <!-- Nav -->
+    <div>
+      <h3 class="mb-3 text-sm font-semibold text-text">Navigate</h3>
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="/"
+            class="text-sm text-text-muted hover:text-text transition-colors"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="/#services"
+            class="text-sm text-text-muted hover:text-text transition-colors"
+            >Work</a
+          >
+        </li>
+        <li>
+          <a
+            href="/#about"
+            class="text-sm text-text-muted hover:text-text transition-colors"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="/blog"
+            class="text-sm text-text-muted hover:text-text transition-colors"
+            >Blog</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://app.cal.com/generuss/discovery-call"
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-text-muted hover:text-accent transition-colors"
+          >
+            Book a Call
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Connect -->
+    <div>
+      <h3 class="mb-3 text-sm font-semibold text-text">Connect</h3>
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="https://github.com/washyaderner"
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-text-muted hover:text-text transition-colors"
+          >
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://x.com/DegeneRussAI"
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-text-muted hover:text-text transition-colors"
+          >
+            X / Twitter
+          </a>
+        </li>
+        <li>
+          <a
+            href="mailto:russ@generuss.com"
+            class="text-sm text-text-muted hover:text-text transition-colors"
+          >
+            russ@generuss.com
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-10 border-t border-border pt-6 text-center">
+    <p class="text-xs text-text-muted">&copy; {year} generuss design</p>
+  </div>
+</footer>

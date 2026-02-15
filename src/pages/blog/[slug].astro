@@ -1,0 +1,106 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import BlogMeta from "../../components/BlogMeta.astro";
+import {
+  getAllPosts,
+  getPostBySlug,
+  getReadingTime,
+  richTextToPlainText,
+  isConfigured,
+} from "../../lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+
+export async function getStaticPaths() {
+  if (!isConfigured()) return [];
+
+  let posts = [];
+  try {
+    posts = await getAllPosts();
+  } catch {
+    return [];
+  }
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await getPostBySlug(slug);
+
+if (!post) {
+  return Astro.redirect("/blog");
+}
+
+const plainText = richTextToPlainText(post.body);
+const readingTime = getReadingTime(plainText);
+
+let bodyHtml = "";
+try {
+  bodyHtml = documentToHtmlString(post.body);
+} catch {
+  bodyHtml = "<p>Content rendering error.</p>";
+}
+
+const title = `${post.seoTitle || post.title} | generuss design`;
+const description = post.seoDescription || post.excerpt;
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  ogImage={post.featuredImage.url}
+>
+  <!-- JSON-LD -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: post.title,
+      description: post.excerpt,
+      image: post.featuredImage.url,
+      datePublished: post.publishDate,
+      author: {
+        "@type": "Person",
+        name: "Russ",
+        url: "https://generussdesign.com",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "generuss design",
+        url: "https://generussdesign.com",
+      },
+    })}
+  />
+
+  <a href="/blog" class="text-accent hover:underline text-sm mb-8 inline-block"
+    >&larr; Back to Blog</a
+  >
+
+  <!-- Featured Image -->
+  <div class="neu-raised rounded-2xl overflow-hidden mb-8">
+    <img
+      src={post.featuredImage.url}
+      alt={post.featuredImage.title}
+      width={post.featuredImage.width}
+      height={post.featuredImage.height}
+      class="w-full"
+    />
+  </div>
+
+  <!-- Title -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">{post.title}</h1>
+
+  <!-- Meta -->
+  <div class="mb-8">
+    <BlogMeta
+      date={post.publishDate}
+      tags={post.tags}
+      readingTime={readingTime}
+    />
+  </div>
+
+  <!-- Body -->
+  <article class="prose prose-invert max-w-none" set:html={bodyHtml} />
+</BlogLayout>

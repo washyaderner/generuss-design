@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+credentials.json
+token.json
+
+# OS
+.DS_Store
+
+# Intermediates
+.tmp/
+scratchpad.md
+
+# Editor
+.cursorrules
+
+# Wrangler
+.wrangler/
+.dev.vars
