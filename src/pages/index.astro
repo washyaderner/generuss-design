@@ -1197,84 +1197,86 @@ const formspreeId = "xgolkboq";
   </script>
 
   <!-- Cal.com embed: lazy-loaded via IntersectionObserver for Lighthouse perf -->
-  <script>
-    const contactSection = document.getElementById("contact");
-    const calSkeleton = document.getElementById("cal-skeleton");
-    let calLoaded = false;
+  <script is:inline>
+    (function () {
+      var contactSection = document.getElementById("contact");
+      var calSkeleton = document.getElementById("cal-skeleton");
+      var calLoaded = false;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !calLoaded) {
-          calLoaded = true;
-          observer.disconnect();
-          loadCalEmbed();
-        }
-      },
-      { rootMargin: "400px" },
-    );
-
-    if (contactSection) observer.observe(contactSection);
-
-    function loadCalEmbed() {
-      (function (C: any, A: string, L: string) {
-        let p = function (a: any, ar: any) {
-          a.q.push(ar);
-        };
-        let d = C.document;
-        C.Cal =
-          C.Cal ||
-          function () {
-            let cal = C.Cal;
-            let ar = arguments;
-            if (!cal.loaded) {
-              cal.ns = {};
-              cal.q = cal.q || [];
-              d.head.appendChild(d.createElement("script")).src = A;
-              cal.loaded = true;
-            }
-            if (ar[0] === L) {
-              const api = function () {
-                p(api, arguments);
-              };
-              const namespace = ar[1];
-              api.q = api.q || [];
-              if (typeof namespace === "string") {
-                cal.ns[namespace] = cal.ns[namespace] || api;
-                p(cal.ns[namespace], ar);
-                p(cal, ["initNamespace", namespace]);
-              } else p(cal, ar);
-              return;
-            }
-            p(cal, ar);
-          };
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-
-      const Cal = (window as any).Cal;
-      Cal("init", "discovery-call", { origin: "https://app.cal.com" });
-
-      Cal.ns["discovery-call"]("inline", {
-        elementOrSelector: "#cal-embed",
-        calLink: "generuss/discovery-call",
-        layout: "month_view",
-      });
-
-      Cal.ns["discovery-call"]("ui", {
-        theme: "dark",
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-
-      // Hide skeleton once Cal iframe renders
-      const calEl = document.getElementById("cal-embed");
-      if (calEl && calSkeleton) {
-        const mo = new MutationObserver(() => {
-          if (calEl.querySelector("iframe")) {
-            calSkeleton.style.display = "none";
-            mo.disconnect();
+      var observer = new IntersectionObserver(
+        function (entries) {
+          if (entries[0].isIntersecting && !calLoaded) {
+            calLoaded = true;
+            observer.disconnect();
+            loadCalEmbed();
           }
+        },
+        { rootMargin: "400px" },
+      );
+
+      if (contactSection) observer.observe(contactSection);
+
+      function loadCalEmbed() {
+        // Cal.com embed snippet (must run as plain script, not ES module)
+        (function (C, A, L) {
+          var p = function (a, ar) {
+            a.q.push(ar);
+          };
+          var d = C.document;
+          C.Cal =
+            C.Cal ||
+            function () {
+              var cal = C.Cal;
+              var ar = arguments;
+              if (!cal.loaded) {
+                cal.ns = {};
+                cal.q = cal.q || [];
+                d.head.appendChild(d.createElement("script")).src = A;
+                cal.loaded = true;
+              }
+              if (ar[0] === L) {
+                var api = function () {
+                  p(api, arguments);
+                };
+                var namespace = ar[1];
+                api.q = api.q || [];
+                if (typeof namespace === "string") {
+                  cal.ns[namespace] = cal.ns[namespace] || api;
+                  p(cal.ns[namespace], ar);
+                  p(cal, ["initNamespace", namespace]);
+                } else p(cal, ar);
+                return;
+              }
+              p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+
+        Cal("init", "discovery-call", { origin: "https://app.cal.com" });
+
+        Cal.ns["discovery-call"]("inline", {
+          elementOrSelector: "#cal-embed",
+          calLink: "generuss/discovery-call",
+          layout: "month_view",
         });
-        mo.observe(calEl, { childList: true, subtree: true });
+
+        Cal.ns["discovery-call"]("ui", {
+          theme: "dark",
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+
+        // Hide skeleton once Cal iframe renders
+        var calEl = document.getElementById("cal-embed");
+        if (calEl && calSkeleton) {
+          var mo = new MutationObserver(function () {
+            if (calEl.querySelector("iframe")) {
+              calSkeleton.style.display = "none";
+              mo.disconnect();
+            }
+          });
+          mo.observe(calEl, { childList: true, subtree: true });
+        }
       }
-    }
+    })();
   </script>
 </BaseLayout>
