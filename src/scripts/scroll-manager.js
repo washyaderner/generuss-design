@@ -161,8 +161,8 @@ function setupProblemSolution(isMobile) {
       // Desktop/tablet: pinned curtain wipe
       ScrollTrigger.create({
         trigger: ".ps-pin",
-        start: "top top",
-        end: "+=200%",
+        start: "top 5%",
+        end: "+=300%",
         pin: true,
         scrub: 1,
         onUpdate: (self) => {
@@ -208,19 +208,6 @@ function setupProblemSolution(isMobile) {
     }
   }
 
-  // Outro text
-  const outro = section.querySelector(".ps-outro .gsap-hidden");
-  if (outro) {
-    outro.classList.remove("gsap-hidden");
-    gsap.from(outro, {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power4.out",
-      scrollTrigger: { trigger: ".ps-outro", start: "top 80%" },
-    });
-  }
-
   // Bg transition during last 15%
   ScrollTrigger.create({
     trigger: "#problem-solution",
@@ -236,18 +223,18 @@ function setupProblemSolution(isMobile) {
 
 // ── S3: Design Principles ──
 function setupPrinciples(isMobile, isTablet) {
-  // Sliding header
+  // Section header fade-in
   const heading = document.querySelector(".principles-heading");
   if (heading) {
     heading.classList.remove("gsap-hidden");
     gsap.from(heading, {
-      x: () => -heading.scrollWidth,
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
       ease: "power4.out",
       scrollTrigger: {
-        trigger: ".principles-marquee",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 0.5,
+        trigger: heading,
+        start: "top 80%",
       },
     });
   }
