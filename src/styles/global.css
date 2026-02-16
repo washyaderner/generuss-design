@@ -77,10 +77,26 @@ body {
     -4px -4px 12px rgba(255, 255, 255, 0.06);
 }
 
+@media (max-width: 639px) {
+  .neu-raised {
+    box-shadow:
+      4px 4px 12px rgba(0, 0, 0, 0.8),
+      -2px -2px 8px rgba(255, 255, 255, 0.05);
+  }
+}
+
 .neu-inset {
   box-shadow:
     inset 4px 4px 10px var(--shadow-dark),
     inset -4px -4px 10px var(--shadow-light);
+}
+
+@media (max-width: 639px) {
+  .neu-inset {
+    box-shadow:
+      inset 3px 3px 8px var(--shadow-dark),
+      inset -3px -3px 8px var(--shadow-light);
+  }
 }
 
 .glow-text {
