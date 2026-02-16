@@ -122,6 +122,7 @@ These directives live in `$BUILD_ROOT/_resources/directives/` and apply across a
 | `review_protocol.md`    | Multi-pass code review (security, performance, simplicity, stack, deploy) | Before deploy or on-demand                      |
 | `research_checklist.md` | Pre-plan intelligence gathering for PILOT Prep                            | During Prep phase, before Preamble is finalized |
 | `changelog.md`          | Changelog generation from git history                                     | End of sprint, milestone, or on-demand          |
+| `visual-qa-protocol.md` | Playwright screenshot QA loop (3-pass visual review)                      | User says "qa" or "check your work"             |
 
 ---
 

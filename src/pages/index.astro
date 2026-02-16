@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 
-const formspreeId = "xgolkboq";
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 ---
 
 <BaseLayout title="generuss design | Web Design & AI Automation">
@@ -18,23 +18,23 @@ const formspreeId = "xgolkboq";
       <div class="relative z-10">
         <h1>
           <span
-            class="hero-headline gsap-hidden block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95]"
+            class="hero-headline gsap-hidden block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95]"
           >
             BUILDING GORGEOUS WEBSITES
           </span>
           <span
-            class="hero-headline gsap-hidden block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95] text-accent glow-text mt-2"
+            class="hero-headline gsap-hidden block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95] text-accent glow-text mt-2"
           >
             THAT CONVERT
           </span>
           <span
-            class="hero-headline gsap-hidden block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide text-text-muted mt-4"
+            class="hero-headline gsap-hidden block text-[1.625rem] sm:text-[1.95rem] md:text-[2.4375rem] lg:text-[2.925rem] font-semibold tracking-wide text-text-muted mt-4"
           >
             FLAWLESS BY DESIGN.
           </span>
         </h1>
         <p
-          class="hero-sub gsap-hidden mt-6 max-w-xl text-lg sm:text-xl md:text-2xl text-text-muted"
+          class="hero-sub gsap-hidden mt-6 max-w-xl text-[1.46rem] sm:text-[1.625rem] md:text-[1.95rem] text-text-muted"
         >
           Design that converts visitors into customers. Built fast. Looks sharp.
           No bloat.
@@ -103,13 +103,15 @@ const formspreeId = "xgolkboq";
       <!-- Pinned Problem/Solution Grid -->
       <div class="ps-pin relative min-h-screen">
         <div
-          class="ps-grid flex flex-col justify-center min-h-screen px-8 sm:px-12 lg:px-20 py-12 gap-6 sm:gap-8"
+          class="ps-grid flex flex-col justify-center md:min-h-screen px-8 sm:px-12 lg:px-20 py-8 sm:py-12 gap-4 sm:gap-6 md:gap-8 bg-bg-secondary"
         >
           <!-- Pair 1 -->
           <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-start"
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
           >
-            <div class="ps-problem opacity-50 neu-inset rounded-2xl p-6 sm:p-8">
+            <div
+              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
+            >
               <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
                 Cookie-Cutter Stacks
               </h3>
@@ -120,7 +122,7 @@ const formspreeId = "xgolkboq";
               </p>
             </div>
             <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-6 sm:p-8"
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
             >
               <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
                 Custom Stack Audit
@@ -134,9 +136,11 @@ const formspreeId = "xgolkboq";
 
           <!-- Pair 2 -->
           <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-start"
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
           >
-            <div class="ps-problem opacity-50 neu-inset rounded-2xl p-6 sm:p-8">
+            <div
+              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
+            >
               <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
                 Performance
               </h3>
@@ -146,7 +150,7 @@ const formspreeId = "xgolkboq";
               </p>
             </div>
             <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-6 sm:p-8"
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
             >
               <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
                 Lighthouse 90%+
@@ -160,9 +164,11 @@ const formspreeId = "xgolkboq";
 
           <!-- Pair 3 -->
           <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-start"
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
           >
-            <div class="ps-problem opacity-50 neu-inset rounded-2xl p-6 sm:p-8">
+            <div
+              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
+            >
               <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
                 Conversion
               </h3>
@@ -173,7 +179,7 @@ const formspreeId = "xgolkboq";
               </p>
             </div>
             <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-6 sm:p-8"
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
             >
               <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
                 Conversion-Engineered
@@ -188,9 +194,11 @@ const formspreeId = "xgolkboq";
 
           <!-- Pair 4 -->
           <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-start"
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
           >
-            <div class="ps-problem opacity-50 neu-inset rounded-2xl p-6 sm:p-8">
+            <div
+              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
+            >
               <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
                 Post-Launch Abandonment
               </h3>
@@ -201,7 +209,7 @@ const formspreeId = "xgolkboq";
               </p>
             </div>
             <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-6 sm:p-8"
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
             >
               <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
                 Ongoing Support
@@ -280,7 +288,7 @@ const formspreeId = "xgolkboq";
             <span class="block text-3xl mb-4">&#128241;</span>
             <h3 class="text-xl font-bold text-white mb-1">Mobile-First</h3>
             <p class="font-mono text-xs text-accent mb-3">
-              Nearly 60% of web traffic is mobile
+              63%+ of web traffic is mobile
             </p>
             <p class="text-sm text-text-muted leading-relaxed">
               Designed for thumbs first, then scaled up. Not the other way
@@ -304,7 +312,7 @@ const formspreeId = "xgolkboq";
             <span class="block text-3xl mb-4">&#128269;</span>
             <h3 class="text-xl font-bold text-white mb-1">SEO Built In</h3>
             <p class="font-mono text-xs text-accent mb-3">
-              93% of online experiences start with search
+              68% of online experiences start with search
             </p>
             <p class="text-sm text-text-muted leading-relaxed">
               Structured data, meta tags, fast loads, clean code. Google finds
@@ -353,7 +361,7 @@ const formspreeId = "xgolkboq";
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <!-- Card 1 -->
         <div
-          class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[6px_6px_14px_var(--shadow-dark),-6px_-6px_14px_var(--shadow-light),0_0_30px_var(--color-accent-dim)]"
+          class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
         >
           <h3 class="text-2xl font-bold text-white mb-3">
             Web Design & Development
@@ -391,7 +399,7 @@ const formspreeId = "xgolkboq";
 
         <!-- Card 2 -->
         <div
-          class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[6px_6px_14px_var(--shadow-dark),-6px_-6px_14px_var(--shadow-light),0_0_30px_var(--color-accent-dim)]"
+          class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
         >
           <h3 class="text-2xl font-bold text-white mb-3">
             AI Automation Consulting
@@ -473,7 +481,7 @@ const formspreeId = "xgolkboq";
       >
         <!-- Project 1: Crystal Seed Tarot -->
         <div
-          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[6px_6px_14px_var(--shadow-dark),-6px_-6px_14px_var(--shadow-light),0_0_30px_var(--color-accent-dim)]"
+          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
           data-project="crystal-seed-tarot"
           data-title="Crystal Seed Tarot"
           data-url="https://crystalseedtarot.com"
@@ -531,7 +539,7 @@ const formspreeId = "xgolkboq";
 
         <!-- Project 2: Vibe N Thrive -->
         <div
-          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[6px_6px_14px_var(--shadow-dark),-6px_-6px_14px_var(--shadow-light),0_0_30px_var(--color-accent-dim)]"
+          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
           data-project="vibethrive"
           data-title="Vibe N Thrive Therapy"
           data-url="https://vibenthrivetherapy.com"
@@ -582,7 +590,7 @@ const formspreeId = "xgolkboq";
 
         <!-- Project 3: generuss.com -->
         <div
-          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[6px_6px_14px_var(--shadow-dark),-6px_-6px_14px_var(--shadow-light),0_0_30px_var(--color-accent-dim)]"
+          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
           data-project="generuss"
           data-title="generuss.com"
           data-url="https://generuss.com"
@@ -1035,10 +1043,13 @@ const formspreeId = "xgolkboq";
       </div>
 
       <!-- Cal.com Inline Embed (lazy loaded) -->
-      <div class="relative z-10 w-full max-w-3xl mt-10">
+      <div
+        class="relative z-10 w-full max-w-5xl mx-auto mt-10 rounded-2xl overflow-hidden"
+      >
+        <!-- Skeleton overlay (absolute, hides when iframe loads) -->
         <div
           id="cal-skeleton"
-          class="flex flex-col items-center justify-center min-h-[500px] rounded-2xl neu-inset"
+          class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-bg rounded-2xl neu-inset"
         >
           <svg
             class="h-6 w-6 animate-spin text-accent"
@@ -1062,8 +1073,23 @@ const formspreeId = "xgolkboq";
             >Loading calendar&hellip;</span
           >
         </div>
-        <div id="cal-embed" style="width:100%;min-height:500px;overflow:auto">
-        </div>
+        <!-- Cal.com renders its iframe here -->
+        <div id="cal-embed" style="min-height:580px"></div>
+      </div>
+
+      <!-- Fallback link if embed doesn't load -->
+      <p class="relative z-10 text-text-muted text-sm text-center mt-6">
+        If the calendar doesn't load above, you can schedule directly here:
+      </p>
+      <div class="relative z-10 flex justify-center mt-4">
+        <a
+          href="https://cal.com/generuss/discovery-call"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+        >
+          Open Scheduling Page
+        </a>
       </div>
 
       <!-- Secondary CTA: Contact Form -->
@@ -1211,13 +1237,13 @@ const formspreeId = "xgolkboq";
             loadCalEmbed();
           }
         },
-        { rootMargin: "400px" },
+        { rootMargin: "600px" },
       );
 
       if (contactSection) observer.observe(contactSection);
 
       function loadCalEmbed() {
-        // Cal.com embed snippet (must run as plain script, not ES module)
+        // Cal.com official embed snippet
         (function (C, A, L) {
           var p = function (a, ar) {
             a.q.push(ar);
@@ -1251,15 +1277,15 @@ const formspreeId = "xgolkboq";
             };
         })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        Cal("init", "discovery-call", { origin: "https://app.cal.com" });
+        window.Cal("init", "discovery-call", { origin: "https://app.cal.com" });
 
-        Cal.ns["discovery-call"]("inline", {
+        window.Cal.ns["discovery-call"]("inline", {
           elementOrSelector: "#cal-embed",
           calLink: "generuss/discovery-call",
           layout: "month_view",
         });
 
-        Cal.ns["discovery-call"]("ui", {
+        window.Cal.ns["discovery-call"]("ui", {
           theme: "dark",
           hideEventTypeDetails: false,
           layout: "month_view",

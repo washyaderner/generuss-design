@@ -128,39 +128,84 @@ function setupProblemSolution(isMobile) {
     const solutions = section.querySelectorAll(".ps-solution");
     const problems = section.querySelectorAll(".ps-problem");
 
-    ScrollTrigger.create({
-      trigger: ".ps-pin",
-      start: "top top",
-      end: "+=200%",
-      pin: true,
-      scrub: 1,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const count = solutions.length;
+    if (isMobile) {
+      // Mobile: no pin — reveal each solution as its row scrolls into view
+      solutions.forEach((sol, i) => {
+        sol.classList.remove("gsap-hidden");
+        sol.style.clipPath = "inset(0 100% 0 0)";
+        sol.style.opacity = "0";
 
-        solutions.forEach((sol, i) => {
-          const start = i / count;
-          const end = (i + 1) / count;
-          const localProgress = Math.max(
-            0,
-            Math.min(1, (progress - start) / (end - start)),
-          );
-
-          if (localProgress > 0) {
-            sol.classList.remove("gsap-hidden");
-            const clipRight = 100 - localProgress * 100;
-            sol.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
-            sol.style.opacity =
-              localProgress > 0.3 ? "1" : `${localProgress / 0.3}`;
-
-            // Brighten paired problem
-            if (problems[i]) {
-              problems[i].style.opacity = 0.5 + localProgress * 0.5;
+        const row = sol.closest(".ps-row");
+        ScrollTrigger.create({
+          trigger: row,
+          start: "top 75%",
+          end: "top 35%",
+          scrub: 0.5,
+          onUpdate: (self) => {
+            const p = self.progress;
+            if (p >= 1) {
+              sol.style.clipPath = "none";
+            } else {
+              const clipRight = 100 - p * 100;
+              sol.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
             }
-          }
+            sol.style.opacity = p > 0.3 ? "1" : `${p / 0.3}`;
+
+            if (problems[i]) {
+              problems[i].style.opacity = 0.5 + p * 0.5;
+            }
+          },
         });
-      },
-    });
+      });
+    } else {
+      // Desktop/tablet: pinned curtain wipe
+      ScrollTrigger.create({
+        trigger: ".ps-pin",
+        start: "top top",
+        end: "+=200%",
+        pin: true,
+        scrub: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const count = solutions.length;
+
+          solutions.forEach((sol, i) => {
+            const start = i / count;
+            const end = (i + 1) / count;
+            const localProgress = Math.max(
+              0,
+              Math.min(1, (progress - start) / (end - start)),
+            );
+
+            if (localProgress > 0) {
+              sol.classList.remove("gsap-hidden");
+              if (localProgress >= 1) {
+                // Fully revealed — remove clip-path so box-shadow renders
+                sol.style.clipPath = "none";
+              } else {
+                const clipRight = 100 - localProgress * 100;
+                sol.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
+              }
+              sol.style.opacity =
+                localProgress > 0.3 ? "1" : `${localProgress / 0.3}`;
+
+              // Brighten paired problem
+              if (problems[i]) {
+                problems[i].style.opacity = 0.5 + localProgress * 0.5;
+              }
+            }
+          });
+
+          // Fade out entire pinned section during last 15%
+          if (progress > 0.85) {
+            const fadeProgress = (progress - 0.85) / 0.15;
+            pinSection.style.opacity = String(1 - fadeProgress);
+          } else {
+            pinSection.style.opacity = "1";
+          }
+        },
+      });
+    }
   }
 
   // Outro text
@@ -219,6 +264,27 @@ function setupPrinciples(isMobile, isTablet) {
         start: "top bottom",
         end: "top 20%",
         scrub: 0.5,
+      },
+    });
+  }
+
+  // Pin .principles-pin for +=100% scroll distance
+  const pinWrap = document.querySelector(".principles-pin");
+  if (pinWrap) {
+    ScrollTrigger.create({
+      trigger: ".principles-pin",
+      start: "top top",
+      end: "+=100%",
+      pin: true,
+      scrub: true,
+      onUpdate: (self) => {
+        // Fade out during last 30% of pin (progress 0.7 -> 1.0)
+        if (self.progress > 0.7) {
+          const fadeProgress = (self.progress - 0.7) / 0.3;
+          pinWrap.style.opacity = String(1 - fadeProgress);
+        } else {
+          pinWrap.style.opacity = "1";
+        }
       },
     });
   }
