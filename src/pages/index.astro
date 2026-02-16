@@ -34,10 +34,10 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           </span>
         </h1>
         <p
-          class="hero-sub gsap-hidden mt-6 max-w-xl text-[1.46rem] sm:text-[1.625rem] md:text-[1.95rem] text-text-muted"
+          class="hero-sub gsap-hidden mt-6 max-w-2xl text-[1.46rem] sm:text-[1.625rem] md:text-[1.95rem] text-text-muted"
         >
-          Design that converts visitors into customers. Built fast. Looks sharp.
-          No bloat.
+          Design that converts visitors into customers.<br />
+          Built fast. Looks sharp. No bloat.
         </p>
         <a
           href="#contact"
@@ -87,24 +87,21 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 
     <!-- S2: Problem/Solution -->
     <section id="problem-solution" class="relative">
-      <!-- Section Intro -->
-      <div
-        class="ps-intro flex min-h-[50vh] items-center justify-center px-8 sm:px-12 lg:px-20"
-      >
-        <p
-          class="gsap-hidden text-2xl sm:text-3xl md:text-4xl font-bold text-center"
-        >
-          Your website has <span class="text-accent glow-text"
-            >real problems.</span
-          >
-        </p>
-      </div>
-
       <!-- Pinned Problem/Solution Grid -->
       <div class="ps-pin relative min-h-screen">
         <div
-          class="ps-grid flex flex-col justify-center md:min-h-screen px-8 sm:px-12 lg:px-20 py-8 sm:py-12 gap-4 sm:gap-6 md:gap-8 bg-bg-secondary"
+          class="ps-grid flex flex-col justify-center md:min-h-screen px-8 sm:px-12 lg:px-20 pt-10 sm:pt-14 pb-8 sm:pb-12 gap-4 sm:gap-6 md:gap-8 bg-bg-secondary"
         >
+          <!-- Section Intro (inside pinned area) -->
+          <div class="ps-intro flex items-center justify-center pb-4 sm:pb-6">
+            <h2
+              class="gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center"
+            >
+              Your website has <span class="text-accent glow-text"
+                >real problems.</span
+              >
+            </h2>
+          </div>
           <!-- Pair 1 -->
           <div
             class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
@@ -223,35 +220,17 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           </div>
         </div>
       </div>
-
-      <!-- Section Outro -->
-      <div
-        class="ps-outro flex min-h-[30vh] items-center justify-center px-8 sm:px-12 lg:px-20"
-      >
-        <p
-          class="gsap-hidden text-xl sm:text-2xl md:text-3xl font-semibold text-text-muted text-center"
-        >
-          Those were the problems. Here's how we solve them.
-        </p>
-      </div>
     </section>
 
     <!-- S3: Design Principles -->
     <section id="principles" class="bg-bg-secondary">
-      <!-- Part A: Sliding Header -->
-      <div
-        class="principles-marquee relative overflow-hidden"
-        style="height: 300vh;"
-      >
-        <div
-          class="principles-header-wrap sticky top-0 flex h-screen items-center overflow-hidden"
+      <!-- Section Header -->
+      <div class="px-8 sm:px-12 lg:px-20 pt-20 pb-12 sm:pt-28 sm:pb-16">
+        <h2
+          class="principles-heading gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black"
         >
-          <h2
-            class="principles-heading gsap-hidden whitespace-nowrap text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black"
-          >
-            What Makes a Website <span class="text-accent">Actually Good?</span>
-          </h2>
-        </div>
+          What Makes a Website <span class="text-accent">Actually Good?</span>
+        </h2>
       </div>
 
       <!-- Part B: Pinned Principles -->
