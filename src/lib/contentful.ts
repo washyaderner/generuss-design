@@ -51,7 +51,7 @@ function parsePost(entry: any): BlogPost {
     excerpt: fields.summary || "",
     content: fields.content || "",
     featuredImage: {
-      url: image ? `https:${image.url}` : "/images/placeholder.webp",
+      url: image ? `https:${image.url}` : "/images/placeholder.svg",
       title: asset?.fields?.title || fields.title,
       width: image?.details?.image?.width || 1200,
       height: image?.details?.image?.height || 630,

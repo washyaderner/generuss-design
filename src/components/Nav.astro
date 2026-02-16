@@ -115,41 +115,19 @@ const { alwaysVisible = false } = Astro.props;
 </nav>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
-
   const nav = document.getElementById("site-nav");
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
   const mobileLinks = mobileMenu?.querySelectorAll("a");
   const isAlwaysVisible = nav?.classList.contains("opacity-0") === false;
 
-  // Show/hide nav on scroll (only for main page)
-  if (!isAlwaysVisible && nav) {
-    const showNav = () => {
-      nav.classList.remove("opacity-0", "-translate-y-full");
-    };
-    const hideNav = () => {
-      nav.classList.add("opacity-0", "-translate-y-full");
-    };
-
-    ScrollTrigger.create({
-      trigger: "#hero",
-      start: "bottom top+=100",
-      onEnter: showNav,
-      onLeaveBack: hideNav,
-    });
-  }
-
-  // Mobile menu toggle
+  // Mobile menu toggle (no GSAP needed)
   function openMenu() {
     mobileMenu?.classList.remove("hidden");
     mobileMenu?.classList.add("flex");
     hamburger?.setAttribute("aria-expanded", "true");
     hamburger?.setAttribute("aria-label", "Close menu");
     document.body.style.overflow = "hidden";
-    // Focus first link
     (mobileLinks?.[0] as HTMLElement)?.focus();
   }
 
@@ -167,12 +145,10 @@ const { alwaysVisible = false } = Astro.props;
     isOpen ? closeMenu() : openMenu();
   });
 
-  // Close on link click
   mobileLinks?.forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
 
-  // Close on Escape + focus trap
   document.addEventListener("keydown", (e) => {
     if (hamburger?.getAttribute("aria-expanded") !== "true") return;
 
@@ -194,40 +170,64 @@ const { alwaysVisible = false } = Astro.props;
     }
   });
 
-  // Active section tracking
-  const navLinks = document.querySelectorAll(".nav-link");
-  const sections = ["services", "about"];
+  // Scroll-based show/hide + active section tracking (main page only)
+  // Dynamically import GSAP so blog pages don't pay the ~45KB gzip cost
+  if (!isAlwaysVisible && nav) {
+    import("gsap").then(({ gsap }) => {
+      import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
+        gsap.registerPlugin(ScrollTrigger);
 
-  sections.forEach((id) => {
-    const section = document.getElementById(id);
-    if (!section) return;
+        const showNav = () => {
+          nav.classList.remove("opacity-0", "-translate-y-full");
+        };
+        const hideNav = () => {
+          nav.classList.add("opacity-0", "-translate-y-full");
+        };
 
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top center",
-      end: "bottom center",
-      onEnter: () => setActive(id),
-      onEnterBack: () => setActive(id),
-      onLeave: () => clearActive(id),
-      onLeaveBack: () => clearActive(id),
-    });
-  });
+        ScrollTrigger.create({
+          trigger: "#hero",
+          start: "bottom top+=100",
+          onEnter: showNav,
+          onLeaveBack: hideNav,
+        });
 
-  function setActive(id: string) {
-    navLinks.forEach((link) => {
-      if (link.getAttribute("href")?.includes(id)) {
-        link.classList.add("text-accent");
-        link.classList.remove("text-text-muted");
-      }
-    });
-  }
+        // Active section tracking
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = ["services", "about"];
 
-  function clearActive(id: string) {
-    navLinks.forEach((link) => {
-      if (link.getAttribute("href")?.includes(id)) {
-        link.classList.remove("text-accent");
-        link.classList.add("text-text-muted");
-      }
+        function setActive(id: string) {
+          navLinks.forEach((link) => {
+            if (link.getAttribute("href")?.includes(id)) {
+              link.classList.add("text-accent");
+              link.classList.remove("text-text-muted");
+            }
+          });
+        }
+
+        function clearActive(id: string) {
+          navLinks.forEach((link) => {
+            if (link.getAttribute("href")?.includes(id)) {
+              link.classList.remove("text-accent");
+              link.classList.add("text-text-muted");
+            }
+          });
+        }
+
+        sections.forEach((id) => {
+          const section = document.getElementById(id);
+          if (!section) return;
+
+          ScrollTrigger.create({
+            trigger: section,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => setActive(id),
+            onEnterBack: () => setActive(id),
+            onLeave: () => clearActive(id),
+            onLeaveBack: () => clearActive(id),
+          });
+        });
+      });
     });
   }
 </script>
