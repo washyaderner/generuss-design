@@ -13,7 +13,7 @@
 
 set -e
 
-PORT=4321
+PORT=4399
 URL="http://localhost:$PORT"
 OUTPUT_DIR=".tmp/qa"
 PREVIEW_PID=""
