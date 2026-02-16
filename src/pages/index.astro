@@ -1036,7 +1036,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 
       <!-- Cal.com Inline Embed (lazy loaded) -->
       <div
-        class="relative z-10 w-full max-w-3xl mx-auto mt-10 rounded-2xl overflow-hidden"
+        class="relative z-10 w-full max-w-5xl mx-auto mt-10 rounded-2xl overflow-hidden"
       >
         <!-- Skeleton overlay (absolute, hides when iframe loads) -->
         <div
@@ -1066,7 +1066,22 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           >
         </div>
         <!-- Cal.com renders its iframe here -->
-        <div id="cal-embed" style="min-height:500px"></div>
+        <div id="cal-embed" style="min-height:580px"></div>
+      </div>
+
+      <!-- Fallback link if embed doesn't load -->
+      <p class="relative z-10 text-text-muted text-sm text-center mt-6">
+        If the calendar doesn't load above, you can schedule directly here:
+      </p>
+      <div class="relative z-10 flex justify-center mt-4">
+        <a
+          href="https://cal.com/generuss/discovery-call"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+        >
+          Open Scheduling Page
+        </a>
       </div>
 
       <!-- Secondary CTA: Contact Form -->

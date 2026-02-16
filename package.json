@@ -11,7 +11,11 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
+    "qa": "bash execution/visual-qa.sh"
   },
   "lint-staged": {
     "*.{js,mjs,ts,astro}": [
@@ -35,6 +39,7 @@
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@typescript-eslint/parser": "^8.55.0",
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.6.0",
