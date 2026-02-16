@@ -70,6 +70,12 @@ body {
   visibility: hidden;
 }
 
+/* ── Shatter Animation Characters ── */
+.shatter-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
 /* ── Neumorphic Utilities ── */
 .neu-raised {
   box-shadow:
