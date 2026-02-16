@@ -223,7 +223,7 @@ function setupProblemSolution(isMobile) {
 
 // ── S3: Design Principles ──
 function setupPrinciples(isMobile, isTablet) {
-  // Section header fade-in
+  // Section header fade-in (fires before pin locks)
   const heading = document.querySelector(".principles-heading");
   if (heading) {
     heading.classList.remove("gsap-hidden");
@@ -233,13 +233,13 @@ function setupPrinciples(isMobile, isTablet) {
       duration: 0.8,
       ease: "power4.out",
       scrollTrigger: {
-        trigger: heading,
+        trigger: ".principles-pin",
         start: "top 80%",
       },
     });
   }
 
-  // Subheading slides from right
+  // Subheading slides from right (completes before pin locks)
   const subheading = document.querySelector(".principles-subheading");
   if (subheading) {
     subheading.classList.remove("gsap-hidden");
