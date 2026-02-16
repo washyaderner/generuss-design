@@ -16,6 +16,24 @@ import {
   glowPulse,
 } from "./animations.js";
 
+/**
+ * Split an element's text content into individually animated character spans.
+ * Spaces become non-breaking so inline-blocks stay visible.
+ */
+function splitTextToChars(el) {
+  const text = el.textContent;
+  el.textContent = "";
+  const chars = [];
+  for (const char of text) {
+    const span = document.createElement("span");
+    span.className = "shatter-char";
+    span.textContent = char === " " ? "\u00A0" : char;
+    el.appendChild(span);
+    chars.push(span);
+  }
+  return chars;
+}
+
 function init() {
   ScrollTrigger.matchMedia({
     "(min-width: 1024px)": () => setupAnimations("desktop"),
@@ -109,17 +127,45 @@ function setupProblemSolution(isMobile) {
   const section = document.querySelector("#problem-solution");
   if (!section) return;
 
-  // Intro text
-  const intro = section.querySelector(".ps-intro .gsap-hidden");
-  if (intro) {
-    intro.classList.remove("gsap-hidden");
-    gsap.from(intro, {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power4.out",
-      scrollTrigger: { trigger: ".ps-intro", start: "top 80%" },
+  // Joke shatter + real heading reveal
+  const joke = section.querySelector(".ps-joke");
+  const real = section.querySelector(".ps-real");
+  if (joke && real) {
+    const chars = splitTextToChars(joke);
+    joke.classList.remove("gsap-hidden");
+    real.classList.remove("gsap-hidden");
+
+    const isSmall = window.innerWidth < 640;
+    const rangeX = isSmall ? 300 : 600;
+    const rangeY = isSmall ? 200 : 400;
+
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: ".ps-intro", start: "top 80%", once: true },
     });
+
+    // 1. Joke fades in
+    tl.from(joke, { y: 30, opacity: 0, duration: 0.8, ease: "power4.out" });
+    // 2. Pause for reading
+    tl.to({}, { duration: 0.6 });
+    // 3. Shatter chars outward from center
+    tl.to(chars, {
+      x: () => gsap.utils.random(-rangeX, rangeX),
+      y: () => gsap.utils.random(-rangeY, rangeY),
+      rotation: () => gsap.utils.random(-180, 180),
+      scale: () => gsap.utils.random(0.2, 1.5),
+      opacity: 0,
+      duration: 0.7,
+      stagger: { amount: 0.3, from: "center" },
+      ease: "power3.in",
+    });
+    // 4. Real heading fades in (overlaps shatter by 0.15s)
+    tl.from(
+      real,
+      { y: 20, opacity: 0, duration: 0.8, ease: "power4.out" },
+      "-=0.15",
+    );
+    // 5. Clean up joke element
+    tl.call(() => joke.remove());
   }
 
   // Pin the grid
@@ -456,6 +502,9 @@ function start() {
     document.querySelectorAll(".gsap-hidden").forEach((el) => {
       el.classList.remove("gsap-hidden");
     });
+    // Remove joke element so only real heading shows
+    const joke = document.querySelector(".ps-joke");
+    if (joke) joke.remove();
     return;
   }
   init();
