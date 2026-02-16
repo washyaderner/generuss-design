@@ -73,8 +73,8 @@ body {
 /* ── Neumorphic Utilities ── */
 .neu-raised {
   box-shadow:
-    6px 6px 14px var(--shadow-dark),
-    -6px -6px 14px var(--shadow-light);
+    8px 8px 20px rgba(0, 0, 0, 0.8),
+    -4px -4px 12px rgba(255, 255, 255, 0.06);
 }
 
 .neu-inset {

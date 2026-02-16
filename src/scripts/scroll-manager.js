@@ -148,8 +148,13 @@ function setupProblemSolution(isMobile) {
 
           if (localProgress > 0) {
             sol.classList.remove("gsap-hidden");
-            const clipRight = 100 - localProgress * 100;
-            sol.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
+            if (localProgress >= 1) {
+              // Fully revealed — remove clip-path so box-shadow renders
+              sol.style.clipPath = "none";
+            } else {
+              const clipRight = 100 - localProgress * 100;
+              sol.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
+            }
             sol.style.opacity =
               localProgress > 0.3 ? "1" : `${localProgress / 0.3}`;
 
