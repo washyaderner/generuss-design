@@ -66,11 +66,11 @@ export function textReveal(selector, options = {}) {
  */
 export function initLavaLamp(containerSelector, options = {}) {
   const {
-    count = 18,
-    sizeRange = [30, 130],
-    hueRange = [170, 200],
-    satRange = [90, 100],
-    lightRange = [45, 55],
+    count = 28,
+    sizeRange = [50, 180],
+    hue = 176,
+    satRange = [85, 100],
+    lightRange = [30, 60],
     riseDuration = [8, 18],
     fallDuration = [5, 10],
     wobbleX = 80,
@@ -90,7 +90,7 @@ export function initLavaLamp(containerSelector, options = {}) {
     width: 120%;
     height: 80px;
     border-radius: 50%;
-    background: hsl(185, 95%, 50%);
+    background: hsl(176, 100%, 47%);
     bottom: -40px;
     left: -10%;
     will-change: transform;
@@ -112,7 +112,6 @@ export function initLavaLamp(containerSelector, options = {}) {
   for (let i = 0; i < count; i++) {
     const blob = document.createElement("div");
     const size = gsap.utils.random(sizeRange[0], sizeRange[1]);
-    const hue = gsap.utils.random(hueRange[0], hueRange[1]);
     const sat = gsap.utils.random(satRange[0], satRange[1]);
     const light = gsap.utils.random(lightRange[0], lightRange[1]);
 
@@ -130,7 +129,7 @@ export function initLavaLamp(containerSelector, options = {}) {
     blobs.push(blob);
     allEls.push(blob);
 
-    // Spread initial positions so blobs don't all start at bottom
+    // Spread initial positions so some blobs are already floating on load
     gsap.set(blob, { y: gsap.utils.random(0, -h * 0.6) });
   }
 
@@ -157,6 +156,29 @@ export function initLavaLamp(containerSelector, options = {}) {
   }
 
   blobs.forEach((blob) => animateBlob(blob));
+
+  // A few extra blobs sit in the pool, then detach and rise after 1-4s
+  for (let i = 0; i < 5; i++) {
+    const blob = document.createElement("div");
+    const size = gsap.utils.random(sizeRange[0], sizeRange[1]);
+    const sat = gsap.utils.random(satRange[0], satRange[1]);
+    const light = gsap.utils.random(lightRange[0], lightRange[1]);
+
+    blob.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      border-radius: 50%;
+      background: hsl(${hue}, ${sat}%, ${light}%);
+      bottom: ${gsap.utils.random(-5, 10)}%;
+      left: ${gsap.utils.random(15, 85)}%;
+      will-change: transform;
+    `;
+    container.appendChild(blob);
+    allEls.push(blob);
+
+    gsap.delayedCall(gsap.utils.random(1, 4), () => animateBlob(blob));
+  }
 
   return function cleanup() {
     allEls.forEach((el) => {
