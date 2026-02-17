@@ -329,6 +329,12 @@ When something breaks:
 
 ---
 
+## Copy Style
+
+- **Never use em dashes** (the long `—` character). Use a hyphen with spaces ( - ), a colon, or rephrase instead.
+
+---
+
 ## Git & PR Workflow
 
 **Branch strategy:**
