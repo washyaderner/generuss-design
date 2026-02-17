@@ -153,17 +153,6 @@ function setupBooking(isMobile) {
     });
   }
 
-  // Brief pin so visitors pause on the calendar
-  if (!isMobile) {
-    ScrollTrigger.create({
-      trigger: "#booking",
-      start: "top top",
-      end: "+=80%",
-      pin: true,
-      scrub: true,
-    });
-  }
-
   // Glow pulse on accent word
   glowPulse(".glow-pulse-target");
 }
