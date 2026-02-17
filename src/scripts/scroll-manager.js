@@ -137,11 +137,15 @@ function setupProblemSolution(isMobile) {
     gsap.set(real, { opacity: 0, y: 20 }); // prevent flash
 
     const tl = gsap.timeline({
-      scrollTrigger: { trigger: ".ps-intro", start: "top 80%", once: true },
+      scrollTrigger: {
+        trigger: ".ps-intro",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
     });
 
-    // 1. Joke fades in (0.8s)
-    tl.from(joke, { y: 30, opacity: 0, duration: 0.8, ease: "power4.out" });
+    // 1. Joke fades in (1s)
+    tl.from(joke, { y: 30, opacity: 0, duration: 1, ease: "power4.out" });
 
     // 2. Reading pause (0.8s)
     tl.to({}, { duration: 0.8 });
@@ -175,12 +179,12 @@ function setupProblemSolution(isMobile) {
           duration: 0.06,
         },
       ],
-      stagger: { each: 0.015, from: "start" },
+      stagger: { each: 0.03, from: "start" },
       ease: "none",
     });
 
-    // 4. Afterglow fade (0.3s)
-    tl.to(joke, { opacity: 0, duration: 0.3, ease: "power2.out" }, "-=0.1");
+    // 4. Afterglow fade (0.4s)
+    tl.to(joke, { opacity: 0, duration: 0.4, ease: "power2.out" }, "-=0.1");
 
     // 5. Real heading fades up (overlaps afterglow)
     tl.to(
@@ -188,9 +192,6 @@ function setupProblemSolution(isMobile) {
       { opacity: 1, y: 0, duration: 0.8, ease: "power4.out" },
       "-=0.2",
     );
-
-    // 6. Cleanup
-    tl.call(() => joke.remove());
   }
 
   // Pin the grid
@@ -585,9 +586,6 @@ function start() {
     document.querySelectorAll(".gsap-hidden").forEach((el) => {
       el.classList.remove("gsap-hidden");
     });
-    // Remove joke element so only real heading shows
-    const joke = document.querySelector(".ps-joke");
-    if (joke) joke.remove();
     return;
   }
   init();
