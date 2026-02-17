@@ -26,7 +26,7 @@ function splitTextToChars(el) {
   const chars = [];
   for (const char of text) {
     const span = document.createElement("span");
-    span.className = "shatter-char";
+    span.className = "burn-char";
     span.textContent = char === " " ? "\u00A0" : char;
     el.appendChild(span);
     chars.push(span);
@@ -50,7 +50,7 @@ function setupAnimations(breakpoint) {
   setupHero(isMobile);
   setupProblemSolution(isMobile);
   setupPrinciples(isMobile, isTablet);
-  setupServices();
+  setupServices(isMobile);
   setupPortfolio(isMobile);
   setupAbout();
   setupWhyMe();
@@ -127,44 +127,69 @@ function setupProblemSolution(isMobile) {
   const section = document.querySelector("#problem-solution");
   if (!section) return;
 
-  // Joke shatter + real heading reveal
+  // Burn-away joke + real heading reveal
   const joke = section.querySelector(".ps-joke");
   const real = section.querySelector(".ps-real");
   if (joke && real) {
     const chars = splitTextToChars(joke);
     joke.classList.remove("gsap-hidden");
     real.classList.remove("gsap-hidden");
-
-    const isSmall = window.innerWidth < 640;
-    const rangeX = isSmall ? 300 : 600;
-    const rangeY = isSmall ? 200 : 400;
+    gsap.set(real, { opacity: 0, y: 20 }); // prevent flash
 
     const tl = gsap.timeline({
       scrollTrigger: { trigger: ".ps-intro", start: "top 80%", once: true },
     });
 
-    // 1. Joke fades in
+    // 1. Joke fades in (0.8s)
     tl.from(joke, { y: 30, opacity: 0, duration: 0.8, ease: "power4.out" });
-    // 2. Pause for reading
-    tl.to({}, { duration: 0.6 });
-    // 3. Shatter chars outward from center
+
+    // 2. Reading pause (0.8s)
+    tl.to({}, { duration: 0.8 });
+
+    // 3. Burn sweep left-to-right (~1s)
+    //    Each char: white flash -> orange glow -> red -> fade out
     tl.to(chars, {
-      x: () => gsap.utils.random(-rangeX, rangeX),
-      y: () => gsap.utils.random(-rangeY, rangeY),
-      rotation: () => gsap.utils.random(-180, 180),
-      scale: () => gsap.utils.random(0.2, 1.5),
-      opacity: 0,
-      duration: 0.7,
-      stagger: { amount: 0.3, from: "center" },
-      ease: "power3.in",
+      keyframes: [
+        {
+          color: "#ffffff",
+          filter: "blur(0px) brightness(1.5)",
+          duration: 0.06,
+        },
+        {
+          color: "#ff8800",
+          filter: "blur(2px) brightness(2)",
+          y: -4,
+          duration: 0.1,
+        },
+        {
+          color: "#ff4400",
+          filter: "blur(3px) brightness(1.5)",
+          opacity: 0.4,
+          y: -8,
+          duration: 0.1,
+        },
+        {
+          opacity: 0,
+          filter: "blur(4px) brightness(0.5)",
+          y: -12,
+          duration: 0.06,
+        },
+      ],
+      stagger: { each: 0.015, from: "start" },
+      ease: "none",
     });
-    // 4. Real heading fades in (overlaps shatter by 0.15s)
-    tl.from(
+
+    // 4. Afterglow fade (0.3s)
+    tl.to(joke, { opacity: 0, duration: 0.3, ease: "power2.out" }, "-=0.1");
+
+    // 5. Real heading fades up (overlaps afterglow)
+    tl.to(
       real,
-      { y: 20, opacity: 0, duration: 0.8, ease: "power4.out" },
-      "-=0.15",
+      { opacity: 1, y: 0, duration: 0.8, ease: "power4.out" },
+      "-=0.2",
     );
-    // 5. Clean up joke element
+
+    // 6. Cleanup
     tl.call(() => joke.remove());
   }
 
@@ -191,9 +216,16 @@ function setupProblemSolution(isMobile) {
             const p = self.progress;
             if (p >= 1) {
               sol.style.clipPath = "none";
+              sol.style.boxShadow = "";
             } else {
               const clipRight = 100 - p * 100;
-              sol.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
+              sol.style.clipPath = `inset(0 ${clipRight}% 0 0 round 1rem)`;
+              if (p >= 0.5) {
+                sol.style.boxShadow = "";
+              } else {
+                const s = p / 0.5;
+                sol.style.boxShadow = `${s * 4}px ${s * 4}px ${s * 12}px rgba(0,0,0,${s * 0.8}), ${s * -2}px ${s * -2}px ${s * 8}px rgba(255,255,255,${s * 0.05})`;
+              }
             }
             sol.style.opacity = p > 0.3 ? "1" : `${p / 0.3}`;
 
@@ -210,7 +242,7 @@ function setupProblemSolution(isMobile) {
         start: "top 5%",
         end: "+=300%",
         pin: true,
-        scrub: 1,
+        scrub: 0.3,
         onUpdate: (self) => {
           const progress = self.progress;
           const count = solutions.length;
@@ -226,16 +258,21 @@ function setupProblemSolution(isMobile) {
             if (localProgress > 0) {
               sol.classList.remove("gsap-hidden");
               if (localProgress >= 1) {
-                // Fully revealed — remove clip-path so box-shadow renders
                 sol.style.clipPath = "none";
+                sol.style.boxShadow = "";
               } else {
                 const clipRight = 100 - localProgress * 100;
-                sol.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
+                sol.style.clipPath = `inset(0 ${clipRight}% 0 0 round 1rem)`;
+                if (localProgress >= 0.5) {
+                  sol.style.boxShadow = "";
+                } else {
+                  const s = localProgress / 0.5;
+                  sol.style.boxShadow = `${s * 8}px ${s * 8}px ${s * 20}px rgba(0,0,0,${s * 0.8}), ${s * -4}px ${s * -4}px ${s * 12}px rgba(255,255,255,${s * 0.06})`;
+                }
               }
               sol.style.opacity =
                 localProgress > 0.3 ? "1" : `${localProgress / 0.3}`;
 
-              // Brighten paired problem
               if (problems[i]) {
                 problems[i].style.opacity = 0.5 + localProgress * 0.5;
               }
@@ -249,6 +286,30 @@ function setupProblemSolution(isMobile) {
           } else {
             pinSection.style.opacity = "1";
           }
+        },
+        onLeave: () => {
+          // Force all cards to fully-revealed state
+          solutions.forEach((sol) => {
+            sol.classList.remove("gsap-hidden");
+            sol.style.clipPath = "none";
+            sol.style.boxShadow = "";
+            sol.style.opacity = "1";
+          });
+          problems.forEach((prob) => {
+            prob.style.opacity = "1";
+          });
+        },
+        onLeaveBack: () => {
+          // Reset all cards to hidden state
+          solutions.forEach((sol) => {
+            sol.classList.add("gsap-hidden");
+            sol.style.clipPath = "inset(0 100% 0 0 round 1rem)";
+            sol.style.boxShadow = "none";
+            sol.style.opacity = "0";
+          });
+          problems.forEach((prob) => {
+            prob.style.opacity = "0.5";
+          });
         },
       });
     }
@@ -335,23 +396,45 @@ function setupPrinciples(isMobile, isTablet) {
 }
 
 // ── S4: Services ──
-function setupServices() {
+function setupServices(isMobile) {
+  // Fade-up animations fire before pin locks
   fadeUp(".services-heading", {
-    scrollTrigger: { trigger: ".services-heading", start: "top 80%" },
+    scrollTrigger: { trigger: ".services-pin", start: "top 80%" },
   });
 
   fadeUp(".service-card", {
     stagger: 0.15,
-    scrollTrigger: { trigger: ".service-card", start: "top 80%" },
+    scrollTrigger: { trigger: ".services-pin", start: "top 70%" },
   });
 
   fadeUp(".growth-partner", {
-    scrollTrigger: { trigger: ".growth-partner", start: "top 80%" },
+    scrollTrigger: { trigger: ".services-pin", start: "top 60%" },
   });
 
   fadeUp(".services-cta", {
-    scrollTrigger: { trigger: ".services-cta", start: "top 85%" },
+    scrollTrigger: { trigger: ".services-pin", start: "top 55%" },
   });
+
+  // Pin the section so it fills viewport while scrolling
+  const pinWrap = document.querySelector(".services-pin");
+  if (pinWrap && !isMobile) {
+    ScrollTrigger.create({
+      trigger: ".services-pin",
+      start: "top top",
+      end: "+=100%",
+      pin: true,
+      scrub: true,
+      onUpdate: (self) => {
+        // Fade out during last 30% of pin
+        if (self.progress > 0.7) {
+          const fadeProgress = (self.progress - 0.7) / 0.3;
+          pinWrap.style.opacity = String(1 - fadeProgress);
+        } else {
+          pinWrap.style.opacity = "1";
+        }
+      },
+    });
+  }
 }
 
 // ── S4→S5 Transition: bg-secondary -> bg ──

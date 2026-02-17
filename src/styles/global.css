@@ -70,10 +70,10 @@ body {
   visibility: hidden;
 }
 
-/* ── Shatter Animation Characters ── */
-.shatter-char {
+/* ── Burn Animation Characters ── */
+.burn-char {
   display: inline-block;
-  will-change: transform, opacity;
+  will-change: transform, opacity, filter, color;
 }
 
 /* ── Neumorphic Utilities ── */

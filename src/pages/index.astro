@@ -94,21 +94,21 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         >
           <!-- Section Intro (inside pinned area) -->
           <div
-            class="ps-intro grid place-items-center pb-4 sm:pb-6 overflow-hidden"
+            class="ps-intro relative flex items-center justify-center pb-4 sm:pb-6 overflow-hidden"
           >
-            <!-- Joke (on top, will shatter) -->
+            <!-- Joke (overlays, will burn away) -->
             <p
-              class="ps-joke gsap-hidden text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black text-center italic text-text-muted/80 col-start-1 row-start-1 z-10"
+              class="ps-joke gsap-hidden absolute inset-0 flex items-center justify-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-center italic text-text-muted/80 z-10 px-4"
               aria-hidden="true"
             >
               Webster's Dictionary Defines a Good Site As...
             </p>
-            <!-- Real heading (underneath) -->
+            <!-- Real heading (normal flow, determines container height) -->
             <h2
-              class="ps-real gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center col-start-1 row-start-1"
+              class="ps-real gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center"
             >
-              generuss sites <span class="text-accent glow-text">convert,</span> and
-              <span class="text-accent">look good doing it.</span>
+              generuss sites <span class="text-accent">convert,</span> and
+              <span class="text-accent">look good</span> doing it.
             </h2>
           </div>
           <!-- Pair 1 -->
@@ -360,6 +360,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               stroke-linejoin="round"
             >
               <circle cx="11" cy="11" r="8"></circle>
+              <path d="M7 9h8M7 12h5" stroke-width="1.5"></path>
               <path d="m21 21-4.3-4.3" stroke="#1e1e22" stroke-width="5"></path>
               <path d="m21 21-4.3-4.3"></path>
             </svg>
