@@ -40,37 +40,32 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           Built fast. Looks sharp. No bloat.
         </p>
         <a
-          href="#contact"
+          href="#booking"
           class="hero-cta gsap-hidden mt-8 inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
         >
           Let's Build Yours &rarr;
         </a>
       </div>
 
-      <!-- Geometric shapes -->
+      <!-- Lava lamp background -->
+      <svg class="absolute" width="0" height="0" aria-hidden="true">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"
+            ></feGaussianBlur>
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+            ></feColorMatrix>
+          </filter>
+        </defs>
+      </svg>
       <div
-        class="hero-shape gsap-hidden absolute top-[15%] right-[10%] h-32 w-32 sm:h-48 sm:w-48 opacity-[0.04]"
-        style="background: var(--color-accent); clip-path: polygon(50% 0%, 100% 100%, 0% 100%);"
-      >
-      </div>
-      <div
-        class="hero-shape gsap-hidden absolute bottom-[20%] right-[25%] h-24 w-40 sm:h-36 sm:w-56 opacity-[0.03]"
-        style="background: var(--color-accent); clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);"
-      >
-      </div>
-      <div
-        class="hero-shape gsap-hidden absolute top-[40%] left-[60%] h-28 w-28 sm:h-40 sm:w-40 opacity-[0.04]"
-        style="background: var(--color-accent); clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);"
-      >
-      </div>
-      <div
-        class="hero-shape gsap-hidden absolute bottom-[30%] left-[5%] h-20 w-20 sm:h-32 sm:w-32 opacity-[0.03] hidden sm:block"
-        style="background: var(--color-accent); clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"
-      >
-      </div>
-      <div
-        class="hero-shape gsap-hidden absolute top-[10%] left-[30%] h-16 w-16 sm:h-24 sm:w-24 opacity-[0.05] hidden sm:block"
-        style="background: var(--color-accent); clip-path: polygon(50% 0%, 100% 100%, 0% 100%);"
+        id="lava-lamp"
+        class="absolute inset-0 overflow-hidden pointer-events-none"
+        style="filter: url(#goo); opacity: 0;"
+        aria-hidden="true"
       >
       </div>
 
@@ -85,1034 +80,11 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       </div>
     </section>
 
-    <!-- S2: Problem/Solution -->
-    <section id="problem-solution" class="relative">
-      <!-- Pinned Problem/Solution Grid -->
-      <div class="ps-pin relative min-h-screen">
-        <div
-          class="ps-grid flex flex-col justify-center md:min-h-screen px-8 sm:px-12 lg:px-20 pt-10 sm:pt-14 pb-8 sm:pb-12 gap-4 sm:gap-6 md:gap-8 bg-bg-secondary"
-        >
-          <!-- Section Intro (inside pinned area) -->
-          <div
-            class="ps-intro relative flex items-center justify-center pb-4 sm:pb-6 overflow-hidden"
-          >
-            <!-- Joke (overlays, will burn away) -->
-            <p
-              class="ps-joke gsap-hidden absolute inset-0 flex items-center justify-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-center italic text-text-muted/80 z-10 px-4"
-              aria-hidden="true"
-            >
-              Webster's Dictionary Defines a Good Site As...
-            </p>
-            <!-- Real heading (normal flow, determines container height) -->
-            <h2
-              class="ps-real gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center"
-            >
-              generuss sites <span class="text-accent">convert,</span> and
-              <span class="text-accent">look good</span> doing it.
-            </h2>
-          </div>
-          <!-- Pair 1 -->
-          <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
-          >
-            <div
-              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
-                Cookie-Cutter Stacks
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Most agencies pick their tools before they hear your goals. Same
-                framework, same template system, same stack &mdash; whether
-                you're a therapist or a SaaS company.
-              </p>
-            </div>
-            <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-                Custom Stack Audit
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Every project starts with a tech stack audit, matching the tools
-                to your business, not the other way around.
-              </p>
-            </div>
-          </div>
-
-          <!-- Pair 2 -->
-          <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
-          >
-            <div
-              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
-                Performance
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Most agency sites score 40-60 on Lighthouse. Slow loads, bloated
-                bundles, third-party script soup.
-              </p>
-            </div>
-            <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-                Lighthouse 90%+
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Every Generuss build targets Lighthouse 90%+. Static-first
-                architecture, zero unnecessary JavaScript.
-              </p>
-            </div>
-          </div>
-
-          <!-- Pair 3 -->
-          <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
-          >
-            <div
-              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
-                Conversion
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Your site looks fine. But "fine" doesn't convert. Most sites sit
-                at a 2-3% conversion rate because nobody designed the page to
-                guide people toward action.
-              </p>
-            </div>
-            <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-                Conversion-Engineered
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Every element on the page has a job. CTAs that are impossible to
-                miss, forms that don't make people quit, and a layout that
-                funnels attention exactly where it needs to go.
-              </p>
-            </div>
-          </div>
-
-          <!-- Pair 4 -->
-          <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
-          >
-            <div
-              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
-                Post-Launch Abandonment
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                The site launches, the invoice clears, and your agency ghosts.
-                Something breaks six months later and you're Googling how to fix
-                your own website.
-              </p>
-            </div>
-            <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-                Ongoing Support
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Every build ships with documentation, a walkthrough, and a
-                direct line. No ticket queues, no support tiers &mdash; just a
-                real person who built the thing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- S3: Design Principles -->
-    <section id="principles" class="bg-bg-secondary">
-      <!-- Pinned Principles -->
-      <div
-        class="principles-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20"
-      >
-        <!-- Section Header -->
-        <h2
-          class="principles-heading gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black pt-8 sm:pt-12 pb-6 sm:pb-8"
-        >
-          What Makes a Website <span class="text-accent">Actually Good?</span>
-        </h2>
-
-        <!-- Subheading -->
-        <div class="overflow-hidden pb-6 sm:pb-8">
-          <p
-            class="principles-subheading gsap-hidden text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-right"
-          >
-            Most websites look fine.<br />
-            The problem is "fine" doesn't get you <span class="text-accent"
-              >customers.</span
-            >
-          </p>
-        </div>
-
-        <!-- 6 Principles Grid -->
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-8 sm:pb-12 max-w-5xl mx-auto"
-        >
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"
-              ></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Speed</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              53% leave if it takes 3+ seconds
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Your site loads before they can blink. Performance isn't a feature
-              &mdash; it's the foundation.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
-              <path d="M12 18h.01"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Mobile-First</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              63%+ of web traffic is mobile
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Designed for thumbs first, then scaled up. Not the other way
-              around.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"
-              ></path>
-              <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"></path>
-              <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Clear Hierarchy</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              Users scan, they don't read
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Every element has a job. Nothing on the page is decoration &mdash;
-              it's all working.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="M7 9h8M7 12h5" stroke-width="1.5"></path>
-              <path d="m21 21-4.3-4.3" stroke="#1e1e22" stroke-width="5"></path>
-              <path d="m21 21-4.3-4.3"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">SEO Built In</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              68% of online experiences start with search
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Structured data, meta tags, fast loads, clean code. Google finds
-              you, not the other way around.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
-              <path d="M12 18V6"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Conversion Focus</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              Average site converts at 2-3%
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Good design guides people to act. CTAs that work, forms that don't
-              suck, zero friction.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="16" cy="4" r="1"></circle>
-              <path d="m4.24 14.5a5 5 0 0 0 6.88 6"></path>
-              <path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path>
-              <path d="m18 19 1-7-6 1" stroke="#1e1e22" stroke-width="5"></path>
-              <path
-                d="m5 8 3-3 5.5 3-2.36 3.5"
-                stroke="#1e1e22"
-                stroke-width="5"></path>
-              <path d="m18 19 1-7-6 1"></path>
-              <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Accessibility</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              1 in 4 adults has a disability
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Inclusive by default. More users, fewer lawsuits, better
-              experience for everyone.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- S4: Services -->
-    <section id="services" class="bg-bg-secondary">
-      <div
-        class="services-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20 py-12 sm:py-16"
-      >
-        <h2
-          class="services-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
-        >
-          What I <span class="text-accent">Build.</span>
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <!-- Card 1 -->
-          <div
-            class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-          >
-            <h3 class="text-2xl font-bold text-white mb-3">
-              Web Design & Development
-            </h3>
-            <p class="text-text-muted mb-6">
-              Fast, clean sites that convert &mdash; built custom for your
-              business.
-            </p>
-            <ul class="space-y-3 text-sm text-text-muted">
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Discovery call + tech stack audit</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Custom design and development (no templates)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Mobile-first, Lighthouse 90%+ builds</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span
-                  >Static architecture &mdash; no CMS vulnerabilities, no plugin
-                  rot, no surprise security patches</span
-                >
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Launch documentation + walkthrough</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Card 2 -->
-          <div
-            class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-          >
-            <h3 class="text-2xl font-bold text-white mb-3">
-              AI Automation Consulting
-            </h3>
-            <p class="text-text-muted mb-6">
-              Workflows that run themselves so you can focus on the work that
-              matters.
-            </p>
-            <ul class="space-y-3 text-sm text-text-muted">
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Process audit and automation mapping</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span
-                  >Custom automation builds (n8n, Make.com, API integrations)</span
-                >
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span>AI tool selection and implementation</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Documentation + handoff</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Growth Partner Block -->
-        <div
-          class="growth-partner gsap-hidden max-w-2xl mx-auto mt-16 text-center"
-        >
-          <p class="text-lg text-text-muted leading-relaxed">
-            Consider me your growth partner &mdash; your site doesn't stop at
-            launch. Need a lead form that triggers an email sequence? A booking
-            flow that syncs to your CRM? I build the site and the systems behind
-            it. One person, one bill, zero handoff chaos.
-          </p>
-          <p class="text-lg text-text-muted leading-relaxed mt-4">
-            If your business needs go deeper than the site itself &mdash;
-            workflow automation, AI tool integration, entire processes that run
-            themselves &mdash; that's not a referral to someone else. That's the
-            other half of what I do.
-          </p>
-        </div>
-
-        <!-- Section CTA -->
-        <div class="services-cta gsap-hidden text-center mt-12">
-          <a
-            href="#contact"
-            class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
-          >
-            Let's figure out <span class="font-bold">what you need</span> &rarr;
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- S5: Portfolio -->
+    <!-- S2: Booking + Contact -->
+    <div id="contact"></div>
     <section
-      id="portfolio"
-      class="px-8 sm:px-12 lg:px-20 py-(--spacing-section)"
-    >
-      <h2
-        class="portfolio-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3"
-      >
-        What I've <span class="text-accent">Built.</span>
-      </h2>
-      <p
-        class="portfolio-subline gsap-hidden text-text-muted text-lg text-center mb-12 sm:mb-16"
-      >
-        Click any project to see it up close.
-      </p>
-
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-      >
-        <!-- Project 1: Crystal Seed Tarot -->
-        <div
-          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-          data-project="crystal-seed-tarot"
-          data-title="Crystal Seed Tarot"
-          data-url="https://crystalseedtarot.com"
-          data-description="Full rebuild from a clunky WordPress site into a fast, multi-page hub for tarot services, events, blog, and client reviews. Built with a frosted glass UI and Contentful-powered blog so Holly can publish without touching code."
-          data-stack="Next.js, Tailwind, Vercel"
-          data-image-desktop="/images/portfolio/crystal-seed-tarot-desktop.webp"
-          data-image-mobile="/images/portfolio/crystal-seed-tarot-mobile.webp"
-        >
-          <!-- Browser Frame -->
-          <div class="relative aspect-video bg-bg-secondary overflow-hidden">
-            <picture>
-              <source
-                media="(max-width: 639px)"
-                srcset="/images/portfolio/crystal-seed-tarot-mobile.webp"
-              />
-              <img
-                src="/images/portfolio/crystal-seed-tarot-desktop.webp"
-                alt="Crystal Seed Tarot website screenshot"
-                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                width="1440"
-                height="900"
-                loading="lazy"
-              />
-            </picture>
-            <!-- Hover overlay (desktop) -->
-            <div
-              class="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-black/60 backdrop-blur-sm p-4 hidden md:block"
-            >
-              <p class="text-sm text-text line-clamp-2">
-                Full rebuild from a clunky WordPress site into a fast,
-                multi-page hub for tarot services, events, blog, and client
-                reviews.
-              </p>
-              <span class="text-sm text-accent mt-2 inline-block"
-                >View Project &rarr;</span
-              >
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-white">Crystal Seed Tarot</h3>
-            <div class="flex flex-wrap gap-2 mt-2">
-              <span
-                class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent"
-                >Next.js</span
-              >
-              <span
-                class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent"
-                >Tailwind</span
-              >
-              <span
-                class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent"
-                >Vercel</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2: Vibe N Thrive -->
-        <div
-          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-          data-project="vibethrive"
-          data-title="Vibe N Thrive Therapy"
-          data-url="https://vibenthrivetherapy.com"
-          data-description="Wellness practice site built from scratch in 4 hours. Clean layout designed around one goal — getting sessions booked. Deployed and fine-tuned same day."
-          data-stack="Astro, Vercel"
-          data-image-desktop="/images/portfolio/vibethrive-desktop.webp"
-          data-image-mobile="/images/portfolio/vibethrive-mobile.webp"
-        >
-          <div class="relative aspect-video bg-bg-secondary overflow-hidden">
-            <picture>
-              <source
-                media="(max-width: 639px)"
-                srcset="/images/portfolio/vibethrive-mobile.webp"
-              />
-              <img
-                src="/images/portfolio/vibethrive-desktop.webp"
-                alt="Vibe N Thrive Therapy website screenshot"
-                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                width="1440"
-                height="900"
-                loading="lazy"
-              />
-            </picture>
-            <div
-              class="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-black/60 backdrop-blur-sm p-4 hidden md:block"
-            >
-              <p class="text-sm text-text line-clamp-2">
-                Wellness practice site built from scratch in 4 hours. Clean
-                layout designed around one goal — getting sessions booked.
-              </p>
-              <span class="text-sm text-accent mt-2 inline-block"
-                >View Project &rarr;</span
-              >
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-white">Vibe N Thrive Therapy</h3>
-            <div class="flex flex-wrap gap-2 mt-2">
-              <span
-                class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent"
-                >Astro</span
-              >
-              <span
-                class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent"
-                >Vercel</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3: generuss.com -->
-        <div
-          class="portfolio-card gsap-hidden group cursor-pointer neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-          data-project="generuss"
-          data-title="generuss.com"
-          data-url="https://generuss.com"
-          data-description="My own brand site for AI automation consulting. AI-powered chatbot, Contentful blog, embedded Cal.com booking, cursor glow effects, and a layout engineered to move visitors from social proof to conversion fast."
-          data-stack="Next.js, Tailwind, Vercel"
-          data-image-desktop="/images/portfolio/generuss-desktop.webp"
-          data-image-mobile="/images/portfolio/generuss-mobile.webp"
-        >
-          <div class="relative aspect-video bg-bg-secondary overflow-hidden">
-            <picture>
-              <source
-                media="(max-width: 639px)"
-                srcset="/images/portfolio/generuss-mobile.webp"
-              />
-              <img
-                src="/images/portfolio/generuss-desktop.webp"
-                alt="generuss.com website screenshot"
-                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                width="1440"
-                height="900"
-                loading="lazy"
-              />
-            </picture>
-            <div
-              class="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-black/60 backdrop-blur-sm p-4 hidden md:block"
-            >
-              <p class="text-sm text-text line-clamp-2">
-                My own brand site for AI automation consulting. AI-powered
-                chatbot, Contentful blog, embedded Cal.com booking.
-              </p>
-              <span class="text-sm text-accent mt-2 inline-block"
-                >View Project &rarr;</span
-              >
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-white">generuss.com</h3>
-            <div class="flex flex-wrap gap-2 mt-2">
-              <span
-                class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent"
-                >Next.js</span
-              >
-              <span
-                class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent"
-                >Tailwind</span
-              >
-              <span
-                class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent"
-                >Vercel</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- GitHub link -->
-      <p class="text-center mt-10">
-        <a
-          href="https://github.com/washyaderner"
-          target="_blank"
-          rel="noopener"
-          class="text-accent hover:underline transition-colors"
-        >
-          See more on GitHub &rarr;
-        </a>
-      </p>
-
-      <!-- Portfolio Modal -->
-      <div
-        id="portfolio-modal"
-        class="fixed inset-0 z-[9998] hidden items-center justify-center bg-black/90"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-      >
-        <button
-          id="modal-close"
-          class="absolute top-6 right-6 flex h-11 w-11 items-center justify-center rounded-lg text-accent text-2xl hover:text-white focus-visible:outline-2 focus-visible:outline-accent z-10"
-          aria-label="Close modal"
-        >
-          &#10005;
-        </button>
-        <div class="max-w-4xl w-full mx-4 sm:mx-8 max-h-[90vh] overflow-y-auto">
-          <div class="neu-raised rounded-2xl overflow-hidden bg-bg-secondary">
-            <div id="modal-image" class="aspect-video bg-bg overflow-hidden">
-              <img
-                id="modal-img"
-                src=""
-                alt="Project screenshot"
-                class="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-          <div class="mt-6 text-center">
-            <h3 id="modal-title" class="text-2xl font-bold text-white"></h3>
-            <p
-              id="modal-description"
-              class="text-lg text-text-muted mt-3 max-w-2xl mx-auto"
-            >
-            </p>
-            <div
-              id="modal-stack"
-              class="flex flex-wrap justify-center gap-2 mt-4"
-            >
-            </div>
-            <div
-              class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6"
-            >
-              <a
-                id="modal-link"
-                href="#"
-                target="_blank"
-                rel="noopener"
-                class="rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
-              >
-                Visit Live Site &rarr;
-              </a>
-              <button
-                id="modal-close-btn"
-                class="rounded-full border border-text-muted px-8 py-3 text-base text-text-muted hover:text-white hover:border-white transition-colors duration-200"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      // Portfolio modal logic
-      const modal = document.getElementById("portfolio-modal");
-      const modalTitle = document.getElementById("modal-title");
-      const modalDesc = document.getElementById("modal-description");
-      const modalStack = document.getElementById("modal-stack");
-      const modalLink = document.getElementById(
-        "modal-link",
-      ) as HTMLAnchorElement;
-      const modalImg = document.getElementById("modal-img") as HTMLImageElement;
-
-      function openModal(card: HTMLElement) {
-        const title = card.dataset.title || "";
-        const desc = card.dataset.description || "";
-        const url = card.dataset.url || "#";
-        const stack = (card.dataset.stack || "")
-          .split(",")
-          .map((s) => s.trim())
-          .filter(Boolean);
-        const isMobile = window.innerWidth < 640;
-        const imgSrc = isMobile
-          ? card.dataset.imageMobile
-          : card.dataset.imageDesktop;
-
-        if (modalTitle) modalTitle.textContent = title;
-        if (modalDesc) modalDesc.textContent = desc;
-        if (modalLink) modalLink.href = url;
-        if (modalImg && imgSrc) {
-          modalImg.src = imgSrc;
-          modalImg.alt = `${title} screenshot`;
-        }
-        if (modalStack) {
-          modalStack.innerHTML = stack
-            .map(
-              (t) =>
-                `<span class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent">${t}</span>`,
-            )
-            .join("");
-        }
-
-        modal?.classList.remove("hidden");
-        modal?.classList.add("flex");
-        document.body.style.overflow = "hidden";
-        (document.getElementById("modal-close") as HTMLElement)?.focus();
-      }
-
-      function closeModal() {
-        modal?.classList.add("hidden");
-        modal?.classList.remove("flex");
-        document.body.style.overflow = "";
-      }
-
-      document.querySelectorAll(".portfolio-card").forEach((card) => {
-        card.addEventListener("click", () => openModal(card as HTMLElement));
-      });
-
-      document
-        .getElementById("modal-close")
-        ?.addEventListener("click", closeModal);
-      document
-        .getElementById("modal-close-btn")
-        ?.addEventListener("click", closeModal);
-      modal?.addEventListener("click", (e) => {
-        if (e.target === modal) closeModal();
-      });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && !modal?.classList.contains("hidden"))
-          closeModal();
-        // Focus trap
-        if (e.key === "Tab" && !modal?.classList.contains("hidden")) {
-          const focusable = modal?.querySelectorAll<HTMLElement>(
-            'a, button, [tabindex]:not([tabindex="-1"])',
-          );
-          if (!focusable?.length) return;
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            last.focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-          }
-        }
-      });
-    </script>
-
-    <!-- S6: About -->
-    <section
-      id="about"
-      class="flex items-center justify-center px-8 sm:px-12 lg:px-20 py-(--spacing-section)"
-      style="min-height: 50vh;"
-    >
-      <div class="max-w-xl text-center">
-        <!-- Headshot placeholder -->
-        <div
-          class="about-photo gsap-hidden mx-auto mb-8 h-32 w-32 rounded-full ring-2 ring-accent/20 overflow-hidden"
-        >
-          <img
-            src="/images/russ-headshot.jpg"
-            alt="Russ"
-            class="h-full w-full object-cover"
-            width="128"
-            height="128"
-            loading="lazy"
-          />
-        </div>
-        <h2
-          class="about-heading gsap-hidden text-3xl font-bold text-white mb-4"
-        >
-          Hey, I'm Russ.
-        </h2>
-        <p
-          class="about-bio gsap-hidden text-lg text-text-muted leading-relaxed"
-        >
-          I started as a music producer &mdash; making beats, mixing records,
-          obsessing over every detail until it hit right. That same ear for
-          precision followed me into web design. Two decades in sales taught me
-          what makes people act. 15+ years in the studio taught me what makes
-          something feel right. Now I build websites that do both&hellip;
-          convert visitors into customers and look sharp doing it. Every project
-          gets a custom stack, not a recycled template.
-        </p>
-      </div>
-    </section>
-
-    <!-- S6.5: Why Me -->
-    <section
-      id="why-me"
-      class="flex items-center justify-center px-8 sm:px-12 lg:px-20 py-(--spacing-section)"
-    >
-      <div class="max-w-xl text-center">
-        <h2
-          class="whyme-heading gsap-hidden text-3xl font-bold text-white mb-6"
-        >
-          Why <span class="text-accent">Me.</span>
-        </h2>
-        <p
-          class="whyme-body gsap-hidden text-lg text-text-muted leading-relaxed"
-        >
-          Most developers build from a template and call it custom. I build from
-          a blank canvas &mdash; the same way I approach a mix in the studio.
-          Every element earns its place. That means I don't think in templates.
-          I think in outcomes. What does the visitor need to feel? Where do they
-          need to look? What makes them click instead of bounce? I've been
-          answering those questions for two decades in sales and over a decade
-          behind a mixing console. The medium changed. The instincts didn't. One
-          of the most important things my clients love is my attentive
-          communication every step of the way &mdash; that's not just a line,
-          it's the thing my clients mention first.
-        </p>
-      </div>
-    </section>
-
-    <!-- S7: Reviews -->
-    <section id="reviews" class="px-8 sm:px-12 lg:px-20 py-(--spacing-section)">
-      <h2
-        class="reviews-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
-      >
-        All <span class="text-accent">killer.</span> No filler.
-      </h2>
-
-      <div class="max-w-3xl mx-auto space-y-12">
-        <!-- Review 1 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "Working with Russell has been nothing short of outstanding, and we
-            don't say that lightly, especially after working with hundreds of
-            developers and freelancers! This was a tricky project with the
-            potential to veer off in multiple directions, but Russell brought
-            structure, clarity, and calm from day one. He went truly above and
-            beyond &mdash; navigating complexity with precision, staying focused
-            when others might have drifted, and delivering results that exceeded
-            every expectation. Russell is not only highly skilled and deeply
-            logical, but also an absolute pleasure to work with. His
-            communication is spot on, his work ethic is unmatched, and his
-            ability to solve problems quickly and intelligently makes him a rare
-            find. Highly, highly recommended!!"
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Jonny &mdash; Invincible Media
-          </p>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "This was our second time working with Russell, and once again, he
-            delivered flawlessly. The project was a focused optimisation of our
-            GPT-based GTM/RevOps proposal builder, and Russell approached it
-            with the same clarity, structure, and commercial instinct that
-            impressed us the first time around. He took an already-solid system
-            and made it smarter, faster, and sharper. His ability to balance
-            logic, tone, and usability in prompt engineering is next-level.
-            Nothing is ever too much trouble, and he remains thoughtful, fast,
-            and genuinely enjoyable to work with. Still highly recommended
-            &mdash; if not even more so now!"
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Jonny &mdash; Invincible Media
-          </p>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "In today's age, it's quite easy to find somebody to build you a
-            website, but what is not easy is finding somebody that will build
-            you an excellent website while providing thorough communication and
-            thoughtful recommendations. I've had many websites built over the
-            years and have never had anybody provides such detail to their work.
-            I was absolutely blown away by the results, communication, and
-            turnover time. Russ is an absolute professional."
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Carson &mdash; Vibe N Thrive
-          </p>
-        </div>
-
-        <!-- Review 4 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "Russ is by far my favorite person to work with. Aside from his
-            beats being top notch amazing, he's great at mixing and mastering
-            and handling mixing duties on projects I bring him from other
-            producers. We made an EP together and I loved it, so when I wanted
-            to do a separate project in a completely different direction, I
-            asked him for some simple backing tracks since I knew he'd be the
-            perfect fit. He exceeded my expectations by miles&hellip; Miles and
-            miles, creating whole worlds for these songs. When I say he brought
-            the project to life, it's a drastic understatement. I would be happy
-            to work with him on anything."
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Leon McConnell &mdash; Resist Entertainment
-          </p>
-        </div>
-
-        <!-- Review 5 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "That was so fucking good man. It came from me, so I know everything
-            that you did &mdash; you took a simple small thing and you brought
-            it to life. I can't pay you enough for that. I see all the love for
-            music you pour into it. I'm wowed! I love what you did with the end
-            of Concrete Illusions, and how you beefed up Sad Song for the new
-            mix. The Potion sounds fucking good, and the rain sample you added
-            to pushing daisies make it so much more cinematic."
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Dirty Chai &mdash; Struggle Crew
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- S8: CTA/Contact -->
-    <section
-      id="contact"
-      class="flex min-h-screen flex-col items-center justify-center px-8 sm:px-12 lg:px-20 py-(--spacing-section) relative"
+      id="booking"
+      class="px-8 sm:px-12 lg:px-20 py-(--spacing-section) relative"
     >
       <!-- Ambient glow -->
       <div
@@ -1124,29 +96,28 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         </div>
       </div>
 
-      <div class="relative z-10 text-center max-w-2xl">
-        <!-- Primary CTA -->
+      <div class="relative z-10 text-center max-w-2xl mx-auto mb-12">
         <h2
-          class="contact-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
+          class="booking-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
         >
           Ready to build something that <span
             class="text-accent glow-text glow-pulse-target">CONVERTS?</span
           >
         </h2>
         <p
-          class="contact-sub gsap-hidden text-lg text-text-muted leading-relaxed mb-8 max-w-xl mx-auto"
+          class="booking-sub gsap-hidden text-lg text-text-muted leading-relaxed max-w-xl mx-auto"
         >
           Your website should be your hardest working employee. If it's not
-          pulling its weight, let's fix that. Book a discovery call &mdash; no
-          pressure, no fluff. Helps us make sure we're on the same page.
+          pulling its weight, let's fix that. Book a discovery call -no
+          pressure, no fluff.
         </p>
       </div>
 
-      <!-- Cal.com Inline Embed (lazy loaded) -->
+      <!-- Cal.com embed -->
       <div
-        class="relative z-10 w-full max-w-5xl mx-auto mt-10 rounded-2xl overflow-hidden"
+        class="relative z-10 w-full max-w-3xl mx-auto rounded-2xl overflow-hidden"
       >
-        <!-- Skeleton overlay (absolute, hides when iframe loads) -->
+        <!-- Skeleton overlay -->
         <div
           id="cal-skeleton"
           class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-bg rounded-2xl neu-inset"
@@ -1177,23 +148,18 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         <div id="cal-embed" style="min-height:580px"></div>
       </div>
 
-      <!-- Fallback link if embed doesn't load -->
-      <p class="relative z-10 text-text-muted text-sm text-center mt-6">
-        If the calendar doesn't load above, you can schedule directly here:
-      </p>
-      <div class="relative z-10 flex justify-center mt-4">
-        <a
+      <!-- Fallback link -->
+      <p class="relative z-10 text-text-muted text-sm text-center mt-4">
+        If the calendar doesn't load, <a
           href="https://cal.com/generuss/discovery-call"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
-        >
-          Open Scheduling Page
-        </a>
-      </div>
+          class="text-accent hover:underline">schedule directly here</a
+        >.
+      </p>
 
-      <!-- Secondary CTA: Contact Form -->
-      <div class="relative z-10 w-full max-w-md mt-20">
+      <!-- Contact Form -->
+      <div class="relative z-10 w-full max-w-md mx-auto mt-16">
         <div class="flex items-center gap-4 mb-8">
           <div class="flex-1 h-px bg-border"></div>
           <span class="text-text-muted text-sm">Or send me a message.</span>
@@ -1314,6 +280,1219 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         }
       });
     </script>
+
+    <!-- S3: Services -->
+    <section id="services" class="bg-bg-secondary">
+      <div
+        class="services-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20 py-12 sm:py-16"
+      >
+        <h2
+          class="services-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
+        >
+          What I <span class="text-accent">Build.</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Card 1 -->
+          <div
+            class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <h3 class="text-2xl font-bold text-white mb-3">
+              Web Design & Development
+            </h3>
+            <p class="text-text-muted mb-6">
+              Fast, clean sites that convert -built custom for your business.
+            </p>
+            <ul class="space-y-3 text-sm text-text-muted">
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Discovery call + tech stack audit</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Custom design and development (no templates)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Mobile-first, Lighthouse 90%+ builds</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span
+                  >Static architecture -no CMS vulnerabilities, no plugin rot,
+                  no surprise security patches</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Launch documentation + walkthrough</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <h3 class="text-2xl font-bold text-white mb-3">
+              AI Automation Consulting
+            </h3>
+            <p class="text-text-muted mb-6">
+              Workflows that run themselves so you can focus on the work that
+              matters.
+            </p>
+            <ul class="space-y-3 text-sm text-text-muted">
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Process audit and automation mapping</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span
+                  >Custom automation builds (n8n, Make.com, API integrations)</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>AI tool selection and implementation</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Documentation + handoff</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Growth Partner Block - Two Columns -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-16"
+        >
+          <p
+            class="growth-left gsap-hidden text-lg text-text-muted leading-relaxed"
+          >
+            Consider me your growth partner -your site doesn't stop at launch.
+            Need a lead form that triggers an email sequence? A booking flow
+            that syncs to your CRM? I build the site and the systems behind it.
+            One person, one bill, zero handoff chaos.
+          </p>
+          <p
+            class="growth-right gsap-hidden text-lg text-text-muted leading-relaxed"
+          >
+            If your business needs go deeper than the site itself - workflow
+            automation, AI tool integration, entire processes that run
+            themselves - that's not a referral to someone else. That's the other
+            half of what I do.
+          </p>
+        </div>
+
+        <!-- Section CTA -->
+        <div class="services-cta gsap-hidden text-center mt-12">
+          <a
+            href="#booking"
+            class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Let's figure out <span class="font-bold">what you need</span> &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4: Portfolio -->
+    <section
+      id="portfolio"
+      class="relative z-10 px-8 sm:px-12 lg:px-20 pt-12 sm:pt-16 pb-(--spacing-section)"
+    >
+      <h2
+        class="portfolio-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3"
+      >
+        What I've <span class="text-accent">Built.</span>
+      </h2>
+      <p
+        class="portfolio-subline gsap-hidden text-text-muted text-lg text-center mb-12 sm:mb-16"
+      >
+        Click any project to explore it live.
+      </p>
+
+      <div class="flex flex-col gap-16 sm:gap-20 max-w-4xl mx-auto">
+        <!-- Project 1: Crystal Seed Tarot -->
+        <div
+          class="portfolio-card gsap-hidden group cursor-pointer"
+          data-project="crystal-seed-tarot"
+          data-title="Crystal Seed Tarot"
+          data-url="https://crystalseedtarot.com"
+          data-description="Full rebuild from a clunky WordPress site into a fast, multi-page hub for tarot services, events, blog, and client reviews. Built with a frosted glass UI and Contentful-powered blog so Holly can publish without touching code."
+          data-stack="Next.js, Tailwind, Vercel"
+          data-image-desktop="/images/portfolio/crystal-seed-tarot-desktop.webp"
+          data-image-mobile="/images/portfolio/crystal-seed-tarot-mobile.webp"
+        >
+          <div
+            class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <div class="relative aspect-video bg-bg-secondary overflow-hidden">
+              <picture>
+                <source
+                  media="(max-width: 639px)"
+                  srcset="/images/portfolio/crystal-seed-tarot-mobile.webp"
+                />
+                <img
+                  src="/images/portfolio/crystal-seed-tarot-desktop.webp"
+                  alt="Crystal Seed Tarot website screenshot"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  width="1440"
+                  height="900"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+          </div>
+          <div
+            class="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+          >
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">
+                Crystal Seed Tarot
+              </h3>
+              <p class="text-text-muted text-sm sm:text-base mt-1 max-w-xl">
+                Full rebuild from WordPress into a fast, multi-page hub for
+                tarot services, events, and blog. Frosted glass UI with a
+                Contentful-powered CMS.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 shrink-0">
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Next.js</span
+              >
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Tailwind</span
+              >
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Vercel</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Vibe N Thrive -->
+        <div
+          class="portfolio-card gsap-hidden group cursor-pointer"
+          data-project="vibethrive"
+          data-title="Vibe N Thrive Therapy"
+          data-url="https://vibenthrivetherapy.com"
+          data-description="Wellness practice site built from scratch in 4 hours. Clean layout designed around one goal: getting sessions booked. Deployed and fine-tuned same day."
+          data-stack="Astro, Vercel"
+          data-image-desktop="/images/portfolio/vibethrive-desktop.webp"
+          data-image-mobile="/images/portfolio/vibethrive-mobile.webp"
+        >
+          <div
+            class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <div class="relative aspect-video bg-bg-secondary overflow-hidden">
+              <picture>
+                <source
+                  media="(max-width: 639px)"
+                  srcset="/images/portfolio/vibethrive-mobile.webp"
+                />
+                <img
+                  src="/images/portfolio/vibethrive-desktop.webp"
+                  alt="Vibe N Thrive Therapy website screenshot"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  width="1440"
+                  height="900"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+          </div>
+          <div
+            class="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+          >
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">
+                Vibe N Thrive Therapy
+              </h3>
+              <p class="text-text-muted text-sm sm:text-base mt-1 max-w-xl">
+                Wellness practice site built from scratch in 4 hours. Clean
+                layout designed around one goal: getting sessions booked.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 shrink-0">
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Astro</span
+              >
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Vercel</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: generuss.com -->
+        <div
+          class="portfolio-card gsap-hidden group cursor-pointer"
+          data-project="generuss"
+          data-title="generuss.com"
+          data-url="https://generuss.com"
+          data-description="My own brand site for AI automation consulting. AI-powered chatbot, Contentful blog, embedded Cal.com booking, cursor glow effects, and a layout engineered to move visitors from social proof to conversion fast."
+          data-stack="Next.js, Tailwind, Vercel"
+          data-image-desktop="/images/portfolio/generuss-desktop.webp"
+          data-image-mobile="/images/portfolio/generuss-mobile.webp"
+        >
+          <div
+            class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <div class="relative aspect-video bg-bg-secondary overflow-hidden">
+              <picture>
+                <source
+                  media="(max-width: 639px)"
+                  srcset="/images/portfolio/generuss-mobile.webp"
+                />
+                <img
+                  src="/images/portfolio/generuss-desktop.webp"
+                  alt="generuss.com website screenshot"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  width="1440"
+                  height="900"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+          </div>
+          <div
+            class="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+          >
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">
+                generuss.com
+              </h3>
+              <p class="text-text-muted text-sm sm:text-base mt-1 max-w-xl">
+                AI automation consulting site. AI-powered chatbot, Contentful
+                blog, embedded Cal.com booking, and cursor glow effects.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 shrink-0">
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Next.js</span
+              >
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Tailwind</span
+              >
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Vercel</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GitHub link -->
+      <p class="text-center mt-10">
+        <a
+          href="https://github.com/washyaderner"
+          target="_blank"
+          rel="noopener"
+          class="text-accent hover:underline transition-colors"
+        >
+          See more on GitHub &rarr;
+        </a>
+      </p>
+
+      <!-- Portfolio Modal -->
+      <div
+        id="portfolio-modal"
+        class="fixed inset-0 z-[9998] hidden items-center justify-center bg-black/90"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <!-- Iframe mode (desktop/tablet 768px+) -->
+        <div
+          id="modal-iframe-mode"
+          class="hidden w-full max-w-6xl mx-4 flex flex-col"
+          style="height: 90vh;"
+        >
+          <!-- Browser chrome header -->
+          <div
+            class="flex items-center gap-3 px-4 py-3 rounded-t-2xl"
+            style="background: #2a2a2e;"
+          >
+            <!-- Traffic light dots -->
+            <div class="flex gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+            </div>
+            <!-- URL bar -->
+            <div
+              class="flex-1 flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-mono text-text-muted truncate"
+              style="background: #1a1a1e;"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="shrink-0 opacity-50"
+              >
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span id="modal-url-display" class="truncate"></span>
+            </div>
+            <!-- Close button -->
+            <button
+              id="modal-close"
+              class="flex h-8 w-8 items-center justify-center rounded-md text-text-muted text-lg hover:text-white transition-colors"
+              aria-label="Close modal"
+            >
+              &#10005;
+            </button>
+          </div>
+
+          <!-- Iframe container -->
+          <div class="relative flex-1 min-h-0" style="background: #1a1a1e;">
+            <!-- Loading spinner overlay -->
+            <div
+              id="modal-spinner"
+              class="absolute inset-0 flex flex-col items-center justify-center z-10"
+              style="background: #1a1a1e;"
+            >
+              <svg
+                class="h-8 w-8 animate-spin text-accent"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+              </svg>
+              <span class="mt-3 text-sm text-text-muted font-mono"
+                >Loading site&hellip;</span
+              >
+            </div>
+            <iframe
+              id="modal-iframe"
+              class="w-full h-full border-0"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+              loading="lazy"
+              title="Live site preview"></iframe>
+          </div>
+
+          <!-- Footer bar -->
+          <div
+            class="flex items-center justify-between px-4 py-3 rounded-b-2xl"
+            style="background: #2a2a2e;"
+          >
+            <h3
+              id="modal-title"
+              class="text-sm font-semibold text-white truncate"
+            >
+            </h3>
+            <div class="flex items-center gap-3 shrink-0">
+              <a
+                id="modal-link"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                class="text-sm text-accent hover:underline transition-colors"
+              >
+                Open in New Tab &rarr;
+              </a>
+              <button
+                id="modal-close-btn"
+                class="rounded-full border border-text-muted px-5 py-1.5 text-sm text-text-muted hover:text-white hover:border-white transition-colors duration-200"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image mode (mobile <768px) -->
+        <div
+          id="modal-image-mode"
+          class="hidden max-w-4xl w-full mx-4 sm:mx-8 max-h-[90vh] overflow-y-auto"
+        >
+          <button
+            id="modal-close-mobile"
+            class="absolute top-6 right-6 flex h-11 w-11 items-center justify-center rounded-lg text-accent text-2xl hover:text-white focus-visible:outline-2 focus-visible:outline-accent z-10"
+            aria-label="Close modal"
+          >
+            &#10005;
+          </button>
+          <div class="neu-raised rounded-2xl overflow-hidden bg-bg-secondary">
+            <div class="aspect-video bg-bg overflow-hidden">
+              <img
+                id="modal-img"
+                src=""
+                alt="Project screenshot"
+                class="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <h3 id="modal-title-mobile" class="text-2xl font-bold text-white">
+            </h3>
+            <p
+              id="modal-description"
+              class="text-lg text-text-muted mt-3 max-w-2xl mx-auto"
+            >
+            </p>
+            <div
+              id="modal-stack"
+              class="flex flex-wrap justify-center gap-2 mt-4"
+            >
+            </div>
+            <div
+              class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6"
+            >
+              <a
+                id="modal-link-mobile"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                class="rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+              >
+                Visit Live Site &rarr;
+              </a>
+              <button
+                id="modal-close-btn-mobile"
+                class="rounded-full border border-text-muted px-8 py-3 text-base text-text-muted hover:text-white hover:border-white transition-colors duration-200"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Portfolio modal logic
+      const modal = document.getElementById("portfolio-modal");
+      const iframeMode = document.getElementById("modal-iframe-mode");
+      const imageMode = document.getElementById("modal-image-mode");
+      const modalIframe = document.getElementById(
+        "modal-iframe",
+      ) as HTMLIFrameElement;
+      const modalSpinner = document.getElementById("modal-spinner");
+      const modalUrlDisplay = document.getElementById("modal-url-display");
+      const modalTitle = document.getElementById("modal-title");
+      const modalTitleMobile = document.getElementById("modal-title-mobile");
+      const modalDesc = document.getElementById("modal-description");
+      const modalStack = document.getElementById("modal-stack");
+      const modalLink = document.getElementById(
+        "modal-link",
+      ) as HTMLAnchorElement;
+      const modalLinkMobile = document.getElementById(
+        "modal-link-mobile",
+      ) as HTMLAnchorElement;
+      const modalImg = document.getElementById("modal-img") as HTMLImageElement;
+
+      let spinnerTimeout: ReturnType<typeof setTimeout> | null = null;
+
+      function isDesktop() {
+        return window.innerWidth >= 768;
+      }
+
+      function openModal(card: HTMLElement) {
+        const title = card.dataset.title || "";
+        const desc = card.dataset.description || "";
+        const url = card.dataset.url || "#";
+        const stack = (card.dataset.stack || "")
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        if (isDesktop()) {
+          // Iframe mode
+          iframeMode?.classList.remove("hidden");
+          iframeMode?.classList.add("flex");
+          imageMode?.classList.add("hidden");
+
+          if (modalTitle) modalTitle.textContent = title;
+          if (modalUrlDisplay) modalUrlDisplay.textContent = url;
+          if (modalLink) modalLink.href = url;
+
+          // Show spinner, load iframe
+          modalSpinner?.classList.remove("hidden");
+          if (modalIframe) {
+            modalIframe.onload = () => {
+              modalSpinner?.classList.add("hidden");
+              if (spinnerTimeout) clearTimeout(spinnerTimeout);
+            };
+            modalIframe.src = url;
+          }
+
+          // Fallback: hide spinner after 8s even if onload doesn't fire
+          spinnerTimeout = setTimeout(() => {
+            modalSpinner?.classList.add("hidden");
+          }, 8000);
+        } else {
+          // Image mode (mobile)
+          imageMode?.classList.remove("hidden");
+          iframeMode?.classList.add("hidden");
+          iframeMode?.classList.remove("flex");
+
+          const imgSrc = card.dataset.imageMobile || card.dataset.imageDesktop;
+          if (modalTitleMobile) modalTitleMobile.textContent = title;
+          if (modalDesc) modalDesc.textContent = desc;
+          if (modalLinkMobile) modalLinkMobile.href = url;
+          if (modalImg && imgSrc) {
+            modalImg.src = imgSrc;
+            modalImg.alt = `${title} screenshot`;
+          }
+          if (modalStack) {
+            modalStack.innerHTML = stack
+              .map(
+                (t) =>
+                  `<span class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent">${t}</span>`,
+              )
+              .join("");
+          }
+        }
+
+        modal?.classList.remove("hidden");
+        modal?.classList.add("flex");
+        document.body.style.overflow = "hidden";
+
+        // Focus the appropriate close button
+        const focusTarget = isDesktop()
+          ? document.getElementById("modal-close")
+          : document.getElementById("modal-close-mobile");
+        (focusTarget as HTMLElement)?.focus();
+      }
+
+      function closeModal() {
+        modal?.classList.add("hidden");
+        modal?.classList.remove("flex");
+        iframeMode?.classList.add("hidden");
+        iframeMode?.classList.remove("flex");
+        imageMode?.classList.add("hidden");
+        document.body.style.overflow = "";
+
+        // Clear iframe to free resources
+        if (modalIframe) {
+          modalIframe.src = "";
+          modalIframe.onload = null;
+        }
+        if (spinnerTimeout) {
+          clearTimeout(spinnerTimeout);
+          spinnerTimeout = null;
+        }
+      }
+
+      document.querySelectorAll(".portfolio-card").forEach((card) => {
+        card.addEventListener("click", () => openModal(card as HTMLElement));
+      });
+
+      // Close handlers - all buttons
+      [
+        "modal-close",
+        "modal-close-btn",
+        "modal-close-mobile",
+        "modal-close-btn-mobile",
+      ].forEach((id) => {
+        document.getElementById(id)?.addEventListener("click", closeModal);
+      });
+
+      // Backdrop click
+      modal?.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // Keyboard: Escape + focus trap
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal?.classList.contains("hidden"))
+          closeModal();
+        if (e.key === "Tab" && !modal?.classList.contains("hidden")) {
+          const activeContainer = isDesktop() ? iframeMode : imageMode;
+          const focusable = activeContainer?.querySelectorAll<HTMLElement>(
+            'a, button, iframe, [tabindex]:not([tabindex="-1"])',
+          );
+          if (!focusable?.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    </script>
+
+    <!-- S5: Problem/Solution -->
+    <section id="problem-solution" class="relative">
+      <!-- Pinned Problem/Solution Grid -->
+      <div class="ps-pin relative min-h-screen">
+        <div
+          class="ps-grid flex flex-col justify-center md:min-h-screen px-8 sm:px-12 lg:px-20 pt-10 sm:pt-14 pb-8 sm:pb-12 gap-4 sm:gap-6 md:gap-8 bg-bg-secondary"
+        >
+          <!-- Section Intro (inside pinned area) -->
+          <div class="ps-intro flex items-center justify-center pb-4 sm:pb-6">
+            <h2
+              class="ps-real gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center"
+            >
+              generuss sites <span class="text-accent">convert,</span> and
+              <span class="text-accent">look good</span> doing it.
+            </h2>
+          </div>
+          <!-- Pair 1 -->
+          <div
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
+          >
+            <div
+              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+                Cookie-Cutter Stacks
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Most agencies pick their tools before they hear your goals. Same
+                framework, same template system, same stack -whether you're a
+                therapist or a SaaS company.
+              </p>
+            </div>
+            <div
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
+                Custom Stack Audit
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Every project starts with a tech stack audit, matching the tools
+                to your business, not the other way around.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pair 2 -->
+          <div
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
+          >
+            <div
+              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+                Performance
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Most agency sites score 40-60 on Lighthouse. Slow loads, bloated
+                bundles, third-party script soup.
+              </p>
+            </div>
+            <div
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
+                Lighthouse 90%+
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Every Generuss build targets Lighthouse 90%+. Static-first
+                architecture, zero unnecessary JavaScript.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pair 3 -->
+          <div
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
+          >
+            <div
+              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+                Conversion
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Your site looks fine. But "fine" doesn't convert. Most sites sit
+                at a 2-3% conversion rate because nobody designed the page to
+                guide people toward action.
+              </p>
+            </div>
+            <div
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
+                Conversion-Engineered
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Every element on the page has a job. CTAs that are impossible to
+                miss, forms that don't make people quit, and a layout that
+                funnels attention exactly where it needs to go.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pair 4 -->
+          <div
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
+          >
+            <div
+              class="ps-problem opacity-50 neu-inset rounded-2xl p-4 sm:p-6 md:p-8"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+                Post-Launch Abandonment
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                The site launches, the invoice clears, and your agency ghosts.
+                Something breaks six months later and you're Googling how to fix
+                your own website.
+              </p>
+            </div>
+            <div
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
+                Ongoing Support
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Every build ships with documentation, a walkthrough, and a
+                direct line. No ticket queues, no support tiers -just a real
+                person who built the thing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6: Design Principles -->
+    <section id="principles" class="bg-bg-secondary">
+      <!-- Pinned Principles -->
+      <div
+        class="principles-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20"
+      >
+        <!-- Section Header -->
+        <h2
+          class="principles-heading gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black pt-8 sm:pt-12 pb-3 sm:pb-4"
+        >
+          What Makes a Website <span class="text-accent">Actually Good?</span>
+        </h2>
+
+        <!-- Subheading -->
+        <div class="overflow-hidden pb-6 sm:pb-8">
+          <p
+            class="principles-subheading gsap-hidden text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-right"
+          >
+            Most websites look fine.<br />
+            The problem is "fine" doesn't get you <span class="text-accent"
+              >customers.</span
+            >
+          </p>
+        </div>
+
+        <!-- 6 Principles Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-8 sm:pb-12 max-w-5xl mx-auto"
+        >
+          <div
+            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
+          >
+            <svg
+              class="mb-4"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#00ffef66"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"
+              ></path>
+            </svg>
+            <h3 class="text-xl font-bold text-white mb-1">Speed</h3>
+            <p class="font-mono text-xs text-accent mb-3">
+              53% leave if it takes 3+ seconds
+            </p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              Your site loads before they can blink. Performance isn't a feature
+              -it's the foundation.
+            </p>
+          </div>
+
+          <div
+            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
+          >
+            <svg
+              class="mb-4"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#00ffef66"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+              <path d="M12 18h.01"></path>
+            </svg>
+            <h3 class="text-xl font-bold text-white mb-1">Mobile-First</h3>
+            <p class="font-mono text-xs text-accent mb-3">
+              63%+ of web traffic is mobile
+            </p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              Designed for thumbs first, then scaled up. Not the other way
+              around.
+            </p>
+          </div>
+
+          <div
+            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
+          >
+            <svg
+              class="mb-4"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#00ffef66"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"
+              ></path>
+              <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"></path>
+              <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"></path>
+            </svg>
+            <h3 class="text-xl font-bold text-white mb-1">Clear Hierarchy</h3>
+            <p class="font-mono text-xs text-accent mb-3">
+              Users scan, they don't read
+            </p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              Every element has a job. Nothing on the page is decoration - it's
+              all working.
+            </p>
+          </div>
+
+          <div
+            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
+          >
+            <svg
+              class="mb-4"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#00ffef66"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M7 9h8M7 12h5" stroke-width="1.5"></path>
+              <path d="m21 21-4.3-4.3" stroke="#1e1e22" stroke-width="5"></path>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <h3 class="text-xl font-bold text-white mb-1">SEO Built In</h3>
+            <p class="font-mono text-xs text-accent mb-3">
+              68% of online experiences start with search
+            </p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              Structured data, meta tags, fast loads, clean code. Google finds
+              you, not the other way around.
+            </p>
+          </div>
+
+          <div
+            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
+          >
+            <svg
+              class="mb-4"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#00ffef66"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path>
+            </svg>
+            <h3 class="text-xl font-bold text-white mb-1">Conversion Focus</h3>
+            <p class="font-mono text-xs text-accent mb-3">
+              Average site converts at 2-3%
+            </p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              Good design guides people to act. CTAs that work, forms that don't
+              suck, zero friction.
+            </p>
+          </div>
+
+          <div
+            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
+          >
+            <svg
+              class="mb-4"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#00ffef66"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="16" cy="4" r="1"></circle>
+              <path d="m4.24 14.5a5 5 0 0 0 6.88 6"></path>
+              <path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path>
+              <path d="m18 19 1-7-6 1" stroke="#1e1e22" stroke-width="5"></path>
+              <path
+                d="m5 8 3-3 5.5 3-2.36 3.5"
+                stroke="#1e1e22"
+                stroke-width="5"></path>
+              <path d="m18 19 1-7-6 1"></path>
+              <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
+            </svg>
+            <h3 class="text-xl font-bold text-white mb-1">Accessibility</h3>
+            <p class="font-mono text-xs text-accent mb-3">
+              1 in 4 adults has a disability
+            </p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              Inclusive by default. More users, fewer lawsuits, better
+              experience for everyone.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S7: About -->
+    <section
+      id="about"
+      class="flex items-center justify-center px-8 sm:px-12 lg:px-20 py-(--spacing-section)"
+      style="min-height: 50vh;"
+    >
+      <div class="max-w-xl text-center">
+        <!-- Headshot placeholder -->
+        <div
+          class="about-photo gsap-hidden mx-auto mb-8 h-64 w-64 rounded-full ring-2 ring-accent/20 overflow-hidden"
+        >
+          <img
+            src="/images/russ-headshot2.JPG"
+            alt="Russ"
+            class="h-full w-full object-cover"
+            width="256"
+            height="256"
+            loading="lazy"
+          />
+        </div>
+        <h2
+          class="about-heading gsap-hidden text-3xl font-bold text-white mb-4"
+        >
+          Hey, I'm Russ.
+        </h2>
+        <p
+          class="about-bio gsap-hidden text-lg text-text-muted leading-relaxed"
+        >
+          I started as a music producer -making beats, mixing records, obsessing
+          over every detail until it hit right. That same ear for precision
+          followed me into web design. Two decades in sales taught me what makes
+          people act. 15+ years in the studio taught me what makes something
+          feel right. Now I build websites that do both&hellip; convert visitors
+          into customers and look sharp doing it. Every project gets a custom
+          stack, not a recycled template.
+        </p>
+      </div>
+    </section>
+
+    <!-- S7.5: Why Me -->
+    <section
+      id="why-me"
+      class="flex items-center justify-center px-8 sm:px-12 lg:px-20 py-(--spacing-section)"
+    >
+      <div class="max-w-xl text-center">
+        <h2
+          class="whyme-heading gsap-hidden text-3xl font-bold text-white mb-6"
+        >
+          Why <span class="text-accent">Me.</span>
+        </h2>
+        <p
+          class="whyme-body gsap-hidden text-lg text-text-muted leading-relaxed"
+        >
+          Most developers build from a template and call it custom. I build from
+          a blank canvas -the same way I approach a mix in the studio. Every
+          element earns its place. That means I don't think in templates. I
+          think in outcomes. What does the visitor need to feel? Where do they
+          need to look? What makes them click instead of bounce? I've been
+          answering those questions for two decades in sales and over a decade
+          behind a mixing console. The medium changed. The instincts didn't. One
+          of the most important things my clients love is my attentive
+          communication every step of the way -that's not just a line, it's the
+          thing my clients mention first.
+        </p>
+      </div>
+    </section>
+
+    <!-- S8: Reviews -->
+    <section id="reviews" class="px-8 sm:px-12 lg:px-20 py-(--spacing-section)">
+      <h2
+        class="reviews-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
+      >
+        All <span class="text-accent">killer.</span> No filler.
+      </h2>
+
+      <div class="max-w-3xl mx-auto space-y-12">
+        <!-- Review 1 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote class="text-lg text-text leading-relaxed">
+            "Working with Russell has been nothing short of outstanding, and we
+            don't say that lightly, especially after working with hundreds of
+            developers and freelancers! This was a tricky project with the
+            potential to veer off in multiple directions, but Russell brought
+            structure, clarity, and calm from day one. He went truly above and
+            beyond -navigating complexity with precision, staying focused when
+            others might have drifted, and delivering results that exceeded
+            every expectation. Russell is not only highly skilled and deeply
+            logical, but also an absolute pleasure to work with. His
+            communication is spot on, his work ethic is unmatched, and his
+            ability to solve problems quickly and intelligently makes him a rare
+            find. Highly, highly recommended!!"
+          </blockquote>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            Jonny -Invincible Media
+          </p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote class="text-lg text-text leading-relaxed">
+            "This was our second time working with Russell, and once again, he
+            delivered flawlessly. The project was a focused optimisation of our
+            GPT-based GTM/RevOps proposal builder, and Russell approached it
+            with the same clarity, structure, and commercial instinct that
+            impressed us the first time around. He took an already-solid system
+            and made it smarter, faster, and sharper. His ability to balance
+            logic, tone, and usability in prompt engineering is next-level.
+            Nothing is ever too much trouble, and he remains thoughtful, fast,
+            and genuinely enjoyable to work with. Still highly recommended -if
+            not even more so now!"
+          </blockquote>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            Jonny -Invincible Media
+          </p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote class="text-lg text-text leading-relaxed">
+            "In today's age, it's quite easy to find somebody to build you a
+            website, but what is not easy is finding somebody that will build
+            you an excellent website while providing thorough communication and
+            thoughtful recommendations. I've had many websites built over the
+            years and have never had anybody provides such detail to their work.
+            I was absolutely blown away by the results, communication, and
+            turnover time. Russ is an absolute professional."
+          </blockquote>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            Carson -Vibe N Thrive
+          </p>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote class="text-lg text-text leading-relaxed">
+            "Russ is by far my favorite person to work with. Aside from his
+            beats being top notch amazing, he's great at mixing and mastering
+            and handling mixing duties on projects I bring him from other
+            producers. We made an EP together and I loved it, so when I wanted
+            to do a separate project in a completely different direction, I
+            asked him for some simple backing tracks since I knew he'd be the
+            perfect fit. He exceeded my expectations by miles&hellip; Miles and
+            miles, creating whole worlds for these songs. When I say he brought
+            the project to life, it's a drastic understatement. I would be happy
+            to work with him on anything."
+          </blockquote>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            Leon McConnell -Resist Entertainment
+          </p>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote class="text-lg text-text leading-relaxed">
+            "That was so fucking good man. It came from me, so I know everything
+            that you did -you took a simple small thing and you brought it to
+            life. I can't pay you enough for that. I see all the love for music
+            you pour into it. I'm wowed! I love what you did with the end of
+            Concrete Illusions, and how you beefed up Sad Song for the new mix.
+            The Potion sounds fucking good, and the rain sample you added to
+            pushing daisies make it so much more cinematic."
+          </blockquote>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            Dirty Chai -Struggle Crew
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer />
@@ -1325,7 +1504,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
   <!-- Cal.com embed: lazy-loaded via IntersectionObserver for Lighthouse perf -->
   <script is:inline>
     (function () {
-      var contactSection = document.getElementById("contact");
+      var bookingSection = document.getElementById("booking");
       var calSkeleton = document.getElementById("cal-skeleton");
       var calLoaded = false;
 
@@ -1340,7 +1519,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         { rootMargin: "600px" },
       );
 
-      if (contactSection) observer.observe(contactSection);
+      if (bookingSection) observer.observe(bookingSection);
 
       function loadCalEmbed() {
         // Cal.com official embed snippet

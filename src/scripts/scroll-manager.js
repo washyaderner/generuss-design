@@ -1,5 +1,5 @@
 /**
- * scroll-manager.js — ScrollTrigger orchestrator.
+ * scroll-manager.js - ScrollTrigger orchestrator.
  * Imports animation functions and wires them to correct selectors.
  * Uses matchMedia for responsive breakpoints.
  */
@@ -9,30 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-import {
-  fadeUp,
-  floatShapes,
-  magneticAssemble,
-  glowPulse,
-} from "./animations.js";
-
-/**
- * Split an element's text content into individually animated character spans.
- * Spaces become non-breaking so inline-blocks stay visible.
- */
-function splitTextToChars(el) {
-  const text = el.textContent;
-  el.textContent = "";
-  const chars = [];
-  for (const char of text) {
-    const span = document.createElement("span");
-    span.className = "burn-char";
-    span.textContent = char === " " ? "\u00A0" : char;
-    el.appendChild(span);
-    chars.push(span);
-  }
-  return chars;
-}
+import { fadeUp, initLavaLamp, glowPulse } from "./animations.js";
 
 function init() {
   ScrollTrigger.matchMedia({
@@ -48,14 +25,14 @@ function setupAnimations(breakpoint) {
   const isTablet = breakpoint === "tablet";
 
   setupHero(isMobile);
-  setupProblemSolution(isMobile);
-  setupPrinciples(isMobile, isTablet);
+  setupBooking();
   setupServices(isMobile);
   setupPortfolio(isMobile);
+  setupProblemSolution(isMobile);
+  setupPrinciples(isMobile, isTablet);
   setupAbout();
   setupWhyMe();
   setupReviews();
-  setupContact();
 }
 
 // ── S1: Hero ──
@@ -65,16 +42,12 @@ function setupHero(isMobile) {
 
   const tl = gsap.timeline({ delay: 0.3 });
 
-  const shapes = heroSection.querySelectorAll(".hero-shape");
-  if (shapes.length) {
-    shapes.forEach((s) => s.classList.remove("gsap-hidden"));
-    tl.from(shapes, {
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out",
-    });
+  // Lava lamp fade-in (desktop/tablet only)
+  const lavaContainer = heroSection.querySelector("#lava-lamp");
+  if (lavaContainer && !isMobile) {
+    gsap.set(lavaContainer, { opacity: 0 });
+    tl.to(lavaContainer, { opacity: 0.07, duration: 1.2, ease: "power2.out" });
+    initLavaLamp("#lava-lamp");
   }
 
   const headlines = heroSection.querySelectorAll(".hero-headline");
@@ -116,25 +89,126 @@ function setupHero(isMobile) {
       "-=0.2",
     );
   }
+}
 
-  if (!isMobile) {
-    floatShapes(".hero-shape");
+// ── S2: Services ──
+function setupServices(isMobile) {
+  // Fade-up animations fire before pin locks
+  fadeUp(".services-heading", {
+    scrollTrigger: { trigger: ".services-pin", start: "top 80%" },
+  });
+
+  fadeUp(".service-card", {
+    stagger: 0.15,
+    scrollTrigger: { trigger: ".services-pin", start: "top 70%" },
+  });
+
+  fadeUp(".growth-left", {
+    scrollTrigger: { trigger: ".services-pin", start: "top 60%" },
+  });
+
+  fadeUp(".growth-right", {
+    scrollTrigger: { trigger: ".services-pin", start: "top 60%" },
+    delay: 0.1,
+  });
+
+  fadeUp(".services-cta", {
+    scrollTrigger: { trigger: ".services-pin", start: "top 55%" },
+  });
+
+  // Pin the section so it fills viewport while scrolling
+  const pinWrap = document.querySelector(".services-pin");
+  if (pinWrap && !isMobile) {
+    ScrollTrigger.create({
+      trigger: ".services-pin",
+      start: "top top",
+      end: "+=100%",
+      pin: true,
+      scrub: true,
+      onUpdate: (self) => {
+        // Fade out during last 30% of pin
+        if (self.progress > 0.7) {
+          const fadeProgress = (self.progress - 0.7) / 0.3;
+          pinWrap.style.opacity = String(1 - fadeProgress);
+        } else {
+          pinWrap.style.opacity = "1";
+        }
+      },
+    });
   }
 }
 
-// ── S2: Problem/Solution ──
+// ── S3: Booking + Contact ──
+function setupBooking() {
+  fadeUp(".booking-heading", {
+    scrollTrigger: { trigger: ".booking-heading", start: "top 80%" },
+  });
+
+  fadeUp(".booking-sub", {
+    scrollTrigger: { trigger: ".booking-sub", start: "top 80%" },
+    delay: 0.1,
+  });
+
+  // Form fades in
+  const form = document.querySelector(".contact-form");
+  if (form) {
+    form.classList.remove("gsap-hidden");
+    gsap.from(form, {
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      delay: 0.3,
+      scrollTrigger: { trigger: form, start: "top 85%" },
+    });
+  }
+
+  // Glow pulse on accent word
+  glowPulse(".glow-pulse-target");
+}
+
+// ── S4: Portfolio ──
+function setupPortfolio(isMobile) {
+  fadeUp(".portfolio-heading", {
+    y: 20,
+    scrollTrigger: { trigger: ".portfolio-heading", start: "top 85%" },
+  });
+
+  fadeUp(".portfolio-subline", {
+    y: 15,
+    scrollTrigger: { trigger: ".portfolio-subline", start: "top 85%" },
+    delay: 0.1,
+  });
+
+  // Each card fades up from a subtle offset with a soft shadow bloom
+  document.querySelectorAll(".portfolio-card").forEach((card) => {
+    card.classList.remove("gsap-hidden");
+
+    gsap.from(card, {
+      y: 30,
+      opacity: 0,
+      scale: 0.97,
+      filter: "blur(4px)",
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 90%",
+        end: "top 60%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
+}
+
+// ── S5: Problem/Solution ──
 function setupProblemSolution(isMobile) {
   const section = document.querySelector("#problem-solution");
   if (!section) return;
 
-  // Burn-away joke + real heading reveal
-  const joke = section.querySelector(".ps-joke");
+  // Cool entrance for real heading
   const real = section.querySelector(".ps-real");
-  if (joke && real) {
-    const chars = splitTextToChars(joke);
-    joke.classList.remove("gsap-hidden");
+  if (real) {
     real.classList.remove("gsap-hidden");
-    gsap.set(real, { opacity: 0, y: 20 }); // prevent flash
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -144,54 +218,35 @@ function setupProblemSolution(isMobile) {
       },
     });
 
-    // 1. Joke fades in (1s)
-    tl.from(joke, { y: 30, opacity: 0, duration: 1, ease: "power4.out" });
-
-    // 2. Reading pause (0.8s)
-    tl.to({}, { duration: 0.8 });
-
-    // 3. Burn sweep left-to-right (~1s)
-    //    Each char: white flash -> orange glow -> red -> fade out
-    tl.to(chars, {
-      keyframes: [
-        {
-          color: "#ffffff",
-          filter: "blur(0px) brightness(1.5)",
-          duration: 0.06,
-        },
-        {
-          color: "#ff8800",
-          filter: "blur(2px) brightness(2)",
-          y: -4,
-          duration: 0.1,
-        },
-        {
-          color: "#ff4400",
-          filter: "blur(3px) brightness(1.5)",
-          opacity: 0.4,
-          y: -8,
-          duration: 0.1,
-        },
-        {
-          opacity: 0,
-          filter: "blur(4px) brightness(0.5)",
-          y: -12,
-          duration: 0.06,
-        },
-      ],
-      stagger: { each: 0.03, from: "start" },
-      ease: "none",
+    // Scale up from slightly smaller + deblur
+    tl.from(real, {
+      scale: 0.85,
+      opacity: 0,
+      filter: "blur(10px)",
+      duration: 1.2,
+      ease: "power4.out",
     });
 
-    // 4. Afterglow fade (0.4s)
-    tl.to(joke, { opacity: 0, duration: 0.4, ease: "power2.out" }, "-=0.1");
-
-    // 5. Real heading fades up (overlaps afterglow)
-    tl.to(
-      real,
-      { opacity: 1, y: 0, duration: 0.8, ease: "power4.out" },
-      "-=0.2",
-    );
+    // Accent glow pulse after entrance settles
+    const accents = real.querySelectorAll(".text-accent");
+    if (accents.length) {
+      tl.fromTo(
+        accents,
+        { textShadow: "0 0 0px rgba(0,255,239,0)" },
+        {
+          textShadow:
+            "0 0 20px rgba(0,255,239,0.6), 0 0 40px rgba(0,255,239,0.3)",
+          duration: 0.5,
+          ease: "power2.in",
+        },
+        "-=0.3",
+      );
+      tl.to(accents, {
+        textShadow: "0 0 0px rgba(0,255,239,0)",
+        duration: 0.8,
+        ease: "power2.out",
+      });
+    }
   }
 
   // Pin the grid
@@ -201,7 +256,7 @@ function setupProblemSolution(isMobile) {
     const problems = section.querySelectorAll(".ps-problem");
 
     if (isMobile) {
-      // Mobile: no pin — reveal each solution as its row scrolls into view
+      // Mobile: no pin - reveal each solution as its row scrolls into view
       solutions.forEach((sol, i) => {
         sol.classList.remove("gsap-hidden");
         sol.style.clipPath = "inset(0 100% 0 0)";
@@ -238,10 +293,14 @@ function setupProblemSolution(isMobile) {
       });
     } else {
       // Desktop/tablet: pinned curtain wipe
+      // Cards animate during 0-0.6, hold 0.6-0.88, fade 0.88-1.0
+      const cardEnd = 0.6;
+      const fadeStart = 0.92;
+
       ScrollTrigger.create({
         trigger: ".ps-pin",
         start: "top 5%",
-        end: "+=300%",
+        end: "+=350%",
         pin: true,
         scrub: 0.3,
         onUpdate: (self) => {
@@ -249,8 +308,9 @@ function setupProblemSolution(isMobile) {
           const count = solutions.length;
 
           solutions.forEach((sol, i) => {
-            const start = i / count;
-            const end = (i + 1) / count;
+            // Map card animations into 0 - cardEnd range
+            const start = (i / count) * cardEnd;
+            const end = ((i + 1) / count) * cardEnd;
             const localProgress = Math.max(
               0,
               Math.min(1, (progress - start) / (end - start)),
@@ -280,9 +340,9 @@ function setupProblemSolution(isMobile) {
             }
           });
 
-          // Fade out entire pinned section during last 15%
-          if (progress > 0.85) {
-            const fadeProgress = (progress - 0.85) / 0.15;
+          // Fade out entire pinned section during last 8%
+          if (progress > fadeStart) {
+            const fadeProgress = (progress - fadeStart) / (1 - fadeStart);
             pinSection.style.opacity = String(1 - fadeProgress);
           } else {
             pinSection.style.opacity = "1";
@@ -316,7 +376,7 @@ function setupProblemSolution(isMobile) {
     }
   }
 
-  // Bg transition during last 15%
+  // Bg transition during last 15% - smooths into Design Principles bg-secondary
   ScrollTrigger.create({
     trigger: "#problem-solution",
     start: "bottom-=15% bottom",
@@ -329,12 +389,39 @@ function setupProblemSolution(isMobile) {
   });
 }
 
-// ── S3: Design Principles ──
+// ── S6: Design Principles ──
 function setupPrinciples(isMobile, isTablet) {
-  // Section header fade-in (fires before pin locks)
   const heading = document.querySelector(".principles-heading");
+  const subheading = document.querySelector(".principles-subheading");
+  const pinWrap = document.querySelector(".principles-pin");
+  const cards = document.querySelectorAll(".principle-card");
+
+  if (!pinWrap) return;
+
+  // Unhide elements, set initial states
+  if (heading) heading.classList.remove("gsap-hidden");
+  if (subheading) {
+    subheading.classList.remove("gsap-hidden");
+    gsap.set(subheading, { x: window.innerWidth });
+  }
+
+  // Scatter cards to random positions
+  const spreadMultiplier = isMobile ? 0.3 : isTablet ? 0.6 : 1;
+  if (cards.length) {
+    cards.forEach((card) => {
+      card.classList.remove("gsap-hidden");
+      gsap.set(card, {
+        x: gsap.utils.random(-300 * spreadMultiplier, 300 * spreadMultiplier),
+        y: gsap.utils.random(-400 * spreadMultiplier, 400 * spreadMultiplier),
+        rotation: gsap.utils.random(-45, 45),
+        scale: 0.3 + Math.random() * 0.15,
+        opacity: 0,
+      });
+    });
+  }
+
+  // Heading fades up on enter (before pin engages)
   if (heading) {
-    heading.classList.remove("gsap-hidden");
     gsap.from(heading, {
       y: 30,
       opacity: 0,
@@ -347,134 +434,47 @@ function setupPrinciples(isMobile, isTablet) {
     });
   }
 
-  // Subheading slides from right (completes before pin locks)
-  const subheading = document.querySelector(".principles-subheading");
-  if (subheading) {
-    subheading.classList.remove("gsap-hidden");
-    gsap.from(subheading, {
-      x: () => window.innerWidth,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: ".principles-pin",
-        start: "top bottom",
-        end: "top 20%",
-        scrub: 0.5,
-      },
-    });
-  }
-
-  // Pin .principles-pin for +=100% scroll distance
-  const pinWrap = document.querySelector(".principles-pin");
-  if (pinWrap) {
-    ScrollTrigger.create({
+  // Scrub timeline - subheading, cards, fade-out
+  const tl = gsap.timeline({
+    scrollTrigger: {
       trigger: ".principles-pin",
       start: "top top",
-      end: "+=100%",
+      end: "+=200%",
       pin: true,
-      scrub: true,
-      onUpdate: (self) => {
-        // Fade out during last 30% of pin (progress 0.7 -> 1.0)
-        if (self.progress > 0.7) {
-          const fadeProgress = (self.progress - 0.7) / 0.3;
-          pinWrap.style.opacity = String(1 - fadeProgress);
-        } else {
-          pinWrap.style.opacity = "1";
-        }
-      },
+      scrub: 0.5,
+    },
+  });
+
+  // ── Phase 1: Subheading slides in ──
+  if (subheading) {
+    tl.to(subheading, { x: 0, duration: 1.5, ease: "power4.out" }, "-=0.3");
+  }
+
+  // Hold with subheading visible before cards
+  tl.to({}, { duration: 1 });
+
+  // ── Phase 3: Cards assemble ──
+  if (cards.length) {
+    tl.to(cards, {
+      x: 0,
+      y: 0,
+      rotation: 0,
+      scale: 1,
+      opacity: 1,
+      duration: 2,
+      stagger: 0.08,
+      ease: "power3.out",
     });
   }
 
-  // Magnetic assemble for principle cards
-  const spreadMultiplier = isMobile ? 0.3 : isTablet ? 0.6 : 1;
-  magneticAssemble(".principle-card", {
-    spread: spreadMultiplier,
-    scrollTrigger: {
-      trigger: ".principle-card",
-      start: "top 85%",
-      toggleActions: "play none none none",
-    },
-  });
+  // Hold for viewing
+  tl.to({}, { duration: 1.5 });
+
+  // ── Phase 4: Fade out ──
+  tl.to(pinWrap, { opacity: 0, duration: 1 });
 }
 
-// ── S4: Services ──
-function setupServices(isMobile) {
-  // Fade-up animations fire before pin locks
-  fadeUp(".services-heading", {
-    scrollTrigger: { trigger: ".services-pin", start: "top 80%" },
-  });
-
-  fadeUp(".service-card", {
-    stagger: 0.15,
-    scrollTrigger: { trigger: ".services-pin", start: "top 70%" },
-  });
-
-  fadeUp(".growth-partner", {
-    scrollTrigger: { trigger: ".services-pin", start: "top 60%" },
-  });
-
-  fadeUp(".services-cta", {
-    scrollTrigger: { trigger: ".services-pin", start: "top 55%" },
-  });
-
-  // Pin the section so it fills viewport while scrolling
-  const pinWrap = document.querySelector(".services-pin");
-  if (pinWrap && !isMobile) {
-    ScrollTrigger.create({
-      trigger: ".services-pin",
-      start: "top top",
-      end: "+=100%",
-      pin: true,
-      scrub: true,
-      onUpdate: (self) => {
-        // Fade out during last 30% of pin
-        if (self.progress > 0.7) {
-          const fadeProgress = (self.progress - 0.7) / 0.3;
-          pinWrap.style.opacity = String(1 - fadeProgress);
-        } else {
-          pinWrap.style.opacity = "1";
-        }
-      },
-    });
-  }
-}
-
-// ── S4→S5 Transition: bg-secondary -> bg ──
-function setupServicesToPortfolioTransition() {
-  const portfolio = document.querySelector("#portfolio");
-  if (!portfolio) return;
-
-  ScrollTrigger.create({
-    trigger: "#portfolio",
-    start: "top-=15% bottom",
-    end: "top bottom",
-    scrub: true,
-    onUpdate: (self) => {
-      const bg = gsap.utils.interpolate("#1E1E22", "#1A1A1E", self.progress);
-      document.body.style.backgroundColor = bg;
-    },
-  });
-}
-
-// ── S5: Portfolio ──
-function setupPortfolio(isMobile) {
-  setupServicesToPortfolioTransition();
-
-  fadeUp(".portfolio-heading", {
-    scrollTrigger: { trigger: ".portfolio-heading", start: "top 80%" },
-  });
-
-  fadeUp(".portfolio-subline", {
-    scrollTrigger: { trigger: ".portfolio-subline", start: "top 80%" },
-    delay: 0.1,
-  });
-
-  fadeUp(".portfolio-card", {
-    stagger: isMobile ? 0.08 : 0.15,
-    scrollTrigger: { trigger: ".portfolio-card", start: "top 85%" },
-  });
-}
-
-// ── S6: About ──
+// ── S7: About ──
 function setupAbout() {
   fadeUp(".about-photo", {
     scrollTrigger: { trigger: ".about-photo", start: "top 80%" },
@@ -491,7 +491,7 @@ function setupAbout() {
   });
 }
 
-// ── S6.5: Why Me ──
+// ── S7.5: Why Me ──
 function setupWhyMe() {
   fadeUp(".whyme-heading", {
     scrollTrigger: { trigger: ".whyme-heading", start: "top 80%" },
@@ -503,7 +503,7 @@ function setupWhyMe() {
   });
 }
 
-// ── S7: Reviews ──
+// ── S8: Reviews ──
 function setupReviews() {
   fadeUp(".reviews-heading", {
     scrollTrigger: { trigger: ".reviews-heading", start: "top 80%" },
@@ -543,40 +543,7 @@ function setupReviews() {
   });
 }
 
-// ── S8: CTA/Contact ──
-function setupContact() {
-  fadeUp(".contact-heading", {
-    scrollTrigger: { trigger: ".contact-heading", start: "top 80%" },
-  });
-
-  fadeUp(".contact-sub", {
-    scrollTrigger: { trigger: ".contact-sub", start: "top 80%" },
-    delay: 0.1,
-  });
-
-  fadeUp(".contact-cta", {
-    scrollTrigger: { trigger: ".contact-cta", start: "top 85%" },
-    delay: 0.2,
-  });
-
-  // Form fades in after primary CTA
-  const form = document.querySelector(".contact-form");
-  if (form) {
-    form.classList.remove("gsap-hidden");
-    gsap.from(form, {
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.out",
-      delay: 0.3,
-      scrollTrigger: { trigger: form, start: "top 85%" },
-    });
-  }
-
-  // Glow pulse on accent word
-  glowPulse(".glow-pulse-target");
-}
-
-// Initialize — respect prefers-reduced-motion
+// Initialize - respect prefers-reduced-motion
 function start() {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",

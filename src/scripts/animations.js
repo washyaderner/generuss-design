@@ -1,5 +1,5 @@
 /**
- * animations.js — Pure, reusable GSAP animation functions.
+ * animations.js - Pure, reusable GSAP animation functions.
  * Each accepts a CSS selector and options object.
  * Each removes .gsap-hidden from targets before animating.
  */
@@ -36,7 +36,7 @@ export function fadeUp(selector, options = {}) {
 }
 
 /**
- * Text reveal — clip-path or split text effect
+ * Text reveal - clip-path or split text effect
  */
 export function textReveal(selector, options = {}) {
   const {
@@ -62,31 +62,108 @@ export function textReveal(selector, options = {}) {
 }
 
 /**
- * Float geometric shapes with continuous yoyo animation
+ * Lava lamp effect - blobs rise from bottom pool, merge/separate via SVG goo filter
  */
-export function floatShapes(selector, options = {}) {
+export function initLavaLamp(containerSelector, options = {}) {
   const {
-    yRange = 20,
-    xRange = 10,
-    rotationRange = 15,
-    duration = 4,
-    stagger = 0.5,
+    count = 18,
+    sizeRange = [30, 130],
+    hueRange = [170, 200],
+    satRange = [90, 100],
+    lightRange = [45, 55],
+    riseDuration = [8, 18],
+    fallDuration = [5, 10],
+    wobbleX = 80,
+    scaleRange = [0.8, 1.2],
   } = options;
 
-  const elements = document.querySelectorAll(selector);
-  if (!elements.length) return null;
+  const container = document.querySelector(containerSelector);
+  if (!container) return null;
 
-  elements.forEach((el, i) => {
-    gsap.to(el, {
-      y: `random(-${yRange}, ${yRange})`,
-      x: `random(-${xRange}, ${xRange})`,
-      rotation: `random(-${rotationRange}, ${rotationRange})`,
-      duration: duration + i * 0.5,
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-    });
+  const h = container.offsetHeight;
+  const allEls = [];
+
+  // Pool blob at bottom - blobs merge into/out of this
+  const pool = document.createElement("div");
+  pool.style.cssText = `
+    position: absolute;
+    width: 120%;
+    height: 80px;
+    border-radius: 50%;
+    background: hsl(185, 95%, 50%);
+    bottom: -40px;
+    left: -10%;
+    will-change: transform;
+  `;
+  container.appendChild(pool);
+  allEls.push(pool);
+
+  gsap.to(pool, {
+    scaleX: 1.05,
+    scaleY: 0.9,
+    duration: 4,
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1,
   });
+
+  // Create rising blobs anchored at bottom
+  const blobs = [];
+  for (let i = 0; i < count; i++) {
+    const blob = document.createElement("div");
+    const size = gsap.utils.random(sizeRange[0], sizeRange[1]);
+    const hue = gsap.utils.random(hueRange[0], hueRange[1]);
+    const sat = gsap.utils.random(satRange[0], satRange[1]);
+    const light = gsap.utils.random(lightRange[0], lightRange[1]);
+
+    blob.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      border-radius: 50%;
+      background: hsl(${hue}, ${sat}%, ${light}%);
+      bottom: ${gsap.utils.random(-5, 10)}%;
+      left: ${gsap.utils.random(10, 90)}%;
+      will-change: transform;
+    `;
+    container.appendChild(blob);
+    blobs.push(blob);
+    allEls.push(blob);
+
+    // Spread initial positions so blobs don't all start at bottom
+    gsap.set(blob, { y: gsap.utils.random(0, -h * 0.6) });
+  }
+
+  function animateBlob(blob) {
+    // Rise phase - move upward
+    gsap.to(blob, {
+      y: gsap.utils.random(-h * 0.5, -h * 0.85),
+      x: gsap.utils.random(-wobbleX, wobbleX),
+      scale: gsap.utils.random(scaleRange[0], scaleRange[1]),
+      duration: gsap.utils.random(riseDuration[0], riseDuration[1]),
+      ease: "sine.inOut",
+      onComplete: () => {
+        // Fall phase - return to bottom pool
+        gsap.to(blob, {
+          y: gsap.utils.random(0, 20),
+          x: gsap.utils.random(-wobbleX * 0.3, wobbleX * 0.3),
+          scale: gsap.utils.random(scaleRange[0], scaleRange[1]),
+          duration: gsap.utils.random(fallDuration[0], fallDuration[1]),
+          ease: "sine.inOut",
+          onComplete: () => animateBlob(blob),
+        });
+      },
+    });
+  }
+
+  blobs.forEach((blob) => animateBlob(blob));
+
+  return function cleanup() {
+    allEls.forEach((el) => {
+      gsap.killTweensOf(el);
+      el.remove();
+    });
+  };
 }
 
 /**
@@ -149,7 +226,7 @@ export function slideInText(selector, options = {}) {
 }
 
 /**
- * Magnetic assemble — cards fly from scattered positions to grid
+ * Magnetic assemble - cards fly from scattered positions to grid
  */
 export function magneticAssemble(selector, options = {}) {
   const {
@@ -179,7 +256,7 @@ export function magneticAssemble(selector, options = {}) {
 }
 
 /**
- * Glow pulse — subtle accent glow cycle
+ * Glow pulse - subtle accent glow cycle
  */
 export function glowPulse(selector, options = {}) {
   const { duration = 2.5 } = options;
