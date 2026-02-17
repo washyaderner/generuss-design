@@ -42,21 +42,21 @@ function setupHero(isMobile) {
 
   const tl = gsap.timeline({ delay: 0 });
 
-  // Lava lamp fade-in (desktop/tablet only)
+  // Lava lamp fade-in (desktop/tablet only) - separate so text fires immediately
   const lavaContainer = heroSection.querySelector("#lava-lamp");
   if (lavaContainer && !isMobile) {
     gsap.set(lavaContainer, { opacity: 0 });
-    tl.to(lavaContainer, { opacity: 0.07, duration: 1.2, ease: "power2.out" });
+    gsap.to(lavaContainer, {
+      opacity: 0.07,
+      duration: 1.2,
+      ease: "power2.out",
+    });
     initLavaLamp("#lava-lamp");
   }
 
   const headlines = heroSection.querySelectorAll(".hero-headline");
   if (headlines.length) {
-    tl.from(
-      headlines,
-      { opacity: 0.01, duration: 0.1, stagger: 0.05 },
-      "-=0.4",
-    );
+    tl.from(headlines, { opacity: 0.01, duration: 0.1, stagger: 0.05 });
     tl.from(
       headlines,
       { y: 40, duration: 0.8, stagger: 0.05, ease: "power4.out" },
