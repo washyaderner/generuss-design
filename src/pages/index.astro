@@ -360,6 +360,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               stroke-linejoin="round"
             >
               <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3" stroke="#1e1e22" stroke-width="5"></path>
               <path d="m21 21-4.3-4.3"></path>
             </svg>
             <h3 class="text-xl font-bold text-white mb-1">SEO Built In</h3>
@@ -415,10 +416,15 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               stroke-linejoin="round"
             >
               <circle cx="16" cy="4" r="1"></circle>
-              <path d="m18 19 1-7-6 1"></path>
-              <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
               <path d="m4.24 14.5a5 5 0 0 0 6.88 6"></path>
               <path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path>
+              <path d="m18 19 1-7-6 1" stroke="#1e1e22" stroke-width="5"></path>
+              <path
+                d="m5 8 3-3 5.5 3-2.36 3.5"
+                stroke="#1e1e22"
+                stroke-width="5"></path>
+              <path d="m18 19 1-7-6 1"></path>
+              <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
             </svg>
             <h3 class="text-xl font-bold text-white mb-1">Accessibility</h3>
             <p class="font-mono text-xs text-accent mb-3">
@@ -434,115 +440,116 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
     </section>
 
     <!-- S4: Services -->
-    <section
-      id="services"
-      class="bg-bg-secondary px-8 sm:px-12 lg:px-20 py-(--spacing-section)"
-    >
-      <h2
-        class="services-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
-      >
-        What I <span class="text-accent">Build.</span>
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <!-- Card 1 -->
-        <div
-          class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-        >
-          <h3 class="text-2xl font-bold text-white mb-3">
-            Web Design & Development
-          </h3>
-          <p class="text-text-muted mb-6">
-            Fast, clean sites that convert &mdash; built custom for your
-            business.
-          </p>
-          <ul class="space-y-3 text-sm text-text-muted">
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Discovery call + tech stack audit</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Custom design and development (no templates)</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Mobile-first, Lighthouse 90%+ builds</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span
-                >Static architecture &mdash; no CMS vulnerabilities, no plugin
-                rot, no surprise security patches</span
-              >
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Launch documentation + walkthrough</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-        >
-          <h3 class="text-2xl font-bold text-white mb-3">
-            AI Automation Consulting
-          </h3>
-          <p class="text-text-muted mb-6">
-            Workflows that run themselves so you can focus on the work that
-            matters.
-          </p>
-          <ul class="space-y-3 text-sm text-text-muted">
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Process audit and automation mapping</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span
-                >Custom automation builds (n8n, Make.com, API integrations)</span
-              >
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>AI tool selection and implementation</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Documentation + handoff</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Growth Partner Block -->
+    <section id="services" class="bg-bg-secondary">
       <div
-        class="growth-partner gsap-hidden max-w-2xl mx-auto mt-16 text-center"
+        class="services-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20 py-12 sm:py-16"
       >
-        <p class="text-lg text-text-muted leading-relaxed">
-          Consider me your growth partner &mdash; your site doesn't stop at
-          launch. Need a lead form that triggers an email sequence? A booking
-          flow that syncs to your CRM? I build the site and the systems behind
-          it. One person, one bill, zero handoff chaos.
-        </p>
-        <p class="text-lg text-text-muted leading-relaxed mt-4">
-          If your business needs go deeper than the site itself &mdash; workflow
-          automation, AI tool integration, entire processes that run themselves
-          &mdash; that's not a referral to someone else. That's the other half
-          of what I do.
-        </p>
-      </div>
-
-      <!-- Section CTA -->
-      <div class="services-cta gsap-hidden text-center mt-12">
-        <a
-          href="#contact"
-          class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+        <h2
+          class="services-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
         >
-          Let's figure out <span class="font-bold">what you need</span> &rarr;
-        </a>
+          What I <span class="text-accent">Build.</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Card 1 -->
+          <div
+            class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <h3 class="text-2xl font-bold text-white mb-3">
+              Web Design & Development
+            </h3>
+            <p class="text-text-muted mb-6">
+              Fast, clean sites that convert &mdash; built custom for your
+              business.
+            </p>
+            <ul class="space-y-3 text-sm text-text-muted">
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Discovery call + tech stack audit</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Custom design and development (no templates)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Mobile-first, Lighthouse 90%+ builds</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span
+                  >Static architecture &mdash; no CMS vulnerabilities, no plugin
+                  rot, no surprise security patches</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Launch documentation + walkthrough</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <h3 class="text-2xl font-bold text-white mb-3">
+              AI Automation Consulting
+            </h3>
+            <p class="text-text-muted mb-6">
+              Workflows that run themselves so you can focus on the work that
+              matters.
+            </p>
+            <ul class="space-y-3 text-sm text-text-muted">
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Process audit and automation mapping</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span
+                  >Custom automation builds (n8n, Make.com, API integrations)</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>AI tool selection and implementation</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10003;</span>
+                <span>Documentation + handoff</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Growth Partner Block -->
+        <div
+          class="growth-partner gsap-hidden max-w-2xl mx-auto mt-16 text-center"
+        >
+          <p class="text-lg text-text-muted leading-relaxed">
+            Consider me your growth partner &mdash; your site doesn't stop at
+            launch. Need a lead form that triggers an email sequence? A booking
+            flow that syncs to your CRM? I build the site and the systems behind
+            it. One person, one bill, zero handoff chaos.
+          </p>
+          <p class="text-lg text-text-muted leading-relaxed mt-4">
+            If your business needs go deeper than the site itself &mdash;
+            workflow automation, AI tool integration, entire processes that run
+            themselves &mdash; that's not a referral to someone else. That's the
+            other half of what I do.
+          </p>
+        </div>
+
+        <!-- Section CTA -->
+        <div class="services-cta gsap-hidden text-center mt-12">
+          <a
+            href="#contact"
+            class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Let's figure out <span class="font-bold">what you need</span> &rarr;
+          </a>
+        </div>
       </div>
     </section>
 
