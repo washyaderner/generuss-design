@@ -25,7 +25,7 @@ function setupAnimations(breakpoint) {
   const isTablet = breakpoint === "tablet";
 
   setupHero(isMobile);
-  setupBooking();
+  setupBooking(isMobile);
   setupServices(isMobile);
   setupPortfolio(isMobile);
   setupProblemSolution(isMobile);
@@ -40,7 +40,7 @@ function setupHero(isMobile) {
   const heroSection = document.querySelector("#hero");
   if (!heroSection) return;
 
-  const tl = gsap.timeline({ delay: 0.3 });
+  const tl = gsap.timeline({ delay: 0 });
 
   // Lava lamp fade-in (desktop/tablet only)
   const lavaContainer = heroSection.querySelector("#lava-lamp");
@@ -52,42 +52,34 @@ function setupHero(isMobile) {
 
   const headlines = heroSection.querySelectorAll(".hero-headline");
   if (headlines.length) {
-    headlines.forEach((h) => h.classList.remove("gsap-hidden"));
     tl.from(
       headlines,
-      { y: 40, opacity: 0, duration: 1, stagger: 0.15, ease: "power4.out" },
+      { opacity: 0.01, duration: 0.1, stagger: 0.05 },
       "-=0.4",
+    );
+    tl.from(
+      headlines,
+      { y: 40, duration: 0.8, stagger: 0.05, ease: "power4.out" },
+      "<",
     );
   }
 
   const sub = heroSection.querySelector(".hero-sub");
   if (sub) {
-    sub.classList.remove("gsap-hidden");
-    tl.from(
-      sub,
-      { y: 30, opacity: 0, duration: 0.8, ease: "power4.out" },
-      "-=0.5",
-    );
+    tl.from(sub, { opacity: 0.01, duration: 0.1 }, "-=0.5");
+    tl.from(sub, { y: 30, duration: 0.7, ease: "power4.out" }, "<");
   }
 
   const cta = heroSection.querySelector(".hero-cta");
   if (cta) {
-    cta.classList.remove("gsap-hidden");
-    tl.from(
-      cta,
-      { y: 20, opacity: 0, duration: 0.8, ease: "power4.out" },
-      "-=0.4",
-    );
+    tl.from(cta, { opacity: 0.01, duration: 0.1 }, "-=0.4");
+    tl.from(cta, { y: 20, duration: 0.6, ease: "power4.out" }, "<");
   }
 
   const indicator = heroSection.querySelector(".scroll-indicator");
   if (indicator) {
-    indicator.classList.remove("gsap-hidden");
-    tl.from(
-      indicator,
-      { opacity: 0, duration: 0.6, ease: "power2.out" },
-      "-=0.2",
-    );
+    tl.from(indicator, { opacity: 0.01, duration: 0.1 }, "-=0.2");
+    tl.from(indicator, { y: 10, duration: 0.5, ease: "power2.out" }, "<");
   }
 }
 
@@ -122,7 +114,7 @@ function setupServices(isMobile) {
     ScrollTrigger.create({
       trigger: ".services-pin",
       start: "top top",
-      end: "+=100%",
+      end: "+=50%",
       pin: true,
       scrub: true,
       onUpdate: (self) => {
@@ -139,7 +131,7 @@ function setupServices(isMobile) {
 }
 
 // ── S3: Booking + Contact ──
-function setupBooking() {
+function setupBooking(isMobile) {
   fadeUp(".booking-heading", {
     scrollTrigger: { trigger: ".booking-heading", start: "top 80%" },
   });
@@ -159,6 +151,17 @@ function setupBooking() {
       ease: "power2.out",
       delay: 0.3,
       scrollTrigger: { trigger: form, start: "top 85%" },
+    });
+  }
+
+  // Brief pin so visitors pause on the calendar
+  if (!isMobile) {
+    ScrollTrigger.create({
+      trigger: "#booking",
+      start: "top top",
+      end: "+=80%",
+      pin: true,
+      scrub: true,
     });
   }
 
@@ -540,6 +543,10 @@ function setupReviews() {
         scrollTrigger: { trigger: item, start: "top 85%" },
       });
     }
+  });
+
+  fadeUp(".reviews-cta", {
+    scrollTrigger: { trigger: ".reviews-cta", start: "top 90%" },
   });
 }
 
