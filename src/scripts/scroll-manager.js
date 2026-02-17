@@ -31,7 +31,6 @@ function setupAnimations(breakpoint) {
   setupProblemSolution(isMobile);
   setupPrinciples(isMobile, isTablet);
   setupAbout();
-  setupWhyMe();
   setupReviews();
 }
 
@@ -491,18 +490,6 @@ function setupAbout() {
   fadeUp(".about-bio", {
     scrollTrigger: { trigger: ".about-bio", start: "top 80%" },
     delay: 0.2,
-  });
-}
-
-// ── S7.5: Why Me ──
-function setupWhyMe() {
-  fadeUp(".whyme-heading", {
-    scrollTrigger: { trigger: ".whyme-heading", start: "top 80%" },
-  });
-
-  fadeUp(".whyme-body", {
-    scrollTrigger: { trigger: ".whyme-body", start: "top 80%" },
-    delay: 0.15,
   });
 }
 
