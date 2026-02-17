@@ -18,30 +18,30 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       <div class="relative z-10">
         <h1>
           <span
-            class="hero-headline gsap-hidden block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95]"
+            class="hero-headline block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95]"
           >
             BUILDING GORGEOUS WEBSITES
           </span>
           <span
-            class="hero-headline gsap-hidden block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95] text-accent glow-text mt-2"
+            class="hero-headline block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95] text-accent glow-text mt-2"
           >
             THAT CONVERT
           </span>
           <span
-            class="hero-headline gsap-hidden block text-[1.625rem] sm:text-[1.95rem] md:text-[2.4375rem] lg:text-[2.925rem] font-semibold tracking-wide text-text-muted mt-4"
+            class="hero-headline block text-[1.625rem] sm:text-[1.95rem] md:text-[2.4375rem] lg:text-[2.925rem] font-semibold tracking-wide text-text-muted mt-4"
           >
             FLAWLESS BY DESIGN.
           </span>
         </h1>
         <p
-          class="hero-sub gsap-hidden mt-6 max-w-2xl text-[1.46rem] sm:text-[1.625rem] md:text-[1.95rem] text-text-muted"
+          class="hero-sub mt-6 max-w-2xl text-[1.46rem] sm:text-[1.625rem] md:text-[1.95rem] text-text-muted"
         >
           Design that converts visitors into customers.<br />
           Built fast. Looks sharp. No bloat.
         </p>
         <a
           href="#booking"
-          class="hero-cta gsap-hidden mt-8 inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          class="hero-cta mt-8 inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
         >
           Let's Build Yours &rarr;
         </a>
@@ -71,7 +71,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 
       <!-- Scroll indicator -->
       <div
-        class="scroll-indicator gsap-hidden absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span class="text-xs text-text-muted font-mono tracking-wider"
           >SCROLL</span
@@ -109,7 +109,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         >
           Your website should be your hardest working employee. If it's not
           pulling its weight, let's fix that. Book a discovery call -no
-          pressure, no fluff.
+          pressure.
         </p>
       </div>
 
@@ -289,7 +289,10 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         <h2
           class="services-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
         >
-          Development + Automation = <span class="text-accent">Growth.</span>
+          Development + Automation = <span
+            class="text-accent"
+            style="font-size:1.3em">Growth.</span
+          >
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -1491,6 +1494,16 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
             Dirty Chai -Struggle Crew
           </p>
         </div>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="reviews-cta gsap-hidden text-center mt-16">
+        <a
+          href="#booking"
+          class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+        >
+          Let's build yours &rarr;
+        </a>
       </div>
     </section>
   </main>
