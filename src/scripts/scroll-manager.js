@@ -146,6 +146,16 @@ function setupBooking(isMobile) {
     delay: 0.2,
   });
 
+  // Light pin on booking section so the calendar sticks briefly
+  if (!isMobile) {
+    ScrollTrigger.create({
+      trigger: "#booking",
+      start: "top top",
+      end: "+=60%",
+      pin: true,
+    });
+  }
+
   // Form fades in
   const form = document.querySelector(".contact-form");
   if (form) {
