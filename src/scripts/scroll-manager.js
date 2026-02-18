@@ -496,6 +496,11 @@ function setupAbout() {
     scrollTrigger: { trigger: ".about-bio", start: "top 80%" },
     delay: 0.2,
   });
+
+  fadeUp(".about-cta", {
+    scrollTrigger: { trigger: ".about-cta", start: "top 90%" },
+    delay: 0.3,
+  });
 }
 
 // ── S8: Reviews ──
