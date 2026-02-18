@@ -151,6 +151,18 @@ body::before {
   color: var(--color-text);
 }
 
+/* ── Scribble-Out Effect ── */
+.scribble-out .scribble-x {
+  filter: drop-shadow(0 0 4px var(--color-accent))
+    drop-shadow(0 0 12px var(--color-accent))
+    drop-shadow(0 0 24px var(--color-accent-glow));
+}
+
+.scribble-out .scribble-x path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+}
+
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
