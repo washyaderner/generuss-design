@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import CalendarEmbed from "../components/CalendarEmbed.astro";
 
 const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 ---
@@ -96,7 +97,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         </div>
       </div>
 
-      <div class="relative z-10 text-center max-w-2xl mx-auto mb-12">
+      <div class="relative z-10 max-w-2xl mx-auto text-center mb-12">
         <h2
           class="booking-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
         >
@@ -105,58 +106,17 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           >
         </h2>
         <p
-          class="booking-sub gsap-hidden text-lg text-text-muted leading-relaxed max-w-xl mx-auto"
+          class="booking-sub gsap-hidden text-lg text-text-muted leading-relaxed"
         >
           Your website should be your hardest working employee. If it's not
-          pulling its weight, let's fix that. Book a discovery call -no
+          pulling its weight, let's fix that. Book a discovery call - no
           pressure.
         </p>
       </div>
 
-      <!-- Cal.com embed -->
-      <div
-        class="relative z-10 w-full max-w-3xl mx-auto rounded-2xl overflow-hidden"
-      >
-        <!-- Skeleton overlay -->
-        <div
-          id="cal-skeleton"
-          class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-bg rounded-2xl neu-inset"
-        >
-          <svg
-            class="h-6 w-6 animate-spin text-accent"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              class="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              stroke-width="4"></circle>
-            <path
-              class="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-          </svg>
-          <span class="mt-3 text-sm text-text-muted font-mono"
-            >Loading calendar&hellip;</span
-          >
-        </div>
-        <!-- Cal.com renders its iframe here -->
-        <div id="cal-embed" style="min-height:580px"></div>
+      <div class="relative z-10 max-w-[1100px] mx-auto">
+        <CalendarEmbed />
       </div>
-
-      <!-- Fallback link -->
-      <p class="relative z-10 text-text-muted text-sm text-center mt-4">
-        If the calendar doesn't load, <a
-          href="https://cal.com/generuss/discovery-call"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-accent hover:underline">schedule directly here</a
-        >.
-      </p>
 
       <!-- Contact Form -->
       <div class="relative z-10 w-full max-w-md mx-auto mt-16">
@@ -1487,89 +1447,5 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 
   <script>
     import "../scripts/scroll-manager.js";
-  </script>
-
-  <!-- Cal.com embed: lazy-loaded via IntersectionObserver for Lighthouse perf -->
-  <script is:inline>
-    (function () {
-      var bookingSection = document.getElementById("booking");
-      var calSkeleton = document.getElementById("cal-skeleton");
-      var calLoaded = false;
-
-      var observer = new IntersectionObserver(
-        function (entries) {
-          if (entries[0].isIntersecting && !calLoaded) {
-            calLoaded = true;
-            observer.disconnect();
-            loadCalEmbed();
-          }
-        },
-        { rootMargin: "600px" },
-      );
-
-      if (bookingSection) observer.observe(bookingSection);
-
-      function loadCalEmbed() {
-        // Cal.com official embed snippet
-        (function (C, A, L) {
-          var p = function (a, ar) {
-            a.q.push(ar);
-          };
-          var d = C.document;
-          C.Cal =
-            C.Cal ||
-            function () {
-              var cal = C.Cal;
-              var ar = arguments;
-              if (!cal.loaded) {
-                cal.ns = {};
-                cal.q = cal.q || [];
-                d.head.appendChild(d.createElement("script")).src = A;
-                cal.loaded = true;
-              }
-              if (ar[0] === L) {
-                var api = function () {
-                  p(api, arguments);
-                };
-                var namespace = ar[1];
-                api.q = api.q || [];
-                if (typeof namespace === "string") {
-                  cal.ns[namespace] = cal.ns[namespace] || api;
-                  p(cal.ns[namespace], ar);
-                  p(cal, ["initNamespace", namespace]);
-                } else p(cal, ar);
-                return;
-              }
-              p(cal, ar);
-            };
-        })(window, "https://app.cal.com/embed/embed.js", "init");
-
-        window.Cal("init", "discovery-call", { origin: "https://app.cal.com" });
-
-        window.Cal.ns["discovery-call"]("inline", {
-          elementOrSelector: "#cal-embed",
-          calLink: "generuss/discovery-call",
-          layout: "month_view",
-        });
-
-        window.Cal.ns["discovery-call"]("ui", {
-          theme: "dark",
-          hideEventTypeDetails: false,
-          layout: "month_view",
-        });
-
-        // Hide skeleton once Cal iframe renders
-        var calEl = document.getElementById("cal-embed");
-        if (calEl && calSkeleton) {
-          var mo = new MutationObserver(function () {
-            if (calEl.querySelector("iframe")) {
-              calSkeleton.style.display = "none";
-              mo.disconnect();
-            }
-          });
-          mo.observe(calEl, { childList: true, subtree: true });
-        }
-      }
-    })();
   </script>
 </BaseLayout>

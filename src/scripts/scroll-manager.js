@@ -140,6 +140,12 @@ function setupBooking(isMobile) {
     delay: 0.1,
   });
 
+  // Calendar embed fades in
+  fadeUp(".cal-embed-wrapper", {
+    scrollTrigger: { trigger: ".cal-embed-wrapper", start: "top 85%" },
+    delay: 0.2,
+  });
+
   // Form fades in
   const form = document.querySelector(".contact-form");
   if (form) {
