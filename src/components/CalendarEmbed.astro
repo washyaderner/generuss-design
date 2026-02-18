@@ -1,20 +1,13 @@
 ---
 interface Props {
   url?: string;
-  mobileHeight?: string;
-  desktopHeight?: string;
 }
 
-const {
-  url = "https://app.cal.com/generuss/discovery-call",
-  mobileHeight = "400px",
-  desktopHeight = "560px",
-} = Astro.props;
+const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
 ---
 
 <div
   class="cal-embed-wrapper gsap-hidden relative rounded-2xl overflow-hidden border border-[var(--color-accent-dim)] neu-raised bg-bg-secondary"
-  style={`--mobile-height: ${mobileHeight}; --desktop-height: ${desktopHeight};`}
 >
   <!-- Gradient overlay -->
   <div
@@ -50,13 +43,15 @@ const {
     >
   </div>
 
-  <!-- iframe container: fixed height, internal scroll only -->
+  <!-- iframe container: cropped viewport into Cal.com, offset to trim top whitespace -->
   <div
-    class="cal-iframe-container relative overflow-hidden h-[var(--mobile-height)] md:h-[var(--desktop-height)]"
+    class="cal-iframe-container relative overflow-hidden h-[500px] md:h-[620px]"
   >
     <iframe
       id="cal-iframe"
-      class="absolute inset-0 w-full h-full"
+      class="absolute left-0 w-full border-0"
+      style="top: -8px; height: calc(100% + 28px); overflow: hidden;"
+      scrolling="no"
       sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
       allow="camera; microphone; fullscreen; display-capture; autoplay"
       loading="lazy"
