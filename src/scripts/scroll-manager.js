@@ -509,6 +509,26 @@ function setupReviews() {
     scrollTrigger: { trigger: ".reviews-heading", start: "top 80%" },
   });
 
+  // Scribble-out X on "filler" - draw paths after heading fades in
+  const scribblePaths = document.querySelectorAll(
+    ".scribble-out .scribble-x path",
+  );
+  if (scribblePaths.length) {
+    scribblePaths.forEach((path) => {
+      const len = path.getTotalLength();
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+    });
+
+    gsap.to(scribblePaths, {
+      strokeDashoffset: 0,
+      duration: 0.4,
+      stagger: 0.08,
+      ease: "power2.inOut",
+      delay: 1.2,
+      scrollTrigger: { trigger: ".reviews-heading", start: "top 80%" },
+    });
+  }
+
   // Stagger reviews, stars 0.05s ahead
   document.querySelectorAll(".review-item").forEach((item) => {
     item.classList.remove("gsap-hidden");
