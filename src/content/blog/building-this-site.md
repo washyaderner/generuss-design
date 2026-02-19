@@ -3,7 +3,7 @@ title: "Building This Site in 30 Hours"
 excerpt: "A full portfolio site - 9 animated sections, dark neumorphic design system, GSAP scroll cinematics, and edge deployment - built in 3 days with Claude Code. Every decision, blocker, and pivot, timestamped."
 publishDate: "2026-02-18"
 tags: ["case study", "web design", "AI-assisted development"]
-featuredImage: "/images/placeholder.svg"
+featuredImage: "/images/blog/building-this-site-og.svg"
 layout: timeline
 ---
 
