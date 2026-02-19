@@ -365,6 +365,16 @@ gh pr create --base main --fill
 - No merge conflicts
 - No secrets in commits
 
+**Post-merge sync (CRITICAL):**
+
+`gh pr merge` operates on GitHub's remote - local refs go stale immediately after. Always:
+
+1. `git checkout main && git pull origin main`
+2. `git checkout dev && git pull origin dev`
+3. Verify local matches remote: `git log --oneline main -1` vs `git log --oneline origin/main -1`
+
+Skipping this causes local/remote divergence. You end up thinking you're 10 commits behind when production is fine - and waste time debugging phantom issues.
+
 ---
 
 ## File Organization
