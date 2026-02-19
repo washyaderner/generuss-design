@@ -1,16 +1,9 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
-import { getAllPosts, isConfigured } from "../lib/contentful";
+import { getAllPosts } from "../lib/blog";
 
 export async function GET(context: APIContext) {
-  let posts = [];
-  if (isConfigured()) {
-    try {
-      posts = await getAllPosts();
-    } catch {
-      posts = [];
-    }
-  }
+  const posts = await getAllPosts();
 
   return rss({
     title: "generuss design - Blog",

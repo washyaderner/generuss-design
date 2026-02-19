@@ -1,98 +1,119 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
+import TimelineBlogLayout from "../../layouts/TimelineBlogLayout.astro";
 import BlogMeta from "../../components/BlogMeta.astro";
 import {
   getAllPosts,
   getPostBySlug,
   getReadingTime,
-  isConfigured,
-} from "../../lib/contentful";
-import { marked } from "marked";
+  renderPost,
+} from "../../lib/blog";
 
 export async function getStaticPaths() {
-  if (!isConfigured()) return [];
-
-  let posts = [];
-  try {
-    posts = await getAllPosts();
-  } catch {
-    return [];
-  }
-
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     params: { slug: post.slug },
   }));
 }
 
 const { slug } = Astro.params;
-const post = await getPostBySlug(slug);
+const result = await getPostBySlug(slug);
 
-if (!post) {
+if (!result) {
   return Astro.redirect("/blog");
 }
 
-const readingTime = getReadingTime(post.content);
-const bodyHtml = await marked.parse(post.content);
+const { post, entry } = result;
+const { Content } = await renderPost(entry);
+const readingTime = getReadingTime(entry.body || "");
+const useTimeline = post.layout === "timeline";
 
 const title = `${post.title} | generuss design`;
 const description = post.excerpt;
 ---
 
-<BlogLayout
-  title={title}
-  description={description}
-  ogImage={post.featuredImage.url}
->
-  <!-- JSON-LD -->
-  <script
-    type="application/ld+json"
-    set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: post.title,
-      description: post.excerpt,
-      image: post.featuredImage.url,
-      datePublished: post.publishDate,
-      author: {
-        "@type": "Person",
-        name: "Russ",
-        url: "https://generussdesign.com",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "generuss design",
-        url: "https://generussdesign.com",
-      },
-    })}
-  />
+{
+  useTimeline && (
+    <TimelineBlogLayout
+      title={title}
+      description={description}
+      ogImage={post.featuredImage}
+    >
+      <Fragment slot="meta">
+        <BlogMeta
+          date={post.publishDate}
+          tags={post.tags}
+          readingTime={readingTime}
+        />
+      </Fragment>
+      <Content />
+    </TimelineBlogLayout>
+  )
+}
 
-  <a href="/blog" class="text-accent hover:underline text-sm mb-8 inline-block"
-    >&larr; Back to Blog</a
-  >
+{
+  !useTimeline && (
+    <BlogLayout
+      title={title}
+      description={description}
+      ogImage={post.featuredImage}
+    >
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: post.title,
+          description: post.excerpt,
+          image: post.featuredImage,
+          datePublished: post.publishDate,
+          author: {
+            "@type": "Person",
+            name: "Russ",
+            url: "https://generussdesign.com",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "generuss design",
+            url: "https://generussdesign.com",
+          },
+        })}
+      />
 
-  <!-- Featured Image -->
-  <div class="neu-raised rounded-2xl overflow-hidden mb-8">
-    <img
-      src={post.featuredImage.url}
-      alt={post.featuredImage.title}
-      width={post.featuredImage.width}
-      height={post.featuredImage.height}
-      class="w-full"
-    />
-  </div>
+      <a
+        href="/blog"
+        class="text-accent hover:underline text-sm mb-8 inline-block"
+      >
+        &larr; Back to Blog
+      </a>
 
-  <!-- Title -->
-  <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">{post.title}</h1>
+      {post.featuredImage !== "/images/placeholder.svg" && (
+        <div class="neu-raised rounded-2xl overflow-hidden mb-8">
+          <img
+            src={post.featuredImage}
+            alt={post.title}
+            width={1200}
+            height={630}
+            class="w-full"
+          />
+        </div>
+      )}
 
-  <!-- Meta -->
-  <div class="mb-8">
-    <BlogMeta
-      date={post.publishDate}
-      tags={post.tags}
-      readingTime={readingTime}
-    />
-  </div>
+      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+        {post.title}
+      </h1>
 
-  <!-- Body -->
-  <article class="prose prose-invert max-w-none" set:html={bodyHtml} />
-</BlogLayout>
+      <div class="mb-8">
+        <BlogMeta
+          date={post.publishDate}
+          tags={post.tags}
+          readingTime={readingTime}
+        />
+      </div>
+
+      <article class="prose prose-invert max-w-none">
+        <Content />
+      </article>
+    </BlogLayout>
+  )
+}
