@@ -1,6 +1,6 @@
 ---
 import BlogMeta from "./BlogMeta.astro";
-import type { BlogPost } from "../lib/contentful";
+import type { BlogPost } from "../lib/blog";
 
 interface Props {
   post: BlogPost;
@@ -15,10 +15,10 @@ const { post } = Astro.props;
 >
   <div class="aspect-video overflow-hidden rounded-t-2xl">
     <img
-      src={post.featuredImage.url}
-      alt={post.featuredImage.title}
-      width={post.featuredImage.width}
-      height={post.featuredImage.height}
+      src={post.featuredImage}
+      alt={post.title}
+      width={1200}
+      height={630}
       loading="lazy"
       class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
     />

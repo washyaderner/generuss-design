@@ -1,24 +1,9 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import BlogCard from "../../components/BlogCard.astro";
-import { getAllPosts, isConfigured } from "../../lib/contentful";
+import { getAllPosts } from "../../lib/blog";
 
-let posts = [];
-let error = null;
-
-if (isConfigured()) {
-  try {
-    posts = await getAllPosts();
-  } catch (e) {
-    // Fail loudly in production when Contentful IS configured but unreachable
-    if (import.meta.env.PROD) {
-      throw new Error(`Contentful API unreachable: ${e}`);
-    }
-    error = e;
-  }
-} else {
-  error = new Error("Contentful not configured");
-}
+const posts = await getAllPosts();
 
 const POSTS_PER_PAGE = 10;
 const page = Number(Astro.url.searchParams.get("page") || "1");
@@ -44,16 +29,7 @@ const paginatedPosts = posts.slice(
   </h1>
 
   {
-    error && (
-      <div class="rounded-xl bg-bg-secondary p-6 text-text-muted">
-        <p>Blog content is currently unavailable. Please check back soon.</p>
-        <p class="text-xs mt-2 font-mono">Connect Contentful to see posts.</p>
-      </div>
-    )
-  }
-
-  {
-    !error && posts.length === 0 && (
+    posts.length === 0 && (
       <div class="rounded-xl bg-bg-secondary p-6 text-text-muted text-center">
         <p>No posts yet. Check back soon.</p>
       </div>
