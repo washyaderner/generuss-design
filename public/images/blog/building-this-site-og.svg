@@ -17,142 +17,6 @@
     </radialGradient>
   </defs>
 
-  <style>
-    /* Rising blobs - slow float upward, drift sideways, loop back down */
-    .b1 { animation: rise1 12s ease-in-out infinite; }
-    .b2 { animation: rise2 15s ease-in-out infinite; }
-    .b3 { animation: rise3 18s ease-in-out infinite; }
-    .b4 { animation: rise4 14s ease-in-out infinite; }
-    .b5 { animation: rise5 16s ease-in-out infinite; }
-    .b6 { animation: rise6 20s ease-in-out infinite; }
-    .b7 { animation: rise7 13s ease-in-out infinite; }
-    .b8 { animation: rise8 17s ease-in-out infinite; }
-    .b9 { animation: rise9 11s ease-in-out infinite; }
-    .b10 { animation: rise10 19s ease-in-out infinite; }
-    .b11 { animation: rise11 14s ease-in-out infinite; }
-    .b12 { animation: rise12 22s ease-in-out infinite; }
-    .b13 { animation: rise13 16s ease-in-out infinite; }
-
-    /* Detaching blobs - wobble up from pool then sink back */
-    .d1 { animation: detach1 8s ease-in-out infinite; }
-    .d2 { animation: detach2 10s ease-in-out infinite; }
-    .d3 { animation: detach3 9s ease-in-out infinite; }
-    .d4 { animation: detach4 7s ease-in-out infinite; }
-
-    /* Pool breathing */
-    .pool { animation: breathe 6s ease-in-out infinite; }
-
-    @keyframes rise1 {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(30px, -120px); }
-      50% { transform: translate(-20px, -200px); }
-      75% { transform: translate(15px, -80px); }
-    }
-    @keyframes rise2 {
-      0%, 100% { transform: translate(0, 0); }
-      30% { transform: translate(-40px, -160px); }
-      60% { transform: translate(25px, -250px); }
-      80% { transform: translate(-10px, -100px); }
-    }
-    @keyframes rise3 {
-      0%, 100% { transform: translate(0, 0); }
-      20% { transform: translate(20px, -80px); }
-      50% { transform: translate(-35px, -180px); }
-      75% { transform: translate(10px, -60px); }
-    }
-    @keyframes rise4 {
-      0%, 100% { transform: translate(0, 0); }
-      35% { transform: translate(-25px, -140px); }
-      65% { transform: translate(30px, -220px); }
-      85% { transform: translate(-15px, -70px); }
-    }
-    @keyframes rise5 {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(35px, -100px); }
-      55% { transform: translate(-20px, -190px); }
-      80% { transform: translate(10px, -50px); }
-    }
-    @keyframes rise6 {
-      0%, 100% { transform: translate(0, 0); }
-      30% { transform: translate(-15px, -130px); }
-      60% { transform: translate(40px, -210px); }
-      85% { transform: translate(-25px, -90px); }
-    }
-    @keyframes rise7 {
-      0%, 100% { transform: translate(0, 0); }
-      20% { transform: translate(25px, -150px); }
-      50% { transform: translate(-30px, -240px); }
-      75% { transform: translate(20px, -110px); }
-    }
-    @keyframes rise8 {
-      0%, 100% { transform: translate(0, 0); }
-      35% { transform: translate(-20px, -90px); }
-      60% { transform: translate(15px, -170px); }
-      80% { transform: translate(-10px, -40px); }
-    }
-    @keyframes rise9 {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(20px, -180px); }
-      55% { transform: translate(-25px, -280px); }
-      80% { transform: translate(15px, -120px); }
-    }
-    @keyframes rise10 {
-      0%, 100% { transform: translate(0, 0); }
-      30% { transform: translate(-30px, -110px); }
-      55% { transform: translate(20px, -160px); }
-      80% { transform: translate(-10px, -60px); }
-    }
-    @keyframes rise11 {
-      0%, 100% { transform: translate(0, 0); }
-      20% { transform: translate(15px, -140px); }
-      50% { transform: translate(-20px, -200px); }
-      75% { transform: translate(25px, -80px); }
-    }
-    @keyframes rise12 {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(-25px, -100px); }
-      50% { transform: translate(30px, -180px); }
-      80% { transform: translate(-15px, -50px); }
-    }
-    @keyframes rise13 {
-      0%, 100% { transform: translate(0, 0); }
-      30% { transform: translate(20px, -160px); }
-      60% { transform: translate(-30px, -230px); }
-      85% { transform: translate(10px, -90px); }
-    }
-
-    @keyframes detach1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      40% { transform: translate(10px, -80px) scale(0.9); }
-      70% { transform: translate(-5px, -40px) scale(1.05); }
-    }
-    @keyframes detach2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      35% { transform: translate(-15px, -100px) scale(0.85); }
-      65% { transform: translate(8px, -50px) scale(1.1); }
-    }
-    @keyframes detach3 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      45% { transform: translate(12px, -70px) scale(0.9); }
-      75% { transform: translate(-8px, -30px) scale(1.05); }
-    }
-    @keyframes detach4 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      30% { transform: translate(-10px, -90px) scale(0.85); }
-      60% { transform: translate(15px, -45px) scale(1.1); }
-    }
-
-    @keyframes breathe {
-      0%, 100% { transform: scaleX(1) scaleY(1); }
-      50% { transform: scaleX(1.03) scaleY(0.92); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8,.b9,.b10,.b11,.b12,.b13,
-      .d1,.d2,.d3,.d4,.pool { animation: none; }
-    }
-  </style>
-
   <!-- Dark background -->
   <rect width="1200" height="630" fill="#1a1a1e"/>
 
@@ -161,33 +25,97 @@
 
   <!-- Lava lamp blobs with goo filter -->
   <g filter="url(#goo)">
+
     <!-- Bottom pool -->
-    <ellipse class="pool" cx="600" cy="620" rx="500" ry="60" fill="#00FFEF" opacity="0.7"/>
+    <ellipse cx="600" cy="620" rx="500" ry="60" fill="#00FFEF" opacity="0.7">
+      <animateTransform attributeName="transform" type="scale" values="1 1; 1.03 0.92; 1 1" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
 
-    <!-- Rising blobs - large -->
-    <circle class="b1" cx="420" cy="380" r="55" fill="#00FFEF" opacity="0.75"/>
-    <circle class="b2" cx="580" cy="320" r="48" fill="#00FFEF" opacity="0.65"/>
-    <circle class="b3" cx="700" cy="400" r="60" fill="#00FFEF" opacity="0.7"/>
-    <circle class="b4" cx="500" cy="460" r="52" fill="#00FFEF" opacity="0.8"/>
+    <!-- Rising blob 1 - large -->
+    <circle cx="420" cy="380" r="55" fill="#00FFEF" opacity="0.75">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 30,-120; -20,-200; 15,-80; 0,0" dur="12s" repeatCount="indefinite"/>
+    </circle>
 
-    <!-- Rising blobs - medium -->
-    <circle class="b5" cx="350" cy="490" r="38" fill="#00FFEF" opacity="0.7"/>
-    <circle class="b6" cx="780" cy="350" r="35" fill="#00FFEF" opacity="0.55"/>
-    <circle class="b7" cx="640" cy="280" r="32" fill="#00FFEF" opacity="0.5"/>
-    <circle class="b8" cx="460" cy="300" r="30" fill="#00FFEF" opacity="0.45"/>
+    <!-- Rising blob 2 - large -->
+    <circle cx="580" cy="320" r="48" fill="#00FFEF" opacity="0.65">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -40,-160; 25,-250; -10,-100; 0,0" dur="15s" repeatCount="indefinite"/>
+    </circle>
 
-    <!-- Rising blobs - small -->
-    <circle class="b9" cx="830" cy="470" r="25" fill="#00FFEF" opacity="0.65"/>
-    <circle class="b10" cx="300" cy="380" r="22" fill="#00FFEF" opacity="0.5"/>
-    <circle class="b11" cx="720" cy="250" r="20" fill="#00FFEF" opacity="0.4"/>
-    <circle class="b12" cx="550" cy="220" r="18" fill="#00FFEF" opacity="0.35"/>
-    <circle class="b13" cx="400" cy="260" r="15" fill="#00FFEF" opacity="0.3"/>
+    <!-- Rising blob 3 - large -->
+    <circle cx="700" cy="400" r="60" fill="#00FFEF" opacity="0.7">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 20,-80; -35,-180; 10,-60; 0,0" dur="18s" repeatCount="indefinite"/>
+    </circle>
 
-    <!-- Detaching blobs near pool -->
-    <circle class="d1" cx="520" cy="550" r="40" fill="#00FFEF" opacity="0.8"/>
-    <circle class="d2" cx="680" cy="555" r="35" fill="#00FFEF" opacity="0.75"/>
-    <circle class="d3" cx="380" cy="560" r="30" fill="#00FFEF" opacity="0.7"/>
-    <circle class="d4" cx="760" cy="540" r="28" fill="#00FFEF" opacity="0.65"/>
+    <!-- Rising blob 4 - large -->
+    <circle cx="500" cy="460" r="52" fill="#00FFEF" opacity="0.8">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -25,-140; 30,-220; -15,-70; 0,0" dur="14s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 5 - medium -->
+    <circle cx="350" cy="490" r="38" fill="#00FFEF" opacity="0.7">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 35,-100; -20,-190; 10,-50; 0,0" dur="16s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 6 - medium -->
+    <circle cx="780" cy="350" r="35" fill="#00FFEF" opacity="0.55">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -15,-130; 40,-210; -25,-90; 0,0" dur="20s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 7 - medium -->
+    <circle cx="640" cy="280" r="32" fill="#00FFEF" opacity="0.5">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 25,-150; -30,-240; 20,-110; 0,0" dur="13s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 8 - medium -->
+    <circle cx="460" cy="300" r="30" fill="#00FFEF" opacity="0.45">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -20,-90; 15,-170; -10,-40; 0,0" dur="17s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 9 - small -->
+    <circle cx="830" cy="470" r="25" fill="#00FFEF" opacity="0.65">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 20,-180; -25,-280; 15,-120; 0,0" dur="11s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 10 - small -->
+    <circle cx="300" cy="380" r="22" fill="#00FFEF" opacity="0.5">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -30,-110; 20,-160; -10,-60; 0,0" dur="19s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 11 - small -->
+    <circle cx="720" cy="250" r="20" fill="#00FFEF" opacity="0.4">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 15,-140; -20,-200; 25,-80; 0,0" dur="14s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 12 - tiny -->
+    <circle cx="550" cy="220" r="18" fill="#00FFEF" opacity="0.35">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -25,-100; 30,-180; -15,-50; 0,0" dur="22s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rising blob 13 - tiny -->
+    <circle cx="400" cy="260" r="15" fill="#00FFEF" opacity="0.3">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 20,-160; -30,-230; 10,-90; 0,0" dur="16s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Detaching blob 1 -->
+    <circle cx="520" cy="550" r="40" fill="#00FFEF" opacity="0.8">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 10,-80; -5,-40; 0,0" dur="8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Detaching blob 2 -->
+    <circle cx="680" cy="555" r="35" fill="#00FFEF" opacity="0.75">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -15,-100; 8,-50; 0,0" dur="10s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Detaching blob 3 -->
+    <circle cx="380" cy="560" r="30" fill="#00FFEF" opacity="0.7">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 12,-70; -8,-30; 0,0" dur="9s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Detaching blob 4 -->
+    <circle cx="760" cy="540" r="28" fill="#00FFEF" opacity="0.65">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -10,-90; 15,-45; 0,0" dur="7s" repeatCount="indefinite"/>
+    </circle>
+
   </g>
 
   <!-- Subtle vignette -->
