@@ -26,8 +26,8 @@
   <!-- Lava lamp blobs with goo filter -->
   <g filter="url(#goo)">
 
-    <!-- Bottom pool -->
-    <ellipse cx="600" cy="620" rx="500" ry="60" fill="#00FFEF" opacity="0.7"/>
+    <!-- Bottom pool - curved top, fills to both bottom corners -->
+    <path d="M 0,630 L 0,595 Q 600,535 1200,595 L 1200,630 Z" fill="#00FFEF" opacity="0.7"/>
 
     <!-- Rising blob 1 - large -->
     <circle cx="420" cy="380" r="55" fill="#00FFEF" opacity="0.75">
