@@ -445,11 +445,15 @@ function setupPrinciples(isMobile, isTablet) {
     });
   }
 
+  // Measure nav height so the pin clears the fixed navbar
+  const nav = document.getElementById("site-nav");
+  const navHeight = nav ? nav.offsetHeight : 0;
+
   // Scrub timeline - subheading, cards, fade-out
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".principles-pin",
-      start: "top top",
+      start: `top ${navHeight}`,
       end: "+=200%",
       pin: true,
       scrub: 0.5,
