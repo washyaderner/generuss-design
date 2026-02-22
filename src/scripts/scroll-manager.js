@@ -297,7 +297,7 @@ function setupProblemSolution(isMobile) {
             sol.style.opacity = p > 0.3 ? "1" : `${p / 0.3}`;
 
             if (problems[i]) {
-              problems[i].style.opacity = 0.5 + p * 0.5;
+              problems[i].style.opacity = 0.85 + p * 0.15;
             }
           },
         });
@@ -346,7 +346,7 @@ function setupProblemSolution(isMobile) {
                 localProgress > 0.3 ? "1" : `${localProgress / 0.3}`;
 
               if (problems[i]) {
-                problems[i].style.opacity = 0.5 + localProgress * 0.5;
+                problems[i].style.opacity = 0.85 + localProgress * 0.15;
               }
             }
           });
@@ -380,7 +380,7 @@ function setupProblemSolution(isMobile) {
             sol.style.opacity = "0";
           });
           problems.forEach((prob) => {
-            prob.style.opacity = "0.5";
+            prob.style.opacity = "0.85";
           });
         },
       });

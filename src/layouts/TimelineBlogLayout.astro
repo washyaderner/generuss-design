@@ -73,13 +73,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       /* Sidebar */
       .tl-sidebar {
         position: sticky;
-        top: 5rem;
+        top: 4rem;
         width: 300px;
         min-width: 300px;
-        height: fit-content;
-        max-height: calc(100vh - 6rem);
+        height: calc(100vh - 4rem);
         overflow-y: auto;
-        padding: 1.5rem 0;
+        padding: 1rem 0;
 
         /* Hide scrollbar */
         scrollbar-width: none;
@@ -126,12 +125,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       .tl-timeline {
         position: relative;
         padding-left: 50px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 400px;
       }
 
       /* Day node */
       .tl-day {
         position: relative;
-        margin-bottom: 1.5rem;
         opacity: 0.4;
         transition: opacity 0.4s ease;
       }
@@ -178,9 +181,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       /* Milestone items */
       .tl-milestone {
         position: relative;
-        padding: 0.5rem 0;
+        padding: 0.3rem 0;
         padding-left: 0;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.15rem;
         opacity: 0.3;
         transition: opacity 0.4s ease;
       }
@@ -277,69 +280,63 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             <div class="tl-line-track"></div>
             <div class="tl-line-fill" id="tl-line-fill"></div>
 
-            <!-- Day 1 -->
-            <div class="tl-day" data-day="1">
+            <!-- Phase 1: Planning -->
+            <div class="tl-day" data-phase="1">
               <div class="tl-day__circle">01</div>
-              <div class="tl-day__title">Foundation</div>
-              <div class="tl-day__date">Feb 15</div>
+              <div class="tl-day__title">Planning</div>
+              <div class="tl-day__date">The Idea</div>
             </div>
-            <div class="tl-milestone" data-day="1">
+            <div class="tl-milestone" data-phase="1">
               <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Full scaffold</div>
+              <div class="tl-milestone__title">Brain dump</div>
             </div>
-            <div class="tl-milestone" data-day="1">
+            <div class="tl-milestone" data-phase="1">
               <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Config sprint</div>
-            </div>
-            <div class="tl-milestone" data-day="1">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">QA infrastructure</div>
-            </div>
-            <div class="tl-milestone" data-day="1">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">First deploy</div>
+              <div class="tl-milestone__title">The failure</div>
             </div>
 
-            <!-- Day 2 -->
-            <div class="tl-day" data-day="2" style="margin-top: 1.5rem;">
+            <!-- Phase 2: The Brief -->
+            <div class="tl-day" data-phase="2">
               <div class="tl-day__circle">02</div>
-              <div class="tl-day__title">Craft</div>
-              <div class="tl-day__date">Feb 16</div>
+              <div class="tl-day__title">The Brief</div>
+              <div class="tl-day__date">Iteration</div>
             </div>
-            <div class="tl-milestone" data-day="2">
+            <div class="tl-milestone" data-phase="2">
               <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Critical QA pass</div>
+              <div class="tl-milestone__title">V2 planning</div>
             </div>
-            <div class="tl-milestone" data-day="2">
+            <div class="tl-milestone" data-phase="2">
               <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Design overhaul</div>
+              <div class="tl-milestone__title">Section 2 saga</div>
             </div>
-            <div class="tl-milestone" data-day="2">
+            <div class="tl-milestone" data-phase="2">
               <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Animation push</div>
-            </div>
-            <div class="tl-milestone" data-day="2">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Major restructure</div>
+              <div class="tl-milestone__title">V3-V5 evolution</div>
             </div>
 
-            <!-- Day 3 -->
-            <div class="tl-day" data-day="3" style="margin-top: 1.5rem;">
+            <!-- Phase 3: The Build -->
+            <div class="tl-day" data-phase="3">
               <div class="tl-day__circle">03</div>
-              <div class="tl-day__title">Ship</div>
-              <div class="tl-day__date">Feb 17</div>
+              <div class="tl-day__title">The Build</div>
+              <div class="tl-day__date">30 Hours</div>
             </div>
-            <div class="tl-milestone" data-day="3">
+            <div class="tl-milestone" data-phase="3">
               <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Rapid-fire fixes</div>
+              <div class="tl-milestone__title">Day 1: Foundation</div>
             </div>
-            <div class="tl-milestone" data-day="3">
+            <div class="tl-milestone" data-phase="3">
               <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Cal.com rebuild</div>
+              <div class="tl-milestone__title">Day 2: Craft</div>
             </div>
-            <div class="tl-milestone" data-day="3">
+            <div class="tl-milestone" data-phase="3">
               <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Final polish</div>
+              <div class="tl-milestone__title">Day 3: Ship</div>
+            </div>
+
+            <!-- Phase 4: Reflection -->
+            <div class="tl-day" data-phase="4">
+              <div class="tl-day__circle">04</div>
+              <div class="tl-day__title">Reflection</div>
             </div>
           </div>
         </aside>
@@ -379,6 +376,29 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         const mobileProgress = document.getElementById("mobile-progress");
 
         if (article && lineFill) {
+          // Position line between first and last circle centers (no nubs)
+          const lineTrack = document.querySelector(
+            ".tl-line-track",
+          ) as HTMLElement;
+          const allCircles = document.querySelectorAll(".tl-day__circle");
+          const tlTimeline = document.querySelector(".tl-timeline");
+          if (allCircles.length >= 2 && tlTimeline && lineTrack) {
+            const timelineRect = tlTimeline.getBoundingClientRect();
+            const firstRect = allCircles[0].getBoundingClientRect();
+            const lastRect =
+              allCircles[allCircles.length - 1].getBoundingClientRect();
+            const topPos =
+              firstRect.top + firstRect.height / 2 - timelineRect.top;
+            const bottomPos =
+              lastRect.top + lastRect.height / 2 - timelineRect.top;
+            const lineHeight = bottomPos - topPos;
+
+            lineTrack.style.top = `${topPos}px`;
+            lineTrack.style.height = `${lineHeight}px`;
+            lineFill.style.top = `${topPos}px`;
+            lineFill.style.height = `${lineHeight}px`;
+          }
+
           // Overall scroll progress drives the timeline line
           ScrollTrigger.create({
             trigger: article,
@@ -396,64 +416,67 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             },
           });
 
-          // Day section activation - look for H2s with "day" in their ID or text
+          // Phase section activation
           const headings = article.querySelectorAll("h2");
           const dayNodes = document.querySelectorAll(".tl-day");
           const milestones = document.querySelectorAll(".tl-milestone");
 
-          // Map headings to day numbers based on order
-          // First H2 group = day 1, etc.
-          let currentDayIndex = 0;
-          const dayHeadings: { el: HTMLElement; day: number }[] = [];
+          let currentPhase = 0;
+          const phaseHeadings: { el: HTMLElement; phase: number }[] = [];
 
           headings.forEach((h2) => {
             const text = h2.textContent?.toLowerCase() || "";
-            if (text.includes("day 1") || text.includes("foundation")) {
-              currentDayIndex = 1;
-            } else if (text.includes("day 2") || text.includes("marathon")) {
-              currentDayIndex = 2;
-            } else if (text.includes("day 3") || text.includes("ship")) {
-              currentDayIndex = 3;
+            if (text.includes("brain dump")) {
+              currentPhase = 1;
+            } else if (
+              text.includes("v2") ||
+              text.includes("actually planning")
+            ) {
+              currentPhase = 2;
+            } else if (
+              text.includes("30-hour") ||
+              text.includes("build weekend")
+            ) {
+              currentPhase = 3;
+            } else if (text.includes("numbers")) {
+              currentPhase = 4;
             }
-            if (currentDayIndex > 0) {
-              dayHeadings.push({ el: h2 as HTMLElement, day: currentDayIndex });
+            if (currentPhase > 0) {
+              phaseHeadings.push({
+                el: h2 as HTMLElement,
+                phase: currentPhase,
+              });
             }
           });
 
-          // Create ScrollTriggers for each day heading
-          dayHeadings.forEach(({ el, day }) => {
+          // Create ScrollTriggers for each phase heading
+          phaseHeadings.forEach(({ el, phase }) => {
             ScrollTrigger.create({
               trigger: el,
               start: "top 60%",
               end: "bottom 20%",
-              onEnter: () => activateDay(day),
-              onEnterBack: () => activateDay(day),
+              onEnter: () => activatePhase(phase),
+              onEnterBack: () => activatePhase(phase),
             });
           });
 
-          function activateDay(day: number) {
-            // Activate matching day nodes
+          function activatePhase(phase: number) {
             dayNodes.forEach((node) => {
-              const nodeDayAttr = node.getAttribute("data-day");
-              if (nodeDayAttr) {
-                const nodeDay = parseInt(nodeDayAttr);
-                node.classList.toggle("active", nodeDay <= day);
-              }
+              const nodePhase = parseInt(
+                node.getAttribute("data-phase") || "0",
+              );
+              node.classList.toggle("active", nodePhase <= phase);
             });
 
-            // Activate milestones for current and previous days
             milestones.forEach((ms) => {
-              const msDayAttr = ms.getAttribute("data-day");
-              if (msDayAttr) {
-                const msDay = parseInt(msDayAttr);
-                ms.classList.toggle("active", msDay <= day);
-              }
+              const msPhase = parseInt(ms.getAttribute("data-phase") || "0");
+              ms.classList.toggle("active", msPhase <= phase);
             });
           }
 
-          // Activate day 1 on load if article is visible
+          // Activate phase 1 on load if article is visible
           if (article.getBoundingClientRect().top < window.innerHeight) {
-            activateDay(1);
+            activatePhase(1);
           }
         }
       }
