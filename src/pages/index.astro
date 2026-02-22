@@ -1521,6 +1521,12 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
   <Footer />
 
   <script>
-    import "../scripts/scroll-manager.js";
+    const initAnimations = () => import("../scripts/scroll-manager.js");
+
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(initAnimations, { timeout: 2000 });
+    } else {
+      setTimeout(initAnimations, 200);
+    }
   </script>
 </BaseLayout>
