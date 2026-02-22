@@ -66,8 +66,9 @@ export function textReveal(selector, options = {}) {
  */
 export function initLavaLamp(containerSelector, options = {}) {
   const {
-    count = 28,
-    sizeRange = [50, 180],
+    mobile = false,
+    count = mobile ? 10 : 28,
+    sizeRange = mobile ? [40, 120] : [50, 180],
     hue = 176,
     satRange = [85, 100],
     lightRange = [30, 60],
@@ -81,6 +82,8 @@ export function initLavaLamp(containerSelector, options = {}) {
   if (!container) return null;
 
   const h = container.offsetHeight;
+  if (h === 0) return null;
+
   const allEls = [];
 
   // Pool blob at bottom - blobs merge into/out of this
@@ -123,7 +126,7 @@ export function initLavaLamp(containerSelector, options = {}) {
       background: hsl(${hue}, ${sat}%, ${light}%);
       bottom: ${gsap.utils.random(-5, 10)}%;
       left: ${gsap.utils.random(10, 90)}%;
-      will-change: transform;
+      ${mobile ? "" : "will-change: transform;"}
     `;
     container.appendChild(blob);
     blobs.push(blob);
@@ -158,7 +161,8 @@ export function initLavaLamp(containerSelector, options = {}) {
   blobs.forEach((blob) => animateBlob(blob));
 
   // A few extra blobs sit in the pool, then detach and rise after 1-4s
-  for (let i = 0; i < 5; i++) {
+  const delayedCount = mobile ? 2 : 5;
+  for (let i = 0; i < delayedCount; i++) {
     const blob = document.createElement("div");
     const size = gsap.utils.random(sizeRange[0], sizeRange[1]);
     const sat = gsap.utils.random(satRange[0], satRange[1]);
@@ -172,7 +176,7 @@ export function initLavaLamp(containerSelector, options = {}) {
       background: hsl(${hue}, ${sat}%, ${light}%);
       bottom: ${gsap.utils.random(-5, 10)}%;
       left: ${gsap.utils.random(15, 85)}%;
-      will-change: transform;
+      ${mobile ? "" : "will-change: transform;"}
     `;
     container.appendChild(blob);
     allEls.push(blob);
