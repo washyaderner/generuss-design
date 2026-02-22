@@ -64,12 +64,12 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
             ></feColorMatrix>
           </filter>
           <filter id="goo-mobile">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"
             ></feGaussianBlur>
             <feColorMatrix
               in="blur"
               mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 10 -4"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 14 -5"
             ></feColorMatrix>
           </filter>
         </defs>
@@ -1067,11 +1067,11 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
     <section id="principles" class="bg-bg-secondary">
       <!-- Pinned Principles -->
       <div
-        class="principles-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20"
+        class="principles-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20 pt-20"
       >
         <!-- Section Header -->
         <h2
-          class="principles-heading gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black pt-8 sm:pt-12 pb-3 sm:pb-4"
+          class="principles-heading gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black pb-3 sm:pb-4"
         >
           What Makes a Website <span class="text-accent">Actually Good?</span>
         </h2>
