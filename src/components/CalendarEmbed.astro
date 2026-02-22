@@ -7,7 +7,7 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
 ---
 
 <div
-  class="cal-embed-wrapper gsap-hidden relative rounded-2xl overflow-hidden neu-raised bg-bg-secondary"
+  class="cal-embed-wrapper gsap-hidden relative flex flex-col rounded-2xl overflow-hidden neu-raised bg-bg-secondary h-[500px] md:h-[620px]"
 >
   <!-- Loading skeleton -->
   <div
@@ -37,9 +37,17 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
     >
   </div>
 
+  <!-- Mobile-only header (event details hidden via Cal.com param on mobile) -->
+  <div
+    class="sm:hidden flex items-center justify-between px-4 py-3 text-sm text-[#a5a5a5] border-b border-white/5"
+  >
+    <span class="font-medium text-white">Russ Gardner</span>
+    <span>15 min &middot; Pacific Time</span>
+  </div>
+
   <!-- iframe container: cropped viewport into Cal.com, offset to trim top whitespace -->
   <div
-    class="cal-iframe-container relative overflow-hidden h-[500px] md:h-[620px]"
+    class="cal-iframe-container relative overflow-hidden flex-1 md:h-[620px]"
   >
     <iframe
       id="cal-iframe"
@@ -51,6 +59,32 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
       loading="lazy"
       frameborder="0"
       title="Book a discovery call with Generuss Design"></iframe>
+  </div>
+
+  <!-- Mobile-only footer with remaining event details -->
+  <div
+    class="sm:hidden flex items-center justify-between px-4 py-3 text-sm text-[#a5a5a5] border-t border-white/5"
+  >
+    <span class="font-medium text-white">Discovery Call</span>
+    <span class="flex items-center gap-1.5">
+      <svg
+        class="w-3.5 h-3.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><polygon points="23 7 16 12 23 17 23 7"></polygon><rect
+          x="1"
+          y="5"
+          width="15"
+          height="14"
+          rx="2"
+          ry="2"></rect></svg
+      >
+      Google Meet
+    </span>
   </div>
 </div>
 
@@ -79,7 +113,9 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
           loaded = true;
           observer.disconnect();
 
-          iframe.src = url;
+          var isMobile = window.innerWidth < 640;
+          var embedUrl = url + (isMobile ? "?hideEventTypeDetails=true" : "");
+          iframe.src = embedUrl;
 
           iframe.addEventListener("load", function () {
             if (skeleton) skeleton.style.display = "none";
