@@ -124,7 +124,7 @@ export function initLavaLamp(containerSelector, options = {}) {
       height: ${size}px;
       border-radius: 50%;
       background: hsl(${hue}, ${sat}%, ${light}%);
-      bottom: ${gsap.utils.random(-5, 10)}%;
+      bottom: ${gsap.utils.random(-5, mobile ? 3 : 10)}%;
       left: ${gsap.utils.random(10, 90)}%;
       ${mobile ? "" : "will-change: transform;"}
     `;
@@ -147,7 +147,7 @@ export function initLavaLamp(containerSelector, options = {}) {
       onComplete: () => {
         // Fall phase - return to bottom pool
         gsap.to(blob, {
-          y: gsap.utils.random(0, 20),
+          y: gsap.utils.random(mobile ? 20 : 0, mobile ? 50 : 20),
           x: gsap.utils.random(-wobbleX * 0.3, wobbleX * 0.3),
           scale: gsap.utils.random(scaleRange[0], scaleRange[1]),
           duration: gsap.utils.random(fallDuration[0], fallDuration[1]),
@@ -174,7 +174,7 @@ export function initLavaLamp(containerSelector, options = {}) {
       height: ${size}px;
       border-radius: 50%;
       background: hsl(${hue}, ${sat}%, ${light}%);
-      bottom: ${gsap.utils.random(-5, 10)}%;
+      bottom: ${gsap.utils.random(-5, mobile ? 3 : 10)}%;
       left: ${gsap.utils.random(15, 85)}%;
       ${mobile ? "" : "will-change: transform;"}
     `;
