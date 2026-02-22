@@ -87,14 +87,15 @@ export function initLavaLamp(containerSelector, options = {}) {
   const allEls = [];
 
   // Pool blob at bottom - blobs merge into/out of this
+  const poolHeight = mobile ? 140 : 80;
   const pool = document.createElement("div");
   pool.style.cssText = `
     position: absolute;
     width: 120%;
-    height: 80px;
+    height: ${poolHeight}px;
     border-radius: 50%;
     background: hsl(176, 100%, 47%);
-    bottom: -40px;
+    bottom: -${poolHeight / 2}px;
     left: -10%;
     will-change: transform;
   `;
