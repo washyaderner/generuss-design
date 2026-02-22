@@ -38,6 +38,7 @@ const description = post.excerpt;
       title={title}
       description={description}
       ogImage={post.featuredImage}
+      timeline={post.timeline || []}
     >
       <Fragment slot="meta">
         <BlogMeta
