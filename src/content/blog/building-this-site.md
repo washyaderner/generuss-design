@@ -5,6 +5,30 @@ publishDate: "2026-02-18"
 tags: ["case study", "web design", "AI-assisted development"]
 featuredImage: "/images/blog/building-this-site-og.svg"
 layout: timeline
+timeline:
+  - phase: 1
+    title: "Planning"
+    subtitle: "The Idea"
+    milestones:
+      - "Brain dump"
+      - "The failure"
+  - phase: 2
+    title: "The Brief"
+    subtitle: "Iteration"
+    milestones:
+      - "V2 planning"
+      - "Section 2 saga"
+      - "V3-V5 evolution"
+  - phase: 3
+    title: "The Build"
+    subtitle: "30 Hours"
+    milestones:
+      - "Day 1: Foundation"
+      - "Day 2: Craft"
+      - "Day 3: Ship"
+  - phase: 4
+    title: "Reflection"
+    milestones: []
 ---
 
 # How I Built a Full Website in 30 Hours (After Failing Spectacularly the First Time)

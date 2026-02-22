@@ -797,9 +797,56 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       const modalImg = document.getElementById("modal-img") as HTMLImageElement;
 
       let spinnerTimeout: ReturnType<typeof setTimeout> | null = null;
+      let currentCard: HTMLElement | null = null;
 
       function isDesktop() {
         return window.innerWidth >= 768;
+      }
+
+      function switchToImageMode(card: HTMLElement) {
+        // Kill iframe
+        if (modalIframe) {
+          modalIframe.src = "";
+          modalIframe.onload = null;
+          modalIframe.onerror = null;
+        }
+        if (spinnerTimeout) {
+          clearTimeout(spinnerTimeout);
+          spinnerTimeout = null;
+        }
+
+        // Hide iframe mode
+        iframeMode?.classList.add("hidden");
+        iframeMode?.classList.remove("flex");
+
+        // Populate image mode from card data
+        const title = card.dataset.title || "";
+        const desc = card.dataset.description || "";
+        const url = card.dataset.url || "#";
+        const imgSrc = card.dataset.imageDesktop || card.dataset.imageMobile;
+        const stack = (card.dataset.stack || "")
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        if (modalTitleMobile) modalTitleMobile.textContent = title;
+        if (modalDesc) modalDesc.textContent = desc;
+        if (modalLinkMobile) modalLinkMobile.href = url;
+        if (modalImg && imgSrc) {
+          modalImg.src = imgSrc;
+          modalImg.alt = `${title} screenshot`;
+        }
+        if (modalStack) {
+          modalStack.innerHTML = stack
+            .map(
+              (t) =>
+                `<span class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent">${t}</span>`,
+            )
+            .join("");
+        }
+
+        // Show image mode
+        imageMode?.classList.remove("hidden");
       }
 
       function openModal(card: HTMLElement) {
@@ -813,6 +860,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 
         if (isDesktop()) {
           // Iframe mode
+          currentCard = card;
           iframeMode?.classList.remove("hidden");
           iframeMode?.classList.add("flex");
           imageMode?.classList.add("hidden");
@@ -824,17 +872,32 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           // Show spinner, load iframe
           modalSpinner?.classList.remove("hidden");
           if (modalIframe) {
+            modalIframe.onerror = () => {
+              if (currentCard) switchToImageMode(currentCard);
+            };
             modalIframe.onload = () => {
-              modalSpinner?.classList.add("hidden");
-              if (spinnerTimeout) clearTimeout(spinnerTimeout);
+              // Allow 100ms for the frame to settle (Safari needs this)
+              setTimeout(() => {
+                try {
+                  // Cross-origin success: accessing contentDocument throws SecurityError
+                  const _doc = modalIframe.contentDocument;
+                  // If we get here without error, the browser rendered its own error page
+                  // (CSP block, X-Frame-Options deny, etc.)
+                  if (currentCard) switchToImageMode(currentCard);
+                } catch (_e) {
+                  // SecurityError = cross-origin content loaded successfully
+                  modalSpinner?.classList.add("hidden");
+                  if (spinnerTimeout) clearTimeout(spinnerTimeout);
+                }
+              }, 100);
             };
             modalIframe.src = url;
           }
 
-          // Fallback: hide spinner after 8s even if onload doesn't fire
+          // Fallback: switch to image mode after 5s if neither event fires
           spinnerTimeout = setTimeout(() => {
-            modalSpinner?.classList.add("hidden");
-          }, 8000);
+            if (currentCard) switchToImageMode(currentCard);
+          }, 5000);
         } else {
           // Image mode (mobile)
           imageMode?.classList.remove("hidden");
@@ -882,7 +945,9 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         if (modalIframe) {
           modalIframe.src = "";
           modalIframe.onload = null;
+          modalIframe.onerror = null;
         }
+        currentCard = null;
         if (spinnerTimeout) {
           clearTimeout(spinnerTimeout);
           spinnerTimeout = null;

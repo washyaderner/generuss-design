@@ -2,16 +2,25 @@
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 
+interface TimelinePhase {
+  phase: number;
+  title: string;
+  subtitle?: string;
+  milestones: string[];
+}
+
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  timeline: TimelinePhase[];
 }
 
 const {
   title,
   description = "Blog | generuss design",
   ogImage = "/og-default.png",
+  timeline = [],
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -280,64 +289,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             <div class="tl-line-track"></div>
             <div class="tl-line-fill" id="tl-line-fill"></div>
 
-            <!-- Phase 1: Planning -->
-            <div class="tl-day" data-phase="1">
-              <div class="tl-day__circle">01</div>
-              <div class="tl-day__title">Planning</div>
-              <div class="tl-day__date">The Idea</div>
-            </div>
-            <div class="tl-milestone" data-phase="1">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Brain dump</div>
-            </div>
-            <div class="tl-milestone" data-phase="1">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">The failure</div>
-            </div>
-
-            <!-- Phase 2: The Brief -->
-            <div class="tl-day" data-phase="2">
-              <div class="tl-day__circle">02</div>
-              <div class="tl-day__title">The Brief</div>
-              <div class="tl-day__date">Iteration</div>
-            </div>
-            <div class="tl-milestone" data-phase="2">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">V2 planning</div>
-            </div>
-            <div class="tl-milestone" data-phase="2">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Section 2 saga</div>
-            </div>
-            <div class="tl-milestone" data-phase="2">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">V3-V5 evolution</div>
-            </div>
-
-            <!-- Phase 3: The Build -->
-            <div class="tl-day" data-phase="3">
-              <div class="tl-day__circle">03</div>
-              <div class="tl-day__title">The Build</div>
-              <div class="tl-day__date">30 Hours</div>
-            </div>
-            <div class="tl-milestone" data-phase="3">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Day 1: Foundation</div>
-            </div>
-            <div class="tl-milestone" data-phase="3">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Day 2: Craft</div>
-            </div>
-            <div class="tl-milestone" data-phase="3">
-              <div class="tl-milestone__dot"></div>
-              <div class="tl-milestone__title">Day 3: Ship</div>
-            </div>
-
-            <!-- Phase 4: Reflection -->
-            <div class="tl-day" data-phase="4">
-              <div class="tl-day__circle">04</div>
-              <div class="tl-day__title">Reflection</div>
-            </div>
+            {
+              timeline.map((phase) => (
+                <>
+                  <div class="tl-day" data-phase={phase.phase}>
+                    <div class="tl-day__circle">
+                      {String(phase.phase).padStart(2, "0")}
+                    </div>
+                    <div class="tl-day__title">{phase.title}</div>
+                    {phase.subtitle && (
+                      <div class="tl-day__date">{phase.subtitle}</div>
+                    )}
+                  </div>
+                  {phase.milestones.map((ms) => (
+                    <div class="tl-milestone" data-phase={phase.phase}>
+                      <div class="tl-milestone__dot" />
+                      <div class="tl-milestone__title">{ms}</div>
+                    </div>
+                  ))}
+                </>
+              ))
+            }
           </div>
         </aside>
 
@@ -359,6 +331,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </div>
       </div>
     </main>
+
+    <script
+      id="timeline-data"
+      type="application/json"
+      set:html={JSON.stringify({ phaseCount: timeline.length })}
+    />
 
     <Footer />
 
@@ -416,38 +394,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             },
           });
 
-          // Phase section activation
-          const headings = article.querySelectorAll("h2");
+          // Phase section activation (position-based)
+          const timelineData = JSON.parse(
+            document.getElementById("timeline-data")?.textContent || "{}",
+          );
+          const phaseCount = timelineData.phaseCount || 1;
+          const headings = Array.from(article.querySelectorAll("h2"));
+          const headingsPerPhase = headings.length / phaseCount;
           const dayNodes = document.querySelectorAll(".tl-day");
           const milestones = document.querySelectorAll(".tl-milestone");
 
-          let currentPhase = 0;
-          const phaseHeadings: { el: HTMLElement; phase: number }[] = [];
-
-          headings.forEach((h2) => {
-            const text = h2.textContent?.toLowerCase() || "";
-            if (text.includes("brain dump")) {
-              currentPhase = 1;
-            } else if (
-              text.includes("v2") ||
-              text.includes("actually planning")
-            ) {
-              currentPhase = 2;
-            } else if (
-              text.includes("30-hour") ||
-              text.includes("build weekend")
-            ) {
-              currentPhase = 3;
-            } else if (text.includes("numbers")) {
-              currentPhase = 4;
-            }
-            if (currentPhase > 0) {
-              phaseHeadings.push({
-                el: h2 as HTMLElement,
-                phase: currentPhase,
-              });
-            }
-          });
+          const phaseHeadings = headings.map((h2, i) => ({
+            el: h2 as HTMLElement,
+            phase: Math.min(Math.floor(i / headingsPerPhase) + 1, phaseCount),
+          }));
 
           // Create ScrollTriggers for each phase heading
           phaseHeadings.forEach(({ el, phase }) => {

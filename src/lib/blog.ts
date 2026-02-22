@@ -1,5 +1,12 @@
 import { getCollection, getEntry, render } from "astro:content";
 
+export interface TimelinePhase {
+  phase: number;
+  title: string;
+  subtitle?: string;
+  milestones: string[];
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -8,6 +15,7 @@ export interface BlogPost {
   tags: string[];
   featuredImage: string;
   layout: "default" | "timeline";
+  timeline?: TimelinePhase[];
 }
 
 function toPost(entry: any): BlogPost {
@@ -19,6 +27,7 @@ function toPost(entry: any): BlogPost {
     tags: entry.data.tags,
     featuredImage: entry.data.featuredImage,
     layout: entry.data.layout,
+    timeline: entry.data.timeline,
   };
 }
 
