@@ -41,16 +41,20 @@ function setupHero(isMobile) {
 
   const tl = gsap.timeline({ delay: 0 });
 
-  // Lava lamp fade-in (desktop/tablet only) - separate so text fires immediately
+  // Lava lamp fade-in - separate so text fires immediately
   const lavaContainer = heroSection.querySelector("#lava-lamp");
-  if (lavaContainer && !isMobile) {
+  if (lavaContainer) {
     gsap.set(lavaContainer, { opacity: 0 });
     gsap.to(lavaContainer, {
-      opacity: 0.07,
+      opacity: isMobile ? 0.05 : 0.07,
       duration: 1.2,
       ease: "power2.out",
     });
-    initLavaLamp("#lava-lamp");
+    try {
+      initLavaLamp("#lava-lamp", isMobile ? { mobile: true } : {});
+    } catch (e) {
+      console.warn("Lava lamp init failed:", e);
+    }
   }
 
   const headlines = heroSection.querySelectorAll(".hero-headline");
