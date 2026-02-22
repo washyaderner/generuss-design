@@ -7,12 +7,35 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
 ---
 
 <div
-  class="cal-embed-wrapper gsap-hidden relative flex flex-col rounded-2xl overflow-hidden neu-raised bg-bg-secondary h-[500px] md:h-[620px]"
+  class="cal-embed-wrapper gsap-hidden relative flex flex-col rounded-2xl overflow-hidden neu-raised bg-bg-secondary h-[452px] md:h-[572px]"
 >
-  <!-- Loading skeleton -->
+  <!-- Click-to-reveal placeholder -->
+  <div id="cal-placeholder" class="absolute inset-0 z-30 cursor-pointer group">
+    <img
+      src="/images/cal-placeholder.webp"
+      alt="Calendar preview showing available booking times"
+      class="w-full h-full object-cover object-top rounded-2xl"
+      loading="lazy"
+      decoding="async"
+    />
+    <div
+      class="absolute inset-0 flex items-center justify-center bg-black/40 rounded-2xl transition-colors duration-200 group-hover:bg-black/30"
+    >
+      <button
+        id="cal-reveal-btn"
+        type="button"
+        class="px-6 py-3 bg-accent text-bg font-bold rounded-lg text-base shadow-lg transition-transform duration-200 group-hover:scale-105"
+      >
+        Book a Discovery Call
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading skeleton (hidden until user clicks) -->
   <div
     id="cal-skeleton"
     class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-bg-secondary rounded-2xl neu-inset"
+    style="display: none;"
   >
     <svg
       class="h-6 w-6 animate-spin text-accent"
@@ -47,16 +70,15 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
 
   <!-- iframe container: cropped viewport into Cal.com, offset to trim top whitespace -->
   <div
-    class="cal-iframe-container relative overflow-hidden flex-1 md:h-[620px]"
+    class="cal-iframe-container relative overflow-hidden flex-1 md:h-[572px]"
   >
     <iframe
       id="cal-iframe"
       class="absolute left-0 w-full border-0"
-      style="top: -8px; height: calc(100% + 28px); overflow: hidden;"
+      style="top: -56px; height: calc(100% + 76px); overflow: hidden;"
       scrolling="no"
       sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
       allow="camera; microphone; fullscreen; display-capture; autoplay"
-      loading="lazy"
       frameborder="0"
       title="Book a discovery call with Generuss Design"></iframe>
   </div>
@@ -94,42 +116,36 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    class="text-accent hover:underline">schedule directly here</a
+    class="text-accent underline hover:no-underline">schedule directly here</a
   >.
 </p>
 
 <script define:vars={{ url }}>
   (function () {
-    var section = document.getElementById("booking");
+    var placeholder = document.getElementById("cal-placeholder");
     var iframe = document.getElementById("cal-iframe");
     var skeleton = document.getElementById("cal-skeleton");
-    var loaded = false;
 
-    if (!section || !iframe) return;
+    if (!placeholder || !iframe) return;
 
-    var observer = new IntersectionObserver(
-      function (entries) {
-        if (entries[0].isIntersecting && !loaded) {
-          loaded = true;
-          observer.disconnect();
+    placeholder.addEventListener("click", function () {
+      // Hide placeholder, show skeleton
+      placeholder.style.display = "none";
+      if (skeleton) skeleton.style.display = "";
 
-          var isMobile = window.innerWidth < 640;
-          var embedUrl = url + (isMobile ? "?hideEventTypeDetails=true" : "");
-          iframe.src = embedUrl;
+      // Load iframe
+      var isMobile = window.innerWidth < 640;
+      var embedUrl = url + (isMobile ? "?hideEventTypeDetails=true" : "");
+      iframe.src = embedUrl;
 
-          iframe.addEventListener("load", function () {
-            if (skeleton) skeleton.style.display = "none";
-          });
+      iframe.addEventListener("load", function () {
+        if (skeleton) skeleton.style.display = "none";
+      });
 
-          // Fallback: hide skeleton after 8s even if load doesn't fire
-          setTimeout(function () {
-            if (skeleton) skeleton.style.display = "none";
-          }, 8000);
-        }
-      },
-      { rootMargin: "200px" },
-    );
-
-    observer.observe(section);
+      // Fallback: hide skeleton after 8s even if load doesn't fire
+      setTimeout(function () {
+        if (skeleton) skeleton.style.display = "none";
+      }, 8000);
+    });
   })();
 </script>
