@@ -14,7 +14,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
     <!-- S1: Hero -->
     <section
       id="hero"
-      class="relative flex min-h-screen items-center overflow-hidden px-8 sm:px-12 lg:px-20"
+      class="relative flex min-h-screen min-h-[100dvh] items-center overflow-hidden px-8 sm:px-12 lg:px-20"
     >
       <div class="relative z-10">
         <h1>
@@ -75,9 +75,12 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         </defs>
       </svg>
       <style>
+        #lava-lamp {
+          filter: url(#goo);
+        }
         @media (max-width: 639px) {
           #lava-lamp {
-            filter: blur(10px) contrast(20) !important;
+            filter: blur(10px) contrast(20);
             background: black;
           }
         }
@@ -85,7 +88,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       <div
         id="lava-lamp"
         class="absolute inset-0 overflow-hidden pointer-events-none"
-        style="filter: url(#goo); opacity: 0;"
+        style="opacity: 0;"
         aria-hidden="true"
       >
       </div>
