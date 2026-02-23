@@ -25,7 +25,11 @@ function toPost(entry: any): BlogPost {
     excerpt: entry.data.excerpt,
     publishDate: entry.data.publishDate,
     tags: entry.data.tags,
-    featuredImage: entry.data.featuredImage,
+    featuredImage:
+      !entry.data.featuredImage ||
+      entry.data.featuredImage === "/images/placeholder.svg"
+        ? `/images/blog/${entry.id}-og.svg`
+        : entry.data.featuredImage,
     layout: entry.data.layout,
     timeline: entry.data.timeline,
   };

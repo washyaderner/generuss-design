@@ -3,10 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "node execution/generate-lava-thumbs.mjs && astro dev",
+    "build": "node execution/generate-lava-thumbs.mjs && astro build",
     "preview": "astro preview",
-    "deploy": "astro build && wrangler pages deploy ./dist",
+    "deploy": "node execution/generate-lava-thumbs.mjs && astro build && wrangler pages deploy ./dist",
     "astro": "astro",
     "lint": "eslint .",
     "format": "prettier --write .",
