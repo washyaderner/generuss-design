@@ -397,7 +397,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       <p
         class="portfolio-subline gsap-hidden text-text-muted text-lg text-center mb-12 sm:mb-16"
       >
-        Click any project to explore it live.
+        Click any project to see it in action.
       </p>
 
       <div class="flex flex-col gap-16 sm:gap-20 max-w-4xl mx-auto">
@@ -411,6 +411,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-stack="Next.js, Tailwind, Vercel"
           data-image-desktop="/images/portfolio/crystal-seed-tarot-desktop.webp"
           data-image-mobile="/images/portfolio/crystal-seed-tarot-mobile.webp"
+          data-video="/videos/portfolio/crystal-seed-tarot.mp4"
         >
           <div
             class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
@@ -472,6 +473,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-stack="Astro, Vercel"
           data-image-desktop="/images/portfolio/vibethrive-desktop.webp"
           data-image-mobile="/images/portfolio/vibethrive-mobile.webp"
+          data-video="/videos/portfolio/vibethrive.mp4"
         >
           <div
             class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
@@ -528,6 +530,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-stack="Next.js, Tailwind, Vercel"
           data-image-desktop="/images/portfolio/generuss-desktop.webp"
           data-image-mobile="/images/portfolio/generuss-mobile.webp"
+          data-video="/videos/portfolio/generuss.mp4"
         >
           <div
             class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
@@ -599,11 +602,10 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         aria-modal="true"
         aria-labelledby="modal-title"
       >
-        <!-- Iframe mode (desktop/tablet 768px+) -->
+        <!-- Video modal (all screen sizes) -->
         <div
-          id="modal-iframe-mode"
-          class="hidden w-full max-w-6xl mx-4 flex flex-col"
-          style="height: 90vh;"
+          id="modal-video-mode"
+          class="hidden w-full max-w-6xl mx-4 flex flex-col max-h-[90vh]"
         >
           <!-- Browser chrome header -->
           <div
@@ -647,124 +649,59 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
             </button>
           </div>
 
-          <!-- Iframe container -->
-          <div class="relative flex-1 min-h-0" style="background: #1a1a1e;">
-            <!-- Loading spinner overlay -->
-            <div
-              id="modal-spinner"
-              class="absolute inset-0 flex flex-col items-center justify-center z-10"
-              style="background: #1a1a1e;"
-            >
-              <svg
-                class="h-8 w-8 animate-spin text-accent"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  class="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  stroke-width="4"></circle>
-                <path
-                  class="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-              </svg>
-              <span class="mt-3 text-sm text-text-muted font-mono"
-                >Loading site&hellip;</span
-              >
-            </div>
-            <iframe
-              id="modal-iframe"
-              class="w-full h-full border-0"
-              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-              loading="lazy"
-              title="Live site preview"></iframe>
+          <!-- Video / fallback image container -->
+          <div
+            class="relative flex-1 min-h-0 overflow-hidden"
+            style="background: #1a1a1e;"
+          >
+            <video
+              id="modal-video"
+              class="w-full h-full object-cover"
+              muted
+              loop
+              playsinline
+              preload="none"
+              poster=""></video>
+            <img
+              id="modal-fallback-img"
+              src=""
+              alt="Project screenshot"
+              class="hidden absolute inset-0 w-full h-full object-cover"
+            />
           </div>
 
           <!-- Footer bar -->
           <div
-            class="flex items-center justify-between px-4 py-3 rounded-b-2xl"
+            class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 py-3 rounded-b-2xl"
             style="background: #2a2a2e;"
           >
-            <h3
-              id="modal-title"
-              class="text-sm font-semibold text-white truncate"
-            >
-            </h3>
+            <div class="min-w-0">
+              <h3
+                id="modal-title"
+                class="text-sm font-semibold text-white truncate"
+              >
+              </h3>
+              <p
+                id="modal-description"
+                class="text-xs text-text-muted mt-1 line-clamp-2 max-w-xl"
+              >
+              </p>
+            </div>
             <div class="flex items-center gap-3 shrink-0">
+              <div id="modal-stack" class="hidden sm:flex flex-wrap gap-1.5">
+              </div>
               <a
                 id="modal-link"
                 href="#"
                 target="_blank"
                 rel="noopener"
-                class="text-sm text-accent hover:underline transition-colors"
-              >
-                Open in New Tab &rarr;
-              </a>
-              <button
-                id="modal-close-btn"
-                class="rounded-full border border-text-muted px-5 py-1.5 text-sm text-text-muted hover:text-white hover:border-white transition-colors duration-200"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Image mode (mobile <768px) -->
-        <div
-          id="modal-image-mode"
-          class="hidden max-w-4xl w-full mx-4 sm:mx-8 max-h-[90vh] overflow-y-auto"
-        >
-          <button
-            id="modal-close-mobile"
-            class="absolute top-6 right-6 flex h-11 w-11 items-center justify-center rounded-lg text-accent text-2xl hover:text-white focus-visible:outline-2 focus-visible:outline-accent z-10"
-            aria-label="Close modal"
-          >
-            &#10005;
-          </button>
-          <div class="neu-raised rounded-2xl overflow-hidden bg-bg-secondary">
-            <div class="aspect-video bg-bg overflow-hidden">
-              <img
-                id="modal-img"
-                src=""
-                alt="Project screenshot"
-                class="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-          <div class="mt-6 text-center">
-            <h3 id="modal-title-mobile" class="text-2xl font-bold text-white">
-            </h3>
-            <p
-              id="modal-description"
-              class="text-lg text-text-muted mt-3 max-w-2xl mx-auto"
-            >
-            </p>
-            <div
-              id="modal-stack"
-              class="flex flex-wrap justify-center gap-2 mt-4"
-            >
-            </div>
-            <div
-              class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6"
-            >
-              <a
-                id="modal-link-mobile"
-                href="#"
-                target="_blank"
-                rel="noopener"
-                class="rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+                class="text-sm text-accent hover:underline transition-colors whitespace-nowrap"
               >
                 Visit Live Site &rarr;
               </a>
               <button
-                id="modal-close-btn-mobile"
-                class="rounded-full border border-text-muted px-8 py-3 text-base text-text-muted hover:text-white hover:border-white transition-colors duration-200"
+                id="modal-close-btn"
+                class="rounded-full border border-text-muted px-5 py-1.5 text-sm text-text-muted hover:text-white hover:border-white transition-colors duration-200"
               >
                 Close
               </button>
@@ -777,180 +714,100 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
     <script>
       // Portfolio modal logic
       const modal = document.getElementById("portfolio-modal");
-      const iframeMode = document.getElementById("modal-iframe-mode");
-      const imageMode = document.getElementById("modal-image-mode");
-      const modalIframe = document.getElementById(
-        "modal-iframe",
-      ) as HTMLIFrameElement;
-      const modalSpinner = document.getElementById("modal-spinner");
+      const videoMode = document.getElementById("modal-video-mode");
+      const modalVideo = document.getElementById(
+        "modal-video",
+      ) as HTMLVideoElement;
+      const modalFallbackImg = document.getElementById(
+        "modal-fallback-img",
+      ) as HTMLImageElement;
       const modalUrlDisplay = document.getElementById("modal-url-display");
       const modalTitle = document.getElementById("modal-title");
-      const modalTitleMobile = document.getElementById("modal-title-mobile");
       const modalDesc = document.getElementById("modal-description");
       const modalStack = document.getElementById("modal-stack");
       const modalLink = document.getElementById(
         "modal-link",
       ) as HTMLAnchorElement;
-      const modalLinkMobile = document.getElementById(
-        "modal-link-mobile",
-      ) as HTMLAnchorElement;
-      const modalImg = document.getElementById("modal-img") as HTMLImageElement;
 
-      let spinnerTimeout: ReturnType<typeof setTimeout> | null = null;
-      let currentCard: HTMLElement | null = null;
-
-      function isDesktop() {
-        return window.innerWidth >= 768;
-      }
-
-      function switchToImageMode(card: HTMLElement) {
-        // Kill iframe
-        if (modalIframe) {
-          modalIframe.src = "";
-          modalIframe.onload = null;
-          modalIframe.onerror = null;
+      function showFallbackImage(src: string, alt: string) {
+        if (modalFallbackImg) {
+          modalFallbackImg.src = src;
+          modalFallbackImg.alt = alt;
+          modalFallbackImg.classList.remove("hidden");
         }
-        if (spinnerTimeout) {
-          clearTimeout(spinnerTimeout);
-          spinnerTimeout = null;
-        }
-
-        // Hide iframe mode
-        iframeMode?.classList.add("hidden");
-        iframeMode?.classList.remove("flex");
-
-        // Populate image mode from card data
-        const title = card.dataset.title || "";
-        const desc = card.dataset.description || "";
-        const url = card.dataset.url || "#";
-        const imgSrc = card.dataset.imageDesktop || card.dataset.imageMobile;
-        const stack = (card.dataset.stack || "")
-          .split(",")
-          .map((s) => s.trim())
-          .filter(Boolean);
-
-        if (modalTitleMobile) modalTitleMobile.textContent = title;
-        if (modalDesc) modalDesc.textContent = desc;
-        if (modalLinkMobile) modalLinkMobile.href = url;
-        if (modalImg && imgSrc) {
-          modalImg.src = imgSrc;
-          modalImg.alt = `${title} screenshot`;
-        }
-        if (modalStack) {
-          modalStack.innerHTML = stack
-            .map(
-              (t) =>
-                `<span class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent">${t}</span>`,
-            )
-            .join("");
-        }
-
-        // Show image mode
-        imageMode?.classList.remove("hidden");
+        if (modalVideo) modalVideo.classList.add("hidden");
       }
 
       function openModal(card: HTMLElement) {
         const title = card.dataset.title || "";
         const desc = card.dataset.description || "";
         const url = card.dataset.url || "#";
+        const videoSrc = card.dataset.video || "";
+        const posterSrc =
+          card.dataset.imageDesktop || card.dataset.imageMobile || "";
         const stack = (card.dataset.stack || "")
           .split(",")
           .map((s) => s.trim())
           .filter(Boolean);
 
-        if (isDesktop()) {
-          // Iframe mode
-          currentCard = card;
-          iframeMode?.classList.remove("hidden");
-          iframeMode?.classList.add("flex");
-          imageMode?.classList.add("hidden");
-
-          if (modalTitle) modalTitle.textContent = title;
-          if (modalUrlDisplay) modalUrlDisplay.textContent = url;
-          if (modalLink) modalLink.href = url;
-
-          // Show spinner, load iframe
-          modalSpinner?.classList.remove("hidden");
-          if (modalIframe) {
-            modalIframe.onerror = () => {
-              if (currentCard) switchToImageMode(currentCard);
-            };
-            modalIframe.onload = () => {
-              // Allow 100ms for the frame to settle (Safari needs this)
-              setTimeout(() => {
-                try {
-                  // Cross-origin success: accessing contentDocument throws SecurityError
-                  const _doc = modalIframe.contentDocument;
-                  // If we get here without error, the browser rendered its own error page
-                  // (CSP block, X-Frame-Options deny, etc.)
-                  if (currentCard) switchToImageMode(currentCard);
-                } catch (_e) {
-                  // SecurityError = cross-origin content loaded successfully
-                  modalSpinner?.classList.add("hidden");
-                  if (spinnerTimeout) clearTimeout(spinnerTimeout);
-                }
-              }, 100);
-            };
-            modalIframe.src = url;
-          }
-
-          // Fallback: switch to image mode after 5s if neither event fires
-          spinnerTimeout = setTimeout(() => {
-            if (currentCard) switchToImageMode(currentCard);
-          }, 5000);
-        } else {
-          // Image mode (mobile)
-          imageMode?.classList.remove("hidden");
-          iframeMode?.classList.add("hidden");
-          iframeMode?.classList.remove("flex");
-
-          const imgSrc = card.dataset.imageMobile || card.dataset.imageDesktop;
-          if (modalTitleMobile) modalTitleMobile.textContent = title;
-          if (modalDesc) modalDesc.textContent = desc;
-          if (modalLinkMobile) modalLinkMobile.href = url;
-          if (modalImg && imgSrc) {
-            modalImg.src = imgSrc;
-            modalImg.alt = `${title} screenshot`;
-          }
-          if (modalStack) {
-            modalStack.innerHTML = stack
-              .map(
-                (t) =>
-                  `<span class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent">${t}</span>`,
-              )
-              .join("");
-          }
+        // Populate modal content
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalDesc) modalDesc.textContent = desc;
+        if (modalUrlDisplay) modalUrlDisplay.textContent = url;
+        if (modalLink) modalLink.href = url;
+        if (modalStack) {
+          modalStack.innerHTML = stack
+            .map(
+              (t) =>
+                `<span class="border border-accent/30 rounded-full px-2 py-0.5 text-xs font-mono text-accent">${t}</span>`,
+            )
+            .join("");
         }
 
+        // Reset state
+        modalFallbackImg?.classList.add("hidden");
+        modalVideo?.classList.remove("hidden");
+
+        // Set video or fall back to screenshot
+        if (modalVideo && videoSrc) {
+          modalVideo.poster = posterSrc;
+          modalVideo.src = videoSrc;
+          modalVideo.onerror = () => {
+            showFallbackImage(posterSrc, `${title} screenshot`);
+          };
+          modalVideo.play().catch(() => {
+            // Autoplay blocked or video failed - show poster as fallback
+            showFallbackImage(posterSrc, `${title} screenshot`);
+          });
+        } else {
+          // No video src - show screenshot directly
+          showFallbackImage(posterSrc, `${title} screenshot`);
+        }
+
+        // Show modal
+        videoMode?.classList.remove("hidden");
+        videoMode?.classList.add("flex");
         modal?.classList.remove("hidden");
         modal?.classList.add("flex");
         document.body.style.overflow = "hidden";
 
-        // Focus the appropriate close button
-        const focusTarget = isDesktop()
-          ? document.getElementById("modal-close")
-          : document.getElementById("modal-close-mobile");
-        (focusTarget as HTMLElement)?.focus();
+        // Focus close button
+        (document.getElementById("modal-close") as HTMLElement)?.focus();
       }
 
       function closeModal() {
         modal?.classList.add("hidden");
         modal?.classList.remove("flex");
-        iframeMode?.classList.add("hidden");
-        iframeMode?.classList.remove("flex");
-        imageMode?.classList.add("hidden");
+        videoMode?.classList.add("hidden");
+        videoMode?.classList.remove("flex");
         document.body.style.overflow = "";
 
-        // Clear iframe to free resources
-        if (modalIframe) {
-          modalIframe.src = "";
-          modalIframe.onload = null;
-          modalIframe.onerror = null;
-        }
-        currentCard = null;
-        if (spinnerTimeout) {
-          clearTimeout(spinnerTimeout);
-          spinnerTimeout = null;
+        // Free video resources
+        if (modalVideo) {
+          modalVideo.pause();
+          modalVideo.removeAttribute("src");
+          modalVideo.load();
+          modalVideo.onerror = null;
         }
       }
 
@@ -958,13 +815,8 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         card.addEventListener("click", () => openModal(card as HTMLElement));
       });
 
-      // Close handlers - all buttons
-      [
-        "modal-close",
-        "modal-close-btn",
-        "modal-close-mobile",
-        "modal-close-btn-mobile",
-      ].forEach((id) => {
+      // Close handlers
+      ["modal-close", "modal-close-btn"].forEach((id) => {
         document.getElementById(id)?.addEventListener("click", closeModal);
       });
 
@@ -978,9 +830,8 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         if (e.key === "Escape" && !modal?.classList.contains("hidden"))
           closeModal();
         if (e.key === "Tab" && !modal?.classList.contains("hidden")) {
-          const activeContainer = isDesktop() ? iframeMode : imageMode;
-          const focusable = activeContainer?.querySelectorAll<HTMLElement>(
-            'a, button, iframe, [tabindex]:not([tabindex="-1"])',
+          const focusable = videoMode?.querySelectorAll<HTMLElement>(
+            'a, button, video, [tabindex]:not([tabindex="-1"])',
           );
           if (!focusable?.length) return;
           const first = focusable[0];
