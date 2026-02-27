@@ -46,3 +46,16 @@ Key changes:
 - New src/pages/connect.astro with responsive bento grid (3-col desktop at 100dvh, 2-col tablet, 1-col mobile)
 - Removed /connect redirect from astro.config.mjs, replaced with actual page using BaseLayout
 - CTA wired to Cal.com discovery call, social icons linked to real profiles, all 5 CSS animations preserved
+
+## 2026-02-27 01:30 | SESSION
+
+**Context:** QR code destination strategy - business card points to /connect, needed a real page instead of external redirect
+**Outcome:** Shipped PR #53. Built /connect bento hub from polished HTML prototype, integrated into Astro site with 3-breakpoint responsive grid. Removed old redirect. Full deploy pipeline clean.
+**Signal:** Strong positive. "nailed the full viewport!!" on first render. Immediate greenlight on the strategic recommendation ("fuck it, let's set that up right now"). Clean session - zero corrections needed.
+**Carries forward:** Page is live at generussdesign.com/connect. Polish opportunities: real portfolio screenshots instead of CSS art previews, LinkedIn URL, dark mode Cal.com embed (still unsolved from earlier). Blog post draft (what-your-ai-needs-from-you) sitting untracked.
+
+## 2026-02-27 08:25 | SESSION
+
+**Context:** Preparing to order Moo Super business cards - needed upload instructions
+**Outcome:** Compiled Moo upload guide from handoff spec and render pipeline docs. Product selection (Super, Soft Touch, Raised Spot Gloss), file mapping (4 files in card/print/), mask upload instructions (white = gloss, black = matte), and gotchas (bleed included, RGB is correct, coverage under 20% limit).
+**Carries forward:** Cards ready to order on Moo. Print files unchanged since last session. Blog post draft still untracked.

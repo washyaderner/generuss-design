@@ -53,3 +53,9 @@
 **Signal:** "sweet! well done! nailed the full viewport!!" on the /connect bento hub page
 **What worked:** Converting a standalone HTML prototype into a full Astro page with 3-breakpoint responsive grid (mobile single-col, tablet 2-col, desktop 3-col at 100dvh). Mapped bento tokens to scoped CSS variables, wired real links (Cal.com CTA, social profiles), removed the old redirect, and preserved all 5 CSS animations.
 **Pattern:** When integrating a standalone prototype into an existing site, use the site's layout shell (BaseLayout) for consistency but keep all page-specific styles scoped. Define tokens on the page wrapper to avoid global conflicts. Full viewport = height: 100dvh + overflow: hidden on desktop, min-height on mobile.
+
+### 2026-02-27 | initiative
+
+**Signal:** "fuck it, let's set that up right now" - immediately greenlit the /connect page after strategic analysis of QR destination options
+**What worked:** Laid out the three options (direct to site, direct to Cal.com, dedicated connect page) with tradeoffs, then recommended the middle ground. The "you own the URL" argument - change what /connect shows anytime without reprinting cards - was the clincher.
+**Pattern:** When presenting options, lead with the one that preserves future flexibility. "You can change it later without reprinting" beats "here's the optimal destination right now."
