@@ -39,3 +39,8 @@
 
 **Correction:** Overlapping SVG lines at junctions (clock hands, node tree branches) create visible nubs, sharp corners, and fragmented intersections at print scale
 **Rule:** When SVG elements share a junction point, combine them into a single `<path>` with `stroke-linejoin="round"`. Never use overlapping `<line>` elements - the linecap overlap is always visible at high DPI. For curved corners in bracket/tree structures, use arc commands (`A rx,ry`) in the path rather than separate lines.
+
+### 2026-02-26 | approach
+
+**Correction:** The QR "g" was shifted DOWN (dy="+0.05em") when it needed to go UP to optically center the descender. Had to reverse direction to dy="-0.12em".
+**Rule:** Lowercase letters with descenders (g, j, p, q, y) need negative dy to optically center in a container. The descender pulls the visual center down - compensate upward, not downward.

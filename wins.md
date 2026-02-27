@@ -35,3 +35,21 @@
 **Signal:** SVG icon tweaks matched the brand logo precisely - clock hands, node diagram structure, corner radii
 **What worked:** Using the actual logo as reference and translating its geometry into SVG path commands. Single-path clock hands with stroke-linejoin="round" for clean junctions. Arc-based bracket path for the node tree. Different rx values on terminal nodes to match brand's mixed-corner style.
 **Pattern:** For brand consistency on print materials, reference the actual logo file and match geometry exactly. SVG paths with proper joins/caps produce cleaner results than overlapping line elements.
+
+### 2026-02-26 | output-quality
+
+**Signal:** "dude this is fucking immaculate!!! props to the nth degree!!" on the standalone timeline HTML
+**What worked:** Replicated the site's TimelineBlogLayout in a self-contained HTML file with vanilla JS scroll tracking. 7 phases, stat cards, callout blocks, code snippets. Same visual language as the blog but zero framework dependencies.
+**Pattern:** When you have a proven layout pattern (timeline blog), extract it into standalone HTML for non-blog use cases. The design system is portable - CSS tokens and structure work outside Astro.
+
+### 2026-02-26 | initiative
+
+**Signal:** "omg yes that's perfect!!!" when proposing /reflect as the learning-loop counterpart to /ship
+**What worked:** Identifying a gap in the tooling - wins, lessons, memory, and journal updates were happening manually and inconsistently. Packaging them into a single slash command with a 7-step pipeline makes the learning loop as reliable as the deploy pipeline.
+**Pattern:** When you notice yourself doing the same multi-step process repeatedly, package it into a command. The meta-work of building tools for the workflow is as valuable as the workflow itself.
+
+### 2026-02-27 | architecture
+
+**Signal:** "sweet! well done! nailed the full viewport!!" on the /connect bento hub page
+**What worked:** Converting a standalone HTML prototype into a full Astro page with 3-breakpoint responsive grid (mobile single-col, tablet 2-col, desktop 3-col at 100dvh). Mapped bento tokens to scoped CSS variables, wired real links (Cal.com CTA, social profiles), removed the old redirect, and preserved all 5 CSS animations.
+**Pattern:** When integrating a standalone prototype into an existing site, use the site's layout shell (BaseLayout) for consistency but keep all page-specific styles scoped. Define tokens on the page wrapper to avoid global conflicts. Full viewport = height: 100dvh + overflow: hidden on desktop, min-height on mobile.
