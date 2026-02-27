@@ -59,3 +59,12 @@ Key changes:
 **Context:** Preparing to order Moo Super business cards - needed upload instructions
 **Outcome:** Compiled Moo upload guide from handoff spec and render pipeline docs. Product selection (Super, Soft Touch, Raised Spot Gloss), file mapping (4 files in card/print/), mask upload instructions (white = gloss, black = matte), and gotchas (bleed included, RGB is correct, coverage under 20% limit).
 **Carries forward:** Cards ready to order on Moo. Print files unchanged since last session. Blog post draft still untracked.
+
+## 2026-02-27 | SHIP | d44c863...c6957b1
+
+Shipped: Journal, wins, and blog post updates - learning loop flush from /connect build sessions plus new AI collaboration blog post
+Commits: 5 since last ship
+Key changes:
+
+- AI collaboration blog post with lava lamp thumbnail
+- Journal and wins entries from /connect bento hub and Moo prep sessions
