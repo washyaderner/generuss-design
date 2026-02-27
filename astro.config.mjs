@@ -7,6 +7,9 @@ export default defineConfig({
   output: "static",
   adapter: cloudflare(),
   site: "https://generussdesign.com",
+  redirects: {
+    "/connect": "https://generuss.com/connect",
+  },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

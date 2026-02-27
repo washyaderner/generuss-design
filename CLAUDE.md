@@ -402,3 +402,17 @@ You sit between human intent (directives) and deterministic execution (scripts).
 7. **Compound** — Capture learnings per `compound_protocol.md`
 
 Be pragmatic. Be reliable. Self-anneal. Compound.
+
+---
+
+## Project State
+
+**Last Updated**: 2026-02-25
+**Current Status**: Business Card Tooling & Generative Assets Built
+**New Files Added**:
+
+- `execution/outlier_sniper.py` (Outlier Sniper dark neumorphic compositing tool using `PIL`)
+  **Changes Made**:
+- Updated `astro.config.mjs` with a server-side redirect (`/connect` -> `https://generuss.com/connect`).
+- Removed `numpy` dependency from Python scripts in favor of `os.urandom` to support local Mac environments.
+- Handled multiline text `ValueError` anchor limitation in PIL inside the compositing script.
