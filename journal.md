@@ -36,3 +36,13 @@ Lesson: The site's design system (CSS tokens, timeline structure) is portable ou
 **Signal:** Strong positive throughout. "legitimately perfect", "moneyyyyyyy", "fucking immaculate", "LOVE working with you, Kit". Timeline HTML was the highlight - instant enthusiasm on first render.
 **Friction:** SVG icon polish took ~6 iterations (shadow depth, edge catches, clock hands, node diagram structure, corner radii, junction smoothing). Each was small but the cumulative back-and-forth was the longest chain. Pipeline made iteration cheap though.
 **Carries forward:** Print files ready for Moo upload. /reflect command is new - first real run was this session. Two compound-docs candidates flagged (SVG junctions, design system portability).
+
+## 2026-02-27 | SHIP | 9aa9418...d44c863
+
+Shipped: /connect bento hub landing page - QR code destination is now a real page with full context instead of an external redirect
+Commits: 2 since last ship
+Key changes:
+
+- New src/pages/connect.astro with responsive bento grid (3-col desktop at 100dvh, 2-col tablet, 1-col mobile)
+- Removed /connect redirect from astro.config.mjs, replaced with actual page using BaseLayout
+- CTA wired to Cal.com discovery call, social icons linked to real profiles, all 5 CSS animations preserved
