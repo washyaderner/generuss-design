@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>generuss Business Card v11</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --base: #1A1A1E;
+    --surface: #222226;
+    --shadow-dark: #0D0D0F;
+    --shadow-light: #2E2E33;
+    --cyan: #00FFEF;
+    --cyan-glow: rgba(0, 255, 239, 0.35);
+    --text-primary: #E8E8E8;
+    --text-secondary: #9A9AA0;
+    --text-muted: #6B6B75;
+    --contact-text: #9A9AA0;
+    --mono: 'JetBrains Mono', monospace;
+    --card-w: 800px;
+    --card-h: 450px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0E0E10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: var(--mono);
+    gap: 30px;
+    padding: 50px 20px 120px;
+  }
+
+  .page-header { text-align: center; }
+  .page-title {
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .page-sub {
+    color: var(--text-muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+  .side-label {
+    color: var(--text-muted);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    width: var(--card-w);
+    margin-top: 10px;
+  }
+
+  /* =================== BASE CARD =================== */
+  .card {
+    width: var(--card-w);
+    height: var(--card-h);
+    background: var(--base);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* Noise */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* =================== CORNER BRACKETS =================== */
+  .cb { position: absolute; width: 14px; height: 14px; z-index: 8; pointer-events: none; }
+  .cb::before, .cb::after { content: ''; position: absolute; background: var(--text-muted); opacity: 0.25; }
+  .cb::before { height: 1px; width: 14px; }
+  .cb::after { width: 1px; height: 14px; }
+  .cb.tl { top: 12px; left: 12px; }
+  .cb.tl::before { top: 0; left: 0; }
+  .cb.tl::after { top: 0; left: 0; }
+  .cb.tr { top: 12px; right: 12px; }
+  .cb.tr::before { top: 0; right: 0; }
+  .cb.tr::after { top: 0; right: 0; }
+  .cb.bl { bottom: 12px; left: 12px; }
+  .cb.bl::before { bottom: 0; left: 0; }
+  .cb.bl::after { bottom: 0; left: 0; }
+  .cb.br { bottom: 12px; right: 12px; }
+  .cb.br::before { bottom: 0; right: 0; }
+  .cb.br::after { bottom: 0; right: 0; }
+
+  .micro-ver {
+    position: absolute;
+    bottom: 8px;
+    right: 32px;
+    font-size: 6px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    opacity: 0.45;
+    z-index: 8;
+  }
+
+
+  /* =======================================================
+     FRONT
+     ======================================================= */
+  .front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 36px 20px;
+  }
+
+  /* === SHINE LAYERS === */
+
+  /* Primary vignette - top-left ambient, strong */
+  .front .vig-primary {
+    position: absolute;
+    top: -32%; left: -16%;
+    width: 62%; height: 72%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.065) 0%, transparent 68%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Secondary specular - smaller, brighter, centered top */
+  .front .vig-specular {
+    position: absolute;
+    top: -20%; left: 15%;
+    width: 35%; height: 40%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.035) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Cyan ambient - cast upward from glow bar */
+  .front .vig-cyan {
+    position: absolute;
+    bottom: -8%; left: 8%; right: 8%;
+    height: 45%;
+    background: radial-gradient(ellipse at center bottom, rgba(0,255,239,0.04) 0%, transparent 58%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Edge catch - top */
+  .front .edge-top {
+    position: absolute;
+    top: 0; left: 3%; right: 40%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 40%, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Edge catch - left */
+  .front .edge-left {
+    position: absolute;
+    left: 0; top: 3%; bottom: 50%;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .brand-word {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 12px;
+    text-transform: lowercase;
+    margin-bottom: 16px;
+    z-index: 3;
+  }
+
+  .modules {
+    display: flex;
+    gap: 28px;
+    z-index: 3;
+  }
+
+  /* === RAISED MODULE with cyan accent edge === */
+  .mod-raised {
+    width: 286px;
+    height: 253px;
+    background: var(--surface);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    gap: 4px;
+    position: relative;
+    z-index: 3;
+    box-shadow:
+      8px 8px 16px var(--shadow-dark),
+      -4px -4px 10px var(--shadow-light),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  /* Top-edge shine - brighter */
+  .mod-raised::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 8%; right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12) 40%, rgba(255,255,255,0.06) 70%, transparent);
+    z-index: 2;
+  }
+
+  /* Left-edge catch */
+  .mod-raised::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 8%; bottom: 15%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 10%, rgba(255,255,255,0.05) 40%, transparent 90%);
+  }
+
+  /* Surface specular highlight - sweeping across module */
+  .mod-shine {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 16px;
+    background: linear-gradient(
+      155deg,
+      rgba(255,255,255,0.04) 0%,
+      rgba(255,255,255,0.015) 30%,
+      transparent 55%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .mod-icon {
+    width: 260px;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mod-label {
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 5px;
+    text-transform: lowercase;
+  }
+
+  /* === TAGLINE + GLOW BAR === */
+  /* No seal line. Clean transition. */
+  .status-zone {
+    width: 600px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-top: 16px;
+    position: relative;
+  }
+
+  /* Tagline row: dots left, text center-ish */
+  .tagline-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .dot-lit {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 4px var(--cyan-glow), 0 0 8px rgba(0,255,239,0.15);
+  }
+
+  .dot-dim {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    opacity: 0.25;
+  }
+
+  .floating-tagline {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 4px;
+    text-transform: lowercase;
+    z-index: 4;
+  }
+
+  /* Bare glow line - enhanced shine */
+  .glow-line {
+    width: 100%;
+    height: 3px;
+    background: var(--cyan);
+    border-radius: 2px;
+    position: relative;
+    box-shadow:
+      0 0 8px rgba(0,255,239,0.5),
+      0 0 20px rgba(0,255,239,0.25),
+      0 0 40px rgba(0,255,239,0.12),
+      0 0 60px rgba(0,255,239,0.06);
+  }
+
+  /* White specular on the bar surface */
+  .glow-line-shine {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 5%,
+      rgba(255,255,255,0.25) 15%,
+      rgba(255,255,255,0.5) 45%,
+      rgba(255,255,255,0.6) 50%,
+      rgba(255,255,255,0.5) 55%,
+      rgba(255,255,255,0.25) 85%,
+      transparent 95%
+    );
+    z-index: 1;
+    border-radius: 2px;
+  }
+
+  /* Upward bloom */
+  .glow-line::before {
+    content: '';
+    position: absolute;
+    bottom: 100%; left: 3%; right: 3%;
+    height: 26px;
+    background: linear-gradient(0deg, rgba(0,255,239,0.15) 0%, transparent 100%);
+    filter: blur(6px);
+    pointer-events: none;
+  }
+
+  /* Downward bloom */
+  .glow-line::after {
+    content: '';
+    position: absolute;
+    top: 100%; left: 8%; right: 8%;
+    height: 16px;
+    background: linear-gradient(180deg, rgba(0,255,239,0.10) 0%, transparent 100%);
+    filter: blur(4px);
+    pointer-events: none;
+  }
+
+  /* CTA */
+  .front-cta {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 16px;
+    z-index: 3;
+  }
+
+  .front-cta .cta-action {
+    color: var(--cyan);
+    font-weight: 600;
+  }
+
+
+  /* =======================================================
+     BACK - DEEP RECESSED
+     ======================================================= */
+  .back {
+    display: grid;
+    grid-template-columns: 186px 1fr;
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .back .vig-primary {
+    position: absolute;
+    top: -35%; left: -18%;
+    width: 65%; height: 75%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.055) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .back .vig-darken {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.15) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Circuit traces */
+  .traces { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+  .tr-line { position: absolute; background: var(--text-muted); opacity: 0.10; }
+  .tr-h1 { top: 48px; right: 0; width: 32px; height: 1px; }
+  .tr-h2 { bottom: 55px; left: 0; width: 25px; height: 1px; }
+  .tr-v1 { top: 0; right: 48px; width: 1px; height: 20px; }
+  .tr-v2 { bottom: 0; left: 55px; width: 1px; height: 16px; }
+  .tr-node { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--text-muted); opacity: 0.14; }
+  .tn1 { top: 46.5px; right: 32px; }
+  .tn2 { bottom: 53.5px; left: 25px; }
+  .tn3 { top: 20px; right: 47px; }
+  .tn4 { bottom: 16px; left: 54px; }
+
+  /* DEEP RECESSED MODULE */
+  .mod-recess {
+    background: var(--shadow-dark);
+    border-radius: 10px;
+    position: relative;
+    z-index: 4;
+    box-shadow:
+      inset 6px 6px 16px rgba(0, 0, 0, 0.7),
+      inset -3px -3px 10px rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255,255,255,0.02);
+  }
+
+
+  /* QR Zone - full height left column */
+  .back-qr {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .qr-box {
+    width: 130px; height: 130px;
+    background: var(--base);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.3);
+  }
+
+  .qr-text {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  /* Right column */
+  .back-right {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 4;
+  }
+
+  /* Identity well */
+  .back-identity {
+    padding: 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  /* TAPER: 19 → 15.5 → 14 → 13 → 12.5 */
+
+  .back-brand {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .back-tagline {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .tagline-weapon {
+    color: var(--cyan);
+    text-shadow: 0 0 10px rgba(0,255,239,0.25);
+  }
+
+  .back-name {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 2.5px;
+  }
+
+  .back-contact-line {
+    font-size: 18px;
+    color: var(--contact-text);
+    letter-spacing: 1.5px;
+  }
+
+  .back-contact-line.phone {
+    font-size: 17px;
+  }
+
+  /* Status well - heartbeat layout */
+  .back-status {
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+  }
+
+  .back-status-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .back-status-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .back-status-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .back-dot-pulse {
+    width: 9px; height: 9px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--cyan-glow), 0 0 14px rgba(0,255,239,0.2);
+    flex-shrink: 0;
+  }
+
+  /* Heartbeat line between the dots */
+  .heartbeat-line {
+    flex: 1;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 -1px;
+  }
+
+  .heartbeat-svg {
+    width: 100%;
+    height: 28px;
+    filter: drop-shadow(0 0 6px rgba(0,255,239,0.7)) drop-shadow(0 0 12px rgba(0,255,239,0.3));
+  }
+
+  /* URLs well */
+  .back-urls {
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .back-url {
+    font-size: 14px;
+    color: var(--contact-text);
+    letter-spacing: 1.5px;
+  }
+
+  .back-yt {
+    font-size: 14px;
+    color: var(--contact-text);
+    letter-spacing: 1.5px;
+  }
+
+  .sep-dot {
+    width: 4px; height: 4px;
+    background: var(--cyan);
+    border-radius: 50%;
+    opacity: 0.45;
+    box-shadow: 0 0 3px rgba(0,255,239,0.15);
+    flex-shrink: 0;
+  }
+
+
+  /* =================== ANNOTATIONS =================== */
+  .notes {
+    width: var(--card-w);
+    margin-top: 20px;
+  }
+
+  .notes-title {
+    color: var(--cyan);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .notes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+
+  .note-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .note-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--cyan);
+    margin-top: 5px;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  .note-text {
+    font-size: 9.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+  }
+
+  .note-label {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="page-title">generuss business card v11</span>
+  <span class="page-sub">scaled layout // website tagline // static heartbeat // icon centering</span>
+</div>
+
+
+<!-- =================== FRONT =================== -->
+<span class="side-label">front</span>
+
+<div class="card front">
+  <div class="cb tl"></div><div class="cb tr"></div><div class="cb bl"></div><div class="cb br"></div>
+
+  <!-- Shine layers -->
+  <div class="vig-primary"></div>
+  <div class="vig-specular"></div>
+  <div class="vig-cyan"></div>
+  <div class="edge-top"></div>
+  <div class="edge-left"></div>
+
+  <span class="brand-word">generuss</span>
+
+  <div class="modules">
+
+    <!-- ======== DESIGN MODULE ======== -->
+    <div class="mod-raised">
+      <div class="mod-shine"></div>
+      <div class="mod-icon">
+        <!-- Rule of thirds: browser centered at x=55 (1/3), phone at x=130 (2/3) -->
+        <svg viewBox="6 0 150 66" width="260" height="170" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="6" width="72" height="54" rx="5" stroke="#00FFEF" stroke-width="2.2"/>
+          <line x1="20" y1="19" x2="92" y2="19" stroke="#00FFEF" stroke-width="1.4"/>
+          <circle cx="27" cy="12.5" r="2" fill="#00FFEF" opacity="0.55"/>
+          <circle cx="34" cy="12.5" r="2" fill="#00FFEF" opacity="0.55"/>
+          <circle cx="41" cy="12.5" r="2" fill="#00FFEF" opacity="0.55"/>
+          <!-- Code lines -->
+          <line x1="28" y1="28" x2="58" y2="28" stroke="#00FFEF" stroke-width="1.3" opacity="0.25" stroke-linecap="round"/>
+          <line x1="28" y1="35" x2="48" y2="35" stroke="#00FFEF" stroke-width="1.3" opacity="0.18" stroke-linecap="round"/>
+          <line x1="28" y1="42" x2="68" y2="42" stroke="#00FFEF" stroke-width="1.3" opacity="0.15" stroke-linecap="round"/>
+          <line x1="28" y1="49" x2="54" y2="49" stroke="#00FFEF" stroke-width="1.3" opacity="0.12" stroke-linecap="round"/>
+
+          <!-- Phone - centered at 2/3 position -->
+          <rect x="108" y="6" width="34" height="54" rx="6" stroke="#00FFEF" stroke-width="2.2"/>
+          <line x1="118" y1="13" x2="132" y2="13" stroke="#00FFEF" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/>
+          <line x1="120" y1="52" x2="130" y2="52" stroke="#00FFEF" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+          <!-- Dot grid - 3x4 app icons -->
+          <circle cx="117" cy="23" r="1.8" fill="#00FFEF" opacity="0.3"/>
+          <circle cx="125" cy="23" r="1.8" fill="#00FFEF" opacity="0.3"/>
+          <circle cx="133" cy="23" r="1.8" fill="#00FFEF" opacity="0.3"/>
+          <circle cx="117" cy="30" r="1.8" fill="#00FFEF" opacity="0.25"/>
+          <circle cx="125" cy="30" r="1.8" fill="#00FFEF" opacity="0.25"/>
+          <circle cx="133" cy="30" r="1.8" fill="#00FFEF" opacity="0.25"/>
+          <circle cx="117" cy="37" r="1.8" fill="#00FFEF" opacity="0.2"/>
+          <circle cx="125" cy="37" r="1.8" fill="#00FFEF" opacity="0.2"/>
+          <circle cx="133" cy="37" r="1.8" fill="#00FFEF" opacity="0.2"/>
+          <circle cx="117" cy="44" r="1.8" fill="#00FFEF" opacity="0.15"/>
+          <circle cx="125" cy="44" r="1.8" fill="#00FFEF" opacity="0.15"/>
+          <circle cx="133" cy="44" r="1.8" fill="#00FFEF" opacity="0.15"/>
+        </svg>
+      </div>
+      <span class="mod-label">design</span>
+    </div>
+
+    <!-- ======== AUTOMATION MODULE ======== -->
+    <div class="mod-raised">
+      <div class="mod-shine"></div>
+      <div class="mod-icon">
+        <!-- Rule of thirds: clock centered at x=50 (1/3), nodes at x=130 (2/3) -->
+        <svg viewBox="10 0 160 66" width="260" height="170" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Clock - centered at 1/3 position -->
+          <circle cx="50" cy="36" r="26" stroke="#00FFEF" stroke-width="2.2" fill="none"/>
+          <path d="M 50,19 L 50,36 L 63,42" stroke="#00FFEF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- Tick marks -->
+          <line x1="50" y1="12" x2="50" y2="15" stroke="#00FFEF" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="74" y1="36" x2="71" y2="36" stroke="#00FFEF" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="50" y1="60" x2="50" y2="57" stroke="#00FFEF" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="26" y1="36" x2="29" y2="36" stroke="#00FFEF" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+
+          <!-- Node diagram - centered at 2/3 position -->
+          <circle cx="130" cy="16" r="9" stroke="#00FFEF" stroke-width="2" fill="none"/>
+          <!-- Stem down to T-junction -->
+          <line x1="130" y1="25" x2="130" y2="36" stroke="#00FFEF" stroke-width="1.8"/>
+          <!-- Bracket path: down from left node, across, down to right node -->
+          <path d="M 114,43 V 40 A 4,4 0 0,1 118,36 H 142 A 4,4 0 0,1 146,40 V 43" stroke="#00FFEF" stroke-width="1.8" fill="none"/>
+          <!-- Terminal nodes -->
+          <rect x="105" y="43" width="18" height="18" rx="3" stroke="#00FFEF" stroke-width="1.8" fill="none"/>
+          <rect x="137" y="43" width="18" height="18" rx="5" stroke="#00FFEF" stroke-width="1.8" fill="none"/>
+        </svg>
+      </div>
+      <span class="mod-label">automation</span>
+    </div>
+  </div>
+
+  <!-- No seal line - clean gap -->
+
+  <!-- Tagline + glow bar -->
+  <div class="status-zone">
+    <div class="tagline-row">
+      <div class="dot-lit"></div>
+      <div class="dot-lit"></div>
+      <div class="dot-lit"></div>
+      <div class="dot-dim"></div>
+      <div class="dot-dim"></div>
+      <span class="floating-tagline">flawless by design</span>
+    </div>
+    <div class="glow-line">
+      <div class="glow-line-shine"></div>
+    </div>
+  </div>
+
+  <span class="front-cta">flip card. scan code. <span class="cta-action">let's build.</span></span>
+  <span class="micro-ver">SHIPPED 2026</span>
+</div>
+
+
+<!-- =================== BACK =================== -->
+<span class="side-label">back</span>
+
+<div class="card back">
+  <div class="cb tl"></div><div class="cb tr"></div><div class="cb bl"></div><div class="cb br"></div>
+  <div class="vig-primary"></div>
+  <div class="vig-darken"></div>
+
+  <div class="traces">
+    <div class="tr-line tr-h1"></div><div class="tr-line tr-h2"></div>
+    <div class="tr-line tr-v1"></div><div class="tr-line tr-v2"></div>
+    <div class="tr-node tn1"></div><div class="tr-node tn2"></div>
+    <div class="tr-node tn3"></div><div class="tr-node tn4"></div>
+  </div>
+
+  <!-- QR - full height left -->
+  <div class="back-qr mod-recess">
+    <div class="qr-box"><img src="qr-code.png" alt="QR" style="width:100%;height:100%;object-fit:contain;border-radius:4px;"></div>
+    <span class="qr-text">scan to connect</span>
+  </div>
+
+  <!-- Right column -->
+  <div class="back-right">
+    <!-- Identity -->
+    <div class="back-identity mod-recess">
+      <span class="back-brand">generuss design & automation</span>
+      <span class="back-tagline">BUILDING GORGEOUS WEBSITES <span class="tagline-weapon">THAT CONVERT</span></span>
+      <span class="back-name">Russell Gardner</span>
+      <span class="back-contact-line" id="email-line"></span>
+      <span class="back-contact-line phone">503.734.5502</span>
+    </div>
+
+    <!-- Status well - heartbeat monitor -->
+    <div class="back-status mod-recess">
+      <!-- Design: text left, dot right -->
+      <div class="back-status-left">
+        <span class="back-status-label">Design</span>
+        <div class="back-dot-pulse"></div>
+      </div>
+
+      <!-- Heartbeat line with spike -->
+      <div class="heartbeat-line">
+        <svg class="heartbeat-svg" viewBox="0 0 200 24" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Flat line → spike at ~65% → flat line -->
+          <path d="M 0 12 L 100 12 L 120 12 L 128 3 L 136 20 L 142 8 L 148 12 L 200 12"
+                stroke="#00FFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Automation: dot left, text right -->
+      <div class="back-status-right">
+        <div class="back-dot-pulse"></div>
+        <span class="back-status-label">Automation</span>
+      </div>
+    </div>
+
+    <!-- URLs + YouTube -->
+    <div class="back-urls mod-recess">
+      <span class="back-url">generussdesign.com</span>
+      <div class="sep-dot"></div>
+      <span class="back-url">generuss.com</span>
+      <div class="sep-dot"></div>
+      <span class="back-yt">YT @generussai</span>
+    </div>
+  </div>
+
+  <span class="micro-ver">SHIPPED 2026</span>
+</div>
+
+
+<!-- =================== ANNOTATIONS =================== -->
+<div class="notes">
+  <div class="notes-title">v10 changelog</div>
+  <div class="notes-grid">
+    <div class="note-item">
+      <div class="note-dot"></div>
+      <div class="note-text">
+        <span class="note-label">Rule of thirds:</span> Icons repositioned to 1/3 and 2/3 horizontal positions within each module. Wider viewbox (180x100) with more space between icon pairs.
+      </div>
+    </div>
+    <div class="note-item">
+      <div class="note-dot"></div>
+      <div class="note-text">
+        <span class="note-label">Icons bigger:</span> Browser, phone, clock, and nodes all scaled up with heavier strokes (2.2px). Clock has larger tick marks. Nodes have 18x18 terminal squares.
+      </div>
+    </div>
+    <div class="note-item">
+      <div class="note-dot"></div>
+      <div class="note-text">
+        <span class="note-label">Heartbeat line:</span> Status card redesigned. "Design" left with dot right. "Automation" right with dot left. Glowing cyan pulse spike between the dots at ~65% from left. SVG with drop-shadow glow.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var e = document.getElementById('email-line');
+  if (e) e.textContent = ['russ','generuss.com'].join(String.fromCharCode(64));
+});
+</script>
+
+</body>
+</html>
