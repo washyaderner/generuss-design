@@ -68,3 +68,12 @@ Key changes:
 
 - AI collaboration blog post with lava lamp thumbnail
 - Journal and wins entries from /connect bento hub and Moo prep sessions
+
+## 2026-03-01 | SHIP | c6957b1...8e697d4
+
+Shipped: Portfolio slideshow component with auto-advancing crossfade across 3 project cards, visibility-aware auto-advance, and updated business card print spec
+Commits: 6 since last ship
+Key changes:
+
+- Added multi-slide portfolio cards with dot navigation, hover pause, and 4s crossfade intervals
+- IntersectionObserver gates slideshow timers so off-screen cards don't cycle wastefully

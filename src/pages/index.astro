@@ -400,7 +400,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         Click any project to see it in action.
       </p>
 
-      <div class="flex flex-col gap-16 sm:gap-20 max-w-4xl mx-auto">
+      <div class="flex flex-col gap-16 sm:gap-20 max-w-6xl mx-auto">
         <!-- Project 1: Crystal Seed Tarot -->
         <div
           class="portfolio-card gsap-hidden group"
@@ -412,55 +412,79 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-image-desktop="/images/portfolio/crystal-seed-tarot-desktop.webp"
           data-slides="/images/portfolio/slides/crystalseed/01.webp,/images/portfolio/slides/crystalseed/02.webp,/images/portfolio/slides/crystalseed/03.webp,/images/portfolio/slides/crystalseed/04.webp,/images/portfolio/slides/crystalseed/05.webp"
         >
-          <div
-            class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-          >
-            <div
-              class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
-            >
-              <img
-                src="/images/portfolio/slides/crystalseed/01.webp"
-                alt="Crystal Seed Tarot screenshot 1"
-                class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/crystalseed/02.webp"
-                alt="Crystal Seed Tarot screenshot 2"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/crystalseed/03.webp"
-                alt="Crystal Seed Tarot screenshot 3"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/crystalseed/04.webp"
-                alt="Crystal Seed Tarot screenshot 4"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/crystalseed/05.webp"
-                alt="Crystal Seed Tarot screenshot 5"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
+          <div class="flex items-center gap-6 lg:gap-10">
+            <div class="flex-1 min-w-0">
               <div
-                class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
               >
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/80 transition-all"
-                  aria-label="Slide 1"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 2"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 3"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 4"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 5"></button>
+                <div
+                  class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
+                >
+                  <img
+                    src="/images/portfolio/slides/crystalseed/01.webp"
+                    alt="Crystal Seed Tarot screenshot 1"
+                    class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/crystalseed/02.webp"
+                    alt="Crystal Seed Tarot screenshot 2"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/crystalseed/03.webp"
+                    alt="Crystal Seed Tarot screenshot 3"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/crystalseed/04.webp"
+                    alt="Crystal Seed Tarot screenshot 4"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/crystalseed/05.webp"
+                    alt="Crystal Seed Tarot screenshot 5"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <div
+                    class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                  >
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/80 transition-all"
+                      aria-label="Slide 1"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 2"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 3"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 4"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 5"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- iPhone 16 Pro Max mockup -->
+            <div class="shrink-0 hidden lg:block">
+              <div
+                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)]"
+              >
+                <div
+                  class="relative rounded-[36px] overflow-hidden w-[190px] aspect-[393/852]"
+                >
+                  <img
+                    src="/images/portfolio/crystal-seed-tarot-mobile.webp"
+                    alt="Crystal Seed Tarot mobile view"
+                    class="w-full h-full object-cover object-top"
+                  />
+                  <div
+                    class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
+                  >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -505,55 +529,79 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-image-desktop="/images/portfolio/vibethrive-desktop.webp"
           data-slides="/images/portfolio/slides/vibenthrive/01.webp,/images/portfolio/slides/vibenthrive/02.webp,/images/portfolio/slides/vibenthrive/03.webp,/images/portfolio/slides/vibenthrive/04.webp,/images/portfolio/slides/vibenthrive/05.webp"
         >
-          <div
-            class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-          >
-            <div
-              class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
-            >
-              <img
-                src="/images/portfolio/slides/vibenthrive/01.webp"
-                alt="Vibe N Thrive Therapy screenshot 1"
-                class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/vibenthrive/02.webp"
-                alt="Vibe N Thrive Therapy screenshot 2"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/vibenthrive/03.webp"
-                alt="Vibe N Thrive Therapy screenshot 3"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/vibenthrive/04.webp"
-                alt="Vibe N Thrive Therapy screenshot 4"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/vibenthrive/05.webp"
-                alt="Vibe N Thrive Therapy screenshot 5"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
+          <div class="flex items-center gap-6 lg:gap-10">
+            <div class="flex-1 min-w-0">
               <div
-                class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
               >
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/80 transition-all"
-                  aria-label="Slide 1"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 2"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 3"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 4"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 5"></button>
+                <div
+                  class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
+                >
+                  <img
+                    src="/images/portfolio/slides/vibenthrive/01.webp"
+                    alt="Vibe N Thrive Therapy screenshot 1"
+                    class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/vibenthrive/02.webp"
+                    alt="Vibe N Thrive Therapy screenshot 2"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/vibenthrive/03.webp"
+                    alt="Vibe N Thrive Therapy screenshot 3"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/vibenthrive/04.webp"
+                    alt="Vibe N Thrive Therapy screenshot 4"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/vibenthrive/05.webp"
+                    alt="Vibe N Thrive Therapy screenshot 5"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <div
+                    class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                  >
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/80 transition-all"
+                      aria-label="Slide 1"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 2"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 3"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 4"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 5"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- iPhone 16 Pro Max mockup -->
+            <div class="shrink-0 hidden lg:block">
+              <div
+                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)]"
+              >
+                <div
+                  class="relative rounded-[36px] overflow-hidden w-[190px] aspect-[393/852]"
+                >
+                  <img
+                    src="/images/portfolio/vibethrive-mobile.webp"
+                    alt="Vibe N Thrive Therapy mobile view"
+                    class="w-full h-full object-cover object-top"
+                  />
+                  <div
+                    class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
+                  >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -594,47 +642,71 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-image-desktop="/images/portfolio/generuss-desktop.webp"
           data-slides="/images/portfolio/slides/generuss/01.webp,/images/portfolio/slides/generuss/02.webp,/images/portfolio/slides/generuss/03.webp,/images/portfolio/slides/generuss/04.webp"
         >
-          <div
-            class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-          >
-            <div
-              class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
-            >
-              <img
-                src="/images/portfolio/slides/generuss/01.webp"
-                alt="generuss.com screenshot 1"
-                class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/generuss/02.webp"
-                alt="generuss.com screenshot 2"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/generuss/03.webp"
-                alt="generuss.com screenshot 3"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
-              <img
-                src="/images/portfolio/slides/generuss/04.webp"
-                alt="generuss.com screenshot 4"
-                class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-              />
+          <div class="flex items-center gap-6 lg:gap-10">
+            <div class="flex-1 min-w-0">
               <div
-                class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
               >
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/80 transition-all"
-                  aria-label="Slide 1"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 2"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 3"></button>
-                <button
-                  class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                  aria-label="Slide 4"></button>
+                <div
+                  class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
+                >
+                  <img
+                    src="/images/portfolio/slides/generuss/01.webp"
+                    alt="generuss.com screenshot 1"
+                    class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/generuss/02.webp"
+                    alt="generuss.com screenshot 2"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/generuss/03.webp"
+                    alt="generuss.com screenshot 3"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <img
+                    src="/images/portfolio/slides/generuss/04.webp"
+                    alt="generuss.com screenshot 4"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                  />
+                  <div
+                    class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                  >
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/80 transition-all"
+                      aria-label="Slide 1"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 2"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 3"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 4"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- iPhone 16 Pro Max mockup -->
+            <div class="shrink-0 hidden lg:block">
+              <div
+                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)]"
+              >
+                <div
+                  class="relative rounded-[36px] overflow-hidden w-[190px] aspect-[393/852]"
+                >
+                  <img
+                    src="/images/portfolio/generuss-mobile.webp"
+                    alt="generuss.com mobile view"
+                    class="w-full h-full object-cover object-top"
+                  />
+                  <div
+                    class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
+                  >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
