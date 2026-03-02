@@ -96,15 +96,33 @@ GitHub: routed through /connect (handle washyaderner doesn't match brand)
 
 ## Print Spec
 
-- Moo Super Business Cards, standard size: 84mm x 55mm (3.31" x 2.17")
-- Bleed: 0.125" (3.175mm)
-- Soft Touch matte finish
-- Raised Spot Gloss (separate B/W mask PDF per side)
-- Front gloss: glow bar, lit progress dots, optionally logos
-- Back gloss: tagline "THAT CONVERT" text, status dots, heartbeat spike, separator dots
-- Gloss coverage: 8-12% per side (under 20% limit)
-- Resolution: 600dpi
-- Color: CMYK for artwork, B/W for gloss mask
+- **Product:** Moo Super Business Cards
+- **Size:** Standard - 84mm x 55mm (3.31" x 2.17")
+- **Finish:** Soft Touch matte + Raised Spot Gloss
+- **Bleed:** 0.125" (3.175mm) - already included in artwork dimensions
+
+### Upload Files (all in `card/print/`)
+
+| File                   | Purpose               | Format          | Dimensions      |
+| ---------------------- | --------------------- | --------------- | --------------- |
+| `front-artwork.png`    | Front side artwork    | RGB PNG, 600dpi | 2079x1394px     |
+| `back-artwork.png`     | Back side artwork     | RGB PNG, 600dpi | 2079x1394px     |
+| `front-gloss-mask.pdf` | Front spot gloss mask | B/W PDF         | matches artwork |
+| `back-gloss-mask.pdf`  | Back spot gloss mask  | B/W PDF         | matches artwork |
+
+### Gloss Mask Key
+
+- **White** = glossy (raised spot gloss applied)
+- **Black** = matte (soft touch only)
+- Front gloss elements: glow bar, lit progress dots
+- Back gloss elements: "THAT CONVERT" text, status dots, heartbeat spike, separator dots
+- Coverage: 8-12% per side (under Moo's 20% limit)
+
+### Gotchas
+
+- Artwork is **RGB** - Moo handles RGB-to-CMYK conversion automatically
+- Bleed is **already baked into** the 2079x1394 dimensions - do not add extra
+- Moo may flag a 96dpi warning during upload - ignore it, the files are 600dpi (their parser sometimes misreads PNG metadata)
 
 ## Kit (Claude Code) Directive
 
