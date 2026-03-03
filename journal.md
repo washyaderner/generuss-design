@@ -77,3 +77,11 @@ Key changes:
 
 - Added multi-slide portfolio cards with dot navigation, hover pause, and 4s crossfade intervals
 - IntersectionObserver gates slideshow timers so off-screen cards don't cycle wastefully
+
+## 2026-03-01 | SHIP | 8e697d4...874b313
+
+Shipped: iPhone 16 Pro Max mockups alongside desktop slideshows in portfolio section
+Commits: 2 since last ship
+Key changes:
+- CSS iPhone frame with Dynamic Island, neumorphic shadow, accent glow on hover next to each desktop slideshow
+- Portfolio container widened to max-w-6xl for side-by-side layout
