@@ -407,13 +407,10 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-project="crystal-seed-tarot"
           data-title="Crystal Seed Tarot"
           data-url="https://crystalseedtarot.com"
-          data-description="A mystical, CMS-driven site featuring dynamically updating event pages, Contentful-powered blog feeds, and a custom Python-built email list - all wrapped in an atmospheric purple-glow design that reflects the brand's energy."
-          data-stack="Next.js, Tailwind, Vercel"
-          data-image-desktop="/images/portfolio/crystal-seed-tarot-desktop.webp"
-          data-slides="/images/portfolio/slides/crystalseed/01.webp,/images/portfolio/slides/crystalseed/02.webp,/images/portfolio/slides/crystalseed/03.webp,/images/portfolio/slides/crystalseed/04.webp,/images/portfolio/slides/crystalseed/05.webp"
         >
-          <div class="flex items-center gap-6 lg:gap-10">
-            <div class="flex-1 min-w-0">
+          <div class="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
+            <!-- Desktop slideshow -->
+            <div class="w-full lg:flex-[2] min-w-0">
               <div
                 class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
               >
@@ -421,29 +418,27 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
                   class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
                 >
                   <img
-                    src="/images/portfolio/slides/crystalseed/01.webp"
-                    alt="Crystal Seed Tarot screenshot 1"
+                    src="/images/portfolio/slides/crystal/01.webp"
+                    alt="Crystal Seed Tarot - hero"
                     class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
                   />
                   <img
-                    src="/images/portfolio/slides/crystalseed/02.webp"
-                    alt="Crystal Seed Tarot screenshot 2"
+                    src="/images/portfolio/slides/crystal/02.webp"
+                    alt="Crystal Seed Tarot - blog"
                     class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
                   />
                   <img
-                    src="/images/portfolio/slides/crystalseed/03.webp"
-                    alt="Crystal Seed Tarot screenshot 3"
+                    src="/images/portfolio/slides/crystal/03.webp"
+                    alt="Crystal Seed Tarot - events"
                     class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
                   />
                   <img
-                    src="/images/portfolio/slides/crystalseed/04.webp"
-                    alt="Crystal Seed Tarot screenshot 4"
+                    src="/images/portfolio/slides/crystal/04.webp"
+                    alt="Crystal Seed Tarot - reviews"
                     class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-                  />
-                  <img
-                    src="/images/portfolio/slides/crystalseed/05.webp"
-                    alt="Crystal Seed Tarot screenshot 5"
-                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
                   />
                   <div
                     class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
@@ -460,26 +455,72 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
                     <button
                       class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
                       aria-label="Slide 4"></button>
-                    <button
-                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                      aria-label="Slide 5"></button>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- iPhone 16 Pro Max mockup -->
-            <div class="shrink-0 hidden lg:block">
+            <!-- iPhone 16 Pro Max mockup with mobile slideshow -->
+            <div
+              class="w-full flex justify-center lg:w-auto lg:flex-1 lg:max-w-[280px] shrink-0"
+            >
               <div
-                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)]"
+                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)] max-w-[220px] lg:max-w-none"
               >
                 <div
-                  class="relative rounded-[36px] overflow-hidden w-[190px] aspect-[393/852]"
+                  class="relative rounded-[36px] overflow-hidden w-full lg:w-[190px] aspect-[393/852]"
                 >
-                  <img
-                    src="/images/portfolio/crystal-seed-tarot-mobile.webp"
-                    alt="Crystal Seed Tarot mobile view"
-                    class="w-full h-full object-cover object-top"
-                  />
+                  <div
+                    class="portfolio-slideshow relative w-full h-full overflow-hidden"
+                  >
+                    <img
+                      src="/images/portfolio/slides/crystal/mobile-01.webp"
+                      alt="Crystal Seed Tarot mobile - hero"
+                      class="slide active absolute inset-0 w-full h-full object-cover object-top opacity-100 transition-opacity duration-700"
+                    />
+                    <img
+                      src="/images/portfolio/slides/crystal/mobile-02.webp"
+                      alt="Crystal Seed Tarot mobile - reviews"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/crystal/mobile-03.webp"
+                      alt="Crystal Seed Tarot mobile - blog"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/crystal/mobile-04.webp"
+                      alt="Crystal Seed Tarot mobile - events"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/crystal/mobile-05.webp"
+                      alt="Crystal Seed Tarot mobile - menu"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <div
+                      class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"
+                    >
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/80 transition-all"
+                        aria-label="Slide 1"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 2"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 3"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 4"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 5"></button>
+                    </div>
+                  </div>
                   <div
                     class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
                   >
@@ -524,13 +565,10 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-project="vibethrive"
           data-title="Vibe N Thrive Therapy"
           data-url="https://vibenthrivetherapy.com"
-          data-description="A conversion-focused therapy site built with Astro and Tailwind v4, featuring a Python-vectorized logo, Calendly-powered session booking front and center, and a conditional Formspree intake form that routes event inquiries and client questions to the right place."
-          data-stack="Astro, Vercel"
-          data-image-desktop="/images/portfolio/vibethrive-desktop.webp"
-          data-slides="/images/portfolio/slides/vibenthrive/01.webp,/images/portfolio/slides/vibenthrive/02.webp,/images/portfolio/slides/vibenthrive/03.webp,/images/portfolio/slides/vibenthrive/04.webp,/images/portfolio/slides/vibenthrive/05.webp"
         >
-          <div class="flex items-center gap-6 lg:gap-10">
-            <div class="flex-1 min-w-0">
+          <div class="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
+            <!-- Desktop slideshow -->
+            <div class="w-full lg:flex-[2] min-w-0">
               <div
                 class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
               >
@@ -538,29 +576,27 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
                   class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
                 >
                   <img
-                    src="/images/portfolio/slides/vibenthrive/01.webp"
-                    alt="Vibe N Thrive Therapy screenshot 1"
+                    src="/images/portfolio/slides/vibe/01.webp"
+                    alt="Vibe N Thrive - hero"
                     class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
                   />
                   <img
-                    src="/images/portfolio/slides/vibenthrive/02.webp"
-                    alt="Vibe N Thrive Therapy screenshot 2"
+                    src="/images/portfolio/slides/vibe/02.webp"
+                    alt="Vibe N Thrive - gif"
                     class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
                   />
                   <img
-                    src="/images/portfolio/slides/vibenthrive/03.webp"
-                    alt="Vibe N Thrive Therapy screenshot 3"
+                    src="/images/portfolio/slides/vibe/03.webp"
+                    alt="Vibe N Thrive - info"
                     class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
                   />
                   <img
-                    src="/images/portfolio/slides/vibenthrive/04.webp"
-                    alt="Vibe N Thrive Therapy screenshot 4"
+                    src="/images/portfolio/slides/vibe/04.webp"
+                    alt="Vibe N Thrive - pricing"
                     class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-                  />
-                  <img
-                    src="/images/portfolio/slides/vibenthrive/05.webp"
-                    alt="Vibe N Thrive Therapy screenshot 5"
-                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
                   />
                   <div
                     class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
@@ -577,26 +613,72 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
                     <button
                       class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
                       aria-label="Slide 4"></button>
-                    <button
-                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                      aria-label="Slide 5"></button>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- iPhone 16 Pro Max mockup -->
-            <div class="shrink-0 hidden lg:block">
+            <!-- iPhone 16 Pro Max mockup with mobile slideshow -->
+            <div
+              class="w-full flex justify-center lg:w-auto lg:flex-1 lg:max-w-[280px] shrink-0"
+            >
               <div
-                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)]"
+                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)] max-w-[220px] lg:max-w-none"
               >
                 <div
-                  class="relative rounded-[36px] overflow-hidden w-[190px] aspect-[393/852]"
+                  class="relative rounded-[36px] overflow-hidden w-full lg:w-[190px] aspect-[393/852]"
                 >
-                  <img
-                    src="/images/portfolio/vibethrive-mobile.webp"
-                    alt="Vibe N Thrive Therapy mobile view"
-                    class="w-full h-full object-cover object-top"
-                  />
+                  <div
+                    class="portfolio-slideshow relative w-full h-full overflow-hidden"
+                  >
+                    <img
+                      src="/images/portfolio/slides/vibe/mobile-01.webp"
+                      alt="Vibe N Thrive mobile - hero"
+                      class="slide active absolute inset-0 w-full h-full object-cover object-top opacity-100 transition-opacity duration-700"
+                    />
+                    <img
+                      src="/images/portfolio/slides/vibe/mobile-02.webp"
+                      alt="Vibe N Thrive mobile - info"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/vibe/mobile-03.webp"
+                      alt="Vibe N Thrive mobile - pricing"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/vibe/mobile-04.webp"
+                      alt="Vibe N Thrive mobile - features"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/vibe/mobile-05.webp"
+                      alt="Vibe N Thrive mobile - menu"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <div
+                      class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"
+                    >
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/80 transition-all"
+                        aria-label="Slide 1"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 2"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 3"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 4"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 5"></button>
+                    </div>
+                  </div>
                   <div
                     class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
                   >
@@ -637,13 +719,10 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-project="generuss"
           data-title="generuss.com"
           data-url="https://generuss.com"
-          data-description="B2B growth automation site featuring an AI-powered chatbot, embedded Cal.com scheduling, Contentful-driven blog, and data-backed case studies with strategic social proof - all wrapped in a dark, polished UI with interactive cursor glow effects and conversion-focused CTA placement."
-          data-stack="Next.js, Tailwind, Vercel"
-          data-image-desktop="/images/portfolio/generuss-desktop.webp"
-          data-slides="/images/portfolio/slides/generuss/01.webp,/images/portfolio/slides/generuss/02.webp,/images/portfolio/slides/generuss/03.webp,/images/portfolio/slides/generuss/04.webp"
         >
-          <div class="flex items-center gap-6 lg:gap-10">
-            <div class="flex-1 min-w-0">
+          <div class="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
+            <!-- Desktop slideshow -->
+            <div class="w-full lg:flex-[2] min-w-0">
               <div
                 class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
               >
@@ -652,23 +731,20 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
                 >
                   <img
                     src="/images/portfolio/slides/generuss/01.webp"
-                    alt="generuss.com screenshot 1"
+                    alt="generuss.com - hero"
                     class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
                   />
                   <img
                     src="/images/portfolio/slides/generuss/02.webp"
-                    alt="generuss.com screenshot 2"
+                    alt="generuss.com - blog"
                     class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
                   />
                   <img
                     src="/images/portfolio/slides/generuss/03.webp"
-                    alt="generuss.com screenshot 3"
+                    alt="generuss.com - booking"
                     class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-                  />
-                  <img
-                    src="/images/portfolio/slides/generuss/04.webp"
-                    alt="generuss.com screenshot 4"
-                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
                   />
                   <div
                     class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
@@ -682,26 +758,81 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
                     <button
                       class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
                       aria-label="Slide 3"></button>
-                    <button
-                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
-                      aria-label="Slide 4"></button>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- iPhone 16 Pro Max mockup -->
-            <div class="shrink-0 hidden lg:block">
+            <!-- iPhone 16 Pro Max mockup with mobile slideshow -->
+            <div
+              class="w-full flex justify-center lg:w-auto lg:flex-1 lg:max-w-[280px] shrink-0"
+            >
               <div
-                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)]"
+                class="relative bg-[#1c1c1e] rounded-[44px] border-[2.5px] border-[#3a3a3c] p-2 shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)] max-w-[220px] lg:max-w-none"
               >
                 <div
-                  class="relative rounded-[36px] overflow-hidden w-[190px] aspect-[393/852]"
+                  class="relative rounded-[36px] overflow-hidden w-full lg:w-[190px] aspect-[393/852]"
                 >
-                  <img
-                    src="/images/portfolio/generuss-mobile.webp"
-                    alt="generuss.com mobile view"
-                    class="w-full h-full object-cover object-top"
-                  />
+                  <div
+                    class="portfolio-slideshow relative w-full h-full overflow-hidden"
+                  >
+                    <img
+                      src="/images/portfolio/slides/generuss/mobile-01.webp"
+                      alt="generuss.com mobile - hero"
+                      class="slide active absolute inset-0 w-full h-full object-cover object-top opacity-100 transition-opacity duration-700"
+                    />
+                    <img
+                      src="/images/portfolio/slides/generuss/mobile-02.webp"
+                      alt="generuss.com mobile - blog"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/generuss/mobile-03.webp"
+                      alt="generuss.com mobile - booking"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/generuss/mobile-04.webp"
+                      alt="generuss.com mobile - chatbot"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/generuss/mobile-05.webp"
+                      alt="generuss.com mobile - reviews"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/generuss/mobile-06.webp"
+                      alt="generuss.com mobile - social proof"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <div
+                      class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"
+                    >
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/80 transition-all"
+                        aria-label="Slide 1"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 2"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 3"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 4"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 5"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 6"></button>
+                    </div>
+                  </div>
                   <div
                     class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
                   >
