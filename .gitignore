@@ -21,6 +21,7 @@ scratchpad.md
 
 # Editor
 .cursorrules
+.vscode/
 
 # Wrangler
 .wrangler/
