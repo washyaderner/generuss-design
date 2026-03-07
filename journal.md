@@ -83,5 +83,16 @@ Key changes:
 Shipped: iPhone 16 Pro Max mockups alongside desktop slideshows in portfolio section
 Commits: 2 since last ship
 Key changes:
+
 - CSS iPhone frame with Dynamic Island, neumorphic shadow, accent glow on hover next to each desktop slideshow
 - Portfolio container widened to max-w-6xl for side-by-side layout
+
+## 2026-03-04 | SHIP | 874b313...7649d7f
+
+Shipped: Fresh portfolio screenshots with dual slideshow layout - desktop and mobile slideshows per project card
+Commits: 4 since last ship
+Key changes:
+
+- Replaced all portfolio images with cropped 5K desktop and iPhone screenshots (27 webp files)
+- Mobile slideshow inside phone mockup runs independently alongside desktop slideshow per card
+- Image processing script (execution/process-portfolio-screenshots.cjs) for repeatable crop/resize/convert pipeline
