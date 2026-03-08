@@ -63,7 +63,7 @@ const QR_SIZE = 1083;
 const QR_COLOR = "#00e5ff";
 
 // Paths
-const HTML_PATH = path.resolve(__dirname, "business-card-v11.html");
+const HTML_PATH = path.resolve(__dirname, "business-card-v16.html");
 const QR_PATH = path.resolve(__dirname, "qr-code.png");
 const CARD_DIR = path.resolve(__dirname, "..");
 const OUT_DIR = path.join(CARD_DIR, "print");

@@ -96,3 +96,12 @@ Key changes:
 - Replaced all portfolio images with cropped 5K desktop and iPhone screenshots (27 webp files)
 - Mobile slideshow inside phone mockup runs independently alongside desktop slideshow per card
 - Image processing script (execution/process-portfolio-screenshots.cjs) for repeatable crop/resize/convert pipeline
+
+## 2026-03-06 | SHIP | 7649d7f...b8e0ea1
+
+Shipped: Housekeeping - journal sync and .vscode added to gitignore
+Commits: 2 since last ship
+Key changes:
+
+- Added previous ship entry to journal.md
+- Added .vscode/ to .gitignore to keep editor config out of repo
