@@ -124,3 +124,13 @@ Key changes:
 **Signal:** Patient through iterations, decisive on revert. "It's fine if we just have the pulse and the dots highlighted." Clean call to stop.
 **Friction:** CSS div height vs SVG stroke-width in a thresholded B/W context. Anti-aliasing differences between the two rendering methods meant no ratio produced a seamless join after threshold(128).
 **Carries forward:** Cards ordered. Design source is now v17 (business-card-v17.html). Render pipeline pointed at v17.
+
+## 2026-03-09 | SHIP | ffaa53f...3b0807b
+
+Shipped: Pharadoxa build blog post and architecture diagram case study on homepage
+Commits: 4 since last ship
+Key changes:
+
+- New blog post at /blog/pharadoxa-build/ covering the full Pharadoxa agent build story
+- Homepage case study card replaced stats grid with inline SVG architecture diagram (7-layer system view)
+- OG image with cyan + purple dream particle motif
