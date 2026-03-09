@@ -44,3 +44,8 @@
 
 **Correction:** The QR "g" was shifted DOWN (dy="+0.05em") when it needed to go UP to optically center the descender. Had to reverse direction to dy="-0.12em".
 **Rule:** Lowercase letters with descenders (g, j, p, q, y) need negative dy to optically center in a container. The descender pulls the visual center down - compensate upward, not downward.
+
+### 2026-03-09 | approach
+
+**Correction:** Spent 7+ iterations trying to connect gloss mask heartbeat line to pulse dots with CSS div connector bars. Threshold step (grayscale + threshold(128)) makes matching SVG stroke width to div height nearly impossible - anti-aliasing differences create visible seams at every ratio.
+**Rule:** Don't try to bridge separate rendering methods (CSS divs vs SVG strokes) in thresholded B/W masks. If elements need to connect seamlessly, render them as a single SVG path. If that's not feasible, accept them as separate gloss elements. Know when to revert - 3 failed approaches means the technique is wrong.

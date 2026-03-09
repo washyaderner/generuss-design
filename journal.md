@@ -105,3 +105,22 @@ Key changes:
 
 - Added previous ship entry to journal.md
 - Added .vscode/ to .gitignore to keep editor config out of repo
+
+## 2026-03-07 | SHIP | b8e0ea1...ffaa53f
+
+Shipped: Pharadoxa case study card in portfolio section and standalone breakdown page, plus portfolio phone mockup refinements
+Commits: 2 since last ship
+Key changes:
+
+- Pharadoxa case study card with stats grid and link to /case-studies/pharadoxa/ breakdown page
+- Desktop and mobile slideshows now sync within each portfolio card (shared timer, dot clicks control both)
+- Phone mockup proportions tightened (smaller bezel, flex-stretch to match desktop height)
+- Business card updated to v16 design with regenerated 600dpi print assets
+
+## 2026-03-09 09:20 | SESSION
+
+**Context:** Spot gloss mask refinement for back of business card - wanted heartbeat line to connect through pulse dots
+**Outcome:** Attempted 7+ iterations of connector bars (CSS divs bridging SVG to dots). Threshold step made matching widths intractable - always slightly too thick or too thin. Reverted to original spike-only heartbeat mask. Cards ordered on Moo with existing design.
+**Signal:** Patient through iterations, decisive on revert. "It's fine if we just have the pulse and the dots highlighted." Clean call to stop.
+**Friction:** CSS div height vs SVG stroke-width in a thresholded B/W context. Anti-aliasing differences between the two rendering methods meant no ratio produced a seamless join after threshold(128).
+**Carries forward:** Cards ordered. Design source is now v17 (business-card-v17.html). Render pipeline pointed at v17.
