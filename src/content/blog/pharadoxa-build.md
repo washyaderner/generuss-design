@@ -38,7 +38,7 @@ During that same session, Claude Code - my build agent in Cursor - was given the
 
 ## The Planning Sprint
 
-March 3rd and 4th were two marathon sessions with Claude. Not building. Planning.
+March 4th was one evening with Claude. Not building. Planning.
 
 The master plan went through six versions. Every iteration tightened the scope, closed gaps, and pre-made decisions that would otherwise slow down the build. I ran a formal gap analysis against the Gravity Claw architecture docs and found nine issues - six real problems and three minor ones. A Supabase key mismatch that would have broken server-side writes. A missing decision about voice capabilities. The deploy steps didn't mention MCP configuration. YouTube integration was completely unaddressed. None of those would have been caught during the build session. All of them would have caused problems.
 
@@ -159,7 +159,7 @@ And she found 22 engagement-ready Reddit threads for Outlier Sniper - organized 
 
 The fifty-minute coding session is the headline, but it's not the insight. The insight is that the coding session only worked because every decision was already made.
 
-Weeks of background research. Six versions of a master plan. A gap analysis that caught nine issues before they became problems. A 245-line identity document written before a single account was created. A 353-line build directive that specified every file and every schema. A resources room packed with conversation history, tone samples, and architecture references.
+A month of ambient learning that converged in one evening. Six versions of a master plan. A gap analysis that caught nine issues before they became problems. A 245-line identity document written before a single account was created. A 353-line build directive that specified every file and every schema. A resources room packed with conversation history, tone samples, and architecture references.
 
 The code was the easy part. The thinking was the work.
 
