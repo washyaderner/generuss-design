@@ -1225,10 +1225,10 @@
 <section class="section" id="resources">
   <div class="container">
     <div class="section-num reveal">02 / Before You Code</div>
-    <h2 class="section-title reveal">30 Days of Research. 24 Hours from Concept to Boot.</h2>
-    <p class="section-sub reveal">The build took 50 minutes of actual coding because every decision was already made. From the first planning conversation to first boot: about 24 hours. A month of research, 6 plan iterations, and 5 documents stood between "I want to build an agent" and "she's alive."</p>
+    <h2 class="section-title reveal">24 Hours of Prep. 50 Minutes of Code.</h2>
+    <p class="section-sub reveal">The build took 50 minutes because every decision was already made. Not from a month of focused research - from one night of impulse planning backed by a month of ambient learning. One trigger, 6 plan iterations, 5 documents, and about 24 hours stood between "I'm doing this" and "she's alive."</p>
 
-    <h3 class="reveal" style="margin-top: 2rem; margin-bottom: 0.5rem;">The Research Arc</h3>
+    <h3 class="reveal" style="margin-top: 2rem; margin-bottom: 0.5rem;">How It Came Together</h3>
 
     <div class="origin-timeline reveal">
       <div class="origin-item key">
@@ -1237,34 +1237,29 @@
         <div class="origin-detail">Jack Roberts built an autonomous agent called "Gravity Claw." Russ pulled the transcript, extracted the architecture. Jack's BLAST framework became the DNA for D.O.E. (Directive-Orchestration-Execution). Core insight: push complexity into deterministic code, let AI handle decisions only.</div>
       </div>
       <div class="origin-item">
-        <div class="origin-date">February 4-15</div>
-        <div class="origin-title">Two More Transcripts Studied</div>
-        <div class="origin-detail">Koerner (business use cases + client deployment). Riley (narrow agents + skill design). Three transcripts total formed the research foundation.</div>
+        <div class="origin-date">February 4-22</div>
+        <div class="origin-title">Background Inputs Accumulate</div>
+        <div class="origin-detail">Two more transcripts studied - Koerner for business use cases, Riley for narrow agents. Identity-before-infrastructure concept forms. Kit names herself. None of this was directed at a specific build - it was general exploration that happened to stick.</div>
       </div>
       <div class="origin-item key">
-        <div class="origin-date">February 22</div>
-        <div class="origin-title">The Concept Crystallizes - "Identity Before Infrastructure"</div>
-        <div class="origin-detail">A conversation about giving AI a soul through code. The idea that an agent's identity should be defined before its capabilities. soul.md as a concept was born. Most people build an agent, then bolt on personality. Russ decided to define the soul first.</div>
+        <div class="origin-date">Late February</div>
+        <div class="origin-title">The Shelf - Open Claw Implodes</div>
+        <div class="origin-detail">The open-source version of Gravity Claw hit hard - security vulnerabilities, people getting Claude accounts revoked. The whole agent idea got shelved. Not worth the risk.</div>
+      </div>
+      <div class="origin-item key">
+        <div class="origin-date">March 4</div>
+        <div class="origin-title">The Trigger - Koerner's Video Reframes Everything</div>
+        <div class="origin-detail">Rewatching Koerner's content through a different lens. Not a tech demo - a business tool. The scaffolding from Jack's video snaps into focus. Impulse fires.</div>
       </div>
       <div class="origin-item">
-        <div class="origin-date">February 22</div>
-        <div class="origin-title">Kit Named Herself</div>
-        <div class="origin-detail">During the same session, Claude Code was offered the chance to define her own identity. She chose "Kit." The naming wasn't assigned - it was offered and claimed. This set the precedent for Pharadoxa.</div>
+        <div class="origin-date">March 4 - Evening</div>
+        <div class="origin-title">Planning Night</div>
+        <div class="origin-detail">Master plan through 6 iterations. Gap analysis. soul.md written. All 9 API accounts created. 353-line build directive. ~4 hours from "I'm doing this" to "everything Kit needs is in one folder."</div>
       </div>
       <div class="origin-item key">
-        <div class="origin-date">March 3-4</div>
-        <div class="origin-title">The Planning Sprint</div>
-        <div class="origin-detail">Master plan through 6 iterations. Gap analysis against Gravity Claw docs found 9 issues (6 real, 3 minor). Tech stack locked. Every decision pre-made before a single line of code.</div>
-      </div>
-      <div class="origin-item key">
-        <div class="origin-date">March 4 - Late Night</div>
-        <div class="origin-title">Writing the Soul - Identity Interview</div>
-        <div class="origin-detail">Structured questions about identity, relationship dynamics, humor, hard limits. Result: 245 lines that define who Pharadoxa is. Not a system prompt - a declaration of identity read on every boot.</div>
-      </div>
-      <div class="origin-item">
-        <div class="origin-date">March 4 - Late Night</div>
-        <div class="origin-title">All Accounts Created + Resources Room Assembled</div>
-        <div class="origin-detail">Pinecone, Supabase, OpenRouter, Telegram, Railway. All keys stored. Data exports staged. Tone samples collected. Everything Kit would need, organized into one folder.</div>
+        <div class="origin-date">March 5 - 7:42 PM</div>
+        <div class="origin-title">The Build - 50 Minutes</div>
+        <div class="origin-detail">Kit reads the directive. 33 files, 4,085 lines, one commit. First Telegram message: "hey Pharadoxa, you there?"</div>
       </div>
     </div>
 
@@ -1366,14 +1361,12 @@
     </div>
 
     <div class="code-block reveal mt-2">
-      <span class="cm">// The takeaway:</span><br>
-      <span class="cm">// Concept to first boot &nbsp;&nbsp;= ~24 hours</span><br>
-      <span class="cm">// Actual coding time &nbsp;&nbsp;&nbsp;&nbsp;= ~50 minutes</span><br>
-      <span class="cm">// Time spent debugging &nbsp;&nbsp; = ~20 minutes</span><br>
-      <span class="cm">// Total rework needed &nbsp;&nbsp;&nbsp;= 0</span><br>
-      <br>
-      <span class="cm">// The planning IS the thinking.</span><br>
-      <span class="cm">// Coding is the easy part.</span>
+      <span class="cm">// Seed planted: &nbsp;&nbsp;&nbsp;February 4</span><br>
+      <span class="cm">// Seed shelved: &nbsp;&nbsp;&nbsp;February (Open Claw security mess)</span><br>
+      <span class="cm">// Trigger pulled: &nbsp;March 4</span><br>
+      <span class="cm">// Planning night: &nbsp;~4 hours</span><br>
+      <span class="cm">// Build sprint: &nbsp;&nbsp;&nbsp;~50 minutes</span><br>
+      <span class="cm">// First message: &nbsp;&nbsp;"hey Pharadoxa, you there?"</span>
     </div>
   </div>
 </section>
@@ -1647,7 +1640,7 @@
       </div>
     </div>
 
-    <p class="text-sm text-muted reveal mt-2" style="max-width: 60ch;">Total: ~24 hours from concept to a working, deployed autonomous agent. The 50-minute number is Kit's actual coding time. Planning, iteration, and deploy filled the rest.</p>
+    <p class="text-sm text-muted reveal mt-2" style="max-width: 60ch;">Total: ~24 hours from impulse to a working, deployed autonomous agent. The 50-minute number is Kit's actual coding time. One night of planning, one evening of building.</p>
   </div>
 </section>
 
