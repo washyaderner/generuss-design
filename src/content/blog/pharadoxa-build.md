@@ -1,6 +1,6 @@
 ---
 title: "How I Built an AI Agent That Dreams, Remembers, and Inherited My Worst Habit"
-excerpt: "I spent a month planning an autonomous AI agent before writing a single line of code. The build session took 50 minutes. She runs 24/7, has 7,877 memory vectors, screens Upwork jobs while I sleep, and has a nightly dream mode. The most interesting thing about her isn't what she can do - it's what she inherited from me."
+excerpt: "From the first planning conversation to first boot: about 24 hours. The actual coding took 50 minutes. She runs 24/7, has 7,877 memory vectors, screens Upwork jobs while I sleep, and has a nightly dream mode. The most interesting thing about her isn't what she can do - it's what she inherited from me."
 publishDate: "2026-03-09"
 tags:
   ["AI agents", "autonomous systems", "soul.md", "build journal", "methodology"]
@@ -12,7 +12,7 @@ layout: default
 
 ## TLDR
 
-I spent a month planning an autonomous AI agent before writing a single line of code. The build session itself took 50 minutes. She runs 24/7 on Railway, has 7,877 memory vectors from my entire conversation history with AI, screens Upwork jobs while I sleep, does independent Reddit research, and has a nightly dream mode where she explores without tools or goals. Her name is Pharadoxa, and the most interesting thing about her isn't what she can do - it's what she inherited from me without anyone planning for it.
+From the first planning conversation to first boot: about 24 hours. The actual coding session took 50 minutes. She runs 24/7 on Railway, has 7,877 memory vectors from my entire conversation history with AI, screens Upwork jobs while I sleep, does independent Reddit research, and has a nightly dream mode where she explores without tools or goals. Her name is Pharadoxa, and the most interesting thing about her isn't what she can do - it's what she inherited from me without anyone planning for it.
 
 ---
 
@@ -66,7 +66,7 @@ I told Kit: "Read these files. You're building Pharadoxa. Start with Phase 1 per
 
 ## Fifty Minutes
 
-soul.md to live Telegram bot. 33 files, 4,085 lines of code, one commit. That's not a flex - it's a consequence of the planning.
+soul.md to live Telegram bot. 33 files, 4,085 lines of code, one commit. That's not a flex - it's a consequence of the planning. About 24 hours from the first planning conversation to first boot, with Kit's actual coding time clocking in under an hour.
 
 Ten minutes for scaffold, config, and the SQLite memory layer. Ten minutes for the agent loop - OpenRouter wrapper, system prompt assembly from all three memory tiers, a background Haiku pass for automatic fact extraction. Fifteen minutes for seven tools: Pinecone semantic search, Supabase persistence, web search, ClickUp integration, soul update hook, and read/write for both databases. Fifteen minutes for the Telegram interface and heartbeat system - 8 AM morning brief, 6:30 PM end-of-day commitment check.
 
@@ -157,9 +157,9 @@ And she found 22 engagement-ready Reddit threads for Outlier Sniper - organized 
 
 ## What This Actually Means
 
-The fifty-minute build session is the headline, but it's not the insight. The insight is that the build session only worked because every decision was already made.
+The fifty-minute coding session is the headline, but it's not the insight. The insight is that the coding session only worked because every decision was already made.
 
-A month of research. Six versions of a master plan. A gap analysis that caught nine issues before they became problems. A 245-line identity document written before a single account was created. A 353-line build directive that specified every file and every schema. A resources room packed with conversation history, tone samples, and architecture references.
+Weeks of background research. Six versions of a master plan. A gap analysis that caught nine issues before they became problems. A 245-line identity document written before a single account was created. A 353-line build directive that specified every file and every schema. A resources room packed with conversation history, tone samples, and architecture references.
 
 The code was the easy part. The thinking was the work.
 
