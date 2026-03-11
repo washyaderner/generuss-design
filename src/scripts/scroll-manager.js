@@ -184,12 +184,6 @@ function setupPortfolio(isMobile) {
     scrollTrigger: { trigger: ".portfolio-heading", start: "top 85%" },
   });
 
-  fadeUp(".portfolio-subline", {
-    y: 15,
-    scrollTrigger: { trigger: ".portfolio-subline", start: "top 85%" },
-    delay: 0.1,
-  });
-
   // Each card fades up from a subtle offset with a soft shadow bloom
   document.querySelectorAll(".portfolio-card").forEach((card) => {
     card.classList.remove("gsap-hidden");

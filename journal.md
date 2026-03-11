@@ -134,3 +134,39 @@ Key changes:
 - New blog post at /blog/pharadoxa-build/ covering the full Pharadoxa agent build story
 - Homepage case study card replaced stats grid with inline SVG architecture diagram (7-layer system view)
 - OG image with cyan + purple dream particle motif
+
+## 2026-03-09 | SHIP | 3b0807b...3b7a968
+
+Shipped: Fixed Pharadoxa blog OG image to match site's established lava lamp pattern
+Commits: 2 since last ship
+Key changes:
+
+- Replaced purple+cyan dual-gradient SVG with cyan-only pattern matching other blog thumbnails
+- Fixed circle placement and animation distances so goo filter produces clean organic shapes instead of clumped blobs
+
+## 2026-03-09 | SHIP | 3b7a968...4f1a6cc
+
+Shipped: Corrected Pharadoxa timeline facts across blog post and live case study
+Commits: 2 since last ship
+Key changes:
+
+- Fixed "50 minutes to first boot" claim to "24 hours from concept to boot" (7 spots in case study, 5 in blog)
+- Reframed 50-minute figure as Kit's actual coding time, distinct from the full concept-to-boot timeline
+
+## 2026-03-09 | SHIP | 4f1a6cc...ca5e8c0
+
+Shipped: Reframed Pharadoxa origin narrative from deliberate research program to impulse build
+Commits: 2 since last ship
+Key changes:
+
+- Restructured case study timeline from 7 linear entries to 6-entry seed/shelf/trigger arc (Open Claw security mess, Koerner video as impulse trigger)
+- Fixed blog post: "March 3-4 two marathon sessions" corrected to "March 4 one evening", "weeks of research" to "month of ambient learning"
+
+## 2026-03-10 | SHIP | ca5e8c0...959fc3b
+
+Shipped: Internet outage stress test story added to Pharadoxa case study and blog post
+Commits: 4 since last ship
+Key changes:
+
+- Added "The Unplanned Stress Test" narrative section to case study breakdown with real Telegram quotes
+- Expanded blog post stress test from one sentence to three paragraphs with actual conversation timestamps

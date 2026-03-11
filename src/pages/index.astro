@@ -394,16 +394,12 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       >
         What I've <span class="text-accent">Built.</span>
       </h2>
-      <p
-        class="portfolio-subline gsap-hidden text-text-muted text-lg text-center mb-12 sm:mb-16"
-      >
-        Click any project to see it in action.
-      </p>
+      <div class="mb-12 sm:mb-16"></div>
 
       <div class="flex flex-col gap-16 sm:gap-20 max-w-6xl mx-auto">
         <!-- Case Study: Pharadoxa -->
         <a
-          href="/case-studies/pharadoxa/"
+          href="/case-studies/pharadoxa.html"
           class="portfolio-card gsap-hidden group block no-underline"
           data-project="pharadoxa"
           data-title="Pharadoxa - Autonomous AI Agent"
@@ -424,6 +420,31 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
                   class="border border-accent/40 rounded-full px-3 py-0.5 text-[0.6rem] font-mono text-accent uppercase tracking-widest"
                   >AI Agent</span
                 >
+              </div>
+
+              <!-- Click indicator -->
+              <div
+                class="absolute top-4 right-4 sm:top-5 sm:right-6 z-10 flex items-center gap-1.5 text-accent"
+              >
+                <span class="text-[0.6rem] font-mono uppercase tracking-widest"
+                  >Click here</span
+                >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="translate-y-[3px]"
+                >
+                  <path
+                    d="M5 3l11.2 8.4a1 1 0 0 1-.6 1.8H11l-1.7 4.3a1 1 0 0 1-1.8 0L5 3z"
+                  ></path>
+                </svg>
               </div>
 
               <!-- CTA -->
