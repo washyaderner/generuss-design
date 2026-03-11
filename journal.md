@@ -170,3 +170,12 @@ Key changes:
 
 - Added "The Unplanned Stress Test" narrative section to case study breakdown with real Telegram quotes
 - Expanded blog post stress test from one sentence to three paragraphs with actual conversation timestamps
+
+## 2026-03-10 | SHIP | 959fc3b...4b6b263
+
+Shipped: Pharadoxa card click indicator and working case study link
+Commits: 2 since last ship
+Key changes:
+
+- Added cyan "CLICK HERE" + cursor icon to Pharadoxa portfolio card, removed misleading "Click any project" subtitle
+- Wired up /case-studies/pharadoxa.html so the card actually navigates somewhere (was a 404)
