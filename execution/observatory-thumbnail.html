@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Observatory Thumbnail Capture</title>
+<style>
+  * { margin: 0; padding: 0; }
+  body { background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; height: 100vh; }
+  canvas { display: block; }
+  #status { position: fixed; top: 10px; left: 10px; color: #00FFEF; font: 12px monospace; opacity: 0.6; z-index: 10; }
+</style>
+</head>
+<body>
+<div id="status"></div>
+<canvas id="c"></canvas>
+<script>
+// ============================================================
+// Observatory Thumbnail - Miniature recreation for video capture
+// Faithful to pharadoxa-site Observatory parameters
+// Usage: open in browser, or ?record to auto-capture WebM
+// ============================================================
+
+const params = new URLSearchParams(location.search);
+const W = parseInt(params.get('width')) || 800;
+const H = parseInt(params.get('height')) || 450;
+const RECORD = params.has('record');
+const DURATION = parseFloat(params.get('duration')) || 10;
+const FPS = parseInt(params.get('fps')) || 30;
+
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+canvas.width = W;
+canvas.height = H;
+
+const statusEl = document.getElementById('status');
+
+// === SOURCES (7 cognitive nodes) ===
+const SOURCES = [
+  { name: 'Conversations', color: '#00FFEF' },
+  { name: 'Knowledge',     color: '#4ADE80' },
+  { name: 'Dreams',        color: '#A78BFA' },
+  { name: 'Core Facts',    color: '#FFB347' },
+  { name: 'Vault',         color: '#F472B6' },
+  { name: 'Web',           color: '#38BDF8' },
+  { name: 'Wild Cards',    color: '#FBBF24' }
+];
+
+// Position sources in a circle
+const cx = W / 2, cy = H / 2;
+const sourceDim = Math.min(W, H);
+const sourceRadius = sourceDim * 0.38;
+SOURCES.forEach((s, i) => {
+  const angle = (i / SOURCES.length) * Math.PI * 2 - Math.PI / 2;
+  s.x = cx + Math.cos(angle) * sourceRadius;
+  s.y = cy + Math.sin(angle) * sourceRadius;
+});
+
+// === TRIP MODE PALETTES ===
+const TRIP_COLORS = {
+  SENSORY:   { primary: '#FF00FF', secondary: '#00FF88', glow: '#FF00FF' },
+  EGO_DEATH: { primary: '#FF2D2D', secondary: '#FF6B6B', glow: '#FF2D2D' },
+  INVERSION: { primary: '#FF00EF', secondary: '#EF8FFF', glow: '#FF00EF' }
+};
+
+// === TIMELINE (seconds) ===
+// Each segment: [startTime, mode]
+// Transitions happen in first 0.5s of each segment
+const TIMELINE = [
+  [0.0,  'IDLE'],
+  [2.5,  'SENSORY'],
+  [4.5,  'EGO_DEATH'],
+  [6.5,  'INVERSION'],
+  [8.5,  'IDLE']
+];
+const TRANSITION_DURATION = 0.5;
+
+// === CONSTANTS ===
+const PARTICLE_COUNT = 50;
+const CONNECTION_DIST = 90;
+const BG = [26, 26, 30]; // daytime circadian
+
+// === PARTICLES ===
+const particles = [];
+
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return [r, g, b];
+}
+
+function lerpColor(a, b, t) {
+  return [
+    Math.round(a[0] + (b[0] - a[0]) * t),
+    Math.round(a[1] + (b[1] - a[1]) * t),
+    Math.round(a[2] + (b[2] - a[2]) * t)
+  ];
+}
+
+function rgbStr(c, a) {
+  return a !== undefined ? `rgba(${c[0]},${c[1]},${c[2]},${a})` : `rgb(${c[0]},${c[1]},${c[2]})`;
+}
+
+function hslToRgb(h, s, l) {
+  h /= 360; s /= 100; l /= 100;
+  let r, g, b;
+  if (s === 0) { r = g = b = l; }
+  else {
+    const hue2rgb = (p, q, t) => {
+      if (t < 0) t += 1; if (t > 1) t -= 1;
+      if (t < 1/6) return p + (q - p) * 6 * t;
+      if (t < 1/2) return q;
+      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+      return p;
+    };
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1/3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1/3);
+  }
+  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
+// Initialize particles
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  const source = SOURCES[i % SOURCES.length];
+  const angle = Math.random() * Math.PI * 2;
+  const dist = Math.random() * sourceRadius * 0.6;
+  particles.push({
+    x: source.x + Math.cos(angle) * dist,
+    y: source.y + Math.sin(angle) * dist,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+    baseSize: 2 + Math.random() * 3,
+    size: 0,
+    baseColor: hexToRgb(source.color),
+    color: hexToRgb(source.color),
+    baseOpacity: 0.35 + Math.random() * 0.45,
+    opacity: 0,
+    phase: Math.random() * Math.PI * 2,
+    sourceIdx: i % SOURCES.length
+  });
+}
+
+// === STATE ===
+let time = 0;
+let currentMode = 'IDLE';
+let previousMode = 'IDLE';
+let transitionProgress = 1; // 1 = fully in current mode
+let segmentTime = 0; // time within current segment
+let hueOffset = 0; // sensory mode
+let collapsePhase = 0; // ego death mode
+
+function getMetabolicRate(t) {
+  return 0.8 + 0.08 * Math.sin(t * 0.23) + 0.06 * Math.sin(t * 0.37)
+    + 0.04 * Math.sin(t * 0.53) + 0.02 * Math.sin(t * 1.07);
+}
+
+function getCurrentSegment(t) {
+  const loopT = t % DURATION;
+  for (let i = TIMELINE.length - 1; i >= 0; i--) {
+    if (loopT >= TIMELINE[i][0]) return { index: i, mode: TIMELINE[i][1], start: TIMELINE[i][0] };
+  }
+  return { index: 0, mode: 'IDLE', start: 0 };
+}
+
+// === UPDATE ===
+function update(dt) {
+  time += dt;
+  const seg = getCurrentSegment(time);
+  segmentTime = (time % DURATION) - seg.start;
+
+  if (seg.mode !== currentMode) {
+    previousMode = currentMode;
+    currentMode = seg.mode;
+    transitionProgress = 0;
+  }
+  if (transitionProgress < 1) {
+    transitionProgress = Math.min(1, transitionProgress + dt / TRANSITION_DURATION);
+  }
+
+  const metabolic = getMetabolicRate(time);
+  const tAlpha = transitionProgress;
+
+  // Trip-specific state
+  if (currentMode === 'SENSORY') {
+    hueOffset += dt * 40;
+  }
+  if (currentMode === 'EGO_DEATH') {
+    collapsePhase += dt * 1.5;
+  }
+
+  // Update particles
+  for (const p of particles) {
+    // Brownian motion
+    p.vx += (Math.random() - 0.5) * 0.08 * metabolic;
+    p.vy += (Math.random() - 0.5) * 0.08 * metabolic;
+
+    // Damping
+    p.vx *= 0.985;
+    p.vy *= 0.985;
+
+    // Distance from center
+    const dx = cx - p.x;
+    const dy = cy - p.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    // Mode-specific physics
+    if (currentMode === 'IDLE' || transitionProgress < 1) {
+      // Centripetal pull (idle)
+      const idleWeight = currentMode === 'IDLE' ? tAlpha : (1 - tAlpha);
+      if (dist > sourceDim * 0.22) {
+        p.vx += (dx / dist) * 0.04 * metabolic * idleWeight;
+        p.vy += (dy / dist) * 0.04 * metabolic * idleWeight;
+      }
+    }
+
+    if (currentMode === 'SENSORY') {
+      // Harmonic wiggle
+      p.vx += Math.sin(time * 3 + p.phase) * 0.15 * tAlpha;
+      p.vy += Math.cos(time * 2.5 + p.phase * 1.3) * 0.15 * tAlpha;
+    }
+
+    if (currentMode === 'EGO_DEATH') {
+      const wave = Math.sin(collapsePhase);
+      if (wave > 0 && dist > 5) {
+        // Collapse toward center
+        p.vx += (dx / dist) * wave * wave * 0.4 * tAlpha;
+        p.vy += (dy / dist) * wave * wave * 0.4 * tAlpha;
+      } else if (wave < 0 && dist > 5) {
+        // Expand outward
+        const absW = Math.abs(wave);
+        p.vx -= (dx / dist) * absW * 0.6 * tAlpha;
+        p.vy -= (dy / dist) * absW * 0.6 * tAlpha;
+      }
+    }
+
+    if (currentMode === 'INVERSION') {
+      const baseOrbitR = sourceDim * 0.30;
+      const breathe = Math.sin(time * 0.8);
+      const spread = 0.08 * Math.sin(time * 0.5 + p.phase);
+      const orbitR = baseOrbitR * (1 + breathe * 0.12 + spread);
+      const fromOrbit = (dist - orbitR) / orbitR;
+
+      if (dist > 5) {
+        // Radial (pull toward orbit)
+        p.vx += (dx / dist) * fromOrbit * 0.10 * tAlpha;
+        p.vy += (dy / dist) * fromOrbit * 0.10 * tAlpha;
+        // Tangential (rotation)
+        p.vx += (-dy / dist) * 0.15 * tAlpha;
+        p.vy += (dx / dist) * 0.15 * tAlpha;
+      }
+    }
+
+    // Apply velocity
+    p.x += p.vx;
+    p.y += p.vy;
+
+    // Boundary elasticity
+    const margin = 20;
+    if (p.x < margin) { p.x = margin; p.vx += 0.1; }
+    if (p.x > W - margin) { p.x = W - margin; p.vx -= 0.1; }
+    if (p.y < margin) { p.y = margin; p.vy += 0.1; }
+    if (p.y > H - margin) { p.y = H - margin; p.vy -= 0.1; }
+
+    // Breathing animation
+    const breathSpeed = 0.5 + 0.3 * 2.0;
+    const breathAmp = 0.2 + 0.3 * 0.5;
+    p.size = p.baseSize * (1 + breathAmp * Math.sin(time * breathSpeed + p.phase));
+
+    // Mode-specific size
+    if (currentMode === 'SENSORY') {
+      p.size = p.baseSize * (1 + 0.6 * Math.abs(Math.sin(time * 4 + p.phase))) * tAlpha
+        + p.size * (1 - tAlpha);
+    }
+    if (currentMode === 'EGO_DEATH') {
+      const wave = Math.sin(collapsePhase);
+      if (wave > 0) {
+        p.size *= (1 - wave * 0.3 * tAlpha);
+      } else {
+        p.size *= (1 + Math.abs(wave) * 2 * tAlpha);
+      }
+    }
+    if (currentMode === 'INVERSION') {
+      p.size = p.baseSize * (1 + 0.5 * Math.sin(time * 2 + p.phase));
+    }
+
+    // Opacity
+    const baseOp = p.baseOpacity * (0.7 + 0.3 * Math.sin(time * 0.8 + p.phase));
+    if (currentMode === 'SENSORY') {
+      p.opacity = (0.3 + 0.5 * Math.abs(Math.sin(time * 2 + p.phase * 0.7))) * tAlpha
+        + baseOp * (1 - tAlpha);
+    } else if (currentMode === 'EGO_DEATH') {
+      const wave = Math.sin(collapsePhase);
+      p.opacity = (wave > 0 ? 0.4 + wave * 0.5 : 0.3 + Math.abs(wave) * 0.4) * tAlpha
+        + baseOp * (1 - tAlpha);
+    } else if (currentMode === 'INVERSION') {
+      p.opacity = (0.4 + 0.4 * Math.sin(time * 1.5 + p.phase)) * tAlpha
+        + baseOp * (1 - tAlpha);
+    } else {
+      p.opacity = baseOp;
+    }
+
+    // Color
+    const cyan = [0, 255, 239];
+    if (currentMode === 'SENSORY') {
+      const hue = (hueOffset + p.phase * 57.3) % 360;
+      const rainbow = hslToRgb(hue, 85, 60);
+      p.color = lerpColor(
+        lerpColor(p.baseColor, cyan, 0.3),
+        rainbow,
+        tAlpha
+      );
+    } else if (currentMode === 'EGO_DEATH') {
+      const wave = Math.sin(collapsePhase);
+      let tripColor;
+      if (wave > 0) {
+        tripColor = [Math.floor(255 * wave), Math.floor(45 * (1 - wave)), Math.floor(45 * (1 - wave))];
+      } else {
+        tripColor = hexToRgb(TRIP_COLORS.EGO_DEATH.secondary);
+      }
+      p.color = lerpColor(
+        lerpColor(p.baseColor, cyan, 0.3),
+        tripColor,
+        tAlpha
+      );
+    } else if (currentMode === 'INVERSION') {
+      const magenta = hexToRgb(TRIP_COLORS.INVERSION.primary);
+      p.color = lerpColor(
+        lerpColor(p.baseColor, cyan, 0.3),
+        magenta,
+        tAlpha
+      );
+    } else {
+      // Idle - subtle shift toward cyan
+      p.color = lerpColor(p.baseColor, cyan, 0.15 + 0.15 * Math.sin(time * 0.5 + p.phase));
+    }
+  }
+}
+
+// === RENDER ===
+function render() {
+  // Background
+  ctx.fillStyle = `rgb(${BG[0]},${BG[1]},${BG[2]})`;
+  ctx.fillRect(0, 0, W, H);
+
+  const maxDim = Math.max(W, H);
+
+  // Center breathing pulse (idle)
+  if (currentMode === 'IDLE' || transitionProgress < 1) {
+    const pulseSpeed = 4;
+    const cycle = (time % pulseSpeed) / pulseSpeed;
+    const pulseR = cycle * maxDim * 0.30;
+    const pulseAlpha = (0.12 * (1 - cycle)) * (currentMode === 'IDLE' ? transitionProgress : (1 - transitionProgress));
+    if (pulseAlpha > 0.005) {
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, pulseR);
+      grad.addColorStop(0, `rgba(0,255,239,${pulseAlpha})`);
+      grad.addColorStop(1, 'rgba(0,255,239,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+
+  // EGO_DEATH center glow
+  if (currentMode === 'EGO_DEATH') {
+    const wave = Math.sin(collapsePhase);
+    const glowR = maxDim * 0.3;
+    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowR);
+    grad.addColorStop(0, `rgba(255,45,45,${0.08 * transitionProgress})`);
+    grad.addColorStop(1, 'rgba(255,45,45,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    // White flash on peak compression
+    if (wave > 0.92) {
+      const flashAlpha = (wave - 0.92) * 12.5 * 0.18 * transitionProgress;
+      ctx.fillStyle = `rgba(255,255,255,${flashAlpha})`;
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+
+  // SENSORY glow - subtle rainbow center
+  if (currentMode === 'SENSORY') {
+    const glowR = maxDim * 0.25;
+    const hue = hueOffset % 360;
+    const [gr, gg, gb] = hslToRgb(hue, 70, 50);
+    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowR);
+    grad.addColorStop(0, `rgba(${gr},${gg},${gb},${0.06 * transitionProgress})`);
+    grad.addColorStop(1, `rgba(${gr},${gg},${gb},0)`);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // INVERSION orbital ring
+  if (currentMode === 'INVERSION') {
+    const baseOrbitR = sourceDim * 0.30;
+    const breathe = Math.sin(time * 0.8);
+    const orbitR = baseOrbitR * (1 + breathe * 0.12);
+    const ringWidth = baseOrbitR * 0.20;
+    const ringPulse = 0.5 + 0.2 * Math.sin(time * 1.5);
+
+    // Center void
+    const voidGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, orbitR * 0.6);
+    voidGrad.addColorStop(0, `rgba(0,0,0,${0.25 * transitionProgress})`);
+    voidGrad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = voidGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Orbital ring band
+    const ringGrad = ctx.createRadialGradient(cx, cy, orbitR - ringWidth, cx, cy, orbitR + ringWidth);
+    ringGrad.addColorStop(0, 'rgba(255,0,239,0)');
+    ringGrad.addColorStop(0.5, `rgba(255,0,239,${0.12 * ringPulse * transitionProgress})`);
+    ringGrad.addColorStop(1, 'rgba(255,0,239,0)');
+    ctx.fillStyle = ringGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Rotating dashed markers
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(time * 0.3);
+    ctx.setLineDash([12, 24]);
+    ctx.strokeStyle = `rgba(255,0,239,${0.25 * transitionProgress})`;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(0, 0, orbitR, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+  }
+
+  // Connection lines
+  const connDist = currentMode === 'IDLE' ? CONNECTION_DIST : CONNECTION_DIST * 1.1;
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const a = particles[i], b = particles[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < connDist) {
+        const alpha = (1 - dist / connDist) * Math.min(a.opacity, b.opacity) * 0.9;
+        if (alpha < 0.01) continue;
+
+        let lineColor, lineWidth;
+
+        if (currentMode === 'SENSORY') {
+          const hue = (hueOffset + i * 2.4) % 360;
+          const [lr, lg, lb] = hslToRgb(hue, 70, 50);
+          lineColor = `rgba(${lr},${lg},${lb},${alpha * transitionProgress + alpha * (1 - transitionProgress)})`;
+          lineWidth = 0.5 + Math.abs(Math.sin(time * 3 + i * 0.1)) * 1.5;
+        } else if (currentMode === 'EGO_DEATH') {
+          const wave = Math.sin(collapsePhase);
+          const red = wave > 0 ? [255, 45, 45] : [255, 107, 107];
+          lineColor = rgbStr(lerpColor([0, 255, 239], red, transitionProgress), alpha);
+          lineWidth = wave > 0.5 ? 1.5 : 0.6;
+        } else if (currentMode === 'INVERSION') {
+          lineColor = `rgba(255,0,239,${alpha * transitionProgress})`;
+          lineWidth = 0.5;
+          // Also draw cyan underneath during transition
+          if (transitionProgress < 1) {
+            ctx.strokeStyle = `rgba(0,255,239,${alpha * (1 - transitionProgress)})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        } else {
+          lineColor = `rgba(0,255,239,${alpha})`;
+          lineWidth = 0.6;
+        }
+
+        ctx.strokeStyle = lineColor;
+        ctx.lineWidth = lineWidth;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Source indicators (small dots, no labels at thumbnail scale)
+  for (const s of SOURCES) {
+    const rgb = hexToRgb(s.color);
+    const pulseSize = 3 + Math.sin(time * 1.2) * 0.5;
+
+    // Outer glow
+    const glowGrad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, 12);
+    glowGrad.addColorStop(0, rgbStr(rgb, 0.15));
+    glowGrad.addColorStop(1, rgbStr(rgb, 0));
+    ctx.fillStyle = glowGrad;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, 12, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Core dot
+    ctx.fillStyle = rgbStr(rgb, 0.6);
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, pulseSize, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Particles
+  for (const p of particles) {
+    if (p.opacity < 0.01) continue;
+
+    // Glow
+    const glowR = p.size * 3;
+    const glowGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
+    glowGrad.addColorStop(0, rgbStr(p.color, p.opacity * 0.3));
+    glowGrad.addColorStop(1, rgbStr(p.color, 0));
+    ctx.fillStyle = glowGrad;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Core
+    ctx.fillStyle = rgbStr(p.color, p.opacity);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // MIRROR effect for INVERSION - reflected particles
+  if (currentMode === 'INVERSION' && transitionProgress > 0.1) {
+    ctx.save();
+    ctx.globalAlpha = 0.08 * transitionProgress;
+    // Vertical mirror line
+    ctx.strokeStyle = `rgba(0,255,239,0.06)`;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, H);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Center node
+  const centerGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 20);
+  let centerColor;
+  if (currentMode === 'EGO_DEATH') {
+    centerColor = lerpColor([0, 255, 239], [255, 45, 45], transitionProgress);
+  } else if (currentMode === 'INVERSION') {
+    centerColor = lerpColor([0, 255, 239], [255, 0, 239], transitionProgress);
+  } else if (currentMode === 'SENSORY') {
+    const hue = hueOffset % 360;
+    const rainbow = hslToRgb(hue, 85, 60);
+    centerColor = lerpColor([0, 255, 239], rainbow, transitionProgress);
+  } else {
+    centerColor = [0, 255, 239];
+  }
+  centerGlow.addColorStop(0, rgbStr(centerColor, 0.4));
+  centerGlow.addColorStop(0.5, rgbStr(centerColor, 0.1));
+  centerGlow.addColorStop(1, rgbStr(centerColor, 0));
+  ctx.fillStyle = centerGlow;
+  ctx.beginPath();
+  ctx.arc(cx, cy, 20, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = rgbStr(centerColor, 0.8);
+  ctx.beginPath();
+  ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+// === RECORDING ===
+let recorder = null;
+let chunks = [];
+
+function startRecording() {
+  const stream = canvas.captureStream(FPS);
+  recorder = new MediaRecorder(stream, {
+    mimeType: 'video/webm;codecs=vp9',
+    videoBitsPerSecond: 4000000
+  });
+  chunks = [];
+  recorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: 'video/webm' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'observatory-thumbnail.webm';
+    a.click();
+    URL.revokeObjectURL(url);
+    statusEl.textContent = `Done. ${(blob.size / 1024).toFixed(0)}KB saved.`;
+  };
+  recorder.start();
+  statusEl.textContent = 'Recording...';
+}
+
+// === MAIN LOOP ===
+let lastTimestamp = 0;
+let recordingStartTime = 0;
+let started = false;
+
+function loop(timestamp) {
+  if (!started) {
+    started = true;
+    lastTimestamp = timestamp;
+    if (RECORD) {
+      recordingStartTime = timestamp;
+      startRecording();
+    }
+    requestAnimationFrame(loop);
+    return;
+  }
+
+  const rawDt = (timestamp - lastTimestamp) / 1000;
+  const dt = Math.min(rawDt, 0.05);
+  lastTimestamp = timestamp;
+
+  update(dt);
+  render();
+
+  // Recording status
+  if (RECORD) {
+    const elapsed = (timestamp - recordingStartTime) / 1000;
+    statusEl.textContent = `Recording ${elapsed.toFixed(1)}s / ${DURATION}s`;
+    if (elapsed >= DURATION) {
+      recorder.stop();
+      return; // Stop the loop
+    }
+  } else {
+    // Show current mode
+    const seg = getCurrentSegment(time);
+    statusEl.textContent = `${seg.mode} | ${(time % DURATION).toFixed(1)}s`;
+  }
+
+  requestAnimationFrame(loop);
+}
+
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
