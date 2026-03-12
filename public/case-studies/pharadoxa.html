@@ -1079,7 +1079,7 @@
       color: #111114;
     }
 
-    /* Observatory windows */
+    /* Observatory canvas */
     .observatory-window {
       border-radius: 10px;
       border: 1px solid rgba(0, 255, 239, 0.15);
@@ -1088,62 +1088,75 @@
       background: #0a0814;
     }
 
-    .observatory-window iframe {
+    .observatory-window canvas {
       display: block;
       width: 100%;
       height: 100%;
-      border: none;
     }
 
-    .observatory-top {
-      position: fixed;
-      top: 80px;
-      right: 2rem;
-      width: 320px;
-      height: 220px;
-      z-index: 50;
-    }
-
-    .observatory-guide {
-      position: fixed;
-      top: 310px;
-      right: 2rem;
-      width: 320px;
+    .observatory-hint {
       text-align: center;
+      margin: 1.5rem 0 0;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.4;
+    }
+
+    .observatory-hint a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 255, 239, 0.2);
+      transition: opacity 0.2s;
+    }
+
+    .observatory-hint a:hover { opacity: 1; }
+
+    /* Back to Pharadoxa sticky link */
+    .pharadoxa-back {
+      position: fixed;
+      top: 120px;
+      right: 2rem;
       z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.4s;
       pointer-events: none;
     }
 
-    .observatory-guide-text {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
+    .pharadoxa-back.visible {
       opacity: 0.5;
+      pointer-events: auto;
     }
 
-    .observatory-guide-arrow {
-      display: block;
-      margin: 6px auto 0;
-      font-size: 1.2rem;
-      color: var(--accent);
-      opacity: 0.35;
-      animation: guide-bounce 2s ease-in-out infinite;
+    .pharadoxa-back:hover { opacity: 1; }
+
+    .pharadoxa-back-arrow {
+      display: inline-block;
+      animation: pharadoxa-bounce 2s ease-in-out infinite;
     }
 
-    @keyframes guide-bounce {
-      0%, 100% { transform: translateY(0); opacity: 0.35; }
-      50% { transform: translateY(6px); opacity: 0.6; }
+    @keyframes pharadoxa-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
     }
 
     .observatory-bottom-wrap {
-      max-width: 420px;
-      margin: 0 0 0 auto;
+      width: 100%;
     }
 
     .observatory-bottom {
       width: 100%;
-      height: 260px;
+      aspect-ratio: 16 / 9;
       cursor: pointer;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
@@ -1157,6 +1170,7 @@
       text-align: center;
       margin-top: 12px;
       font-size: 0.7rem;
+      font-weight: 700;
       letter-spacing: 0.1em;
       color: var(--accent);
       opacity: 0.5;
@@ -1168,10 +1182,6 @@
     }
 
     /* Responsive */
-    @media (max-width: 1200px) {
-      .observatory-top, .observatory-guide { display: none; }
-    }
-
     @media (max-width: 768px) {
       .container { padding: 0 1.25rem; }
       .compare-grid { grid-template-columns: 1fr; }
@@ -1184,8 +1194,8 @@
       .flow-branch { flex-direction: column; align-items: center; }
       .prompt-layer { grid-template-columns: 30px 1fr; }
       .prompt-layer-source { display: none; }
-      .observatory-bottom { height: 180px; }
-      .observatory-bottom-wrap { margin: 0 auto; }
+      .observatory-bottom { aspect-ratio: 16 / 9; }
+      .pharadoxa-back { display: none; }
     }
 
     /* Animations */
@@ -1202,6 +1212,11 @@
   <a href="https://generussdesign.com" class="site-nav-logo">generuss<span>.</span></a>
   <a href="https://generussdesign.com/#portfolio" class="site-nav-back">&larr; Back to Portfolio</a>
 </div>
+
+<!-- Back to Pharadoxa (sticky, desktop only) -->
+<a href="#observatory" class="pharadoxa-back" id="pharadoxa-back">
+  Back to Pharadoxa <span class="pharadoxa-back-arrow">&darr;</span>
+</a>
 
 <!-- Nav -->
 <nav class="nav" id="nav">
@@ -1222,15 +1237,6 @@
     <a href="#trips">Trips</a>
   </div>
 </nav>
-
-<!-- Observatory window (top-right) -->
-<div class="observatory-top observatory-window">
-  <iframe src="https://pharadoxa-site.pages.dev" loading="lazy" title="Live Observatory"></iframe>
-</div>
-<div class="observatory-guide">
-  <span class="observatory-guide-text">Back to the Observatory</span>
-  <span class="observatory-guide-arrow">&#x2193;</span>
-</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -1260,6 +1266,7 @@
         <div class="stat-label">Altered States</div>
       </div>
     </div>
+    <div class="observatory-hint reveal">She's live right now - <a href="#observatory">visit her at the bottom</a></div>
   </div>
 </section>
 
@@ -2895,11 +2902,11 @@
 
 <!-- Footer -->
 <!-- Observatory window (bottom) -->
-<div style="max-width: 1080px; margin: 0 auto; padding: 0 2rem 3rem;">
+<div id="observatory" style="max-width: 1080px; margin: 0 auto; padding: 0 2rem 3rem;">
   <div class="observatory-bottom-wrap reveal">
     <a href="https://pharadoxa.com" target="_blank" rel="noopener" style="text-decoration: none; display: block;">
       <div class="observatory-bottom observatory-window">
-        <iframe src="https://pharadoxa-site.pages.dev" loading="lazy" title="Live Observatory" style="pointer-events: none;"></iframe>
+        <canvas id="observatory-canvas"></canvas>
       </div>
       <div class="observatory-bottom-label">Enter the Observatory &rarr;</div>
     </a>
@@ -2940,6 +2947,21 @@
       onEnter: () => gsap.to('#nav', { opacity: 1, y: 0, duration: 0.4 }),
       onLeaveBack: () => gsap.to('#nav', { opacity: 0, y: -100, duration: 0.3 }),
     });
+
+    // "Back to Pharadoxa" sticky link - show once past hero, hide near observatory
+    var pharaBack = document.getElementById('pharadoxa-back');
+    if (pharaBack) {
+      ScrollTrigger.create({
+        trigger: '#concept',
+        start: 'top 80%',
+        endTrigger: '#observatory',
+        end: 'top 80%',
+        onEnter: () => pharaBack.classList.add('visible'),
+        onLeaveBack: () => pharaBack.classList.remove('visible'),
+        onLeave: () => pharaBack.classList.remove('visible'),
+        onEnterBack: () => pharaBack.classList.add('visible'),
+      });
+    }
 
     // Nav active state
     document.querySelectorAll('.section[id]').forEach(section => {
@@ -3013,6 +3035,204 @@
       el.textContent = parseInt(el.dataset.count).toLocaleString();
     });
   }
+</script>
+
+<!-- Observatory idle canvas (no trips, just resting state) -->
+<script>
+(function() {
+  var canvas = document.getElementById('observatory-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W, H;
+
+  function resize() {
+    var rect = canvas.getBoundingClientRect();
+    W = Math.round(rect.width * dpr);
+    H = Math.round(rect.height * dpr);
+    canvas.width = W;
+    canvas.height = H;
+  }
+  resize();
+  new ResizeObserver(resize).observe(canvas);
+
+  // Sources (7 cognitive nodes)
+  var SOURCES = [
+    { c: [0,255,239], x:0, y:0 },
+    { c: [74,222,128], x:0, y:0 },
+    { c: [167,139,250], x:0, y:0 },
+    { c: [255,179,71], x:0, y:0 },
+    { c: [244,114,182], x:0, y:0 },
+    { c: [56,189,248], x:0, y:0 },
+    { c: [251,191,36], x:0, y:0 }
+  ];
+
+  function posSources() {
+    var cx = W/2, cy = H/2, r = Math.min(W,H)*0.38;
+    for (var i = 0; i < SOURCES.length; i++) {
+      var a = (i/SOURCES.length)*Math.PI*2 - Math.PI/2;
+      SOURCES[i].x = cx + Math.cos(a)*r;
+      SOURCES[i].y = cy + Math.sin(a)*r;
+    }
+  }
+
+  // Particles
+  var N = 40;
+  var CONN = 0.12;
+  var BG = [10,8,20]; // deep night circadian
+  var cyan = [0,255,239];
+  var particles = [];
+
+  function lerp3(a,b,t) {
+    return [Math.round(a[0]+(b[0]-a[0])*t), Math.round(a[1]+(b[1]-a[1])*t), Math.round(a[2]+(b[2]-a[2])*t)];
+  }
+  function rgba(c,a) { return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')'; }
+
+  function init() {
+    particles = [];
+    posSources();
+    for (var i = 0; i < N; i++) {
+      var src = SOURCES[i % SOURCES.length];
+      var a = Math.random()*Math.PI*2;
+      var d = Math.random()*Math.min(W,H)*0.22;
+      particles.push({
+        x: src.x+Math.cos(a)*d, y: src.y+Math.sin(a)*d,
+        vx: (Math.random()-0.5)*0.2, vy: (Math.random()-0.5)*0.2,
+        bs: (1.5+Math.random()*2.5)*dpr, s: 0,
+        bc: src.c.slice(), c: src.c.slice(),
+        bo: 0.3+Math.random()*0.4, o: 0,
+        ph: Math.random()*Math.PI*2
+      });
+    }
+  }
+  init();
+
+  var time = 0, running = false, rafId = 0, lastTs = 0;
+
+  function met(t) {
+    return 0.8+0.08*Math.sin(t*0.23)+0.06*Math.sin(t*0.37)+0.04*Math.sin(t*0.53)+0.02*Math.sin(t*1.07);
+  }
+
+  function update(dt) {
+    time += dt;
+    var m = met(time);
+    var cx = W/2, cy = H/2, sd = Math.min(W,H);
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.vx += (Math.random()-0.5)*0.05*m*dpr;
+      p.vy += (Math.random()-0.5)*0.05*m*dpr;
+      p.vx *= 0.99;
+      p.vy *= 0.99;
+
+      var dx = cx-p.x, dy = cy-p.y;
+      var dist = Math.sqrt(dx*dx+dy*dy)||1;
+      if (dist > sd*0.22) {
+        p.vx += (dx/dist)*0.03*m*dpr;
+        p.vy += (dy/dist)*0.03*m*dpr;
+      }
+
+      p.x += p.vx; p.y += p.vy;
+      var mg = 10*dpr;
+      if (p.x<mg){p.x=mg;p.vx+=0.1*dpr;} if(p.x>W-mg){p.x=W-mg;p.vx-=0.1*dpr;}
+      if (p.y<mg){p.y=mg;p.vy+=0.1*dpr;} if(p.y>H-mg){p.y=H-mg;p.vy-=0.1*dpr;}
+
+      p.s = p.bs*(1+0.3*Math.sin(time*0.6+p.ph));
+      p.o = p.bo*(0.6+0.4*Math.sin(time*0.5+p.ph));
+      p.c = lerp3(p.bc, cyan, 0.15+0.15*Math.sin(time*0.4+p.ph));
+    }
+  }
+
+  function render() {
+    ctx.fillStyle = 'rgb('+BG[0]+','+BG[1]+','+BG[2]+')';
+    ctx.fillRect(0,0,W,H);
+
+    var cx = W/2, cy = H/2, maxD = Math.max(W,H);
+
+    // Breathing pulse
+    var cycle = (time%5)/5;
+    var pr = cycle*maxD*0.28;
+    var pa = 0.08*(1-cycle);
+    if (pa > 0.005) {
+      var g = ctx.createRadialGradient(cx,cy,0,cx,cy,pr);
+      g.addColorStop(0, rgba(cyan,pa));
+      g.addColorStop(1, 'rgba(0,255,239,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0,0,W,H);
+    }
+
+    // Connections
+    var connPx = Math.sqrt(W*W+H*H)*CONN;
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i+1; j < particles.length; j++) {
+        var a = particles[i], b = particles[j];
+        var dx = a.x-b.x, dy = a.y-b.y;
+        var d = Math.sqrt(dx*dx+dy*dy);
+        if (d >= connPx) continue;
+        var al = (1-d/connPx)*Math.min(a.o,b.o)*0.8;
+        if (al < 0.01) continue;
+        ctx.strokeStyle = rgba(cyan,al);
+        ctx.lineWidth = 0.5*dpr;
+        ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+      }
+    }
+
+    // Source dots
+    for (var i = 0; i < SOURCES.length; i++) {
+      var s = SOURCES[i];
+      var ps = (2.5+Math.sin(time*0.8)*0.4)*dpr;
+      var gg = ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,10*dpr);
+      gg.addColorStop(0, rgba(s.c,0.12));
+      gg.addColorStop(1, rgba(s.c,0));
+      ctx.fillStyle = gg;
+      ctx.beginPath(); ctx.arc(s.x,s.y,10*dpr,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle = rgba(s.c,0.5);
+      ctx.beginPath(); ctx.arc(s.x,s.y,ps,0,Math.PI*2); ctx.fill();
+    }
+
+    // Particles
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      if (p.o < 0.01) continue;
+      var gr = p.s*3;
+      var gg = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,gr);
+      gg.addColorStop(0, rgba(p.c,p.o*0.25));
+      gg.addColorStop(1, rgba(p.c,0));
+      ctx.fillStyle = gg;
+      ctx.beginPath(); ctx.arc(p.x,p.y,gr,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle = rgba(p.c,p.o);
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,Math.PI*2); ctx.fill();
+    }
+
+    // Center node
+    var cg = ctx.createRadialGradient(cx,cy,0,cx,cy,16*dpr);
+    cg.addColorStop(0, rgba(cyan,0.3));
+    cg.addColorStop(0.5, rgba(cyan,0.06));
+    cg.addColorStop(1, rgba(cyan,0));
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(cx,cy,16*dpr,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle = rgba(cyan,0.7);
+    ctx.beginPath(); ctx.arc(cx,cy,2.5*dpr,0,Math.PI*2); ctx.fill();
+  }
+
+  function loop(ts) {
+    if (!running) return;
+    if (!lastTs) { lastTs = ts; rafId = requestAnimationFrame(loop); return; }
+    var dt = Math.min((ts-lastTs)/1000, 0.05);
+    lastTs = ts;
+    update(dt); render();
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function start() { if(running)return; running=true; lastTs=0; posSources(); rafId=requestAnimationFrame(loop); }
+  function stop() { running=false; cancelAnimationFrame(rafId); }
+
+  new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { e.isIntersecting ? start() : stop(); });
+  }, { threshold: 0.1 }).observe(canvas);
+})();
 </script>
 
 </body>
