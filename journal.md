@@ -179,3 +179,23 @@ Key changes:
 
 - Added cyan "CLICK HERE" + cursor icon to Pharadoxa portfolio card, removed misleading "Click any project" subtitle
 - Wired up /case-studies/pharadoxa.html so the card actually navigates somewhere (was a 404)
+
+## 2026-03-10 | SHIP | 4b6b263...b85ab98
+
+Shipped: Updated Pharadoxa case study with expanded content
+Commits: 2 since last ship
+Key changes:
+
+- Added setup guides section with Telegram, Pinecone, Supabase accordion walkthroughs
+- Reordered sticky nav and added "Altered States" hero stat
+
+## 2026-03-12 | SHIP | b85ab98...68e123d
+
+Shipped: Live Observatory canvas thumbnail on Pharadoxa portfolio card
+Commits: 4 since last ship
+Key changes:
+
+- Replaced static SVG architecture diagram with 50-particle canvas animation faithful to the real Observatory
+- 22s loop cycles through idle, SENSORY, EGO_DEATH, and INVERSION trips with mode watermark labels
+- IntersectionObserver pauses animation when off-screen for zero idle CPU cost
+  Lesson: Inline canvas with modest particle count has negligible Lighthouse impact vs iframe - the second-origin penalty is what kills perf, not the rendering work
