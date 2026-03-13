@@ -199,3 +199,30 @@ Key changes:
 - 22s loop cycles through idle, SENSORY, EGO_DEATH, and INVERSION trips with mode watermark labels
 - IntersectionObserver pauses animation when off-screen for zero idle CPU cost
   Lesson: Inline canvas with modest particle count has negligible Lighthouse impact vs iframe - the second-origin penalty is what kills perf, not the rendering work
+
+## 2026-03-12 | SHIP | 68e123d...edb8f49
+
+Shipped: Case study Observatory overhaul - iframes replaced with canvas, UX polish
+Commits: 2 since last ship
+Key changes:
+
+- Replaced both case study iframes with idle-only canvas (40 particles, deep-night circadian, zero cross-origin cost)
+- Added sticky "Back to Pharadoxa" desktop link that appears on scroll and hides near the Observatory
+- Full-width 16:9 canvas matching homepage proportions
+
+## 2026-03-12 16:15 | SESSION
+
+**Context:** Russ asked about Lighthouse implications of making the Pharadoxa portfolio thumbnail a live Observatory window
+**Outcome:** Built two Observatory canvas recreations - homepage card (50 particles, trip cycling, mode labels) and case study page (40 particles, idle only). Replaced SVG diagram and both iframes. Added sticky nav link and hero hint on case study page. Two ships to production.
+**Signal:** Positive throughout. "ok that's pretty cool!" on first preview, minimal corrections (slow it down, bold the labels, fix dimensions). Core animation landed first try.
+**Friction:** Dev server caching static files in public/ caused confusion - user saw old Observatory iframe after HTML was already edited. Had to kill and restart server.
+**Carries forward:** pharadoxa.com Observatory URL is the canonical one (not pharadoxa-site.pages.dev). The standalone capture tool at execution/observatory-thumbnail.html can generate WebM video if needed later for true Lighthouse-zero approach.
+
+## 2026-03-12 | SHIP | edb8f49...aa809a8
+
+Shipped: Pharadoxa breakdown corrections and hallucinated trip section
+Commits: 2 since last ship
+Key changes:
+
+- Corrected internet outage story (scheduled ISP maintenance, not power outage), Kit naming origin (Russ asked; Pharadoxa via Google Deep Think), and code block alignment
+- Added "She Hallucinated a Trip" section - grammY parsing bug caused 3 fake trips with zero backend activation
