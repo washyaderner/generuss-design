@@ -59,3 +59,15 @@
 **Signal:** "fuck it, let's set that up right now" - immediately greenlit the /connect page after strategic analysis of QR destination options
 **What worked:** Laid out the three options (direct to site, direct to Cal.com, dedicated connect page) with tradeoffs, then recommended the middle ground. The "you own the URL" argument - change what /connect shows anytime without reprinting cards - was the clincher.
 **Pattern:** When presenting options, lead with the one that preserves future flexibility. "You can change it later without reprinting" beats "here's the optimal destination right now."
+
+### 2026-03-12 | architecture
+
+**Signal:** "ok that's pretty cool!" on first seeing the Observatory canvas, then "let's push it to the site" with no revisions needed to the core animation
+**What worked:** Deep-reading the actual Pharadoxa Observatory source code (all 7 source colors, metabolic rate formula, trip mode physics, circadian system) before writing a single line. The faithful recreation landed because it wasn't an approximation - it was the real parameters at a smaller scale.
+**Pattern:** When recreating a complex visual system, read the actual source and extract the exact parameters. Approximation looks "off" even if you can't say why. Exact values look right immediately.
+
+### 2026-03-12 | approach
+
+**Signal:** "ok I'm happy with where that's at" after only two rounds of tuning (slower transitions + trip labels). Zero corrections to the core particle system, physics, or color logic.
+**What worked:** Starting with the Lighthouse analysis before writing any code. The iframe-vs-canvas-vs-video discussion established the right approach (canvas) before any implementation. Then building a standalone HTML capture tool first, previewing it, and only integrating into the site after approval.
+**Pattern:** For visual features, do the performance analysis first, build a standalone prototype second, get approval third, integrate fourth. Skipping straight to integration wastes time if the approach is wrong.

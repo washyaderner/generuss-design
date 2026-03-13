@@ -49,3 +49,8 @@
 
 **Correction:** Spent 7+ iterations trying to connect gloss mask heartbeat line to pulse dots with CSS div connector bars. Threshold step (grayscale + threshold(128)) makes matching SVG stroke width to div height nearly impossible - anti-aliasing differences create visible seams at every ratio.
 **Rule:** Don't try to bridge separate rendering methods (CSS divs vs SVG strokes) in thresholded B/W masks. If elements need to connect seamlessly, render them as a single SVG path. If that's not feasible, accept them as separate gloss elements. Know when to revert - 3 failed approaches means the technique is wrong.
+
+### 2026-03-12 | process
+
+**Correction:** Edited the case study HTML to remove the top Observatory but user still saw it - dev server was serving cached static files from `public/`.
+**Rule:** After editing static HTML in `public/`, always tell the user to hard refresh (Cmd+Shift+R). Dev server caching for static assets is aggressive. Better yet, kill and restart the dev server for `public/` changes.
