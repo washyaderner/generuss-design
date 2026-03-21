@@ -226,3 +226,21 @@ Key changes:
 
 - Corrected internet outage story (scheduled ISP maintenance, not power outage), Kit naming origin (Russ asked; Pharadoxa via Google Deep Think), and code block alignment
 - Added "She Hallucinated a Trip" section - grammY parsing bug caused 3 fake trips with zero backend activation
+
+## 2026-03-13 | SHIP | aa809a8...6bf3b6a
+
+Shipped: Updated Pharadoxa case study with depth engine, meditation, and expanded stats
+Commits: 2 since last ship
+Key changes:
+
+- Added Depth Engine and Meditation sections; updated hero stats to 12,907 LOC, 12 tools, 16 stimulus sources, 100+ commits, 3 cognitive systems
+- Synced breakdown source to site case study files while preserving Observatory canvas on pharadoxa.html
+
+## 2026-03-15 | SHIP | 6bf3b6a...cc6f7a1
+
+Shipped: Removed Pharadoxa case study breakdown, portfolio card now links directly to pharadoxa.com
+Commits: 4 since last ship
+Key changes:
+
+- Deleted full case study page (3,600+ lines) - stop giving away the build secrets
+- Portfolio card CTA updated to "Check out the observatory" linking to live product
