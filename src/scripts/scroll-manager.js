@@ -128,26 +128,9 @@ function setupServices(isMobile) {
     scrollTrigger: { trigger: ".services-cta", start: "top 90%" },
   });
 
-  // Pin the section so it fills viewport while scrolling
-  const pinWrap = document.querySelector(".services-pin");
-  if (pinWrap && !isMobile) {
-    ScrollTrigger.create({
-      trigger: ".services-pin",
-      start: "top top",
-      end: "+=50%",
-      pin: true,
-      scrub: true,
-      onUpdate: (self) => {
-        // Fade out during last 30% of pin
-        if (self.progress > 0.7) {
-          const fadeProgress = (self.progress - 0.7) / 0.3;
-          pinWrap.style.opacity = String(1 - fadeProgress);
-        } else {
-          pinWrap.style.opacity = "1";
-        }
-      },
-    });
-  }
+  // Pin removed - section now has Pharallax reveal below foundation cards,
+  // making it taller than one viewport. Individual fadeUp animations on each
+  // element provide progressive disclosure as the section scrolls naturally.
 }
 
 // ── S3: Booking + Contact ──
