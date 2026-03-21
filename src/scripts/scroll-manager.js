@@ -87,39 +87,9 @@ function setupHero(isMobile) {
 }
 
 // ── S2: Services ──
-function setupServices(isMobile) {
-  // Fade-up animations fire before pin locks
-  fadeUp(".services-heading", {
-    scrollTrigger: { trigger: ".services-pin", start: "top 80%" },
-  });
-
-  fadeUp(".service-card", {
-    stagger: 0.15,
-    scrollTrigger: { trigger: ".services-pin", start: "top 70%" },
-  });
-
-  // Pharallax premium card reveal
-  fadeUp(".pharallax-card", {
-    scrollTrigger: { trigger: ".pharallax-card", start: "top 85%" },
-  });
-
-  fadeUp(".growth-left", {
-    scrollTrigger: { trigger: ".growth-left", start: "top 85%" },
-  });
-
-  fadeUp(".growth-right", {
-    scrollTrigger: { trigger: ".growth-right", start: "top 85%" },
-    delay: 0.1,
-  });
-
-  fadeUp(".services-cta", {
-    scrollTrigger: { trigger: ".services-cta", start: "top 90%" },
-  });
-
-  // Pin removed - section now has Pharallax reveal below foundation cards,
-  // making it taller than one viewport. Individual fadeUp animations on each
-  // element provide progressive disclosure as the section scrolls naturally.
-}
+// No GSAP animations - section is fully static. All content visible on load.
+// Previous pin + fadeUp approach consistently left the Pharallax card invisible.
+function setupServices(isMobile) {}
 
 // ── S3: Booking + Contact ──
 function setupBooking(isMobile) {
