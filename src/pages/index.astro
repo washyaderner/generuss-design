@@ -8,7 +8,9 @@ import ObservatoryThumb from "../components/ObservatoryThumb.astro";
 const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 ---
 
-<BaseLayout title="generuss design | Web Design & AI Automation">
+<BaseLayout
+  title="generuss design | Web Design, AI Automation & Strategic Analysis"
+>
   <Nav />
 
   <main id="main-content">
@@ -267,20 +269,22 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 
     <!-- S3: Services -->
     <section id="services" class="relative z-10 bg-bg-secondary">
+      <!-- Pinned: Headline + Foundation Cards -->
       <div
         class="services-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20 py-12 sm:py-16 bg-bg-secondary"
       >
         <h2
           class="services-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
         >
-          Development + Automation = <span
-            class="text-accent"
-            style="font-size:1.3em">Growth.</span
+          I build it. I automate it.<br />
+          I <span class="text-accent" style="font-size:1.3em"
+            >pressure-test it.</span
           >
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <!-- Card 1 -->
+        <!-- Foundation Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <!-- Card 1: Web Design -->
           <div
             class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
           >
@@ -297,11 +301,13 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Custom design and development (no templates)</span>
+                <span
+                  >Custom design and build (no templates, no page builders)</span
+                >
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Mobile-first, Lighthouse 90%+ builds</span>
+                <span>Mobile-first, Lighthouse 90%+ performance</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-accent mt-0.5">&#10003;</span>
@@ -317,7 +323,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
             </ul>
           </div>
 
-          <!-- Card 2 -->
+          <!-- Card 2: AI Automation -->
           <div
             class="service-card gsap-hidden neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
           >
@@ -325,7 +331,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               AI Automation Consulting
             </h3>
             <p class="text-text-muted mb-6">
-              Workflows that run themselves so you can focus on the work that
+              Systems that run themselves so you can focus on the work that
               matters.
             </p>
             <ul class="space-y-3 text-sm text-text-muted">
@@ -336,40 +342,124 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               <li class="flex items-start gap-3">
                 <span class="text-accent mt-0.5">&#10003;</span>
                 <span
-                  >Custom automation builds (n8n, Make.com, API integrations)</span
+                  >Custom builds in n8n, Make.com, and direct API integrations</span
                 >
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-accent mt-0.5">&#10003;</span>
-                <span>AI tool selection and implementation</span>
+                <span>AI tool selection, implementation, and testing</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-accent mt-0.5">&#10003;</span>
-                <span>Documentation + handoff</span>
+                <span>Full documentation and team handoff</span>
               </li>
             </ul>
           </div>
         </div>
+      </div>
+
+      <!-- Pharallax AI - Premium Reveal (outside pin) -->
+      <div
+        class="services-reveal relative px-8 sm:px-12 lg:px-20 pb-16 sm:pb-20 bg-bg-secondary"
+      >
+        <div class="max-w-6xl mx-auto">
+          <a
+            href="https://pharallax.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pharallax-card gsap-hidden block no-underline rounded-2xl p-8 sm:p-10 md:p-12 bg-[#0F0F1A] border border-[#C8A85C]/30 shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(200,168,92,0.04)] transition-all duration-300 hover:border-[#C8A85C]/50 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(200,168,92,0.06),0_0_40px_rgba(200,168,92,0.08)]"
+          >
+            <div class="flex flex-col lg:flex-row lg:items-start lg:gap-12">
+              <!-- Left: Copy -->
+              <div class="flex-1 min-w-0">
+                <p
+                  class="font-mono text-[#C8A85C] tracking-[0.15em] text-xs uppercase mb-4"
+                >
+                  Powered by Pharallax AI
+                </p>
+                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">
+                  Strategic Analysis
+                </h3>
+                <p class="text-[#999] text-base sm:text-lg mb-6 max-w-xl">
+                  Most strategic analysis tells you what you want to hear. This
+                  one tells you what you're not seeing.
+                </p>
+                <ul class="space-y-3 text-sm text-[#999]">
+                  <li class="flex items-start gap-3">
+                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                    <span
+                      >Blind spot detection across positioning, ops, and market
+                      fit</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                    <span
+                      >Three adversarial lenses: premortem, dialectic, reflexive</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                    <span
+                      >Grounded in 60,000+ cross-domain knowledge claims</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Right: Tier Pills -->
+              <div
+                class="flex flex-row lg:flex-col gap-3 mt-6 lg:mt-8 flex-wrap lg:flex-nowrap"
+              >
+                <span
+                  class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C] whitespace-nowrap"
+                  >Strategic Dialogue</span
+                >
+                <span
+                  class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C] whitespace-nowrap"
+                  >Deep Analysis</span
+                >
+                <span
+                  class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C] whitespace-nowrap"
+                  >Monthly Retainer</span
+                >
+              </div>
+            </div>
+
+            <!-- Inline CTA -->
+            <div
+              class="mt-8 flex items-center gap-2 text-[#C8A85C] font-semibold text-sm group/link"
+            >
+              <span>Explore Pharallax AI</span>
+              <span
+                class="transition-transform duration-200 group-hover/link:translate-x-1"
+                >&rarr;</span
+              >
+            </div>
+          </a>
+        </div>
 
         <!-- Growth Partner Block - Two Columns -->
         <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-16"
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-16"
         >
           <p
             class="growth-left gsap-hidden text-lg text-text-muted leading-relaxed"
           >
             Consider me your growth partner - your site doesn't stop at launch.
             Need a lead form that triggers an email sequence? A booking flow
-            that syncs to your CRM? I build the site and the systems behind it.
-            One person, one bill, zero handoff chaos.
+            that syncs to your CRM? I build the site, wire the systems behind
+            it, and make sure the strategy driving both is actually sound. One
+            person, one bill, zero handoff chaos.
           </p>
           <p
             class="growth-right gsap-hidden text-lg text-text-muted leading-relaxed"
           >
-            If your business needs go deeper than the site itself - workflow
-            automation, AI tool integration, entire processes that run
-            themselves - that's not a referral to someone else. That's the other
-            half of what I do.
+            Most consultants stay in their lane. I cross them on purpose. The
+            same person who builds your site automates your follow-up sequences
+            and pressure-tests the assumptions underneath your go-to-market. Not
+            because I'm trying to upsell you - because gaps between those layers
+            are where businesses leak money.
           </p>
         </div>
 
@@ -379,7 +469,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
             href="#booking"
             class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
           >
-            Let's figure out <span class="font-bold">what you need</span> &rarr;
+            Let's figure out <span class="font-bold">where to start</span> &rarr;
           </a>
         </div>
       </div>
