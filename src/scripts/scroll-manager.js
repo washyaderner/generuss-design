@@ -98,17 +98,34 @@ function setupServices(isMobile) {
     scrollTrigger: { trigger: ".services-pin", start: "top 70%" },
   });
 
+  // Pharallax premium card - subtle scale-up reveal
+  const pharallaxCard = document.querySelector(".pharallax-card");
+  if (pharallaxCard) {
+    pharallaxCard.classList.remove("gsap-hidden");
+    gsap.from(pharallaxCard, {
+      y: 40,
+      opacity: 0,
+      scale: 0.97,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: pharallaxCard,
+        start: "top 85%",
+      },
+    });
+  }
+
   fadeUp(".growth-left", {
-    scrollTrigger: { trigger: ".services-pin", start: "top 60%" },
+    scrollTrigger: { trigger: ".growth-left", start: "top 85%" },
   });
 
   fadeUp(".growth-right", {
-    scrollTrigger: { trigger: ".services-pin", start: "top 60%" },
+    scrollTrigger: { trigger: ".growth-right", start: "top 85%" },
     delay: 0.1,
   });
 
   fadeUp(".services-cta", {
-    scrollTrigger: { trigger: ".services-pin", start: "top 55%" },
+    scrollTrigger: { trigger: ".services-cta", start: "top 90%" },
   });
 
   // Pin the section so it fills viewport while scrolling
