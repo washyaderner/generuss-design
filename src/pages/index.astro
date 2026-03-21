@@ -369,72 +369,163 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
             rel="noopener noreferrer"
             class="pharallax-card gsap-hidden block no-underline rounded-2xl p-8 sm:p-10 md:p-12 bg-[#0F0F1A] border border-[#C8A85C]/30 shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(200,168,92,0.04)] transition-all duration-300 hover:border-[#C8A85C]/50 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(200,168,92,0.06),0_0_40px_rgba(200,168,92,0.08)]"
           >
-            <div class="flex flex-col lg:flex-row lg:items-start lg:gap-12">
-              <!-- Left: Copy -->
-              <div class="flex-1 min-w-0">
-                <p
-                  class="font-mono text-[#C8A85C] tracking-[0.15em] text-xs uppercase mb-4"
-                >
-                  Powered by Pharallax AI
-                </p>
-                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">
-                  Strategic Analysis
-                </h3>
-                <p class="text-[#999] text-base sm:text-lg mb-6 max-w-xl">
-                  Most strategic analysis tells you what you want to hear. This
-                  one tells you what you're not seeing.
-                </p>
-                <ul class="space-y-3 text-sm text-[#999]">
-                  <li class="flex items-start gap-3">
-                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              <!-- Left: Hero Header -->
+              <div class="flex flex-col justify-between">
+                <div>
+                  <p
+                    class="font-mono text-[#C8A85C] tracking-[0.15em] text-xs uppercase mb-4"
+                  >
+                    Powered by Pharallax AI
+                  </p>
+                  <h3
+                    class="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight"
+                  >
+                    I stress-test your strategy and tell you what's actually
+                    happening.
+                  </h3>
+                  <p class="text-[#999] text-base sm:text-lg mb-8">
+                    Most strategic analysis tells you what you want to hear.
+                    Mine tells you what you're not seeing - backed by 60,000+
+                    cross-domain knowledge claims and three adversarial
+                    cognitive lenses.
+                  </p>
+                  <ul class="space-y-3 text-sm text-[#999] mb-8">
+                    <li class="flex items-start gap-3">
+                      <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                      <span
+                        >Blind spot detection across positioning, ops, and
+                        market fit</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                      <span
+                        >Three adversarial lenses: premortem, dialectic,
+                        reflexive</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                      <span
+                        >Grounded in 60,000+ cross-domain knowledge claims</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Tier pills + CTA -->
+                <div>
+                  <div class="flex flex-wrap gap-3 mb-6">
                     <span
-                      >Blind spot detection across positioning, ops, and market
-                      fit</span
+                      class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C]"
+                      >Strategic Dialogue</span
                     >
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
                     <span
-                      >Three adversarial lenses: premortem, dialectic, reflexive</span
+                      class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C]"
+                      >Deep Analysis</span
                     >
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
                     <span
-                      >Grounded in 60,000+ cross-domain knowledge claims</span
+                      class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C]"
+                      >Monthly Retainer</span
                     >
-                  </li>
-                </ul>
+                  </div>
+                  <div
+                    class="flex items-center gap-2 text-[#C8A85C] font-semibold text-sm group/link"
+                  >
+                    <span>Explore Pharallax AI</span>
+                    <span
+                      class="transition-transform duration-200 group-hover/link:translate-x-1"
+                      >&rarr;</span
+                    >
+                  </div>
+                </div>
               </div>
 
-              <!-- Right: Tier Pills -->
+              <!-- Right: Report Output Preview -->
               <div
-                class="flex flex-row lg:flex-col gap-3 mt-6 lg:mt-8 flex-wrap lg:flex-nowrap"
+                class="rounded-xl bg-[#080810] border border-[#C8A85C]/10 p-6 sm:p-8 font-mono text-xs sm:text-sm overflow-hidden"
               >
-                <span
-                  class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C] whitespace-nowrap"
-                  >Strategic Dialogue</span
-                >
-                <span
-                  class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C] whitespace-nowrap"
-                  >Deep Analysis</span
-                >
-                <span
-                  class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C] whitespace-nowrap"
-                  >Monthly Retainer</span
-                >
-              </div>
-            </div>
+                <!-- Report header -->
+                <div class="flex items-center justify-between mb-5">
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-[#C8A85C] animate-pulse"
+                    >
+                    </div>
+                    <span
+                      class="text-[#C8A85C]/70 text-[0.65rem] uppercase tracking-widest"
+                      >Pharallax Analysis Output</span
+                    >
+                  </div>
+                  <span class="text-[#555] text-[0.6rem]">12 perspectives</span>
+                </div>
 
-            <!-- Inline CTA -->
-            <div
-              class="mt-8 flex items-center gap-2 text-[#C8A85C] font-semibold text-sm group/link"
-            >
-              <span>Explore Pharallax AI</span>
-              <span
-                class="transition-transform duration-200 group-hover/link:translate-x-1"
-                >&rarr;</span
-              >
+                <!-- Contradiction found -->
+                <div class="mb-5">
+                  <p
+                    class="text-[#C8A85C] text-[0.65rem] uppercase tracking-wider mb-2"
+                  >
+                    Contradiction Detected
+                  </p>
+                  <p class="text-[#ccc] leading-relaxed">
+                    Claims "product-led growth" but 91% of revenue traces to
+                    outbound sales. The self-serve funnel converts at 0.3% -
+                    below the threshold where PLG is a strategy vs. a landing
+                    page.
+                  </p>
+                </div>
+
+                <!-- Blind spot -->
+                <div class="mb-5">
+                  <p
+                    class="text-[#C8A85C] text-[0.65rem] uppercase tracking-wider mb-2"
+                  >
+                    Blind Spot
+                  </p>
+                  <p class="text-[#ccc] leading-relaxed">
+                    Competitor X filed 3 patent applications in your core
+                    feature area (Feb-Mar 2026). None of your planning documents
+                    reference this.
+                  </p>
+                </div>
+
+                <!-- Highest-leverage move -->
+                <div class="mb-5">
+                  <p
+                    class="text-[#C8A85C] text-[0.65rem] uppercase tracking-wider mb-2"
+                  >
+                    Highest-Leverage Move
+                  </p>
+                  <p class="text-[#ccc] leading-relaxed">
+                    Kill the PLG narrative internally. Reallocate the $14K/mo
+                    self-serve infrastructure budget to outbound enablement
+                    where your actual conversion engine lives.
+                  </p>
+                </div>
+
+                <!-- Risk quantification -->
+                <div class="mb-5">
+                  <p
+                    class="text-[#C8A85C] text-[0.65rem] uppercase tracking-wider mb-2"
+                  >
+                    Risk Quantified
+                  </p>
+                  <p class="text-[#ccc] leading-relaxed">
+                    If Competitor X's patents are granted, your differentiation
+                    window closes in ~8 months. Current roadmap doesn't account
+                    for this timeline.
+                  </p>
+                </div>
+
+                <!-- Footer -->
+                <div class="border-t border-[#C8A85C]/10 pt-4">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[#555]">Confidence: 87%</span>
+                    <span class="text-[#555]">3 lenses applied</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </a>
         </div>
