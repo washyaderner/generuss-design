@@ -71,3 +71,33 @@
 **Signal:** "ok I'm happy with where that's at" after only two rounds of tuning (slower transitions + trip labels). Zero corrections to the core particle system, physics, or color logic.
 **What worked:** Starting with the Lighthouse analysis before writing any code. The iframe-vs-canvas-vs-video discussion established the right approach (canvas) before any implementation. Then building a standalone HTML capture tool first, previewing it, and only integrating into the site after approval.
 **Pattern:** For visual features, do the performance analysis first, build a standalone prototype second, get approval third, integrate fourth. Skipping straight to integration wastes time if the approach is wrong.
+
+### 2026-03-21 | architecture
+
+**Signal:** "fuck yeah" on the /mobile skill design, immediate /reflect trigger (session worth flushing)
+**What worked:** Deep research pass before writing a single line - read all 12 existing commands, /ar skill, visual QA protocol, mobile testing protocol, Playwright scripts, site config. Then designed a skill (not a command) so /ar can self-improve it. Borrowed /ar methodology (binary evals, baseline, iterative fix loop, convergence detection) and embedded the actual Playwright JS checks inline.
+**Pattern:** When building a new tool that fits into an existing tooling ecosystem, invest the research time to understand every adjacent tool's conventions and integration points first. The tool that slots cleanly into the system on first try is worth 3x the design time.
+
+### 2026-03-21 | approach
+
+**Signal:** "Excellent work. Very excited about this." on the 100x research memory unification
+**What worked:** Audited all three storage layers (Supabase 50 rows, Obsidian 57 files, Desktop 11 files), identified the gap (Step 0 only reads Supabase, files are write-only), cross-referenced to find exactly 3 missing files, backfilled them, added `full_output` column, and updated the skill - all in one clean pass.
+**Pattern:** When unifying data across multiple stores, audit all sources first, cross-reference to find gaps, then migrate toward the single source of truth. Don't just add a new read path - consolidate to one store and keep the others as convenience copies.
+
+### 2026-03-21 | initiative
+
+**Signal:** User asked for "a mobile slash command" - delivered a full skill with /ar integration, 10 automated Playwright checks, 5-phase pipeline, section-by-section isolation, convergence detection, and TSV logging. Zero corrections.
+**What worked:** Reading "leverage the ar command" as a design constraint, not a literal invocation. Made it a skill (not command) so /ar can optimize it. Included the JS check code inline so the AI doesn't need a separate script. Worst-first section ordering and desktop regression checks were proactive additions.
+**Pattern:** When building tools for the toolchain, design for composability. A skill that /ar can optimize is worth more than a command that runs once.
+
+### 2026-03-21 | approach
+
+**Signal:** "Fuck yeah, it's there." after 5 deploys to get the Pharallax services card visible
+**What worked:** Stripping ALL GSAP from the services section and making it flat static HTML. The 100x research (5 parallel Opus agents) produced the strategy; the execution lesson was that GSAP ScrollTrigger cannot reliably animate elements that were previously inside pinned containers even after the pin is removed.
+**Pattern:** When an animation framework is fighting you across multiple deploys, remove it. Content visibility > animation. Static HTML that works beats animated HTML that doesn't.
+
+### 2026-03-21 | output-quality
+
+**Signal:** "Love it. That sounds perfect." on the 100x synthesis for Pharallax services positioning
+**What worked:** 5 parallel Opus agents (Layout, Messaging, Buyer Psychology, Competitive, Revenue) with a red team pass. The convergence map gave high-confidence findings (5/5 on headline change, no prices, distinct visual treatment). The buyer agent's contrarian take (don't make it a third equal card) led to the flipped pyramid that Russ chose.
+**Pattern:** When agents disagree, the contradiction IS the insight. The buyer agent's pushback against the 3-column consensus produced the better layout.

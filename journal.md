@@ -244,3 +244,45 @@ Key changes:
 
 - Deleted full case study page (3,600+ lines) - stop giving away the build secrets
 - Portfolio card CTA updated to "Check out the observatory" linking to live product
+
+## 2026-03-21 | SHIP | cc6f7a1...87fd380
+
+Shipped: Pharallax AI portfolio card added, journal synced with prior ship entries
+Commits: 4 since last ship
+Key changes:
+
+- Added Pharallax AI as a text-based portfolio card with gold branding, stats row, and "Try a free analysis" CTA
+- Caught up journal with two missing ship entries from prior sessions
+
+## 2026-03-21 03:53 | SESSION
+
+**Context:** Russ wanted a /mobile slash command for comprehensive mobile optimization, leveraging /ar methodology for testing
+**Outcome:** Designed and wrote `~/.claude/skills/mobile/SKILL.md` - a 5-phase mobile optimization skill with 10 automated Playwright checks, section-by-section fix loop, convergence detection, and /ar integration. Research-first approach: read all 12 existing commands, /ar skill, visual QA protocol, mobile testing protocol, and full Playwright infrastructure before writing.
+**Signal:** "fuck yeah" - design landed on first presentation, zero corrections. Immediate /reflect trigger.
+**Carries forward:** Skill is written but untested on a real site. First real run will be the true validation. /ar mobile can optimize it once baseline performance is established across multiple sites.
+
+## 2026-03-21 05:15 | SESSION
+
+**Context:** Russ asked whether /100x's 1000x learning method reads from Desktop, Obsidian, or both when compounding past research
+**Outcome:** Audited the full 100x persistence stack. Found Step 0 reads Supabase only (Desktop/Obsidian are write-only). Added `full_output` TEXT column to `research_outputs`. Cross-referenced 57 Obsidian files against 50 DB rows, found 3 missing (depth engine, tarotdoxa strategy, tarotdoxa card art), backfilled all 3. Updated SKILL.md Step 7 to include full_output. DB now has 53 rows, RLS confirmed locked down.
+**Signal:** "Excellent work. Very excited about this." Clean session, no corrections.
+**Carries forward:** 50 older rows still lack full_output (have structured JSONB only). Could bulk-backfill from Obsidian files if needed, but structured data is sufficient for Step 0 agent priming.
+
+## 2026-03-21 | SHIP | 87fd380...1296e99
+
+Shipped: Pharallax AI integrated into services section as premium reveal card
+Commits: 2 since last ship
+Key changes:
+
+- Flipped pyramid layout: foundation cards pin first, Pharallax reveals on scroll with gold branding and deep navy bg
+- New headline "I build it. I automate it. I pressure-test it." replacing "Development + Automation = Growth."
+- Updated growth partner copy and CTA to tell a value ladder story
+  Lesson: Pin-heavy GSAP sections break when content grows beyond one viewport. Split pinned and non-pinned content within the same section to keep the narrative flow without losing scroll accessibility.
+
+## 2026-03-21 10:40 | SESSION
+
+**Context:** Russ wanted Pharallax AI added to the services section of generussdesign.com, positioned as the consulting powerhouse
+**Outcome:** Ran /100x with 5 parallel Opus agents (Layout, Messaging, Buyer Psychology, Competitive, Revenue). Chose flipped pyramid layout. Built 2-col Pharallax card with hero header + report output preview. Hit a 5-deploy GSAP invisibility bug - ScrollTrigger poisoned by old pin architecture. Final fix: strip all GSAP from the section, ship static HTML. Also expanded /ship Step 10 to fire on all projects (universal deploy feed via Supabase MCP).
+**Signal:** "Fuck yeah, it's there" after the static HTML fix landed. "Love it" on the 100x strategy.
+**Friction:** GSAP ScrollTrigger refused to fire for the Pharallax card across 5 deploys (#78-#82). Every incremental fix (remove pin, change animation, remove gsap-hidden) failed. Only a full strip to static HTML worked. Should have circuit-breakered after deploy #2.
+**Carries forward:** Services section is now animation-free. Could add CSS-only transitions later if needed, but GSAP ScrollTrigger should not be re-added to this section.
