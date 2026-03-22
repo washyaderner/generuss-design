@@ -3,69 +3,109 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Connect - generuss design"
-  description="Web design, AI automation, and music production. Book a free discovery call."
+  title="generuss. | flawless by design"
+  description="Web design, AI automation, and strategic analysis. Book a free discovery call."
 >
-  <main id="main-content" class="connect-page">
-    <h1 class="sr-only">generuss design - Connect</h1>
-    <div class="bento">
-      <!-- HERO: Living Dashboard -->
-      <div class="card depth-canyon hero">
-        <div class="cb tl"></div><div class="cb tr"></div>
-        <div class="cb bl"></div><div class="cb br"></div>
+  <main class="page">
+    <h1 class="sr-only">generuss - Web Design and AI Strategy</h1>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+      <div class="cb tl"></div><div class="cb tr"></div>
+      <div class="cb bl"></div><div class="cb br"></div>
+      <div class="header-content">
+        <span class="brand">generuss<span class="dot">.</span></span>
+        <div class="header-right">
+          <span class="status-pulse"></span>
+          <span class="tagline">flawless by design</span>
+        </div>
+      </div>
+      <div class="glow-line">
+        <div class="glow-line-shine"></div>
+      </div>
+    </header>
+
+    <!-- CARDS -->
+    <div class="cards">
+      <!-- DESIGN CARD -->
+      <section class="card card-design fade-in">
         <div class="shine-primary"></div>
-        <div class="shine-specular"></div>
+        <div class="edge-top"></div>
         <div class="cyan-wash"></div>
 
-        <div class="hero-header">
-          <a href="/" class="hero-brand">generuss<span class="dot">.</span></a>
-          <div class="hero-status">
-            <span class="status-pulse"></span>
-            Shipping
+        <div class="card-label">// Recent Work</div>
+
+        <div class="site-carousel">
+          <div class="site-slide">
+            <div class="site-preview">
+              <img
+                src="/images/slides/generuss.webp"
+                alt="generuss design screenshot"
+                class="site-preview-img"
+              />
+            </div>
+            <div class="site-meta">
+              <span class="site-name">generuss design</span>
+              <span class="site-url">generussdesign.com</span>
+            </div>
+          </div>
+          <div class="site-slide">
+            <div class="site-preview">
+              <img
+                src="/images/slides/vibe.webp"
+                alt="Vibe N Thrive Therapy screenshot"
+                class="site-preview-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="site-meta">
+              <span class="site-name">Vibe'N Thrive</span>
+              <span class="site-url">vibenthrivetherapy.com</span>
+            </div>
+          </div>
+          <div class="site-slide">
+            <div class="site-preview">
+              <img
+                src="/images/slides/crystal.webp"
+                alt="Crystal Seed Tarot screenshot"
+                class="site-preview-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="site-meta">
+              <span class="site-name">Crystal Seed Tarot</span>
+              <span class="site-url">crystalseedtarot.com</span>
+            </div>
           </div>
         </div>
 
-        <div class="hero-sites">
-          <div class="sites-header">
-            <span class="sites-label">Recent Work</span>
-            <div class="carousel-dots">
-              <div class="carousel-dot active"></div>
-              <div class="carousel-dot"></div>
-              <div class="carousel-dot"></div>
-            </div>
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-val cyan-val">5</span><span class="stat-label"
+              >Sites Live</span
+            >
           </div>
-          <div class="site-carousel">
-            <div class="site-slide">
-              <div class="site-preview">
-                <img src="/images/portfolio/slides/generuss/01.webp" alt="generuss.com screenshot" class="site-preview-img" loading="lazy" />
-              </div>
-              <div class="site-meta">
-                <span class="site-name">generuss design</span>
-                <span class="site-url">generussdesign.com</span>
-              </div>
-            </div>
-            <div class="site-slide">
-              <div class="site-preview">
-                <img src="/images/portfolio/slides/vibenthrive/01.webp" alt="Vibe N Thrive Therapy screenshot" class="site-preview-img" loading="lazy" />
-              </div>
-              <div class="site-meta">
-                <span class="site-name">Vibe'N Thrive</span>
-                <span class="site-url">vibenthrivetherapy.com</span>
-              </div>
-            </div>
-            <div class="site-slide">
-              <div class="site-preview">
-                <img src="/images/portfolio/slides/crystalseed/01.webp" alt="Crystal Seed Tarot screenshot" class="site-preview-img" loading="lazy" />
-              </div>
-              <div class="site-meta">
-                <span class="site-name">Crystal Seed Tarot</span>
-                <span class="site-url">crystalseedtarot.com</span>
-              </div>
-            </div>
+          <div class="stat-sep"></div>
+          <div class="stat-item">
+            <span class="stat-val">4hr</span><span class="stat-label"
+              >Fastest</span
+            >
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-item">
+            <span class="stat-val">$0</span><span class="stat-label"
+              >Hosting</span
+            >
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-item">
+            <span class="stat-val">100</span><span class="stat-label"
+              >Lighthouse</span
+            >
           </div>
         </div>
 
-        <div class="hero-reviews">
+        <div class="reviews-wrap">
           <div class="reviews-track">
             <div class="review-chip">
               <div class="review-stars">
@@ -92,7 +132,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <div class="review-text">
                 "Exceeded my expectations by miles."
               </div>
-              <div class="review-author">Leon McConnell - Resist Entertainment</div>
+              <div class="review-author">
+                Leon McConnell - Resist Entertainment
+              </div>
             </div>
             <div class="review-chip">
               <div class="review-stars">
@@ -138,7 +180,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <div class="review-text">
                 "Exceeded my expectations by miles."
               </div>
-              <div class="review-author">Leon McConnell - Resist Entertainment</div>
+              <div class="review-author">
+                Leon McConnell - Resist Entertainment
+              </div>
             </div>
             <div class="review-chip">
               <div class="review-stars">
@@ -161,238 +205,134 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
         </div>
 
-        <div class="hero-stats">
-          <div class="stats-track">
-            <div class="stat-item">
-              <span class="stat-val cyan-val">3</span><span class="stat-label"
-                >Sites Live</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">4hr</span><span class="stat-label"
-                >Fastest Build</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">$0</span><span class="stat-label"
-                >Hosting / Mo</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">20</span><span class="stat-label"
-                >Yrs Sales</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">15+</span><span class="stat-label"
-                >Yrs Music</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">96</span><span class="stat-label"
-                >A11y Score</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">100</span><span class="stat-label"
-                >SEO Score</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">600</span><span class="stat-label"
-                >DPI Print</span>
-            </div>
-            <div class="stat-sep"></div>
-            <!-- Duplicate for seamless loop -->
-            <div class="stat-item">
-              <span class="stat-val cyan-val">3</span><span class="stat-label"
-                >Sites Live</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">4hr</span><span class="stat-label"
-                >Fastest Build</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">$0</span><span class="stat-label"
-                >Hosting / Mo</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">20</span><span class="stat-label"
-                >Yrs Sales</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">15+</span><span class="stat-label"
-                >Yrs Music</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">96</span><span class="stat-label"
-                >A11y Score</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">100</span><span class="stat-label"
-                >SEO Score</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="stat-item">
-              <span class="stat-val">600</span><span class="stat-label"
-                >DPI Print</span>
-            </div>
-            <div class="stat-sep"></div>
+        <a
+          href="https://generussdesign.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card-link"
+        >
+          See the work <span class="arrow">&rarr;</span>
+        </a>
+      </section>
+
+      <!-- PHARALLAX CARD -->
+      <section class="card card-pharallax fade-in">
+        <div class="shine-primary gold-shine"></div>
+        <div class="edge-top gold-edge"></div>
+        <div class="gold-wash"></div>
+
+        <div class="card-label gold-label">// Strategic Analysis</div>
+
+        <div class="pharallax-headline">Stress-test your strategy</div>
+
+        <div class="site-preview-wrap">
+          <div class="site-preview">
+            <img
+              src="/images/slides/pharallax.webp"
+              alt="Pharallax.ai - AI strategic analysis engine"
+              class="site-preview-img"
+              loading="lazy"
+            />
+          </div>
+          <div class="site-meta gold-meta">
+            <span class="site-name">Pharallax</span>
+            <span class="site-url">pharallax.ai</span>
           </div>
         </div>
-      </div>
 
-      <!-- YOUTUBE -->
-      <a
-        href="https://youtu.be/zTF2yDt0plc?si=W6msj3MAQenTHXzc"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="card depth-heavy youtube"
-      >
-        <div class="shine-primary"></div>
-        <div class="edge-top"></div>
-        <div class="edge-left"></div>
-        <div class="cyan-wash"></div>
-        <div class="card-label">YouTube</div>
-        <div class="card-title">
-          Latest from <span class="hot-text">@generussai</span>
+        <div class="pharallax-stat">
+          <span class="collision-count">60K+</span>
+          <span class="collision-unit">claims analyzed</span>
         </div>
-        <div class="yt-thumb">
-          <img src="https://img.youtube.com/vi/zTF2yDt0plc/maxresdefault.jpg" alt="How I Built a Client Site in 4 Hours" class="yt-thumb-img" loading="lazy" />
-          <div class="yt-play"></div>
-        </div>
-        <p class="card-desc yt-desc">How I Built a Client Site in 4 Hours</p>
-        <p class="yt-series">Flawless by Design</p>
-      </a>
 
-      <!-- WEB DESIGN -->
-      <div class="card depth-raised design">
-        <div class="shine-primary dim-shine"></div>
-        <div class="edge-top"></div>
-        <div class="service-header">
-          <span class="hot-dot"></span>
-          <span class="card-label no-mb">Web Design</span>
-        </div>
-        <div class="card-title">
-          generuss<span class="hot-text"> design</span>
-        </div>
-        <p class="card-desc">
-          Fast, gorgeous, converts. Astro + Tailwind + Cloudflare. $0/mo
-          hosting.
-        </p>
-      </div>
+        <a
+          href="https://pharallax.ai/analyze"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card-link gold-link"
+        >
+          Run a free analysis <span class="arrow">&rarr;</span>
+        </a>
+        <span class="card-sub">your solution in 2 minutes, free</span>
+      </section>
 
-      <!-- AUTOMATION -->
-      <div class="card depth-deep auto">
-        <div class="shine-primary faint-shine"></div>
-        <div class="service-header">
-          <span class="hot-dot"></span>
-          <span class="card-label no-mb">Automation</span>
-        </div>
-        <div class="card-title">AI Workflows</div>
-        <p class="card-desc">
-          Claude Code pipelines. Custom agents. Your time back.
-        </p>
-      </div>
-
-      <!-- MUSIC -->
-      <div id="music-card" class="card depth-inset music" role="button" tabindex="0" aria-label="Play Poke a Dot by Russ A Buss">
-        <div class="shine-primary faint-shine"></div>
-        <div class="service-header">
-          <span class="hot-dot"></span>
-          <span class="card-label no-mb">Music</span>
-        </div>
-        <div class="card-title">Russ A Buss</div>
-        <div class="music-state">
-          <span class="music-state-icon">&#9654;</span>
-          <span class="music-state-label">Tap to play</span>
-        </div>
-        <div class="pulse-line">
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-          <div class="pulse-bar idle"></div>
-        </div>
-        <p class="card-desc music-desc">Mixing · Producing · 15+ years</p>
-      </div>
-
-      <!-- SOCIAL / CONNECT -->
-      <div class="card depth-subtle social">
-        <div class="shine-primary dim-shine"></div>
-        <div class="edge-top"></div>
-        <div class="card-label">Connect</div>
-        <div class="social-row">
-          <a
-            href="https://x.com/generussai"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon"
-            aria-label="X / Twitter">X</a
-          >
-          <a
-            href="https://github.com/washyaderner"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon"
-            aria-label="GitHub">GH</a
-          >
-          <a
-            href="https://www.youtube.com/@GeneRussAutomation"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon"
-            aria-label="YouTube">YT</a
-          >
-          <a
-            href="https://www.linkedin.com/in/russell-gardner-382b6037/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon"
-            aria-label="LinkedIn">LI</a>
-        </div>
-        <p class="card-desc social-handle">@generussai</p>
-      </div>
-
-      <!-- CTA -->
+      <!-- BOOK A CALL -->
       <a
         href="https://app.cal.com/generuss/discovery-call"
         target="_blank"
         rel="noopener noreferrer"
-        class="card depth-raised cta"
+        class="card card-cta fade-in"
       >
         <div class="shine-primary faint-shine"></div>
-        <div class="cta-huge">
-          Book<br />a <span class="hot-word">Call</span>
+        <div class="cta-content">
+          <div class="cta-huge">
+            Let's<br /><span class="glow">build.</span>
+          </div>
+          <div class="cta-right">
+            <p class="cta-sub">15 min. Your screen. No pitch.</p>
+          </div>
         </div>
-        <p class="cta-sub">Free. No pitch. Just fit.</p>
       </a>
     </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="social-row">
+        <a
+          href="https://x.com/DegeneRussAI"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-icon"
+          aria-label="X / Twitter">X</a
+        >
+        <a
+          href="https://github.com/washyaderner"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-icon"
+          aria-label="GitHub">GH</a
+        >
+        <a
+          href="https://www.youtube.com/@generussai"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-icon"
+          aria-label="YouTube">YT</a
+        >
+        <a
+          href="https://www.linkedin.com/in/russell-gardner-382b6037/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-icon"
+          aria-label="LinkedIn">LI</a
+        >
+      </div>
+      <div class="social-handle">@generussai</div>
+    </footer>
+
+    <!-- STICKY PILL -->
+    <a
+      href="https://app.cal.com/generuss/discovery-call"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="sticky-pill"
+      id="sticky-pill"
+      aria-label="Book a 15-minute call"
+    >
+      Book 15 min
+    </a>
   </main>
 </BaseLayout>
 
 <style is:global>
-  body:has(> .connect-page) {
-    background: #0e0e10;
+  body:has(> .page) {
+    background: #0e0e10 !important;
   }
 </style>
 
 <style>
-  /* ─── TOKENS ─── */
-  .connect-page {
+  /* ---- TOKENS ---- */
+  .page {
     --b-base: #1a1a1e;
     --b-surface: #222226;
     --b-sdark: #0d0d0f;
@@ -405,43 +345,53 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     --b-txt: #e8e8e8;
     --b-txt2: #9a9aa0;
     --b-txt3: #6b6b75;
+    --b-gold: #c8a84e;
+    --b-gold-bright: #e0c060;
+    --b-gold-dim: #8b7535;
+    --b-gold-glow: rgba(200, 168, 78, 0.35);
+    --b-gold-mid: rgba(200, 168, 78, 0.2);
+    --b-gold-faint: rgba(200, 168, 78, 0.05);
+    --b-premortem: #e04040;
+    --b-dialectic: #4080e0;
+    --b-reflexive: #40c080;
+    --font-mono:
+      "JetBrains Mono", ui-monospace, "SF Mono", "Fira Code", monospace;
   }
 
-  /* ─── PAGE WRAPPER ─── */
-  .connect-page {
-    background: #0e0e10;
-    padding: 12px;
-    min-height: 100dvh;
-  }
-
-  /* ─── BENTO GRID ─── */
-  .bento {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    width: 100%;
-    min-height: 0;
-  }
-
-  /* ─── CARD BASE ─── */
-  .card {
-    border-radius: 16px;
-    background: var(--b-base);
-    position: relative;
+  /* ---- RESET ---- */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
     overflow: hidden;
-    min-height: 0;
-    min-width: 0;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 
-  a.card {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: box-shadow 0.25s ease;
+  /* ---- PAGE ---- */
+  .page {
+    background: #0e0e10;
+    min-height: 100dvh;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
-  /* Noise texture */
-  .card::before {
+  /* ---- HEADER ---- */
+  .header {
+    position: relative;
+    background: var(--b-base);
+    border-radius: 16px;
+    padding: 20px 24px 16px;
+    overflow: hidden;
+  }
+  .header::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -449,109 +399,79 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     pointer-events: none;
     z-index: 1;
   }
-
-  /* ─── DEPTH SYSTEM ─── */
-  .depth-subtle {
-    box-shadow:
-      4px 4px 10px var(--b-sdark),
-      -3px -3px 8px var(--b-slight),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+    margin-bottom: 16px;
   }
-  .depth-raised {
-    box-shadow:
-      6px 6px 14px var(--b-sdark),
-      -4px -4px 10px var(--b-slight),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  .brand {
+    font-family: var(--font-mono);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--b-txt2);
   }
-  .depth-heavy {
-    box-shadow:
-      3px 3px 6px var(--b-sdark),
-      8px 8px 20px var(--b-sdark),
-      -3px -3px 8px var(--b-slight),
-      -6px -6px 16px var(--b-slight),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  .dot {
+    color: var(--b-cyan);
+    text-shadow:
+      0 0 10px var(--b-glow),
+      0 0 40px var(--b-dim);
   }
-  .depth-inset {
-    box-shadow:
-      inset 4px 4px 10px var(--b-sdark),
-      inset -3px -3px 8px var(--b-slight);
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .depth-deep {
-    box-shadow:
-      inset 6px 6px 16px var(--b-sdark),
-      inset -3px -3px 10px var(--b-slight);
+  .status-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--b-cyan);
+    box-shadow: 0 0 4px var(--b-mid);
+    animation: pulse-glow 2.5s ease-in-out infinite;
+    flex-shrink: 0;
   }
-  .depth-canyon {
-    box-shadow:
-      inset 3px 3px 6px var(--b-sdark),
-      inset 6px 6px 16px rgba(13, 13, 15, 0.8),
-      inset 12px 12px 36px rgba(13, 13, 15, 0.5),
-      inset -2px -2px 6px var(--b-slight),
-      inset -4px -4px 14px rgba(46, 46, 51, 0.6),
-      inset -8px -8px 30px rgba(46, 46, 51, 0.25);
-  }
-
-  /* ─── DECORATIVE LAYERS ─── */
-  .shine-primary {
-    position: absolute;
-    top: -32%;
-    left: -16%;
-    width: 62%;
-    height: 72%;
-    background: radial-gradient(
-      ellipse,
-      rgba(255, 255, 255, 0.05) 0%,
-      transparent 68%
-    );
-    pointer-events: none;
-    z-index: 2;
-  }
-  .dim-shine {
-    opacity: 0.7;
-  }
-  .faint-shine {
-    opacity: 0.5;
+  .tagline {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    color: var(--b-txt3);
   }
 
-  .shine-specular {
-    position: absolute;
-    top: -20%;
-    left: 15%;
-    width: 35%;
-    height: 40%;
-    background: radial-gradient(
-      ellipse,
-      rgba(255, 255, 255, 0.025) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
-    z-index: 2;
+  /* Glow line */
+  .glow-line {
+    height: 2px;
+    background: var(--b-cyan);
+    border-radius: 2px;
+    position: relative;
+    z-index: 3;
+    box-shadow:
+      0 0 8px rgba(0, 255, 239, 0.5),
+      0 0 20px rgba(0, 255, 239, 0.25),
+      0 0 40px rgba(0, 255, 239, 0.12);
   }
-
-  .edge-top {
+  .glow-line-shine {
     position: absolute;
     top: 0;
-    left: 8%;
-    right: 40%;
+    left: 0;
+    right: 0;
     height: 1px;
     background: linear-gradient(
       90deg,
-      transparent,
-      rgba(255, 255, 255, 0.08) 40%,
-      transparent
+      transparent 5%,
+      rgba(255, 255, 255, 0.25) 15%,
+      rgba(255, 255, 255, 0.5) 45%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0.5) 55%,
+      rgba(255, 255, 255, 0.25) 85%,
+      transparent 95%
     );
-    z-index: 3;
-    pointer-events: none;
-  }
-  .edge-left {
-    position: absolute;
-    left: 0;
-    top: 5%;
-    bottom: 50%;
-    width: 1px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
-    z-index: 3;
-    pointer-events: none;
+    border-radius: 2px;
   }
 
   /* Corner brackets */
@@ -626,69 +546,97 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     right: 0;
   }
 
-  /* ─── TYPOGRAPHY ─── */
-  .card-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--b-txt3);
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 2;
-  }
-  .no-mb {
-    margin-bottom: 0;
-  }
-
-  .card-title {
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 1.25;
-    margin-bottom: 6px;
-    color: var(--b-txt);
-    position: relative;
-    z-index: 2;
-  }
-  .card-desc {
-    font-size: 13px;
-    color: var(--b-txt2);
-    line-height: 1.55;
-    position: relative;
-    z-index: 2;
-  }
-  .hot-text {
-    color: var(--b-cyan);
-    text-shadow:
-      0 0 10px var(--b-glow),
-      0 0 30px var(--b-dim);
-  }
-  .hot-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--b-cyan);
-    box-shadow:
-      0 0 5px var(--b-mid),
-      0 0 12px var(--b-dim);
-    display: inline-block;
-    flex-shrink: 0;
-  }
-  .cyan-val {
-    color: var(--b-cyan);
-    text-shadow: 0 0 8px var(--b-dim);
-  }
-
-  /* ─── HERO CARD ─── */
-  .hero {
+  /* ---- CARDS CONTAINER ---- */
+  .cards {
     display: flex;
     flex-direction: column;
-    padding: 0;
-    min-height: 380px;
+    gap: 12px;
   }
 
-  .hero .cyan-wash {
+  /* ---- CARD BASE ---- */
+  .card {
+    border-radius: 16px;
+    background: var(--b-base);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      3px 3px 7px var(--b-sdark),
+      -2px -2px 5px var(--b-slight),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  a.card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: box-shadow 0.25s ease;
+  }
+  a.card:hover {
+    box-shadow:
+      3px 3px 7px var(--b-sdark),
+      -2px -2px 5px var(--b-slight),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 20px var(--b-dim);
+  }
+
+  /* Noise texture */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Decorative layers */
+  .shine-primary {
+    position: absolute;
+    top: -32%;
+    left: -16%;
+    width: 62%;
+    height: 72%;
+    background: radial-gradient(
+      ellipse,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 68%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+  .faint-shine {
+    opacity: 0.5;
+  }
+  .gold-shine {
+    background: radial-gradient(
+      ellipse,
+      rgba(200, 168, 78, 0.04) 0%,
+      transparent 68%
+    );
+  }
+  .edge-top {
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 40%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08) 40%,
+      transparent
+    );
+    z-index: 3;
+    pointer-events: none;
+  }
+  .gold-edge {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(200, 168, 78, 0.12) 40%,
+      transparent
+    );
+  }
+  .cyan-wash {
     position: absolute;
     bottom: -5%;
     left: 10%;
@@ -702,95 +650,83 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     pointer-events: none;
     z-index: 2;
   }
+  .gold-wash {
+    position: absolute;
+    bottom: -5%;
+    left: 10%;
+    right: 10%;
+    height: 40%;
+    background: radial-gradient(
+      ellipse at center bottom,
+      var(--b-gold-faint) 0%,
+      transparent 60%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
 
-  .hero-header {
+  /* ---- SHARED CARD ELEMENTS ---- */
+  .card-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--b-txt3);
     padding: 20px 24px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     position: relative;
     z-index: 3;
-    flex-shrink: 0;
   }
-  .hero-brand {
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: -0.5px;
-    color: var(--b-txt2);
-    text-decoration: none;
+  .gold-label {
+    color: var(--b-gold-dim);
   }
-  .hero-brand .dot {
-    color: var(--b-cyan);
-    text-shadow:
-      0 0 10px var(--b-glow),
-      0 0 40px var(--b-dim);
-  }
-  .hero-status {
-    display: flex;
+
+  .card-link {
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--b-txt3);
+    text-decoration: none;
+    padding: 0 24px;
+    position: relative;
+    z-index: 3;
+    transition: color 0.2s;
   }
-  .status-pulse {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--b-cyan);
-    box-shadow: 0 0 4px var(--b-mid);
-    animation: pulse-glow 2.5s ease-in-out infinite;
+  .card-link:hover {
+    color: var(--b-cyan);
+  }
+  .gold-link:hover {
+    color: var(--b-gold-bright);
+  }
+  .arrow {
+    font-size: 13px;
+  }
+
+  .card-sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: var(--b-txt3);
+    padding: 6px 24px 20px;
+    position: relative;
+    z-index: 3;
+  }
+
+  /* ---- DESIGN CARD ---- */
+  .card-design {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
 
   /* Site carousel */
-  .hero-sites {
-    padding: 14px 24px;
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    position: relative;
-    z-index: 3;
-    overflow: hidden;
-  }
-  .sites-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .sites-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--b-txt3);
-  }
-  .carousel-dots {
-    display: flex;
-    gap: 5px;
-  }
-  .carousel-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--b-txt3);
-    opacity: 0.25;
-    transition: all 0.4s ease;
-  }
-  .carousel-dot.active {
-    background: var(--b-cyan);
-    opacity: 1;
-    box-shadow: 0 0 4px var(--b-dim);
-  }
-
   .site-carousel {
-    flex: 1;
-    min-height: 0;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
@@ -798,8 +734,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     box-shadow:
       inset 3px 3px 8px rgba(0, 0, 0, 0.5),
       inset -2px -2px 6px rgba(46, 46, 51, 0.3);
+    margin: 12px 24px 0;
+    aspect-ratio: 16 / 9;
+    z-index: 3;
   }
-
   .site-slide {
     position: absolute;
     inset: 0;
@@ -817,7 +755,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .site-slide:nth-child(3) {
     animation-delay: 8s;
   }
-
   .site-preview {
     flex: 1;
     position: relative;
@@ -832,9 +769,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     object-fit: cover;
     object-position: top center;
   }
-
   .site-meta {
-    padding: 10px 16px;
+    padding: 8px 14px;
     background: rgba(0, 0, 0, 0.35);
     display: flex;
     align-items: center;
@@ -854,18 +790,62 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     color: var(--b-txt3);
   }
 
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 14px 24px;
+    position: relative;
+    z-index: 3;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+  .stat-val {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--b-txt);
+  }
+  .stat-label {
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--b-txt3);
+  }
+  .cyan-val {
+    color: var(--b-cyan);
+    text-shadow: 0 0 8px var(--b-dim);
+  }
+  .stat-sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--b-txt3);
+    opacity: 0.2;
+    flex-shrink: 0;
+  }
+
   /* Reviews ticker */
-  .hero-reviews {
+  .reviews-wrap {
     border-top: 1px solid rgba(255, 255, 255, 0.03);
     overflow: hidden;
-    min-height: 72px;
-    max-height: 96px;
-    flex-shrink: 0;
+    min-height: 68px;
+    max-height: 90px;
     position: relative;
     z-index: 3;
   }
-  .hero-reviews::before,
-  .hero-reviews::after {
+  .reviews-wrap::before,
+  .reviews-wrap::after {
     content: "";
     position: absolute;
     top: 0;
@@ -874,30 +854,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     z-index: 4;
     pointer-events: none;
   }
-  .hero-reviews::before {
+  .reviews-wrap::before {
     left: 0;
     background: linear-gradient(90deg, var(--b-base), transparent);
   }
-  .hero-reviews::after {
+  .reviews-wrap::after {
     right: 0;
     background: linear-gradient(270deg, var(--b-base), transparent);
   }
-
   .reviews-track {
     display: flex;
     height: 100%;
     animation: scroll-reviews 24s linear infinite;
   }
-
   .review-chip {
     flex-shrink: 0;
-    padding: 16px 28px;
+    padding: 14px 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
     border-right: 1px solid rgba(255, 255, 255, 0.03);
-    min-width: 300px;
+    min-width: 280px;
   }
   .review-stars {
     font-size: 11px;
@@ -906,7 +884,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     text-shadow: 0 0 6px var(--b-dim);
   }
   .review-text {
-    font-size: 13px;
+    font-size: 12px;
     font-style: italic;
     color: var(--b-txt);
     line-height: 1.45;
@@ -922,345 +900,240 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     letter-spacing: 1px;
   }
 
-  /* Stats marquee */
-  .hero-stats {
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
+  /* Design card CTA */
+  .card-design > .card-link {
+    padding: 12px 24px 16px;
+  }
+
+  /* ---- PHARALLAX CARD ---- */
+  .card-pharallax {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-pharallax:hover {
+    box-shadow:
+      3px 3px 7px var(--b-sdark),
+      -2px -2px 5px var(--b-slight),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 20px var(--b-gold-faint);
+  }
+  .pharallax-headline {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--b-gold);
+    padding: 14px 24px 0;
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 0 20px var(--b-gold-faint);
+  }
+  .site-preview-wrap {
+    margin: 12px 24px 0;
+    border-radius: 10px;
     overflow: hidden;
-    height: 38px;
-    flex-shrink: 0;
+    background: var(--b-sdark);
+    box-shadow:
+      inset 3px 3px 8px rgba(0, 0, 0, 0.5),
+      inset -2px -2px 6px rgba(46, 46, 51, 0.3);
     position: relative;
     z-index: 3;
   }
-  .hero-stats::before,
-  .hero-stats::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 30px;
-    z-index: 4;
-    pointer-events: none;
+  .site-preview-wrap .site-preview {
+    aspect-ratio: 16 / 9;
   }
-  .hero-stats::before {
-    left: 0;
-    background: linear-gradient(90deg, var(--b-base), transparent);
+  .gold-meta {
+    border-top-color: rgba(200, 168, 78, 0.06);
   }
-  .hero-stats::after {
-    right: 0;
-    background: linear-gradient(270deg, var(--b-base), transparent);
-  }
-
-  .stats-track {
+  .pharallax-stat {
     display: flex;
-    align-items: center;
-    height: 100%;
-    animation: scroll-stats 35s linear infinite;
+    align-items: baseline;
+    gap: 6px;
+    padding: 16px 24px 10px;
+    position: relative;
+    z-index: 3;
   }
-
-  .stat-item {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0 28px;
+  .collision-count {
     font-family: var(--font-mono);
-    white-space: nowrap;
-  }
-  .stat-val {
-    font-size: 14px;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: var(--b-txt);
+    color: var(--b-gold);
+    text-shadow: 0 0 8px var(--b-gold-mid);
   }
-  .stat-label {
+  .collision-unit {
+    font-family: var(--font-mono);
     font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--b-txt3);
+  }
+
+  /* Pharallax CTA */
+  .card-pharallax > .card-link {
+    padding: 0 24px;
+  }
+  .card-pharallax > .card-sub {
+    padding: 4px 24px 16px;
+  }
+
+  /* ---- CTA CARD ---- */
+  .card-cta {
+    padding: 24px;
+  }
+  .card-cta:hover {
+    box-shadow:
+      3px 3px 7px var(--b-sdark),
+      -2px -2px 5px var(--b-slight),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 24px var(--b-dim);
+  }
+  .cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    position: relative;
+    z-index: 3;
+  }
+  .cta-huge {
+    font-family: var(--font-mono);
+    font-size: clamp(36px, 10vw, 56px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    color: var(--b-txt2);
+  }
+  .glow {
+    color: var(--b-cyan);
+    text-shadow:
+      0 0 15px var(--b-glow),
+      0 0 40px var(--b-dim);
+  }
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .cta-sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
     font-weight: 400;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--b-txt3);
-  }
-  .stat-sep {
-    flex-shrink: 0;
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: var(--b-txt3);
-    opacity: 0.2;
+    text-align: right;
+    max-width: 140px;
+    line-height: 1.5;
   }
 
-  /* ─── YOUTUBE CARD ─── */
-  .youtube {
-    padding: 22px 24px;
-    display: flex;
-    flex-direction: column;
-    min-height: 200px;
-  }
-  .youtube .cyan-wash {
-    position: absolute;
-    bottom: 0;
-    left: 20%;
-    right: 20%;
-    height: 30%;
-    background: radial-gradient(
-      ellipse at center bottom,
-      var(--b-faint) 0%,
-      transparent 65%
-    );
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .yt-thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: 10px;
-    background: var(--b-sdark);
-    margin-top: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow:
-      inset 2px 2px 6px rgba(0, 0, 0, 0.4),
-      inset -1px -1px 4px rgba(46, 46, 51, 0.2);
-    z-index: 2;
-  }
-  .yt-thumb-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .yt-thumb::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, transparent 30%, var(--b-faint) 100%);
-    z-index: 1;
-  }
-  .yt-play {
-    width: 0;
-    height: 0;
-    border-left: 18px solid var(--b-cyan);
-    border-top: 11px solid transparent;
-    border-bottom: 11px solid transparent;
-    filter: drop-shadow(0 0 10px var(--b-dim));
-    position: relative;
-    z-index: 2;
-  }
-  .yt-desc {
-    margin-top: 10px;
-  }
-  .yt-series {
-    margin-top: 6px;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--b-txt3);
-    position: relative;
-    z-index: 2;
-  }
-
-  /* ─── SERVICE CARDS ─── */
-  .design,
-  .auto {
-    padding: 22px 24px;
-  }
-  .service-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* ─── MUSIC CARD ─── */
-  .music {
-    padding: 22px 24px;
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: box-shadow 0.3s ease;
-  }
-  .music:hover {
-    box-shadow:
-      inset 4px 4px 10px var(--b-sdark),
-      inset -3px -3px 8px var(--b-slight),
-      0 0 12px var(--b-dim);
-  }
-  .music.is-playing {
-    box-shadow:
-      inset 4px 4px 10px var(--b-sdark),
-      inset -3px -3px 8px var(--b-slight),
-      0 0 16px var(--b-dim);
-  }
-
-  .music-state {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    position: relative;
-    z-index: 2;
-  }
-  .music-state-icon {
-    font-size: 9px;
-    color: var(--b-cyan);
-    line-height: 1;
-  }
-  .music-state-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--b-txt3);
-  }
-
-  .pulse-line {
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    margin-top: 12px;
-    height: 36px;
-    position: relative;
-    z-index: 2;
-  }
-  .pulse-bar {
-    width: 3px;
-    background: var(--b-cyan);
-    border-radius: 2px;
-    height: 4px;
-    opacity: 0.35;
-    transition: height 0.08s ease-out, opacity 0.08s ease-out;
-    box-shadow: 0 0 4px var(--b-dim);
-  }
-  .pulse-bar.idle {
-    animation: eq-idle 2.4s ease-in-out infinite;
-  }
-  .pulse-bar.idle:nth-child(1) { animation-delay: 0s; }
-  .pulse-bar.idle:nth-child(2) { animation-delay: 0.12s; }
-  .pulse-bar.idle:nth-child(3) { animation-delay: 0.24s; }
-  .pulse-bar.idle:nth-child(4) { animation-delay: 0.36s; }
-  .pulse-bar.idle:nth-child(5) { animation-delay: 0.48s; }
-  .pulse-bar.idle:nth-child(6) { animation-delay: 0.6s; }
-  .pulse-bar.idle:nth-child(7) { animation-delay: 0.72s; }
-  .pulse-bar.idle:nth-child(8) { animation-delay: 0.84s; }
-  .pulse-bar.idle:nth-child(9) { animation-delay: 0.96s; }
-  .pulse-bar.idle:nth-child(10) { animation-delay: 1.08s; }
-  .pulse-bar.idle:nth-child(11) { animation-delay: 1.2s; }
-  .pulse-bar.idle:nth-child(12) { animation-delay: 1.32s; }
-
-  .music-desc {
-    margin-top: 8px;
-  }
-
-  /* ─── SOCIAL CARD ─── */
-  .social {
-    padding: 22px 24px;
+  /* ---- FOOTER ---- */
+  .footer {
+    padding: 8px 0 16px;
   }
   .social-row {
     display: flex;
     gap: 10px;
-    margin-top: 12px;
-    position: relative;
-    z-index: 2;
+    justify-content: center;
   }
   .social-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    background: var(--b-base);
+    width: 48px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    background: var(--b-base);
+    color: var(--b-txt2);
     font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--b-txt3);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
     text-decoration: none;
+    transition: all 0.2s ease;
     box-shadow:
-      inset 3px 3px 6px var(--b-sdark),
-      inset -2px -2px 5px var(--b-slight);
-    transition:
-      color 0.3s ease,
-      box-shadow 0.3s ease;
+      inset 2px 2px 5px var(--b-sdark),
+      inset -1px -1px 3px var(--b-slight);
   }
   .social-icon:hover {
     color: var(--b-cyan);
     box-shadow:
-      inset 3px 3px 6px var(--b-sdark),
-      inset -2px -2px 5px var(--b-slight),
+      inset 2px 2px 5px var(--b-sdark),
+      inset -1px -1px 3px var(--b-slight),
       0 0 8px var(--b-dim);
   }
   .social-handle {
-    margin-top: 12px;
-  }
-
-  /* ─── CTA CARD ─── */
-  .cta {
-    padding: 14px 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    overflow: hidden;
-    min-height: 120px;
-  }
-  .cta-huge {
-    font-weight: 900;
-    font-size: clamp(32px, 8vw, 44px);
-    line-height: 0.88;
-    letter-spacing: -2px;
-    color: var(--b-txt);
-    text-transform: uppercase;
-    position: relative;
-    z-index: 3;
-  }
-  .cta-huge .hot-word {
-    color: var(--b-cyan);
-    text-shadow:
-      0 0 14px var(--b-glow),
-      0 0 40px var(--b-dim);
-  }
-  .cta-sub {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--b-txt3);
     margin-top: 10px;
-    position: relative;
-    z-index: 3;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--b-txt3);
+    text-align: center;
+    letter-spacing: 1px;
   }
 
-  /* CTA hover */
-  .cta:hover {
+  /* ---- STICKY PILL ---- */
+  .sticky-pill {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    border: 1px solid var(--b-cyan);
+    border-radius: 9999px;
+    padding: 10px 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--b-cyan);
+    background: rgba(26, 26, 30, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    text-decoration: none;
     box-shadow:
-      6px 6px 14px var(--b-sdark),
-      -4px -4px 10px var(--b-slight),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05),
-      0 0 20px var(--b-dim);
+      0 0 12px var(--b-dim),
+      0 4px 12px rgba(0, 0, 0, 0.4);
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
   }
-
-  /* YouTube hover */
-  .youtube:hover {
+  .sticky-pill.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .sticky-pill:hover {
+    background: rgba(0, 255, 239, 0.08);
     box-shadow:
-      3px 3px 6px var(--b-sdark),
-      8px 8px 20px var(--b-sdark),
-      -3px -3px 8px var(--b-slight),
-      -6px -6px 16px var(--b-slight),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 0 16px var(--b-dim);
+      0 0 20px var(--b-mid),
+      0 4px 12px rgba(0, 0, 0, 0.4);
   }
 
-  /* ─── KEYFRAMES ─── */
+  /* ---- FADE IN ---- */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in:nth-child(1) {
+    transition-delay: 0s;
+  }
+  .fade-in:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+  .fade-in:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+
+  /* ---- ANIMATIONS ---- */
   @keyframes pulse-glow {
     0%,
     100% {
@@ -1268,288 +1141,173 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       box-shadow: 0 0 4px var(--b-mid);
     }
     50% {
-      opacity: 0.4;
-      box-shadow: 0 0 10px var(--b-glow);
+      opacity: 0.5;
+      box-shadow: 0 0 8px var(--b-glow);
     }
   }
 
   @keyframes site-fade {
-    0%,
-    4% {
+    0% {
       opacity: 0;
-      transform: translateY(4px);
     }
-    8%,
-    29% {
+    3% {
       opacity: 1;
-      transform: translateY(0);
     }
-    33%,
+    30% {
+      opacity: 1;
+    }
+    33% {
+      opacity: 0;
+    }
     100% {
       opacity: 0;
-      transform: translateY(-3px);
     }
   }
 
   @keyframes scroll-reviews {
-    0% {
+    from {
       transform: translateX(0);
     }
-    100% {
+    to {
       transform: translateX(-50%);
     }
   }
 
-  @keyframes scroll-stats {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  @keyframes eq-idle {
-    0%,
-    100% {
-      height: 4px;
-      opacity: 0.25;
-    }
-    50% {
-      height: 12px;
-      opacity: 0.4;
-    }
-  }
-
+  /* ---- REDUCED MOTION ---- */
   @media (prefers-reduced-motion: reduce) {
-    .pulse-bar,
-    .pulse-bar.idle {
-      animation: none !important;
-      transition: none !important;
-      height: 8px !important;
-      opacity: 0.35 !important;
+    .reviews-track {
+      animation-play-state: paused;
+    }
+    .status-pulse {
+      animation: none;
+    }
+    .site-slide {
+      animation: none;
+      opacity: 1;
+    }
+    .site-slide:nth-child(n + 2) {
+      display: none;
+    }
+    .fade-in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .sticky-pill {
+      transition: none;
     }
   }
 
-  /* ─── TABLET (640px+) ─── */
+  /* ---- TABLET (640px+) ---- */
   @media (min-width: 640px) {
-    .connect-page {
-      padding: 14px;
-    }
-    .bento {
-      grid-template-columns: 1fr 1fr;
+    .page {
+      max-width: 560px;
+      padding: 20px;
       gap: 14px;
     }
-    .hero {
-      grid-column: 1 / -1;
-      min-height: 420px;
-    }
-    .youtube {
-      grid-column: 1 / -1;
-    }
-    .cta {
-      grid-column: 1 / -1;
-      grid-row: 5;
-      flex-direction: row;
-      align-items: center;
-      gap: 24px;
-      padding: 20px 28px;
-    }
-    .cta-huge {
-      font-size: clamp(40px, 5vw, 56px);
+    .cards {
+      gap: 14px;
     }
   }
 
-  /* ─── DESKTOP (1024px+) ─── */
+  /* ---- DESKTOP (1024px+) ---- */
   @media (min-width: 1024px) {
-    .connect-page {
-      padding: 16px;
-      height: 100dvh;
-      overflow: hidden;
+    .page {
+      max-width: 1100px;
+      padding: 24px;
+      gap: 16px;
     }
-    .bento {
-      grid-template-columns: 1.6fr 1fr 1fr;
-      grid-template-rows: 1.8fr 1fr 1fr;
-      height: 100%;
+
+    .header {
+      padding: 24px 32px 20px;
     }
-    .hero {
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+    }
+
+    /* Restore full depth */
+    .card {
+      box-shadow:
+        6px 6px 14px var(--b-sdark),
+        -4px -4px 10px var(--b-slight),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+    a.card:hover {
+      box-shadow:
+        6px 6px 14px var(--b-sdark),
+        -4px -4px 10px var(--b-slight),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 0 24px var(--b-dim);
+    }
+
+    .card-design {
       grid-column: 1;
-      grid-row: 1 / 3;
-      min-height: 0;
-    }
-    .youtube {
-      grid-column: 2 / 4;
       grid-row: 1;
-      min-height: 0;
     }
-    .design {
+    .card-pharallax {
       grid-column: 2;
+      grid-row: 1;
+    }
+    .card-cta {
+      grid-column: 1 / -1;
       grid-row: 2;
     }
-    .auto {
-      grid-column: 3;
-      grid-row: 2;
+
+    .card-pharallax:hover {
+      box-shadow:
+        6px 6px 14px var(--b-sdark),
+        -4px -4px 10px var(--b-slight),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 0 24px var(--b-gold-faint);
     }
-    .music {
-      grid-column: 1;
-      grid-row: 3;
-    }
-    .social {
-      grid-column: 2;
-      grid-row: 3;
-    }
-    .cta {
-      grid-column: 3;
-      grid-row: 3;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
-      padding: 14px 18px;
-    }
+
     .cta-huge {
-      font-size: clamp(40px, 4.5vw, 72px);
+      font-size: clamp(48px, 5vw, 72px);
     }
-    .yt-thumb {
-      aspect-ratio: auto;
-      flex: 1;
-      min-height: 120px;
+
+    /* Hide sticky pill on desktop */
+    .sticky-pill {
+      display: none;
+    }
+
+    .social-icon {
+      width: 52px;
+      height: 44px;
     }
   }
 </style>
 
 <script>
-  const VOLUME = 0.2;
-  const FFT_SIZE = 256;
-  const SMOOTHING = 0.82;
-  const MAX_BAR_HEIGHT = 36;
-
-  const card = document.getElementById('music-card');
-  const bars = card.querySelectorAll('.pulse-bar');
-  const stateIcon = card.querySelector('.music-state-icon');
-  const stateLabel = card.querySelector('.music-state-label');
-
-  let audioCtx = null;
-  let analyser = null;
-  let gainNode = null;
-  let source = null;
-  let audio = null;
-  let dataArray = null;
-  let animId = null;
-  let isPlaying = false;
-  let isInitialized = false;
-
-  // Logarithmic bin ranges - bass gets fewer bins, treble gets more
-  const BIN_RANGES = [
-    [1, 2],     // bar 0 - sub bass
-    [3, 4],     // bar 1 - bass
-    [5, 7],     // bar 2 - upper bass
-    [8, 11],    // bar 3 - low mid
-    [12, 16],   // bar 4 - mid
-    [17, 22],   // bar 5 - upper mid
-    [23, 30],   // bar 6 - presence
-    [31, 40],   // bar 7 - upper presence
-    [41, 52],   // bar 8 - brilliance
-    [53, 68],   // bar 9 - upper brilliance
-    [69, 90],   // bar 10 - air
-    [91, 127],  // bar 11 - upper air
-  ];
-
-  function initAudio() {
-    if (isInitialized) return;
-    isInitialized = true;
-
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    analyser = audioCtx.createAnalyser();
-    analyser.fftSize = FFT_SIZE;
-    analyser.smoothingTimeConstant = SMOOTHING;
-
-    gainNode = audioCtx.createGain();
-    gainNode.gain.value = VOLUME;
-
-    audio = new Audio('/audio/poke-a-dot.mp3');
-    audio.loop = true;
-    audio.crossOrigin = 'anonymous';
-
-    source = audioCtx.createMediaElementSource(audio);
-    source.connect(analyser);
-    analyser.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-
-    dataArray = new Uint8Array(analyser.frequencyBinCount);
+  // Sticky pill: show when header scrolls out of view
+  const pill = document.getElementById("sticky-pill");
+  const header = document.getElementById("header");
+  if (pill && header) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        pill.classList.toggle("visible", !entry.isIntersecting);
+      },
+      { threshold: 0 },
+    );
+    observer.observe(header);
   }
 
-  function setIdle() {
-    bars.forEach(bar => {
-      bar.style.height = '';
-      bar.style.opacity = '';
-      bar.classList.add('idle');
-    });
+  // Fade-in on scroll
+  const fadeEls = document.querySelectorAll(".fade-in");
+  if (fadeEls.length) {
+    const fadeObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+    fadeEls.forEach((el) => fadeObserver.observe(el));
   }
-
-  function animate() {
-    if (!isPlaying) return;
-
-    analyser.getByteFrequencyData(dataArray);
-
-    bars.forEach((bar, i) => {
-      const [start, end] = BIN_RANGES[i];
-      let sum = 0;
-      for (let j = start; j <= end; j++) {
-        sum += dataArray[j];
-      }
-      const avg = sum / (end - start + 1);
-      const normalized = avg / 255;
-      const height = Math.max(2, normalized * MAX_BAR_HEIGHT);
-      const opacity = 0.3 + normalized * 0.7;
-
-      bar.style.height = height + 'px';
-      bar.style.opacity = opacity;
-    });
-
-    animId = requestAnimationFrame(animate);
-  }
-
-  async function togglePlayback() {
-    initAudio();
-
-    if (audioCtx.state === 'suspended') {
-      await audioCtx.resume();
-    }
-
-    if (isPlaying) {
-      audio.pause();
-      isPlaying = false;
-      cancelAnimationFrame(animId);
-      setIdle();
-      card.classList.remove('is-playing');
-      stateIcon.innerHTML = '&#9654;';
-      stateLabel.textContent = 'Tap to play';
-    } else {
-      try {
-        await audio.play();
-        isPlaying = true;
-        bars.forEach(bar => bar.classList.remove('idle'));
-        card.classList.add('is-playing');
-        stateIcon.innerHTML = '&#9646;&#9646;';
-        stateLabel.textContent = 'Now playing';
-        animate();
-      } catch (e) {
-        setIdle();
-      }
-    }
-  }
-
-  card.addEventListener('click', togglePlayback);
-  card.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      togglePlayback();
-    }
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden && isPlaying && audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-  });
 </script>
