@@ -54,3 +54,13 @@
 
 **Correction:** Edited the case study HTML to remove the top Observatory but user still saw it - dev server was serving cached static files from `public/`.
 **Rule:** After editing static HTML in `public/`, always tell the user to hard refresh (Cmd+Shift+R). Dev server caching for static assets is aggressive. Better yet, kill and restart the dev server for `public/` changes.
+
+### 2026-03-21 | architecture
+
+**Correction:** GSAP ScrollTrigger animations on the Pharallax card failed across 5 consecutive deploys. Every approach (pin + fadeUp, no pin + fadeUp, no pin + custom gsap.from, no pin + no gsap-hidden) left the card invisible on the live site. The gap kept growing while the card stayed at opacity 0.
+**Rule:** When GSAP ScrollTrigger fails for an element that was previously inside a pinned container, don't iterate on the animation - remove it entirely. The pin's position calculations poison subsequent ScrollTrigger calculations for sibling/adjacent elements even after the pin is removed. Make the content static and visible first. Add animation back only after visibility is confirmed on production.
+
+### 2026-03-21 | process
+
+**Correction:** Shipped 5 PRs (#78-#82) for the same broken feature. Each "fix" added complexity without verifying on the live site first. Should have circuit-breakered after the second failed deploy.
+**Rule:** If the same element is invisible after 2 deploys, the approach is wrong. Stop iterating on the same pattern. Strip everything back to static HTML, confirm it works on production, THEN layer enhancements. Two failed deploys = re-plan, not re-try.
