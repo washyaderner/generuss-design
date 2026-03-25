@@ -217,11 +217,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       <!-- PHARALLAX CARD -->
       <section class="card card-pharallax fade-in">
-        <div class="shine-primary gold-shine"></div>
-        <div class="edge-top gold-edge"></div>
-        <div class="gold-wash"></div>
+        <div class="shine-primary"></div>
+        <div class="edge-top"></div>
+        <div class="cyan-wash"></div>
 
-        <div class="card-label gold-label">// Strategic Analysis</div>
+        <div class="card-label">// Strategic Analysis</div>
 
         <div class="pharallax-headline">Stress-test your strategy</div>
 
@@ -234,22 +234,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               loading="lazy"
             />
           </div>
-          <div class="site-meta gold-meta">
+          <div class="site-meta">
             <span class="site-name">Pharallax</span>
             <span class="site-url">pharallax.ai</span>
           </div>
         </div>
 
         <div class="pharallax-stat">
-          <span class="collision-count">60K+</span>
-          <span class="collision-unit">claims analyzed</span>
+          <span class="collision-count">135K+</span>
+          <span class="collision-unit">cross-domain claims</span>
         </div>
 
         <a
           href="https://pharallax.ai/analyze"
           target="_blank"
           rel="noopener noreferrer"
-          class="card-link gold-link"
+          class="card-link"
         >
           Run a free analysis <span class="arrow">&rarr;</span>
         </a>
@@ -345,12 +345,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     --b-txt: #e8e8e8;
     --b-txt2: #9a9aa0;
     --b-txt3: #6b6b75;
-    --b-gold: #c8a84e;
-    --b-gold-bright: #e0c060;
-    --b-gold-dim: #8b7535;
-    --b-gold-glow: rgba(200, 168, 78, 0.35);
-    --b-gold-mid: rgba(200, 168, 78, 0.2);
-    --b-gold-faint: rgba(200, 168, 78, 0.05);
     --b-premortem: #e04040;
     --b-dialectic: #4080e0;
     --b-reflexive: #40c080;
@@ -606,13 +600,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .faint-shine {
     opacity: 0.5;
   }
-  .gold-shine {
-    background: radial-gradient(
-      ellipse,
-      rgba(200, 168, 78, 0.04) 0%,
-      transparent 68%
-    );
-  }
   .edge-top {
     position: absolute;
     top: 0;
@@ -628,14 +615,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     z-index: 3;
     pointer-events: none;
   }
-  .gold-edge {
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(200, 168, 78, 0.12) 40%,
-      transparent
-    );
-  }
   .cyan-wash {
     position: absolute;
     bottom: -5%;
@@ -650,21 +629,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     pointer-events: none;
     z-index: 2;
   }
-  .gold-wash {
-    position: absolute;
-    bottom: -5%;
-    left: 10%;
-    right: 10%;
-    height: 40%;
-    background: radial-gradient(
-      ellipse at center bottom,
-      var(--b-gold-faint) 0%,
-      transparent 60%
-    );
-    pointer-events: none;
-    z-index: 2;
-  }
-
   /* ---- SHARED CARD ELEMENTS ---- */
   .card-label {
     font-family: var(--font-mono);
@@ -677,10 +641,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     position: relative;
     z-index: 3;
   }
-  .gold-label {
-    color: var(--b-gold-dim);
-  }
-
   .card-link {
     display: inline-flex;
     align-items: center;
@@ -699,9 +659,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
   .card-link:hover {
     color: var(--b-cyan);
-  }
-  .gold-link:hover {
-    color: var(--b-gold-bright);
   }
   .arrow {
     font-size: 13px;
@@ -916,17 +873,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       3px 3px 7px var(--b-sdark),
       -2px -2px 5px var(--b-slight),
       inset 0 1px 0 rgba(255, 255, 255, 0.05),
-      0 0 20px var(--b-gold-faint);
+      0 0 20px var(--b-dim);
   }
   .pharallax-headline {
     font-family: var(--font-mono);
     font-size: 20px;
     font-weight: 700;
-    color: var(--b-gold);
+    color: var(--b-txt);
     padding: 14px 24px 0;
     position: relative;
     z-index: 3;
-    text-shadow: 0 0 20px var(--b-gold-faint);
+    text-shadow: 0 0 20px var(--b-faint);
   }
   .site-preview-wrap {
     margin: 12px 24px 0;
@@ -942,9 +899,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .site-preview-wrap .site-preview {
     aspect-ratio: 16 / 9;
   }
-  .gold-meta {
-    border-top-color: rgba(200, 168, 78, 0.06);
-  }
   .pharallax-stat {
     display: flex;
     align-items: baseline;
@@ -957,8 +911,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     font-family: var(--font-mono);
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--b-gold);
-    text-shadow: 0 0 8px var(--b-gold-mid);
+    color: var(--b-cyan);
+    text-shadow: 0 0 8px var(--b-mid);
   }
   .collision-unit {
     font-family: var(--font-mono);
@@ -1261,7 +1215,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         6px 6px 14px var(--b-sdark),
         -4px -4px 10px var(--b-slight),
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 0 24px var(--b-gold-faint);
+        0 0 24px var(--b-dim);
     }
 
     .cta-huge {
