@@ -362,14 +362,14 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           href="https://pharallax.ai"
           target="_blank"
           rel="noopener noreferrer"
-          class="pharallax-card block no-underline rounded-2xl p-8 sm:p-10 md:p-12 bg-[#0F0F1A] border border-[#C8A85C]/30 shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(200,168,92,0.04)] transition-all duration-300 hover:border-[#C8A85C]/50 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(200,168,92,0.06),0_0_40px_rgba(200,168,92,0.08)]"
+          class="pharallax-card block no-underline neu-raised rounded-2xl p-8 sm:p-10 md:p-12 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
         >
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             <!-- Left: Hero Header -->
             <div class="flex flex-col justify-between">
               <div>
                 <p
-                  class="font-mono text-[#C8A85C] tracking-[0.15em] text-xs uppercase mb-4"
+                  class="font-mono text-accent tracking-[0.15em] text-xs uppercase mb-4"
                 >
                   Powered by Pharallax AI
                 </p>
@@ -379,28 +379,28 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
                   I stress-test your strategy and tell you what's actually
                   happening.
                 </h3>
-                <p class="text-[#999] text-base sm:text-lg mb-8">
+                <p class="text-text-muted text-base sm:text-lg mb-8">
                   Most strategic analysis tells you what you want to hear. Mine
                   tells you what you're not seeing - backed by 135,000+
                   cross-domain knowledge claims and three adversarial cognitive
                   lenses.
                 </p>
-                <ul class="space-y-3 text-sm text-[#999] mb-8">
+                <ul class="space-y-3 text-sm text-text-muted mb-8">
                   <li class="flex items-start gap-3">
-                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                    <span class="text-accent mt-0.5">&#10003;</span>
                     <span
                       >Blind spot detection across positioning, ops, and market
                       fit</span
                     >
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                    <span class="text-accent mt-0.5">&#10003;</span>
                     <span
                       >Three adversarial lenses: premortem, dialectic, reflexive</span
                     >
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-[#C8A85C] mt-0.5">&#10003;</span>
+                    <span class="text-accent mt-0.5">&#10003;</span>
                     <span
                       >Grounded in 135,000+ cross-domain knowledge claims</span
                     >
@@ -412,20 +412,20 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               <div>
                 <div class="flex flex-wrap gap-3 mb-6">
                   <span
-                    class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C]"
+                    class="border border-accent/25 rounded-full px-4 py-2 text-xs font-mono text-accent"
                     >Strategic Dialogue</span
                   >
                   <span
-                    class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C]"
+                    class="border border-accent/25 rounded-full px-4 py-2 text-xs font-mono text-accent"
                     >Deep Analysis</span
                   >
                   <span
-                    class="border border-[#C8A85C]/25 rounded-full px-4 py-2 text-xs font-mono text-[#C8A85C]"
+                    class="border border-accent/25 rounded-full px-4 py-2 text-xs font-mono text-accent"
                     >Monthly Retainer</span
                   >
                 </div>
                 <div
-                  class="flex items-center gap-2 text-[#C8A85C] font-semibold text-sm group/link"
+                  class="flex items-center gap-2 text-accent font-semibold text-sm group/link"
                 >
                   <span>Explore Pharallax AI</span>
                   <span
@@ -438,25 +438,27 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 
             <!-- Right: Report Output Preview -->
             <div
-              class="rounded-xl bg-[#080810] border border-[#C8A85C]/10 p-6 sm:p-8 font-mono text-xs sm:text-sm overflow-hidden"
+              class="neu-inset rounded-xl p-6 sm:p-8 font-mono text-xs sm:text-sm overflow-hidden"
             >
               <!-- Report header -->
               <div class="flex items-center justify-between mb-5">
                 <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 rounded-full bg-[#C8A85C] animate-pulse">
+                  <div class="w-2 h-2 rounded-full bg-accent animate-pulse">
                   </div>
                   <span
-                    class="text-[#C8A85C]/70 text-[0.65rem] uppercase tracking-widest"
+                    class="text-accent/70 text-[0.65rem] uppercase tracking-widest"
                     >Pharallax Analysis Output</span
                   >
                 </div>
-                <span class="text-[#555] text-[0.6rem]">12 perspectives</span>
+                <span class="text-text-muted text-[0.6rem]"
+                  >12 perspectives</span
+                >
               </div>
 
               <!-- Contradiction found -->
               <div class="mb-5">
                 <p
-                  class="text-[#C8A85C] text-[0.65rem] uppercase tracking-wider mb-2"
+                  class="text-accent text-[0.65rem] uppercase tracking-wider mb-2"
                 >
                   Contradiction Detected
                 </p>
@@ -470,7 +472,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               <!-- Blind spot -->
               <div class="mb-5">
                 <p
-                  class="text-[#C8A85C] text-[0.65rem] uppercase tracking-wider mb-2"
+                  class="text-accent text-[0.65rem] uppercase tracking-wider mb-2"
                 >
                   Blind Spot
                 </p>
@@ -484,7 +486,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               <!-- Highest-leverage move -->
               <div class="mb-5">
                 <p
-                  class="text-[#C8A85C] text-[0.65rem] uppercase tracking-wider mb-2"
+                  class="text-accent text-[0.65rem] uppercase tracking-wider mb-2"
                 >
                   Highest-Leverage Move
                 </p>
@@ -498,7 +500,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               <!-- Risk quantification -->
               <div class="mb-5">
                 <p
-                  class="text-[#C8A85C] text-[0.65rem] uppercase tracking-wider mb-2"
+                  class="text-accent text-[0.65rem] uppercase tracking-wider mb-2"
                 >
                   Risk Quantified
                 </p>
@@ -510,10 +512,10 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               </div>
 
               <!-- Footer -->
-              <div class="border-t border-[#C8A85C]/10 pt-4">
+              <div class="border-t border-accent/10 pt-4">
                 <div class="flex items-center justify-between">
-                  <span class="text-[#555]">Confidence: 87%</span>
-                  <span class="text-[#555]">3 lenses applied</span>
+                  <span class="text-text-muted">Confidence: 87%</span>
+                  <span class="text-text-muted">3 lenses applied</span>
                 </div>
               </div>
             </div>
