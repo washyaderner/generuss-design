@@ -2,6 +2,15 @@
 
 > Auto-generated build journal. Captures commits, decisions, friction, and lessons.
 
+## 2026-03-25 | SHIP | acec64e..b8960e3
+
+Shipped: Business card v2 (corrected gloss masks, design updates) + Pharallax pills
+Commits: 2 since last ship
+Key changes:
+
+- Fixed Moo spot gloss polarity + enhanced front mask with brand word/labels
+- Pharallax section pills: Blind Spots Named / Risks Quantified / Next Move Identified
+
 ## 2026-03-25 15:40 | SESSION
 
 **Context:** Moo cards arrived with inverted spot gloss - entire surface glossy instead of targeted elements. Moo offered free reprint with corrected files.
