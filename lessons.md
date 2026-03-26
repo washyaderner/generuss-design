@@ -64,3 +64,13 @@
 
 **Correction:** Shipped 5 PRs (#78-#82) for the same broken feature. Each "fix" added complexity without verifying on the live site first. Should have circuit-breakered after the second failed deploy.
 **Rule:** If the same element is invisible after 2 deploys, the approach is wrong. Stop iterating on the same pattern. Strip everything back to static HTML, confirm it works on production, THEN layer enhancements. Two failed deploys = re-plan, not re-try.
+
+### 2026-03-25 | tooling
+
+**Correction:** Moo Raised Spot Gloss masks require black = gloss areas, white = no gloss. Our masks had the opposite (white elements on black background), causing gloss to cover the entire card surface.
+**Rule:** For Moo spot gloss masks: black on white. Black pixels = where gloss is applied. White pixels = no gloss. Verify polarity by checking that white pixels are >90% of the mask (gloss should be a small percentage of surface area). Build a polarity check into the QA pipeline.
+
+### 2026-03-25 | approach
+
+**Correction:** Gloss mask for "THAT CONVERT" was rendered as a filled rectangle (bounding box) instead of text letterforms. The front "LET'S BUILD." was already rendered as text but the back wasn't.
+**Rule:** Always render gloss mask text as actual text with matching font properties (family, size, weight, letter-spacing), not as bounding-box rectangles. Extract computed styles from the DOM element and replicate them in the mask HTML. Rectangles of gloss behind text look cheap; letterform gloss looks premium.

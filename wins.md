@@ -101,3 +101,15 @@
 **Signal:** "Love it. That sounds perfect." on the 100x synthesis for Pharallax services positioning
 **What worked:** 5 parallel Opus agents (Layout, Messaging, Buyer Psychology, Competitive, Revenue) with a red team pass. The convergence map gave high-confidence findings (5/5 on headline change, no prices, distinct visual treatment). The buyer agent's contrarian take (don't make it a third equal card) led to the flipped pyramid that Russ chose.
 **Pattern:** When agents disagree, the contradiction IS the insight. The buyer agent's pushback against the 3-column consensus produced the better layout.
+
+### 2026-03-25 | output-quality
+
+**Signal:** "that's 100% fucking perfect" on the final card revision with all sweetening passes complete
+**What worked:** Proactively suggesting final-pass refinements after the core fixes were done - adding brand word + module labels to front gloss mask, text-rendering "THAT CONVERT" instead of rectangle, QR size bump, easter egg legibility fix. The gloss mask polarity inversion (the original Moo failure) was a simple bg/element color swap in the mask HTML builders. The three-beat tactile discovery arc (brand, pillars, CTA) came from thinking about the card as a physical object, not a screen layout.
+**Pattern:** After fixing the reported problem, ask "what would make this better?" Print materials benefit from thinking about touch and physical discovery, not just visual hierarchy. Spot gloss on key text (not rectangles) creates a premium feel with surgical precision.
+
+### 2026-03-25 | approach
+
+**Signal:** "haha dude that's what's fucking UP!!!! so glad I had you do that" on the sweetening suggestions (brand word gloss, module label gloss, QR bump, easter egg fix)
+**What worked:** Proactively offering final-pass refinements as a concise prioritized list (high impact vs small-but-worth-it vs leave-alone). Not a laundry list - a curated set with clear reasoning. The "leave alone" category was as important as the suggestions.
+**Pattern:** When presenting improvement suggestions, categorize by impact and explicitly list what NOT to change. It builds trust and prevents scope creep. The user can approve the whole list at once.

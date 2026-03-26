@@ -2,6 +2,14 @@
 
 > Auto-generated build journal. Captures commits, decisions, friction, and lessons.
 
+## 2026-03-25 15:40 | SESSION
+
+**Context:** Moo cards arrived with inverted spot gloss - entire surface glossy instead of targeted elements. Moo offered free reprint with corrected files.
+**Outcome:** Fixed gloss mask polarity (black=gloss, white=bg). Also: replaced YouTube with pharallax.ai, grey text -> white, front content 5% larger, tighter module boxes with more edge padding, QR bumped to 140px, "SHIPPED 2026" repositioned. Added brand word + module labels to front gloss mask, converted "THAT CONVERT" from rectangle to text letterforms. All four PDFs QA-verified with automated dimension/polarity/alignment checks + red overlay composites.
+**Signal:** "that's 100% fucking perfect" on final positioning. "haha dude that's what's fucking UP!!!!" on sweetening suggestions.
+**Friction:** None significant. Iterative pixel positioning (SHIPPED 2026) took 3 passes but that's expected for visual tuning.
+**Carries forward:** Send 4 PDFs to Moo via email reply for free reprint. Consulting positioning question still open (decided to leave card as-is, communicate consulting in person).
+
 ## 2026-02-23 | SHIP | e1bd4ca...545c4aa
 
 Shipped: Claude's retrospective blog post (third post) and portfolio video player replacement
@@ -286,3 +294,23 @@ Key changes:
 **Signal:** "Fuck yeah, it's there" after the static HTML fix landed. "Love it" on the 100x strategy.
 **Friction:** GSAP ScrollTrigger refused to fire for the Pharallax card across 5 deploys (#78-#82). Every incremental fix (remove pin, change animation, remove gsap-hidden) failed. Only a full strip to static HTML worked. Should have circuit-breakered after deploy #2.
 **Carries forward:** Services section is now animation-free. Could add CSS-only transitions later if needed, but GSAP ScrollTrigger should not be re-added to this section.
+
+## 2026-03-21 | SHIP | 1296e99...6af8bb8
+
+Shipped: Redesigned /connect bento hub - ported mobile-first linktree from standalone bento-hub project
+Commits: 10 since last ship
+Key changes:
+
+- Replaced old bento grid with 3-card layout: design portfolio carousel, Pharallax strategic analysis, and "Let's build" CTA
+- Review ticker, stats row, sticky pill CTA on mobile, 2-col grid on desktop (1024px+)
+- Added slide images (generuss, vibe, crystal, pharallax screenshots)
+
+## 2026-03-21 | SHIP | 6af8bb8...acec64e
+
+Shipped: Session learnings sync + context continuity framework upgrade
+Commits: 2 since last ship
+Key changes:
+
+- Flushed journal, lessons, and wins from all 2026-03-21 sessions (Pharallax card, /mobile skill, 100x research)
+- Principles section spacing fix (pt-20 container padding)
+  Lesson: context_handoff.md should be Step 0 of every conversation, not just cold starts. Keeping it updated during work (not just /ship) prevents stale cross-project state.
