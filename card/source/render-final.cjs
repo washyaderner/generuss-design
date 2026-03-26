@@ -311,6 +311,12 @@ async function extractFrontGloss(page) {
     const cr = ctaAction.getBoundingClientRect();
     const ctaStyle = window.getComputedStyle(ctaAction);
 
+    const brand = document.querySelector(".brand-word");
+    const br2 = brand.getBoundingClientRect();
+    const bs = window.getComputedStyle(brand);
+
+    const labels = [...document.querySelectorAll(".mod-label")];
+
     return {
       glowLine: { x: gr.x, y: gr.y, w: gr.width, h: gr.height },
       litDots: dots.map((d) => {
@@ -324,6 +330,24 @@ async function extractFrontGloss(page) {
         fontWeight: ctaStyle.fontWeight,
         letterSpacing: ctaStyle.letterSpacing,
       },
+      brandWord: {
+        x: br2.x, y: br2.y, w: br2.width, h: br2.height,
+        text: brand.textContent,
+        fontSize: bs.fontSize,
+        fontWeight: bs.fontWeight,
+        letterSpacing: bs.letterSpacing,
+      },
+      modLabels: labels.map((l) => {
+        const r = l.getBoundingClientRect();
+        const s = window.getComputedStyle(l);
+        return {
+          x: r.x, y: r.y, w: r.width, h: r.height,
+          text: l.textContent,
+          fontSize: s.fontSize,
+          fontWeight: s.fontWeight,
+          letterSpacing: s.letterSpacing,
+        };
+      }),
     };
   });
 }
@@ -332,13 +356,20 @@ async function extractBackGloss(page) {
   return page.evaluate(() => {
     const weapon = document.querySelector(".tagline-weapon");
     const wr = weapon.getBoundingClientRect();
+    const ws = window.getComputedStyle(weapon);
     const pulseDots = [...document.querySelectorAll(".back-dot-pulse")];
     const hbSvg = document.querySelector(".heartbeat-svg");
     const hr = hbSvg.getBoundingClientRect();
     const sepDots = [...document.querySelectorAll(".sep-dot")];
 
     return {
-      thatConvert: { x: wr.x, y: wr.y, w: wr.width, h: wr.height },
+      thatConvert: {
+        x: wr.x, y: wr.y, w: wr.width, h: wr.height,
+        text: weapon.textContent,
+        fontSize: ws.fontSize,
+        fontWeight: ws.fontWeight,
+        letterSpacing: ws.letterSpacing,
+      },
       pulseDots: pulseDots.map((d) => {
         const r = d.getBoundingClientRect();
         return { x: r.x, y: r.y, w: r.width, h: r.height };
@@ -356,42 +387,62 @@ function buildFrontMaskHtml(els) {
   const bloom = 0.5;
   let h = `<!DOCTYPE html><html><head>`;
   h += `<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">`;
-  h += `</head><body style="margin:0;padding:0;background:#000;width:${VP_W}px;height:${VP_H}px;overflow:hidden;position:relative;">`;
+  h += `</head><body style="margin:0;padding:0;background:#fff;width:${VP_W}px;height:${VP_H}px;overflow:hidden;position:relative;">`;
+
+  // Brand word
+  const bw = els.brandWord;
+  h += `<span style="position:absolute;left:${bw.x}px;top:${bw.y}px;`;
+  h += `font-family:'JetBrains Mono',monospace;font-size:${bw.fontSize};font-weight:${bw.fontWeight};`;
+  h += `letter-spacing:${bw.letterSpacing};text-transform:lowercase;`;
+  h += `color:#000;line-height:${bw.h}px;white-space:nowrap;">${bw.text}</span>`;
+
+  // Module labels
+  for (const ml of els.modLabels) {
+    h += `<span style="position:absolute;left:${ml.x}px;top:${ml.y}px;`;
+    h += `font-family:'JetBrains Mono',monospace;font-size:${ml.fontSize};font-weight:${ml.fontWeight};`;
+    h += `letter-spacing:${ml.letterSpacing};text-transform:lowercase;`;
+    h += `color:#000;line-height:${ml.h}px;white-space:nowrap;">${ml.text}</span>`;
+  }
 
   const g = els.glowLine;
-  h += `<div style="position:absolute;left:${g.x - bloom}px;top:${g.y - bloom}px;width:${g.w + bloom * 2}px;height:${g.h + bloom * 2}px;background:#fff;border-radius:2px;"></div>`;
+  h += `<div style="position:absolute;left:${g.x - bloom}px;top:${g.y - bloom}px;width:${g.w + bloom * 2}px;height:${g.h + bloom * 2}px;background:#000;border-radius:2px;"></div>`;
 
   for (const d of els.litDots) {
-    h += `<div style="position:absolute;left:${d.x}px;top:${d.y}px;width:${d.w}px;height:${d.h}px;background:#fff;border-radius:50%;"></div>`;
+    h += `<div style="position:absolute;left:${d.x}px;top:${d.y}px;width:${d.w}px;height:${d.h}px;background:#000;border-radius:50%;"></div>`;
   }
 
   const cta = els.ctaAction;
   h += `<span style="position:absolute;left:${cta.x}px;top:${cta.y}px;`;
   h += `font-family:'JetBrains Mono',monospace;font-size:${cta.fontSize};font-weight:${cta.fontWeight};`;
   h += `letter-spacing:${cta.letterSpacing};text-transform:uppercase;`;
-  h += `color:#fff;line-height:${cta.h}px;white-space:nowrap;">${cta.text}</span>`;
+  h += `color:#000;line-height:${cta.h}px;white-space:nowrap;">${cta.text}</span>`;
 
   h += `</body></html>`;
   return h;
 }
 
 function buildBackMaskHtml(els) {
-  let h = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#000;width:${VP_W}px;height:${VP_H}px;overflow:hidden;position:relative;">`;
+  let h = `<!DOCTYPE html><html><head>`;
+  h += `<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">`;
+  h += `</head><body style="margin:0;padding:0;background:#fff;width:${VP_W}px;height:${VP_H}px;overflow:hidden;position:relative;">`;
 
   const tc = els.thatConvert;
-  h += `<div style="position:absolute;left:${tc.x}px;top:${tc.y}px;width:${tc.w}px;height:${tc.h}px;background:#fff;"></div>`;
+  h += `<span style="position:absolute;left:${tc.x}px;top:${tc.y}px;`;
+  h += `font-family:'JetBrains Mono',monospace;font-size:${tc.fontSize};font-weight:${tc.fontWeight};`;
+  h += `letter-spacing:${tc.letterSpacing};text-transform:uppercase;`;
+  h += `color:#000;line-height:${tc.h}px;white-space:nowrap;">${tc.text}</span>`;
 
   for (const d of els.pulseDots) {
-    h += `<div style="position:absolute;left:${d.x}px;top:${d.y}px;width:${d.w}px;height:${d.h}px;background:#fff;border-radius:50%;"></div>`;
+    h += `<div style="position:absolute;left:${d.x}px;top:${d.y}px;width:${d.w}px;height:${d.h}px;background:#000;border-radius:50%;"></div>`;
   }
 
   const hb = els.heartbeat;
   h += `<svg style="position:absolute;left:${hb.x}px;top:${hb.y}px;width:${hb.w}px;height:${hb.h}px;" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">`;
-  h += `<path d="M 118 12 L 128 3 L 136 20 L 142 8 L 150 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+  h += `<path d="M 118 12 L 128 3 L 136 20 L 142 8 L 150 12" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
   h += `</svg>`;
 
   for (const d of els.sepDots) {
-    h += `<div style="position:absolute;left:${d.x}px;top:${d.y}px;width:${d.w}px;height:${d.h}px;background:#fff;border-radius:50%;"></div>`;
+    h += `<div style="position:absolute;left:${d.x}px;top:${d.y}px;width:${d.w}px;height:${d.h}px;background:#000;border-radius:50%;"></div>`;
   }
 
   h += `</body></html>`;
