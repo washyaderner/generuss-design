@@ -67,7 +67,7 @@ export function textReveal(selector, options = {}) {
 export function initLavaLamp(containerSelector, options = {}) {
   const {
     mobile = false,
-    count = mobile ? 10 : 28,
+    count = mobile ? 8 : 18,
     sizeRange = mobile ? [40, 120] : [50, 180],
     hue = 176,
     satRange = [85, 100],

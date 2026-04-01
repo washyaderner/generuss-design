@@ -30,6 +30,9 @@ function setupAnimations(breakpoint) {
   setupProblemSolution(isMobile);
   setupAbout();
   setupBooking(isMobile);
+
+  // Recalculate all trigger positions after pins shift the layout
+  ScrollTrigger.refresh();
 }
 
 // ── S1: Hero ──
@@ -148,7 +151,6 @@ function setupPortfolio(isMobile) {
       y: 30,
       opacity: 0,
       scale: 0.97,
-      filter: "blur(4px)",
       duration: 1,
       ease: "power3.out",
       scrollTrigger: {
@@ -179,11 +181,10 @@ function setupProblemSolution(isMobile) {
       },
     });
 
-    // Scale up from slightly smaller + deblur
+    // Scale up from slightly smaller
     tl.from(real, {
       scale: 0.85,
       opacity: 0,
-      filter: "blur(10px)",
       duration: 1.2,
       ease: "power4.out",
     });
