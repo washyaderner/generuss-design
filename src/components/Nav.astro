@@ -28,7 +28,7 @@ const { alwaysVisible = false } = Astro.props;
     <!-- Desktop Links -->
     <div class="hidden md:flex items-center gap-8">
       <a
-        href="/#services"
+        href="/#portfolio"
         class="nav-link text-sm text-text-muted hover:text-text transition-colors duration-200"
         >Work</a
       >
@@ -91,7 +91,7 @@ const { alwaysVisible = false } = Astro.props;
     aria-label="Mobile navigation"
   >
     <a
-      href="/#services"
+      href="/#portfolio"
       class="mobile-nav-link text-2xl font-semibold text-text hover:text-accent transition-colors"
       >Work</a
     >
@@ -193,7 +193,7 @@ const { alwaysVisible = false } = Astro.props;
 
         // Active section tracking
         const navLinks = document.querySelectorAll(".nav-link");
-        const sections = ["services", "about"];
+        const sections = ["portfolio", "about"];
 
         function setActive(id: string) {
           navLinks.forEach((link) => {

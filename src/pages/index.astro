@@ -108,454 +108,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       </div>
     </section>
 
-    <!-- S2: Booking + Contact -->
-    <div id="contact"></div>
-    <section
-      id="booking"
-      class="px-8 sm:px-12 lg:px-20 py-(--spacing-section) relative"
-    >
-      <!-- Ambient glow -->
-      <div
-        class="absolute inset-0 pointer-events-none flex items-center justify-center"
-      >
-        <div
-          class="w-[600px] h-[600px] rounded-full bg-accent/[0.04] blur-[120px]"
-        >
-        </div>
-      </div>
-
-      <div class="relative z-10 max-w-2xl mx-auto text-center mb-12">
-        <h2
-          class="booking-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
-        >
-          Ready to build something that <span
-            class="text-accent glow-text glow-pulse-target">CONVERTS?</span
-          >
-        </h2>
-        <p
-          class="booking-sub gsap-hidden text-lg text-text-muted leading-relaxed"
-        >
-          Your website should be your hardest working employee. If it's not
-          pulling its weight, let's fix that. Book a discovery call - no
-          pressure.
-        </p>
-      </div>
-
-      <div class="relative z-10 max-w-[850px] mx-auto">
-        <CalendarEmbed />
-      </div>
-
-      <!-- Contact Form -->
-      <div class="relative z-10 w-full max-w-md mx-auto mt-16">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="flex-1 h-px bg-border"></div>
-          <span class="text-text-muted text-sm">Or send me a message.</span>
-          <div class="flex-1 h-px bg-border"></div>
-        </div>
-
-        <form
-          id="contact-form"
-          action={`https://formspree.io/f/${formspreeId}`}
-          method="POST"
-          class="contact-form gsap-hidden space-y-4"
-        >
-          <!-- Honeypot -->
-          <input
-            type="text"
-            name="_gotcha"
-            style="display:none"
-            tabindex="-1"
-            autocomplete="off"
-          />
-
-          <div>
-            <label for="name" class="block text-sm text-text-muted mb-1"
-              >Name</label
-            >
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
-              placeholder="Your name"
-            />
-          </div>
-
-          <div>
-            <label for="email" class="block text-sm text-text-muted mb-1"
-              >Email</label
-            >
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
-              placeholder="you@company.com"
-            />
-          </div>
-
-          <div>
-            <label for="message" class="block text-sm text-text-muted mb-1"
-              >Message</label
-            >
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows="3"
-              class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 resize-none"
-              placeholder="Tell me about your project..."></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full sm:w-auto rounded-full border border-accent px-8 py-3 text-base font-semibold text-accent transition-all duration-200 hover:bg-accent hover:text-[#0C0C0C] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            Send Message &rarr;
-          </button>
-        </form>
-
-        <!-- Success state -->
-        <div id="form-success" class="hidden text-center py-8">
-          <p class="text-lg text-text">
-            Message sent. I'll be <span class="text-accent">in touch.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      // Contact form handling
-      const form = document.getElementById("contact-form") as HTMLFormElement;
-      const successMsg = document.getElementById("form-success");
-      const submitBtn = form?.querySelector(
-        'button[type="submit"]',
-      ) as HTMLButtonElement;
-      const submitText = submitBtn?.textContent;
-
-      form?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-        submitBtn.classList.add("opacity-50", "cursor-not-allowed");
-
-        try {
-          const res = await fetch(form.action, {
-            method: "POST",
-            body: data,
-            headers: { Accept: "application/json" },
-          });
-
-          if (res.ok) {
-            form.classList.add("hidden");
-            successMsg?.classList.remove("hidden");
-          } else {
-            submitBtn.disabled = false;
-            submitBtn.textContent = submitText ?? "Send Message →";
-            submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
-            alert("Something went wrong. Please try again.");
-          }
-        } catch {
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitText ?? "Send Message →";
-          submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
-          alert("Network error. Please try again.");
-        }
-      });
-    </script>
-
-    <!-- S3: Services -->
-    <section
-      id="services"
-      class="relative z-10 bg-bg-secondary px-8 sm:px-12 lg:px-20 py-16 sm:py-24"
-    >
-      <h2
-        class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
-      >
-        I build it. I automate it.<br />
-        I <span class="text-accent" style="font-size:1.3em"
-          >pressure-test it.</span
-        >
-      </h2>
-
-      <!-- Foundation Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        <!-- Card 1: Web Design -->
-        <div
-          class="neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-        >
-          <h3 class="text-2xl font-bold text-white mb-3">
-            Web Design & Development
-          </h3>
-          <p class="text-text-muted mb-6">
-            Fast, clean sites that convert - built custom for your business.
-          </p>
-          <ul class="space-y-3 text-sm text-text-muted">
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Discovery call + tech stack audit</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span
-                >Custom design and build (no templates, no page builders)</span
-              >
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Mobile-first, Lighthouse 90%+ performance</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span
-                >Static architecture - no CMS vulnerabilities, no plugin rot, no
-                surprise security patches</span
-              >
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Launch documentation + walkthrough</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Card 2: AI Automation -->
-        <div
-          class="neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-        >
-          <h3 class="text-2xl font-bold text-white mb-3">
-            AI Automation Consulting
-          </h3>
-          <p class="text-text-muted mb-6">
-            Systems that run themselves so you can focus on the work that
-            matters.
-          </p>
-          <ul class="space-y-3 text-sm text-text-muted">
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Process audit and automation mapping</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span
-                >Custom builds in n8n, Make.com, and direct API integrations</span
-              >
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>AI tool selection, implementation, and testing</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-accent mt-0.5">&#10003;</span>
-              <span>Full documentation and team handoff</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Pharallax AI -->
-      <div class="max-w-6xl mx-auto mt-10">
-        <a
-          href="https://pharallax.ai"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="pharallax-card block no-underline neu-raised rounded-2xl p-8 sm:p-10 md:p-12 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-        >
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            <!-- Left: Hero Header -->
-            <div class="flex flex-col justify-between">
-              <div>
-                <p
-                  class="font-mono text-accent tracking-[0.15em] text-xs uppercase mb-4"
-                >
-                  Powered by Pharallax AI
-                </p>
-                <h3
-                  class="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight"
-                >
-                  I stress-test your strategy and tell you what's actually
-                  happening.
-                </h3>
-                <p class="text-text-muted text-base sm:text-lg mb-8">
-                  Most strategic analysis tells you what you want to hear. Mine
-                  tells you what you're not seeing - backed by 135,000+
-                  cross-domain knowledge claims and three adversarial cognitive
-                  lenses.
-                </p>
-                <ul class="space-y-3 text-sm text-text-muted mb-8">
-                  <li class="flex items-start gap-3">
-                    <span class="text-accent mt-0.5">&#10003;</span>
-                    <span
-                      >Blind spot detection across positioning, ops, and market
-                      fit</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-accent mt-0.5">&#10003;</span>
-                    <span
-                      >Three adversarial lenses: premortem, dialectic, reflexive</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-accent mt-0.5">&#10003;</span>
-                    <span
-                      >Grounded in 135,000+ cross-domain knowledge claims</span
-                    >
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Tier pills + CTA -->
-              <div>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <span
-                    class="border border-accent/25 rounded-full px-4 py-2 text-xs font-mono text-accent"
-                    >See Blind Spots</span
-                  >
-                  <span
-                    class="border border-accent/25 rounded-full px-4 py-2 text-xs font-mono text-accent"
-                    >Quantify Risks</span
-                  >
-                  <span
-                    class="border border-accent/25 rounded-full px-4 py-2 text-xs font-mono text-accent"
-                    >Next Moves</span
-                  >
-                </div>
-                <div
-                  class="flex items-center gap-2 text-accent font-semibold text-sm group/link"
-                >
-                  <span>Explore Pharallax AI</span>
-                  <span
-                    class="transition-transform duration-200 group-hover/link:translate-x-1"
-                    >&rarr;</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Report Output Preview -->
-            <div
-              class="neu-inset rounded-xl p-6 sm:p-8 font-mono text-xs sm:text-sm overflow-hidden"
-            >
-              <!-- Report header -->
-              <div class="flex items-center justify-between mb-5">
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 rounded-full bg-accent animate-pulse">
-                  </div>
-                  <span
-                    class="text-accent/70 text-[0.65rem] uppercase tracking-widest"
-                    >Pharallax Analysis Output</span
-                  >
-                </div>
-                <span class="text-text-muted text-[0.6rem]"
-                  >12 perspectives</span
-                >
-              </div>
-
-              <!-- Contradiction found -->
-              <div class="mb-5">
-                <p
-                  class="text-accent text-[0.65rem] uppercase tracking-wider mb-2"
-                >
-                  Contradiction Detected
-                </p>
-                <p class="text-[#ccc] leading-relaxed">
-                  Claims "product-led growth" but 91% of revenue traces to
-                  outbound sales. The self-serve funnel converts at 0.3% - below
-                  the threshold where PLG is a strategy vs. a landing page.
-                </p>
-              </div>
-
-              <!-- Blind spot -->
-              <div class="mb-5">
-                <p
-                  class="text-accent text-[0.65rem] uppercase tracking-wider mb-2"
-                >
-                  Blind Spot
-                </p>
-                <p class="text-[#ccc] leading-relaxed">
-                  Competitor X filed 3 patent applications in your core feature
-                  area (Feb-Mar 2026). None of your planning documents reference
-                  this.
-                </p>
-              </div>
-
-              <!-- Highest-leverage move -->
-              <div class="mb-5">
-                <p
-                  class="text-accent text-[0.65rem] uppercase tracking-wider mb-2"
-                >
-                  Highest-Leverage Move
-                </p>
-                <p class="text-[#ccc] leading-relaxed">
-                  Kill the PLG narrative internally. Reallocate the $14K/mo
-                  self-serve infrastructure budget to outbound enablement where
-                  your actual conversion engine lives.
-                </p>
-              </div>
-
-              <!-- Risk quantification -->
-              <div class="mb-5">
-                <p
-                  class="text-accent text-[0.65rem] uppercase tracking-wider mb-2"
-                >
-                  Risk Quantified
-                </p>
-                <p class="text-[#ccc] leading-relaxed">
-                  If Competitor X's patents are granted, your differentiation
-                  window closes in ~8 months. Current roadmap doesn't account
-                  for this timeline.
-                </p>
-              </div>
-
-              <!-- Footer -->
-              <div class="border-t border-accent/10 pt-4">
-                <div class="flex items-center justify-between">
-                  <span class="text-text-muted">Confidence: 87%</span>
-                  <span class="text-text-muted">3 lenses applied</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Growth Partner Block - Two Columns -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-16"
-      >
-        <p class="text-lg text-text-muted leading-relaxed">
-          Consider me your growth partner - your site doesn't stop at launch.
-          Need a lead form that triggers an email sequence? A booking flow that
-          syncs to your CRM? I build the site, wire the systems behind it, and
-          make sure the strategy driving both is actually sound. One person, one
-          bill, zero handoff chaos.
-        </p>
-        <p class="text-lg text-text-muted leading-relaxed">
-          Most consultants stay in their lane. I cross them on purpose. The same
-          person who builds your site automates your follow-up sequences and
-          pressure-tests the assumptions underneath your go-to-market. Not
-          because I'm trying to upsell you - because gaps between those layers
-          are where businesses leak money.
-        </p>
-      </div>
-
-      <!-- Section CTA -->
-      <div class="text-center mt-12">
-        <a
-          href="#booking"
-          class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
-        >
-          Let's figure out <span class="font-bold">where to start</span> &rarr;
-        </a>
-      </div>
-    </section>
-
-    <!-- S4: Portfolio -->
+    <!-- S2: Portfolio -->
     <section
       id="portfolio"
       class="relative z-10 px-8 sm:px-12 lg:px-20 pt-12 sm:pt-16 pb-(--spacing-section)"
@@ -1343,7 +896,287 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       });
     </script>
 
+    <!-- S3: Services -->
+
+    <section
+      id="services"
+      class="relative z-10 bg-bg-secondary px-8 sm:px-12 lg:px-20 py-16 sm:py-24"
+    >
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
+      >
+        I build it. I automate it.<br />
+        I <span class="text-accent" style="font-size:1.3em"
+          >pressure-test it.</span
+        >
+      </h2>
+
+      <!-- Foundation Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <!-- Card 1: Web Design -->
+        <div
+          class="neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+        >
+          <h3 class="text-2xl font-bold text-white mb-3">
+            Web Design & Development
+          </h3>
+          <p class="text-text-muted mb-6">
+            Fast, clean sites that convert - built custom for your business.
+          </p>
+          <ul class="space-y-3 text-sm text-text-muted">
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span>Discovery call + tech stack audit</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span
+                >Custom design and build (no templates, no page builders)</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span>Mobile-first, Lighthouse 90%+ performance</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span
+                >Static architecture - no CMS vulnerabilities, no plugin rot, no
+                surprise security patches</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span>Launch documentation + walkthrough</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2: AI Automation -->
+        <div
+          class="neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+        >
+          <h3 class="text-2xl font-bold text-white mb-3">
+            AI Automation Consulting
+          </h3>
+          <p class="text-text-muted mb-6">
+            Systems that run themselves so you can focus on the work that
+            matters.
+          </p>
+          <ul class="space-y-3 text-sm text-text-muted">
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span>Process audit and automation mapping</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span
+                >Custom builds in n8n, Make.com, and direct API integrations</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span>AI tool selection, implementation, and testing</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span>Full documentation and team handoff</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pharallax AI -->
+      <div class="max-w-6xl mx-auto mt-8">
+        <a
+          href="https://pharallax.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pharallax-card block no-underline neu-raised rounded-2xl p-8 sm:p-10 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+        >
+          <p
+            class="font-mono text-accent tracking-[0.15em] text-xs uppercase mb-4"
+          >
+            Powered by Pharallax AI
+          </p>
+          <h3 class="text-2xl font-bold text-white mb-3">
+            Adversarial Strategic Analysis
+          </h3>
+          <p class="text-text-muted mb-6">
+            I stress-test your strategy and tell you what's actually happening -
+            backed by 135,000+ cross-domain knowledge claims and three
+            adversarial cognitive lenses that surface what linear thinking
+            misses.
+          </p>
+          <div
+            class="flex items-center gap-2 text-accent font-semibold text-sm group/link"
+          >
+            <span>Explore Pharallax AI</span>
+            <span
+              class="transition-transform duration-200 group-hover/link:translate-x-1"
+              >&rarr;</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <!-- Growth Partner Block - Two Columns -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-16"
+      >
+        <p class="text-lg text-text-muted leading-relaxed">
+          Consider me your growth partner - your site doesn't stop at launch.
+          Need a lead form that triggers an email sequence? A booking flow that
+          syncs to your CRM? I build the site, wire the systems behind it, and
+          make sure the strategy driving both is actually sound. One person, one
+          bill, zero handoff chaos.
+        </p>
+        <p class="text-lg text-text-muted leading-relaxed">
+          Most consultants stay in their lane. I cross them on purpose. The same
+          person who builds your site automates your follow-up sequences and
+          pressure-tests the assumptions underneath your go-to-market. Not
+          because I'm trying to upsell you - because gaps between those layers
+          are where businesses leak money.
+        </p>
+      </div>
+
+      <!-- Section CTA -->
+      <div class="text-center mt-12">
+        <a
+          href="#booking"
+          class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+        >
+          Let's figure out <span class="font-bold">where to start</span> &rarr;
+        </a>
+      </div>
+    </section>
+
+    <!-- S4: Reviews -->
+    <section id="reviews" class="px-8 sm:px-12 lg:px-20 py-(--spacing-section)">
+      <h2
+        class="reviews-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
+      >
+        All <span class="text-accent">killer.</span> No <span
+          class="relative inline-block scribble-out"
+          >filler.<svg
+            class="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            ><g
+              class="scribble-x"
+              stroke="var(--color-accent)"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+              ><path
+                d="M8,12 C20,18 35,38 50,52 C62,63 78,80 92,90"
+                stroke-width="5"></path><path
+                d="M6,16 C22,22 40,42 52,55 C60,64 75,78 90,86"
+                stroke-width="3.5"
+                opacity="0.6"></path><path
+                d="M90,8 C78,20 62,38 50,52 C38,65 22,80 10,92"
+                stroke-width="5"></path><path
+                d="M88,14 C76,24 64,40 52,54 C42,64 24,78 14,88"
+                stroke-width="3"
+                opacity="0.5"></path></g
+            ></svg
+          ></span
+        >
+      </h2>
+
+      <div class="max-w-3xl mx-auto space-y-12">
+        <!-- Review 1 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote class="text-lg text-text leading-relaxed">
+            "Working with Russell has been nothing short of outstanding, and we
+            don't say that lightly, especially after working with hundreds of
+            developers and freelancers! This was a tricky project with the
+            potential to veer off in multiple directions, but Russell brought
+            structure, clarity, and calm from day one. He went truly above and
+            beyond - navigating complexity with precision, staying focused when
+            others might have drifted, and delivering results that exceeded
+            every expectation. Russell is not only highly skilled and deeply
+            logical, but also an absolute pleasure to work with. His
+            communication is spot on, his work ethic is unmatched, and his
+            ability to solve problems quickly and intelligently makes him a rare
+            find. Highly, highly recommended!!"
+          </blockquote>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            Jonny - Invincible Media
+          </p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote class="text-lg text-text leading-relaxed">
+            "In today's age, it's quite easy to find somebody to build you a
+            website, but what is not easy is finding somebody that will build
+            you an excellent website while providing thorough communication and
+            thoughtful recommendations. I've had many websites built over the
+            years and have never had anybody provides such detail to their work.
+            I was absolutely blown away by the results, communication, and
+            turnover time. Russ is an absolute professional."
+          </blockquote>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            Carson - Vibe N Thrive
+          </p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote class="text-lg text-text leading-relaxed">
+            "This was our second time working with Russell, and once again, he
+            delivered flawlessly. The project was a focused optimisation of our
+            GPT-based GTM/RevOps proposal builder, and Russell approached it
+            with the same clarity, structure, and commercial instinct that
+            impressed us the first time around. He took an already-solid system
+            and made it smarter, faster, and sharper. His ability to balance
+            logic, tone, and usability in prompt engineering is next-level.
+            Nothing is ever too much trouble, and he remains thoughtful, fast,
+            and genuinely enjoyable to work with. Still highly recommended - if
+            not even more so now!"
+          </blockquote>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            Jonny - Invincible Media
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="reviews-cta gsap-hidden text-center mt-16">
+        <a
+          href="#booking"
+          class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+        >
+          Let's build yours &rarr;
+        </a>
+      </div>
+    </section>
+
     <!-- S5: Problem/Solution -->
+
     <section id="problem-solution" class="relative">
       <!-- Pinned Problem/Solution Grid -->
       <div class="ps-pin relative min-h-screen">
@@ -1355,8 +1188,8 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
             <h2
               class="ps-real gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center"
             >
-              generuss sites <span class="text-accent">convert,</span> and
-              <span class="text-accent">look good</span> doing it.
+              Why most websites <span class="text-accent">fail.</span> And what yours
+              <span class="text-accent">needs instead.</span>
             </h2>
           </div>
           <!-- Pair 1 -->
@@ -1471,216 +1304,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       </div>
     </section>
 
-    <!-- S6: Design Principles -->
-    <section id="principles" class="bg-bg-secondary">
-      <!-- Pinned Principles -->
-      <div
-        class="principles-pin relative min-h-screen flex flex-col justify-center px-8 sm:px-12 lg:px-20 pt-20"
-      >
-        <!-- Section Header -->
-        <h2
-          class="principles-heading gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black pb-3 sm:pb-4"
-        >
-          What Makes a Website <span class="text-accent">Actually Good?</span>
-        </h2>
-
-        <!-- Subheading -->
-        <div class="overflow-hidden pb-6 sm:pb-8">
-          <p
-            class="principles-subheading gsap-hidden text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-right"
-          >
-            Most websites look fine.<br />
-            The problem is "fine" doesn't get you <span class="text-accent"
-              >customers.</span
-            >
-          </p>
-        </div>
-
-        <!-- 6 Principles Grid -->
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-8 sm:pb-12 max-w-5xl mx-auto"
-        >
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"
-              ></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Speed</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              53% leave if it takes 3+ seconds
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Your site loads before they can blink. Performance isn't a feature
-              - it's the foundation.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
-              <path d="M12 18h.01"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Mobile-First</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              63%+ of web traffic is mobile
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Designed for thumbs first, then scaled up. Not the other way
-              around.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"
-              ></path>
-              <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"></path>
-              <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Clear Hierarchy</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              Users scan, they don't read
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Every element has a job. Nothing on the page is decoration - it's
-              all working.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="M7 9h8M7 12h5" stroke-width="1.5"></path>
-              <path d="m21 21-4.3-4.3" stroke="#1e1e22" stroke-width="5"></path>
-              <path d="m21 21-4.3-4.3"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">SEO Built In</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              68% of online experiences start with search
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Structured data, meta tags, fast loads, clean code. Google finds
-              you, not the other way around.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
-              <path d="M12 18V6"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Conversion Focus</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              Average site converts at 2-3%
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Good design guides people to act. CTAs that work, forms that don't
-              suck, zero friction.
-            </p>
-          </div>
-
-          <div
-            class="principle-card gsap-hidden neu-raised rounded-2xl p-6 md:p-8"
-          >
-            <svg
-              class="mb-4"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#00ffef66"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="16" cy="4" r="1"></circle>
-              <path d="m4.24 14.5a5 5 0 0 0 6.88 6"></path>
-              <path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path>
-              <path d="m18 19 1-7-6 1" stroke="#1e1e22" stroke-width="5"></path>
-              <path
-                d="m5 8 3-3 5.5 3-2.36 3.5"
-                stroke="#1e1e22"
-                stroke-width="5"></path>
-              <path d="m18 19 1-7-6 1"></path>
-              <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-white mb-1">Accessibility</h3>
-            <p class="font-mono text-xs text-accent mb-3">
-              1 in 4 adults has a disability
-            </p>
-            <p class="text-sm text-text-muted leading-relaxed">
-              Inclusive by default. More users, fewer lawsuits, better
-              experience for everyone.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- S7: About -->
+    <!-- S6: About -->
     <section
       id="about"
       class="flex items-center justify-center px-8 sm:px-12 lg:px-20 py-(--spacing-section)"
@@ -1709,16 +1333,15 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           class="about-bio gsap-hidden text-lg text-text-muted leading-relaxed"
         >
           Most developers build from a template and call it custom. I build from
-          a blank canvas - the same way I approach a mix in the studio. Every
-          element earns its place. That means I don't think in templates.
+          a blank canvas. Every element earns its place.
         </p>
         <p
           class="about-bio gsap-hidden text-lg text-text-muted leading-relaxed mt-4"
         >
           I think in outcomes. What does the visitor need to feel? Where do they
-          need to look? What makes them click instead of bounce? I've been
-          answering those questions for two decades in sales and over a decade
-          behind a mixing console. The medium changed. The instincts didn't.
+          need to look? What makes them click instead of bounce? Two decades in
+          sales taught me how people decide. I bring that instinct to every
+          pixel.
         </p>
         <p
           class="about-bio gsap-hidden text-lg text-text-muted leading-relaxed mt-4"
@@ -1748,178 +1371,165 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       </div>
     </section>
 
-    <!-- S8: Reviews -->
-    <section id="reviews" class="px-8 sm:px-12 lg:px-20 py-(--spacing-section)">
-      <h2
-        class="reviews-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
+    <!-- S7: Booking + Contact -->
+    <div id="contact"></div>
+    <section
+      id="booking"
+      class="px-8 sm:px-12 lg:px-20 py-(--spacing-section) relative"
+    >
+      <!-- Ambient glow -->
+      <div
+        class="absolute inset-0 pointer-events-none flex items-center justify-center"
       >
-        All <span class="text-accent">killer.</span> No <span
-          class="relative inline-block scribble-out"
-          >filler.<svg
-            class="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-            ><g
-              class="scribble-x"
-              stroke="var(--color-accent)"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              fill="none"
-              ><path
-                d="M8,12 C20,18 35,38 50,52 C62,63 78,80 92,90"
-                stroke-width="5"></path><path
-                d="M6,16 C22,22 40,42 52,55 C60,64 75,78 90,86"
-                stroke-width="3.5"
-                opacity="0.6"></path><path
-                d="M90,8 C78,20 62,38 50,52 C38,65 22,80 10,92"
-                stroke-width="5"></path><path
-                d="M88,14 C76,24 64,40 52,54 C42,64 24,78 14,88"
-                stroke-width="3"
-                opacity="0.5"></path></g
-            ></svg
-          ></span
+        <div
+          class="w-[600px] h-[600px] rounded-full bg-accent/[0.04] blur-[120px]"
         >
-      </h2>
-
-      <div class="max-w-3xl mx-auto space-y-12">
-        <!-- Review 1 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "Working with Russell has been nothing short of outstanding, and we
-            don't say that lightly, especially after working with hundreds of
-            developers and freelancers! This was a tricky project with the
-            potential to veer off in multiple directions, but Russell brought
-            structure, clarity, and calm from day one. He went truly above and
-            beyond - navigating complexity with precision, staying focused when
-            others might have drifted, and delivering results that exceeded
-            every expectation. Russell is not only highly skilled and deeply
-            logical, but also an absolute pleasure to work with. His
-            communication is spot on, his work ethic is unmatched, and his
-            ability to solve problems quickly and intelligently makes him a rare
-            find. Highly, highly recommended!!"
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Jonny - Invincible Media
-          </p>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "In today's age, it's quite easy to find somebody to build you a
-            website, but what is not easy is finding somebody that will build
-            you an excellent website while providing thorough communication and
-            thoughtful recommendations. I've had many websites built over the
-            years and have never had anybody provides such detail to their work.
-            I was absolutely blown away by the results, communication, and
-            turnover time. Russ is an absolute professional."
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Carson - Vibe N Thrive
-          </p>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "Russ is by far my favorite person to work with. Aside from his
-            beats being top notch amazing, he's great at mixing and mastering
-            and handling mixing duties on projects I bring him from other
-            producers. We made an EP together and I loved it, so when I wanted
-            to do a separate project in a completely different direction, I
-            asked him for some simple backing tracks since I knew he'd be the
-            perfect fit. He exceeded my expectations by miles&hellip; Miles and
-            miles, creating whole worlds for these songs. When I say he brought
-            the project to life, it's a drastic understatement. I would be happy
-            to work with him on anything."
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Leon McConnell - Resist Entertainment
-          </p>
-        </div>
-
-        <!-- Review 4 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "That was so fucking good man. It came from me, so I know everything
-            that you did - you took a simple small thing and you brought it to
-            life. I can't pay you enough for that. I see all the love for music
-            you pour into it. I'm wowed! I love what you did with the end of
-            Concrete Illusions, and how you beefed up Sad Song for the new mix.
-            The Potion sounds fucking good, and the rain sample you added to
-            pushing daisies make it so much more cinematic."
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Dirty Chai - Struggle Crew
-          </p>
-        </div>
-
-        <!-- Review 5 -->
-        <div class="review-item gsap-hidden">
-          <div class="review-stars flex gap-1 mb-3">
-            <span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span><span class="text-accent"
-              >&#9733;</span
-            ><span class="text-accent">&#9733;</span>
-          </div>
-          <blockquote class="text-lg text-text leading-relaxed">
-            "This was our second time working with Russell, and once again, he
-            delivered flawlessly. The project was a focused optimisation of our
-            GPT-based GTM/RevOps proposal builder, and Russell approached it
-            with the same clarity, structure, and commercial instinct that
-            impressed us the first time around. He took an already-solid system
-            and made it smarter, faster, and sharper. His ability to balance
-            logic, tone, and usability in prompt engineering is next-level.
-            Nothing is ever too much trouble, and he remains thoughtful, fast,
-            and genuinely enjoyable to work with. Still highly recommended - if
-            not even more so now!"
-          </blockquote>
-          <p class="mt-3 text-sm text-text-muted font-mono">
-            Jonny - Invincible Media
-          </p>
         </div>
       </div>
 
-      <!-- Bottom CTA -->
-      <div class="reviews-cta gsap-hidden text-center mt-16">
-        <a
-          href="#booking"
-          class="inline-block rounded-full bg-accent px-10 py-4 text-lg font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+      <div class="relative z-10 max-w-2xl mx-auto text-center mb-12">
+        <h2
+          class="booking-heading gsap-hidden text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
         >
-          Let's build yours &rarr;
-        </a>
+          Ready to build something that <span
+            class="text-accent glow-text glow-pulse-target">CONVERTS?</span
+          >
+        </h2>
+        <p
+          class="booking-sub gsap-hidden text-lg text-text-muted leading-relaxed"
+        >
+          Your website should be your hardest working employee. If it's not
+          pulling its weight, let's fix that. Book a discovery call - no
+          pressure.
+        </p>
+      </div>
+
+      <div class="relative z-10 max-w-[850px] mx-auto">
+        <CalendarEmbed />
+      </div>
+
+      <!-- Contact Form -->
+      <div class="relative z-10 w-full max-w-md mx-auto mt-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="flex-1 h-px bg-border"></div>
+          <span class="text-text-muted text-sm">Or send me a message.</span>
+          <div class="flex-1 h-px bg-border"></div>
+        </div>
+
+        <form
+          id="contact-form"
+          action={`https://formspree.io/f/${formspreeId}`}
+          method="POST"
+          class="contact-form gsap-hidden space-y-4"
+        >
+          <!-- Honeypot -->
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+
+          <div>
+            <label for="name" class="block text-sm text-text-muted mb-1"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+              placeholder="Your name"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm text-text-muted mb-1"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+              placeholder="you@company.com"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm text-text-muted mb-1"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="3"
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 resize-none"
+              placeholder="Tell me about your project..."></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full sm:w-auto rounded-full border border-accent px-8 py-3 text-base font-semibold text-accent transition-all duration-200 hover:bg-accent hover:text-[#0C0C0C] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Send Message &rarr;
+          </button>
+        </form>
+
+        <!-- Success state -->
+        <div id="form-success" class="hidden text-center py-8">
+          <p class="text-lg text-text">
+            Message sent. I'll be <span class="text-accent">in touch.</span>
+          </p>
+        </div>
       </div>
     </section>
+
+    <script>
+      // Contact form handling
+      const form = document.getElementById("contact-form") as HTMLFormElement;
+      const successMsg = document.getElementById("form-success");
+      const submitBtn = form?.querySelector(
+        'button[type="submit"]',
+      ) as HTMLButtonElement;
+      const submitText = submitBtn?.textContent;
+
+      form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        submitBtn.classList.add("opacity-50", "cursor-not-allowed");
+
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" },
+          });
+
+          if (res.ok) {
+            form.classList.add("hidden");
+            successMsg?.classList.remove("hidden");
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitText ?? "Send Message →";
+            submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
+            alert("Something went wrong. Please try again.");
+          }
+        } catch {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitText ?? "Send Message →";
+          submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
+          alert("Network error. Please try again.");
+        }
+      });
+    </script>
   </main>
 
   <Footer />

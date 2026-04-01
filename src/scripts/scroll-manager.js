@@ -22,16 +22,14 @@ function init() {
 
 function setupAnimations(breakpoint) {
   const isMobile = breakpoint === "mobile";
-  const isTablet = breakpoint === "tablet";
 
   setupHero(isMobile);
-  setupBooking(isMobile);
-  setupServices(isMobile);
   setupPortfolio(isMobile);
-  setupProblemSolution(isMobile);
-  setupPrinciples(isMobile, isTablet);
-  setupAbout();
+  setupServices(isMobile);
   setupReviews();
+  setupProblemSolution(isMobile);
+  setupAbout();
+  setupBooking(isMobile);
 }
 
 // ── S1: Hero ──
@@ -86,12 +84,12 @@ function setupHero(isMobile) {
   }
 }
 
-// ── S2: Services ──
+// ── S3: Services ──
 // No GSAP animations - section is fully static. All content visible on load.
 // Previous pin + fadeUp approach consistently left the Pharallax card invisible.
 function setupServices(isMobile) {}
 
-// ── S3: Booking + Contact ──
+// ── S7: Booking + Contact ──
 function setupBooking(isMobile) {
   fadeUp(".booking-heading", {
     scrollTrigger: { trigger: ".booking-heading", start: "top 80%" },
@@ -135,7 +133,7 @@ function setupBooking(isMobile) {
   glowPulse(".glow-pulse-target");
 }
 
-// ── S4: Portfolio ──
+// ── S2: Portfolio ──
 function setupPortfolio(isMobile) {
   fadeUp(".portfolio-heading", {
     y: 20,
@@ -338,110 +336,9 @@ function setupProblemSolution(isMobile) {
       });
     }
   }
-
-  // Bg transition during last 15% - smooths into Design Principles bg-secondary
-  ScrollTrigger.create({
-    trigger: "#problem-solution",
-    start: "bottom-=15% bottom",
-    end: "bottom bottom",
-    scrub: true,
-    onUpdate: (self) => {
-      const bg = gsap.utils.interpolate("#1A1A1E", "#1E1E22", self.progress);
-      document.body.style.backgroundColor = bg;
-    },
-  });
 }
 
-// ── S6: Design Principles ──
-function setupPrinciples(isMobile, isTablet) {
-  const heading = document.querySelector(".principles-heading");
-  const subheading = document.querySelector(".principles-subheading");
-  const pinWrap = document.querySelector(".principles-pin");
-  const cards = document.querySelectorAll(".principle-card");
-
-  if (!pinWrap) return;
-
-  // Unhide elements, set initial states
-  if (heading) heading.classList.remove("gsap-hidden");
-  if (subheading) {
-    subheading.classList.remove("gsap-hidden");
-    gsap.set(subheading, { x: window.innerWidth });
-  }
-
-  // Scatter cards to random positions
-  const spreadMultiplier = isMobile ? 0.3 : isTablet ? 0.6 : 1;
-  if (cards.length) {
-    cards.forEach((card) => {
-      card.classList.remove("gsap-hidden");
-      gsap.set(card, {
-        x: gsap.utils.random(-300 * spreadMultiplier, 300 * spreadMultiplier),
-        y: gsap.utils.random(-400 * spreadMultiplier, 400 * spreadMultiplier),
-        rotation: gsap.utils.random(-45, 45),
-        scale: 0.3 + Math.random() * 0.15,
-        opacity: 0,
-      });
-    });
-  }
-
-  // Heading fades up on enter (before pin engages)
-  if (heading) {
-    gsap.from(heading, {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: ".principles-pin",
-        start: "top 80%",
-      },
-    });
-  }
-
-  // Measure nav height so the pin clears the fixed navbar
-  const nav = document.getElementById("site-nav");
-  const navHeight = nav ? nav.offsetHeight : 0;
-
-  // Scrub timeline - subheading, cards, fade-out
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".principles-pin",
-      start: `top ${navHeight}`,
-      end: "+=200%",
-      pin: true,
-      scrub: 0.5,
-    },
-  });
-
-  // ── Phase 1: Subheading slides in ──
-  if (subheading) {
-    tl.to(subheading, { x: 0, duration: 1.5, ease: "power4.out" }, "-=0.3");
-  }
-
-  // Hold with subheading visible before cards
-  tl.to({}, { duration: 1 });
-
-  // ── Phase 3: Cards assemble ──
-  if (cards.length) {
-    tl.to(cards, {
-      x: 0,
-      y: 0,
-      rotation: 0,
-      scale: 1,
-      opacity: 1,
-      duration: 2,
-      stagger: 0.08,
-      ease: "power3.out",
-    });
-  }
-
-  // Hold for viewing
-  tl.to({}, { duration: 1.5 });
-
-  // ── Phase 4: Fade out ──
-  tl.to(pinWrap, { opacity: 0, duration: 1 });
-}
-
-// ── S7: About ──
+// ── S6: About ──
 function setupAbout() {
   fadeUp(".about-photo", {
     scrollTrigger: { trigger: ".about-photo", start: "top 80%" },
@@ -463,7 +360,7 @@ function setupAbout() {
   });
 }
 
-// ── S8: Reviews ──
+// ── S4: Reviews ──
 function setupReviews() {
   fadeUp(".reviews-heading", {
     scrollTrigger: { trigger: ".reviews-heading", start: "top 80%" },
