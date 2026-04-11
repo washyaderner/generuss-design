@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 @plugin "@tailwindcss/typography";
 
 /* ── Fonts ── */
@@ -28,16 +29,16 @@
 
 /* ── Design Tokens ── */
 @theme {
-  --color-bg: #1a1a1e;
-  --color-surface: #1a1a1e;
-  --color-bg-secondary: #1e1e22;
+  --color-bg: #0d0d10;
+  --color-surface: #0d0d10;
+  --color-bg-secondary: #111115;
   --color-text: #e8e8e8;
   --color-text-muted: #8e8e98;
   --color-white: #ffffff;
   --color-border: #222222;
 
   --shadow-dark: rgba(0, 0, 0, 0.7);
-  --shadow-light: rgba(255, 255, 255, 0.04);
+  --shadow-light: rgba(255, 255, 255, 0.05);
 
   --color-accent: #00ffef;
   --color-accent-dim: #00ffef20;
@@ -52,9 +53,7 @@
 }
 
 /* ── Base ── */
-html {
-  scroll-behavior: smooth;
-}
+/* Lenis CSS imported via lenis/dist/lenis.css above */
 
 body {
   background-color: var(--color-bg);
@@ -105,11 +104,106 @@ body {
   }
 }
 
+/* ── Section Gradient Transitions ── */
+.section-fade-in {
+  position: relative;
+}
+
+.section-fade-in::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-fade-from-dark::before {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg),
+    var(--color-bg-secondary)
+  );
+}
+
+.section-fade-from-secondary::before {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-secondary),
+    var(--color-bg)
+  );
+}
+
 .glow-text {
   text-shadow:
     0 0 10px var(--color-accent-glow),
     0 0 40px var(--color-accent-mid),
     0 0 80px var(--color-accent-dim);
+}
+
+/* ── Pharallax Card Rotating Glow ── */
+@property --glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.pharallax-card .neu-raised,
+a.pharallax-card {
+  position: relative;
+}
+
+.pharallax-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--glow-angle),
+    transparent 0%,
+    var(--color-accent-dim) 10%,
+    var(--color-accent-mid) 15%,
+    transparent 30%,
+    transparent 100%
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  animation: glow-rotate 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes glow-rotate {
+  to {
+    --glow-angle: 360deg;
+  }
+}
+
+/* ── Observatory Shimmer ── */
+.observatory-shimmer {
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(0, 255, 239, 0.06) 45%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
 }
 
 /* ── Grain Overlay ── */
@@ -119,7 +213,7 @@ body::before {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;

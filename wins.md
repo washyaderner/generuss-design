@@ -113,3 +113,15 @@
 **Signal:** "haha dude that's what's fucking UP!!!! so glad I had you do that" on the sweetening suggestions (brand word gloss, module label gloss, QR bump, easter egg fix)
 **What worked:** Proactively offering final-pass refinements as a concise prioritized list (high impact vs small-but-worth-it vs leave-alone). Not a laundry list - a curated set with clear reasoning. The "leave alone" category was as important as the suggestions.
 **Pattern:** When presenting improvement suggestions, categorize by impact and explicitly list what NOT to change. It builds trust and prevents scope creep. The user can approve the whole list at once.
+
+### 2026-03-26 | approach
+
+**Signal:** "that makes sense" then "perfect" then "this is looking really good" - zero corrections across the entire session. Every CSS change, font adjustment, and color unification landed first try.
+**What worked:** Doing the full CSS-to-mm math upfront before proposing changes. Calculated every text element's pixel width against the new container width, identified the three elements that would overflow (back-brand, back-urls, identity padding), and proposed surgical compensating adjustments. Presented it as a table so Russ could see the full picture at once.
+**Pattern:** For print layout changes, do the dimensional math exhaustively before touching code. Calculate every text element against its container. The cost of 5 minutes of math is zero iterations vs the cost of discovering overflow after rendering.
+
+### 2026-03-31 | speed
+
+**Signal:** Full conversion-first page restructure shipped from handoff to production in under 10 minutes. Section reorder, Principles removal, testimonial cleanup, Pharallax card shrink, copy alignment, GSAP cleanup - all in one pass.
+**What worked:** Handoff doc had exact line numbers, clear priorities, and specific options (A/B/C for Pharallax). Used Python script for the section reorder (too many moving parts for sequential edits), then surgical Edit calls for content changes. Build-verified after structural change, then again after content changes.
+**Pattern:** For large page restructures, use a script for the initial reorder (fragile with sequential edits), then use Edit for content-level changes. Verify build between structural and content phases.
