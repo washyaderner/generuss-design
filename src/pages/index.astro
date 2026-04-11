@@ -3,8 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CalendarEmbed from "../components/CalendarEmbed.astro";
-import ObservatoryThumb from "../components/ObservatoryThumb.astro";
-
 const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 ---
 
@@ -20,34 +18,34 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       <div class="relative z-10">
         <h1>
           <span
-            class="hero-headline block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95]"
+            class="hero-headline gsap-hidden block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95]"
           >
             YOUR BUSINESS OUTGREW
           </span>
           <span
-            class="hero-headline block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95] text-accent glow-text mt-2"
+            class="hero-headline gsap-hidden block text-[3.9rem] sm:text-[4.875rem] md:text-[5.85rem] lg:text-[7.8rem] font-black tracking-tight leading-[0.95] text-accent glow-text mt-2"
           >
             YOUR WEBSITE
           </span>
           <span
-            class="hero-headline block text-[1.625rem] sm:text-[1.95rem] md:text-[2.4375rem] lg:text-[2.925rem] font-semibold tracking-wide text-text-muted mt-4"
+            class="hero-headline gsap-hidden block text-[1.625rem] sm:text-[1.95rem] md:text-[2.4375rem] lg:text-[2.925rem] font-semibold tracking-tight text-text-muted mt-4 ml-[18px]"
           >
             I BUILD WHAT'S NEXT.
           </span>
         </h1>
         <p
-          class="hero-sub mt-6 max-w-2xl text-[1.46rem] sm:text-[1.625rem] md:text-[1.95rem] text-text-muted"
+          class="hero-sub mt-6 text-[1.46rem] sm:text-[1.625rem] md:text-[1.95rem] text-text-muted whitespace-nowrap ml-[28px]"
         >
           Custom sites for service businesses and founders.<br />
           No templates. No bloat. Designed to convert.
         </p>
         <a
           href="#booking"
-          class="hero-cta mt-8 inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          class="hero-cta mt-8 inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)] ml-[28px]"
         >
           Book a Call &rarr;
         </a>
-        <p class="mt-4 text-xs text-text-muted/60 font-mono tracking-wide">
+        <p class="mt-4 text-xs text-text-muted/60 font-mono ml-[28px]">
           Zero templates &middot; Lighthouse 90%+ &middot; Built with AI
         </p>
       </div>
@@ -99,7 +97,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
         <span class="text-xs text-text-muted font-mono tracking-wider"
           >SCROLL</span
         >
-        <div class="h-8 w-px bg-text-muted/50 animate-pulse"></div>
+        <div class="h-8 w-px bg-text-muted/50"></div>
       </div>
     </section>
 
@@ -118,7 +116,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       <div class="flex flex-col gap-16 sm:gap-20 max-w-6xl mx-auto">
         <!-- Case Study: Pharadoxa -->
         <a
-          href="https://pharadoxa.com"
+          href="https://pharadoxa.com/observatory/?tier=nebula"
           target="_blank"
           rel="noopener noreferrer"
           class="portfolio-card gsap-hidden group block no-underline"
@@ -177,7 +175,20 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
 
               <!-- Observatory Thumbnail -->
               <div class="pt-12 sm:pt-14 px-2 sm:px-6 pb-8 sm:pb-10">
-                <ObservatoryThumb />
+                <div class="relative overflow-hidden rounded-lg aspect-video">
+                  <img
+                    src="/images/portfolio/observatory-thumb.webp"
+                    alt="Pharadoxa Observatory - consciousness visualization"
+                    class="w-full h-full object-cover"
+                    width="1920"
+                    height="1080"
+                    loading="lazy"
+                  />
+                  <div
+                    class="observatory-shimmer absolute inset-0 pointer-events-none"
+                  >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -221,56 +232,115 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           data-title="Pharallax AI - Adversarial Strategic Analysis"
         >
           <div
-            class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            class="flex flex-col lg:flex-row items-start lg:items-stretch gap-6 lg:gap-8"
           >
-            <div class="relative px-6 sm:px-10 py-10 sm:py-14">
-              <!-- Badges -->
-              <div class="flex gap-2 mb-6">
-                <span
-                  class="border border-accent/25 rounded-full px-3 py-0.5 text-[0.6rem] font-mono text-accent uppercase tracking-widest"
-                  >See Blind Spots</span
-                >
-                <span
-                  class="border border-accent/25 rounded-full px-3 py-0.5 text-[0.6rem] font-mono text-accent uppercase tracking-widest"
-                  >Quantify Risks</span
-                >
-                <span
-                  class="border border-accent/25 rounded-full px-3 py-0.5 text-[0.6rem] font-mono text-accent uppercase tracking-widest"
-                  >Next Moves</span
-                >
-              </div>
-
-              <!-- Brand mark -->
-              <p
-                class="text-accent font-mono font-semibold tracking-[0.2em] text-sm mb-4"
-              >
-                PHARALLAX
-              </p>
-
-              <!-- Description -->
-              <p
-                class="text-text-muted font-mono text-sm leading-relaxed max-w-2xl"
-              >
-                Most strategic analysis tells you what you want to hear. Mine
-                tells you what you're not seeing - backed by 135,000+
-                cross-domain knowledge claims and three adversarial cognitive
-                lenses.
-              </p>
-
-              <!-- Stats row -->
+            <!-- Desktop slideshow -->
+            <div class="w-full lg:flex-[2] min-w-0">
               <div
-                class="flex flex-wrap gap-6 mt-8 text-[0.65rem] font-mono uppercase tracking-wider text-text-muted"
+                class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
               >
-                <span>135K+ knowledge claims</span>
-                <span>3 adversarial lenses</span>
-                <span>Blind spots named</span>
+                <div
+                  class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
+                >
+                  <img
+                    src="/images/portfolio/slides/pharallax/01.webp"
+                    srcset="/images/portfolio/slides/pharallax/01-960w.webp 960w, /images/portfolio/slides/pharallax/01.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Pharallax AI - hero"
+                    class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
+                    loading="lazy"
+                  />
+                  <img
+                    src="/images/portfolio/slides/pharallax/02.webp"
+                    srcset="/images/portfolio/slides/pharallax/02-960w.webp 960w, /images/portfolio/slides/pharallax/02.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Pharallax AI - analysis"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
+                  />
+                  <img
+                    src="/images/portfolio/slides/pharallax/03.webp"
+                    srcset="/images/portfolio/slides/pharallax/03-960w.webp 960w, /images/portfolio/slides/pharallax/03.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Pharallax AI - results"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
+                  />
+                  <div
+                    class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                  >
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/80 transition-all"
+                      aria-label="Slide 1"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 2"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-all"
+                      aria-label="Slide 3"></button>
+                  </div>
+                </div>
               </div>
-
-              <!-- CTA -->
+            </div>
+            <!-- iPhone mockup with mobile slideshow -->
+            <div
+              class="w-full flex justify-center lg:w-auto lg:flex-1 lg:max-w-[310px] shrink-0 lg:items-stretch"
+            >
               <div
-                class="mt-8 text-[0.65rem] text-text-muted uppercase tracking-wider group-hover:text-accent transition-colors duration-200"
+                class="relative bg-[#1c1c1e] rounded-[28px] border-[2.5px] border-[#3a3a3c] p-[6px] shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)] max-w-[250px] lg:max-w-none lg:flex lg:flex-col"
               >
-                Try a free analysis &rarr;
+                <div
+                  class="relative rounded-[22px] overflow-hidden w-full lg:w-[220px] aspect-[393/852] lg:aspect-auto lg:flex-1"
+                >
+                  <div
+                    class="portfolio-slideshow relative w-full h-full overflow-hidden"
+                  >
+                    <img
+                      src="/images/portfolio/slides/pharallax/mobile-01.webp"
+                      alt="Pharallax AI mobile - hero"
+                      class="slide active absolute inset-0 w-full h-full object-cover object-top opacity-100 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/pharallax/mobile-02.webp"
+                      alt="Pharallax AI mobile - features"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/pharallax/mobile-03.webp"
+                      alt="Pharallax AI mobile - analysis"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/pharallax/mobile-04.webp"
+                      alt="Pharallax AI mobile - CTA"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <div
+                      class="slide-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"
+                    >
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/80 transition-all"
+                        aria-label="Slide 1"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 2"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 3"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-all"
+                        aria-label="Slide 4"></button>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
+                  >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -919,11 +989,140 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       });
     </script>
 
+    <!-- S5: Problem/Solution -->
+
+    <section id="problem-solution" class="relative">
+      <!-- Pinned Problem/Solution Grid -->
+      <div class="ps-pin relative min-h-screen">
+        <div
+          class="ps-grid flex flex-col justify-center md:min-h-screen px-8 sm:px-12 lg:px-20 pt-10 sm:pt-14 pb-8 sm:pb-12 gap-4 sm:gap-6 md:gap-8 bg-bg-secondary"
+        >
+          <!-- Section Intro (inside pinned area) -->
+          <div class="ps-intro flex items-center justify-center pb-4 sm:pb-6">
+            <h2
+              class="ps-real gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center"
+            >
+              Why most websites <span class="text-accent">fail.</span> And what yours
+              <span class="text-accent">needs instead.</span>
+            </h2>
+          </div>
+          <!-- Pair 1 -->
+          <div
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
+          >
+            <div class="ps-problem neu-inset rounded-2xl p-4 sm:p-6 md:p-8">
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+                Cookie-Cutter Stacks
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Most agencies pick their tools before they hear your goals. Same
+                framework, same template system, same stack - whether you're a
+                therapist or a SaaS company.
+              </p>
+            </div>
+            <div
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
+                Custom Stack Audit
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Every project starts with a tech stack audit, matching the tools
+                to your business, not the other way around.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pair 2 -->
+          <div
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
+          >
+            <div class="ps-problem neu-inset rounded-2xl p-4 sm:p-6 md:p-8">
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+                Performance
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Most agency sites score 40-60 on Lighthouse. Slow loads, bloated
+                bundles, third-party script soup.
+              </p>
+            </div>
+            <div
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
+                Lighthouse 90%+
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Every Generuss build targets Lighthouse 90%+. Static-first
+                architecture, zero unnecessary JavaScript.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pair 3 -->
+          <div
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
+          >
+            <div class="ps-problem neu-inset rounded-2xl p-4 sm:p-6 md:p-8">
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+                Conversion
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Your site looks fine. But "fine" doesn't convert. Most sites sit
+                at a 2-3% conversion rate because nobody designed the page to
+                guide people toward action.
+              </p>
+            </div>
+            <div
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
+                Conversion-Engineered
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Every element on the page has a job. CTAs that are impossible to
+                miss, forms that don't make people quit, and a layout that
+                funnels attention exactly where it needs to go.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pair 4 -->
+          <div
+            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
+          >
+            <div class="ps-problem neu-inset rounded-2xl p-4 sm:p-6 md:p-8">
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+                Post-Launch Abandonment
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                The site launches, the invoice clears, and your agency ghosts.
+                Something breaks six months later and you're Googling how to fix
+                your own website.
+              </p>
+            </div>
+            <div
+              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
+                Ongoing Support
+              </h3>
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                Every build ships with documentation, a walkthrough, and a
+                direct line. No ticket queues, no support tiers - just a real
+                person who built the thing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- S3: Services -->
 
     <section
       id="services"
-      class="relative z-10 bg-bg-secondary px-8 sm:px-12 lg:px-20 py-16 sm:py-24"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-dark px-8 sm:px-12 lg:px-20 py-16 sm:py-24"
     >
       <h2
         class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16"
@@ -1198,135 +1397,6 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
       </div>
     </section>
 
-    <!-- S5: Problem/Solution -->
-
-    <section id="problem-solution" class="relative">
-      <!-- Pinned Problem/Solution Grid -->
-      <div class="ps-pin relative min-h-screen">
-        <div
-          class="ps-grid flex flex-col justify-center md:min-h-screen px-8 sm:px-12 lg:px-20 pt-10 sm:pt-14 pb-8 sm:pb-12 gap-4 sm:gap-6 md:gap-8 bg-bg-secondary"
-        >
-          <!-- Section Intro (inside pinned area) -->
-          <div class="ps-intro flex items-center justify-center pb-4 sm:pb-6">
-            <h2
-              class="ps-real gsap-hidden text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center"
-            >
-              Why most websites <span class="text-accent">fail.</span> And what yours
-              <span class="text-accent">needs instead.</span>
-            </h2>
-          </div>
-          <!-- Pair 1 -->
-          <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
-          >
-            <div class="ps-problem neu-inset rounded-2xl p-4 sm:p-6 md:p-8">
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
-                Cookie-Cutter Stacks
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Most agencies pick their tools before they hear your goals. Same
-                framework, same template system, same stack - whether you're a
-                therapist or a SaaS company.
-              </p>
-            </div>
-            <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-                Custom Stack Audit
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Every project starts with a tech stack audit, matching the tools
-                to your business, not the other way around.
-              </p>
-            </div>
-          </div>
-
-          <!-- Pair 2 -->
-          <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
-          >
-            <div class="ps-problem neu-inset rounded-2xl p-4 sm:p-6 md:p-8">
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
-                Performance
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Most agency sites score 40-60 on Lighthouse. Slow loads, bloated
-                bundles, third-party script soup.
-              </p>
-            </div>
-            <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-                Lighthouse 90%+
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Every Generuss build targets Lighthouse 90%+. Static-first
-                architecture, zero unnecessary JavaScript.
-              </p>
-            </div>
-          </div>
-
-          <!-- Pair 3 -->
-          <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
-          >
-            <div class="ps-problem neu-inset rounded-2xl p-4 sm:p-6 md:p-8">
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
-                Conversion
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Your site looks fine. But "fine" doesn't convert. Most sites sit
-                at a 2-3% conversion rate because nobody designed the page to
-                guide people toward action.
-              </p>
-            </div>
-            <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-                Conversion-Engineered
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Every element on the page has a job. CTAs that are impossible to
-                miss, forms that don't make people quit, and a layout that
-                funnels attention exactly where it needs to go.
-              </p>
-            </div>
-          </div>
-
-          <!-- Pair 4 -->
-          <div
-            class="ps-row grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-8 items-start"
-          >
-            <div class="ps-problem neu-inset rounded-2xl p-4 sm:p-6 md:p-8">
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
-                Post-Launch Abandonment
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                The site launches, the invoice clears, and your agency ghosts.
-                Something breaks six months later and you're Googling how to fix
-                your own website.
-              </p>
-            </div>
-            <div
-              class="ps-solution gsap-hidden neu-raised rounded-2xl p-4 sm:p-6 md:p-8 bg-bg transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-                Ongoing Support
-              </h3>
-              <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-                Every build ships with documentation, a walkthrough, and a
-                direct line. No ticket queues, no support tiers - just a real
-                person who built the thing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- S6: About -->
     <section
       id="about"
@@ -1366,23 +1436,30 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           sales taught me how people decide. I bring that instinct to every
           pixel.
         </p>
-        <p
-          class="about-bio gsap-hidden text-lg text-text-muted leading-relaxed mt-4"
-        >
-          One of the most important things my clients love is my attentive
-          communication every step of the way. I see too many instances of
-          people getting ghosted before the project is done. I can safely say
-          this is not the way I operate. I'm here for you till the job is done.
-        </p>
-        <p
-          class="about-bio gsap-hidden text-lg text-text-muted leading-relaxed mt-4"
-        >
-          To be up front, my goal is to work with you on a long-term retainer
-          since I find it aligns incentives and lets me help clients better. So
-          I treat everything we do together as foundational - helping people
-          build systems to drive revenue and maximize cost savings. If this
-          sounds like something you're into, book a call and let's talk!
-        </p>
+        <!-- Stat badges -->
+        <div class="about-stats gsap-hidden flex flex-wrap gap-4 mt-8">
+          <div class="neu-inset rounded-xl px-5 py-3 text-center">
+            <span class="text-accent font-bold text-xl block">20+</span>
+            <span
+              class="text-[0.65rem] text-text-muted font-mono uppercase tracking-wider"
+              >yrs in sales</span
+            >
+          </div>
+          <div class="neu-inset rounded-xl px-5 py-3 text-center">
+            <span class="text-accent font-bold text-xl block">90%+</span>
+            <span
+              class="text-[0.65rem] text-text-muted font-mono uppercase tracking-wider"
+              >Lighthouse</span
+            >
+          </div>
+          <div class="neu-inset rounded-xl px-5 py-3 text-center">
+            <span class="text-accent font-bold text-xl block">5.0</span>
+            <span
+              class="text-[0.65rem] text-text-muted font-mono uppercase tracking-wider"
+              >star rated</span
+            >
+          </div>
+        </div>
         <div class="about-cta gsap-hidden mt-8 text-right">
           <a
             href="#booking"
@@ -1562,7 +1639,10 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
     const initAnimations = () => {
       if (loaded) return;
       loaded = true;
-      import("../scripts/scroll-manager.js");
+      // Lenis smooth scroll must init before scroll-manager
+      import("../scripts/smooth-scroll.js").then(() => {
+        import("../scripts/scroll-manager.js");
+      });
     };
 
     // Fire on first scroll if idle callback hasn't triggered yet
@@ -1573,5 +1653,29 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
     } else {
       setTimeout(initAnimations, 150);
     }
+  </script>
+
+  <!-- Fallback: reveal gsap-hidden elements via IntersectionObserver -->
+  <!-- Independent of GSAP/Lenis module loading -->
+  <script>
+    const _io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.remove("gsap-hidden");
+            e.target.style.opacity = "1";
+            e.target.style.visibility = "visible";
+            _io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.01, rootMargin: "100px 0px" },
+    );
+    // Start observing after 1.5s to let ScrollTrigger handle what it can
+    setTimeout(() => {
+      document
+        .querySelectorAll(".gsap-hidden")
+        .forEach((el) => _io.observe(el));
+    }, 1500);
   </script>
 </BaseLayout>

@@ -74,3 +74,13 @@
 
 **Correction:** Gloss mask for "THAT CONVERT" was rendered as a filled rectangle (bounding box) instead of text letterforms. The front "LET'S BUILD." was already rendered as text but the back wasn't.
 **Rule:** Always render gloss mask text as actual text with matching font properties (family, size, weight, letter-spacing), not as bounding-box rectangles. Extract computed styles from the DOM element and replicate them in the mask HTML. Rectangles of gloss behind text look cheap; letterform gloss looks premium.
+
+### 2026-03-26 | tooling
+
+**Correction:** render-final.cjs calls `pngToPdf()` for gloss masks but NOT for artwork. Artwork PDFs were stale (yesterday's timestamp) while PNGs were fresh. Had to manually convert.
+**Rule:** After running render-final.cjs, always check timestamps on ALL 4 PDFs. If artwork PDFs are stale, regenerate them from the fresh PNGs. Consider adding artwork PDF conversion to the main pipeline.
+
+### 2026-03-26 | approach
+
+**Correction:** Card CSS had two different cyans - `--cyan: #00FFEF` in the card HTML vs `QR_COLOR = "#00e5ff"` in the QR generator. Both the hex values AND rgba equivalents (0,255,239 vs 0,229,255) needed updating.
+**Rule:** When unifying a color across a print pipeline, check three places: CSS custom properties, hardcoded hex in inline SVGs, and rgba() values in shadows/glows. A hex find-replace misses the rgba form.

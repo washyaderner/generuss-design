@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.defaults({ ease: "power3.out", duration: 0.8 });
 
 import { fadeUp, initLavaLamp, glowPulse } from "./animations.js";
 
@@ -25,14 +26,53 @@ function setupAnimations(breakpoint) {
 
   setupHero(isMobile);
   setupPortfolio(isMobile);
+  setupProblemSolution(isMobile);
   setupServices(isMobile);
   setupReviews();
-  setupProblemSolution(isMobile);
   setupAbout();
   setupBooking(isMobile);
 
   // Recalculate all trigger positions after pins shift the layout
   ScrollTrigger.refresh();
+
+  // Secondary refresh after Lenis settles - pinned sections can skew
+  // trigger positions on the first calculation pass
+  setTimeout(() => ScrollTrigger.refresh(true), 200);
+}
+
+// ── Text splitting utility ──
+// Splits into characters grouped by words so word-wrap still works on mobile
+function splitChars(el) {
+  const text = el.textContent;
+  el.textContent = "";
+  el.setAttribute("aria-label", text);
+  const chars = [];
+  const words = text.split(/(\s+)/);
+
+  words.forEach((segment) => {
+    if (/^\s+$/.test(segment)) {
+      // Preserve regular spaces for natural word wrapping
+      el.appendChild(document.createTextNode(" "));
+      return;
+    }
+    // Wrap each word in an inline-block container so characters stay together
+    const wordWrap = document.createElement("span");
+    wordWrap.style.display = "inline-block";
+    wordWrap.style.whiteSpace = "nowrap";
+    wordWrap.setAttribute("aria-hidden", "true");
+
+    for (const char of segment) {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.display = "inline-block";
+      span.style.willChange = "transform, opacity, filter";
+      wordWrap.appendChild(span);
+      chars.push(span);
+    }
+    el.appendChild(wordWrap);
+  });
+
+  return chars;
 }
 
 // ── S1: Hero ──
@@ -47,50 +87,133 @@ function setupHero(isMobile) {
   if (lavaContainer) {
     gsap.set(lavaContainer, { opacity: 0 });
     gsap.to(lavaContainer, {
-      opacity: isMobile ? 0.05 : 0.07,
+      opacity: isMobile ? 0.04 : 0.05,
       duration: 1.2,
       ease: "power2.out",
     });
     try {
-      initLavaLamp("#lava-lamp", isMobile ? { mobile: true } : {});
+      initLavaLamp(
+        "#lava-lamp",
+        isMobile ? { mobile: true, count: 5 } : { count: 12 },
+      );
     } catch (e) {
       console.warn("Lava lamp init failed:", e);
     }
   }
 
+  // Split-text character animation for headlines
   const headlines = heroSection.querySelectorAll(".hero-headline");
   if (headlines.length) {
-    tl.from(headlines, { opacity: 0.01, duration: 0.1, stagger: 0.05 });
-    tl.from(
-      headlines,
-      { y: 40, duration: 0.8, stagger: 0.05, ease: "power4.out" },
-      "<",
-    );
+    const allChars = [];
+    headlines.forEach((hl) => {
+      hl.classList.remove("gsap-hidden");
+      const chars = splitChars(hl);
+      allChars.push(chars);
+    });
+
+    // Line 1: "YOUR BUSINESS OUTGREW" - character cascade
+    if (allChars[0]) {
+      tl.from(allChars[0], {
+        y: 60,
+        opacity: 0,
+        rotateX: -90,
+        filter: "blur(4px)",
+        stagger: 0.02,
+        duration: 0.8,
+        ease: "power4.out",
+      });
+    }
+
+    // Line 2: "YOUR WEBSITE" - character cascade with slight delay
+    if (allChars[1]) {
+      tl.from(
+        allChars[1],
+        {
+          y: 60,
+          opacity: 0,
+          rotateX: -90,
+          filter: "blur(4px)",
+          stagger: 0.02,
+          duration: 0.8,
+          ease: "power4.out",
+        },
+        "-=0.5",
+      );
+    }
+
+    // Line 3: "I BUILD WHAT'S NEXT." - clip-path reveal
+    if (allChars[2]) {
+      const line3 = headlines[2];
+      tl.fromTo(
+        line3,
+        { clipPath: "inset(0 100% 0 0)" },
+        {
+          clipPath: "inset(0 0% 0 0)",
+          duration: 0.8,
+          ease: "power3.inOut",
+        },
+        "-=0.3",
+      );
+    }
   }
 
   const sub = heroSection.querySelector(".hero-sub");
   if (sub) {
-    tl.from(sub, { opacity: 0.01, duration: 0.1 }, "-=0.5");
-    tl.from(sub, { y: 30, duration: 0.7, ease: "power4.out" }, "<");
+    tl.from(
+      sub,
+      { opacity: 0, y: 30, duration: 0.7, ease: "power4.out" },
+      "-=0.3",
+    );
   }
 
   const cta = heroSection.querySelector(".hero-cta");
   if (cta) {
-    tl.from(cta, { opacity: 0.01, duration: 0.1 }, "-=0.4");
-    tl.from(cta, { y: 20, duration: 0.6, ease: "power4.out" }, "<");
+    tl.from(
+      cta,
+      { opacity: 0, y: 20, duration: 0.6, ease: "power4.out" },
+      "-=0.3",
+    );
   }
 
+  // Scroll indicator - auto-hide after 3s or on first scroll
   const indicator = heroSection.querySelector(".scroll-indicator");
   if (indicator) {
-    tl.from(indicator, { opacity: 0.01, duration: 0.1 }, "-=0.2");
-    tl.from(indicator, { y: 10, duration: 0.5, ease: "power2.out" }, "<");
+    tl.from(
+      indicator,
+      { opacity: 0, y: 10, duration: 0.5, ease: "power2.out" },
+      "-=0.2",
+    );
+
+    const hideIndicator = () => {
+      gsap.to(indicator, { opacity: 0, duration: 0.5, ease: "power2.inOut" });
+      window.removeEventListener("scroll", hideIndicator);
+    };
+    window.addEventListener("scroll", hideIndicator, { once: true });
+    gsap.delayedCall(3, hideIndicator);
   }
 }
 
 // ── S3: Services ──
-// No GSAP animations - section is fully static. All content visible on load.
-// Previous pin + fadeUp approach consistently left the Pharallax card invisible.
-function setupServices(isMobile) {}
+function setupServices(isMobile) {
+  const cards = document.querySelectorAll("#services .neu-raised");
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    fadeUp(card, {
+      y: 30,
+      scrollTrigger: { trigger: card, start: "top 85%" },
+    });
+  });
+
+  // Pharallax card link
+  const pharallaxCard = document.querySelector(".pharallax-card");
+  if (pharallaxCard) {
+    fadeUp(pharallaxCard, {
+      y: 30,
+      scrollTrigger: { trigger: pharallaxCard, start: "top 85%" },
+    });
+  }
+}
 
 // ── S7: Booking + Contact ──
 function setupBooking(isMobile) {
@@ -108,16 +231,6 @@ function setupBooking(isMobile) {
     scrollTrigger: { trigger: ".cal-embed-wrapper", start: "top 85%" },
     delay: 0.2,
   });
-
-  // Light pin on booking section so the calendar sticks briefly
-  if (!isMobile) {
-    ScrollTrigger.create({
-      trigger: "#booking",
-      start: "top top",
-      end: "+=60%",
-      pin: true,
-    });
-  }
 
   // Form fades in
   const form = document.querySelector(".contact-form");
@@ -143,20 +256,20 @@ function setupPortfolio(isMobile) {
     scrollTrigger: { trigger: ".portfolio-heading", start: "top 85%" },
   });
 
-  // Each card fades up from a subtle offset with a soft shadow bloom
-  document.querySelectorAll(".portfolio-card").forEach((card) => {
+  // Staggered card reveals with shadow bloom
+  document.querySelectorAll(".portfolio-card").forEach((card, i) => {
     card.classList.remove("gsap-hidden");
 
     gsap.from(card, {
-      y: 30,
+      y: isMobile ? 30 : 50,
       opacity: 0,
-      scale: 0.97,
+      scale: 0.96,
       duration: 1,
       ease: "power3.out",
       scrollTrigger: {
         trigger: card,
-        start: "top 90%",
-        end: "top 60%",
+        start: isMobile ? "top 92%" : "top 85%",
+        end: "top 50%",
         toggleActions: "play none none reverse",
       },
     });
@@ -355,9 +468,14 @@ function setupAbout() {
     delay: 0.2,
   });
 
+  fadeUp(".about-stats", {
+    scrollTrigger: { trigger: ".about-stats", start: "top 90%" },
+    delay: 0.3,
+  });
+
   fadeUp(".about-cta", {
     scrollTrigger: { trigger: ".about-cta", start: "top 90%" },
-    delay: 0.3,
+    delay: 0.4,
   });
 }
 
@@ -387,37 +505,20 @@ function setupReviews() {
     });
   }
 
-  // Stagger reviews, stars 0.05s ahead
-  document.querySelectorAll(".review-item").forEach((item) => {
+  // Stagger reviews with alternating horizontal slides
+  document.querySelectorAll(".review-item").forEach((item, i) => {
     item.classList.remove("gsap-hidden");
 
-    const stars = item.querySelector(".review-stars");
-    const rest = [
-      item.querySelector("blockquote"),
-      item.querySelector("p:last-child"),
-    ].filter(Boolean);
+    const xOffset = i % 2 === 0 ? -30 : 30;
 
-    if (stars) {
-      gsap.from(stars, {
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power4.out",
-        scrollTrigger: { trigger: item, start: "top 85%" },
-      });
-    }
-
-    if (rest.length) {
-      gsap.from(rest, {
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power4.out",
-        delay: 0.05,
-        scrollTrigger: { trigger: item, start: "top 85%" },
-      });
-    }
+    gsap.from(item, {
+      x: xOffset,
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: { trigger: item, start: "top 85%" },
+    });
   });
 
   fadeUp(".reviews-cta", {
@@ -445,3 +546,29 @@ if (document.readyState === "loading") {
 } else {
   start();
 }
+
+// ── Fallback: IntersectionObserver reveal ──
+// ScrollTrigger can miscalculate positions when Lenis + pinned sections
+// are combined. This ensures no element stays permanently invisible.
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.classList.remove("gsap-hidden");
+        el.style.opacity = "1";
+        el.style.visibility = "visible";
+        revealObserver.unobserve(el);
+      }
+    });
+  },
+  { threshold: 0.05, rootMargin: "50px 0px" },
+);
+
+// Observe all gsap-hidden elements after a brief delay
+// to let ScrollTrigger handle them first when it can
+setTimeout(() => {
+  document.querySelectorAll(".gsap-hidden").forEach((el) => {
+    revealObserver.observe(el);
+  });
+}, 500);

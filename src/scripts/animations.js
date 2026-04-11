@@ -36,32 +36,6 @@ export function fadeUp(selector, options = {}) {
 }
 
 /**
- * Text reveal - clip-path or split text effect
- */
-export function textReveal(selector, options = {}) {
-  const {
-    duration = 1.2,
-    ease = "power4.out",
-    delay = 0,
-    scrollTrigger = null,
-  } = options;
-
-  const elements = document.querySelectorAll(selector);
-  if (!elements.length) return null;
-
-  elements.forEach((el) => el.classList.remove("gsap-hidden"));
-
-  return gsap.from(selector, {
-    y: 60,
-    opacity: 0,
-    duration,
-    ease,
-    delay,
-    scrollTrigger,
-  });
-}
-
-/**
  * Lava lamp effect - blobs rise from bottom pool, merge/separate via SVG goo filter
  */
 export function initLavaLamp(containerSelector, options = {}) {
@@ -129,6 +103,22 @@ export function initLavaLamp(containerSelector, options = {}) {
       left: ${gsap.utils.random(10, 90)}%;
       ${mobile ? "" : "will-change: transform;"}
     `;
+
+    // Inner highlight for spherical look - survives the goo filter
+    const hlSize = size * 0.45;
+    const hl = document.createElement("div");
+    hl.style.cssText = `
+      position: absolute;
+      width: ${hlSize}px;
+      height: ${hlSize}px;
+      border-radius: 50%;
+      background: hsl(${hue}, 100%, 55%);
+      top: 15%;
+      left: 18%;
+    `;
+    blob.appendChild(hl);
+    allEls.push(hl);
+
     container.appendChild(blob);
     blobs.push(blob);
     allEls.push(blob);
@@ -179,6 +169,21 @@ export function initLavaLamp(containerSelector, options = {}) {
       left: ${gsap.utils.random(15, 85)}%;
       ${mobile ? "" : "will-change: transform;"}
     `;
+
+    const hlSize = size * 0.45;
+    const hl = document.createElement("div");
+    hl.style.cssText = `
+      position: absolute;
+      width: ${hlSize}px;
+      height: ${hlSize}px;
+      border-radius: 50%;
+      background: hsl(${hue}, 100%, 55%);
+      top: 15%;
+      left: 18%;
+    `;
+    blob.appendChild(hl);
+    allEls.push(hl);
+
     container.appendChild(blob);
     allEls.push(blob);
 
@@ -191,95 +196,6 @@ export function initLavaLamp(containerSelector, options = {}) {
       el.remove();
     });
   };
-}
-
-/**
- * Horizontal curtain wipe reveal via clip-path
- */
-export function curtainWipe(selector, options = {}) {
-  const {
-    direction = "left-to-right",
-    duration = 1,
-    ease = "power3.inOut",
-    scrollTrigger = null,
-  } = options;
-
-  const elements = document.querySelectorAll(selector);
-  if (!elements.length) return null;
-
-  elements.forEach((el) => el.classList.remove("gsap-hidden"));
-
-  const from =
-    direction === "left-to-right" ? "inset(0 100% 0 0)" : "inset(0 0 0 100%)";
-  const to = "inset(0 0% 0 0)";
-
-  return gsap.fromTo(
-    selector,
-    { clipPath: from },
-    {
-      clipPath: to,
-      duration,
-      ease,
-      scrollTrigger,
-    },
-  );
-}
-
-/**
- * Slide in text from off-screen (for oversized headers)
- */
-export function slideInText(selector, options = {}) {
-  const {
-    from = "left",
-    duration = 0.5,
-    ease = "power4.out",
-    scrollTrigger = null,
-  } = options;
-
-  const elements = document.querySelectorAll(selector);
-  if (!elements.length) return null;
-
-  elements.forEach((el) => el.classList.remove("gsap-hidden"));
-
-  const xFrom = from === "left" ? -window.innerWidth : window.innerWidth;
-
-  return gsap.from(selector, {
-    x: xFrom,
-    duration,
-    ease,
-    force3D: true,
-    scrollTrigger,
-  });
-}
-
-/**
- * Magnetic assemble - cards fly from scattered positions to grid
- */
-export function magneticAssemble(selector, options = {}) {
-  const {
-    spread = 1,
-    duration = 1.4,
-    stagger = 0.07,
-    ease = "elastic.out(1, 0.55)",
-    scrollTrigger = null,
-  } = options;
-
-  const elements = document.querySelectorAll(selector);
-  if (!elements.length) return null;
-
-  elements.forEach((el) => el.classList.remove("gsap-hidden"));
-
-  return gsap.from(selector, {
-    x: () => `random(${-300 * spread}, ${300 * spread})`,
-    y: () => `random(${-400 * spread}, ${400 * spread})`,
-    rotation: () => `random(-45, 45)`,
-    scale: () => 0.3 + Math.random() * 0.15,
-    opacity: 0,
-    duration,
-    stagger,
-    ease,
-    scrollTrigger,
-  });
 }
 
 /**
