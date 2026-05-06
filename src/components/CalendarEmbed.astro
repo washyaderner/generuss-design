@@ -10,8 +10,8 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
   class="cal-embed-wrapper gsap-hidden relative flex flex-col rounded-2xl overflow-hidden neu-raised bg-bg-secondary h-[452px] md:h-[572px]"
   data-lenis-prevent
 >
-  <!-- Click-to-reveal placeholder -->
-  <div id="cal-placeholder" class="absolute inset-0 z-30 cursor-pointer group">
+  <!-- Click-to-reveal trigger image -->
+  <div id="cal-trigger" class="absolute inset-0 z-30 cursor-pointer group">
     <img
       src="/images/cal-placeholder.webp"
       alt="Calendar preview showing available booking times"
@@ -117,21 +117,22 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    class="text-accent underline hover:no-underline">schedule directly here</a
+    class="text-accent underline hover:no-underline inline-flex items-center min-h-[44px] py-2"
+    >schedule directly here</a
   >.
 </p>
 
 <script define:vars={{ url }}>
   (function () {
-    var placeholder = document.getElementById("cal-placeholder");
+    var calSlot = document.getElementById("cal-trigger");
     var iframe = document.getElementById("cal-iframe");
     var skeleton = document.getElementById("cal-skeleton");
 
-    if (!placeholder || !iframe) return;
+    if (!calSlot || !iframe) return;
 
-    placeholder.addEventListener("click", function () {
-      // Hide placeholder, show skeleton
-      placeholder.style.display = "none";
+    calSlot.addEventListener("click", function () {
+      // Hide trigger, show loading state
+      calSlot.style.display = "none";
       if (skeleton) skeleton.style.display = "";
 
       // Load iframe

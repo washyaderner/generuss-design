@@ -32,3 +32,6 @@ scratchpad.md
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Claude Code session-local settings (machine-specific paths, do not share)
+.claude/settings.local.json
