@@ -192,7 +192,7 @@ Remove the Cal.com embed entirely. Replace with a styled CTA button linking to t
     target="_blank"
     rel="noopener"
     class="inline-flex items-center gap-2 px-8 py-4 bg-accent text-[#0C0C0C] font-bold rounded-xl
-           hover:shadow-[0_0_20px_rgba(0,255,239,0.4)] transition-all duration-300"
+           hover:shadow-[0_0_20px_rgba(0,255,239,0.4)] transition-[box-shadow,transform] duration-300"
   >
     Book a Discovery Call →
   </a>

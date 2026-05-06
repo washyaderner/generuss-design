@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 5-Site Teardown | generuss design</title>
+  <meta name="description" content="What's broken on five real service-business websites, and the exact fixes to beat them. From generuss design.">
+  <meta property="og:title" content="The 5-Site Teardown">
+  <meta property="og:description" content="What's broken on five real service-business websites, and the exact fixes to beat them.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <style>
+    :root {
+      --bg: #0d0d10;
+      --bg-2: #16161a;
+      --bg-3: #1e1e24;
+      --text: #e8e8e8;
+      --text-muted: #8e8e98;
+      --text-dim: #555568;
+      --accent: #00ffef;
+      --accent-dim: rgba(0, 255, 239, 0.15);
+      --accent-mid: rgba(0, 255, 239, 0.4);
+      --border: #222;
+      --red: #ff4d6a;
+      --green: #4dff91;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+    }
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 760px; margin: 0 auto; padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar a { color: var(--text); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .topbar a span.dot { color: var(--accent); }
+    .topbar .back { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
+    .topbar .back:hover { color: var(--accent); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .eyebrow::before { content: ""; display: block; height: 1px; width: 2rem; background: var(--accent); opacity: 0.6; }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+    h1 span { color: var(--accent); }
+    .lede {
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      max-width: 56ch;
+    }
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 4rem 0 1rem;
+      line-height: 1.15;
+    }
+    h2 .num { color: var(--accent); font-family: ui-monospace, monospace; font-size: 0.55em; vertical-align: 0.4em; margin-right: 0.5em; opacity: 0.6; }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 1.5rem 0 0.5rem;
+    }
+    p { margin-bottom: 1rem; max-width: 64ch; }
+    p.muted { color: var(--text-muted); }
+    .card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .card h3 { margin-top: 0; }
+    .card .meta {
+      font-family: ui-monospace, monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+    .row .col {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+    }
+    .row .col h4 {
+      font-family: ui-monospace, monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.4rem;
+    }
+    .row .col.problem h4 { color: var(--red); }
+    .row .col.fix h4 { color: var(--green); }
+    .row .col p { font-size: 0.92rem; margin: 0; }
+    ul { margin: 0.5rem 0 1.25rem 1.25rem; }
+    ul li { margin-bottom: 0.4rem; color: var(--text-muted); font-size: 0.95rem; }
+    ul li strong { color: var(--text); font-weight: 600; }
+    .cta {
+      margin-top: 4rem;
+      padding: 2rem;
+      background: var(--bg-2);
+      border: 1px solid var(--accent);
+      border-radius: 1.5rem;
+      text-align: center;
+    }
+    .cta h2 { margin: 0 0 0.75rem; font-size: 1.5rem; }
+    .cta p { margin: 0 auto 1.5rem; color: var(--text-muted); font-size: 0.95rem; max-width: 50ch; }
+    .cta a {
+      display: inline-block;
+      background: var(--accent);
+      color: #0c0c0c;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      min-height: 44px;
+      line-height: 1.4;
+    }
+    .cta a:hover { box-shadow: 0 0 30px var(--accent-mid); }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 4rem 0; }
+    .signoff {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .signoff p { font-size: 0.85rem; }
+    .signoff strong { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <a href="/"><span>generuss</span><span class="dot">.</span></a>
+    <a class="back" href="/">&larr; back to home</a>
+  </div>
+
+  <main class="wrap">
+    <p class="eyebrow">The 5-site teardown</p>
+    <h1>What's <span>broken</span> on your competitors' sites. And how to beat them.</h1>
+    <p class="lede">Most service-business websites lose more deals than they close. Below are five recurring patterns I see audit after audit, with the exact fix for each. Pick the one your site is doing right now and ship the fix this week.</p>
+
+    <h2><span class="num">01</span>The hero says nothing in five seconds</h2>
+    <p>If a cold visitor can't tell what you do and who it's for in the first viewport, they bounce. The bounce happens before they ever read your copy. They scroll once, fail to anchor on anything, and close the tab.</p>
+    <div class="row">
+      <div class="col problem">
+        <h4>What it looks like</h4>
+        <p>"Welcome." "We help businesses grow." "Empowering your future." Stock hero photo of a smiling team. Logo only, no headline. Or a 12-word headline split across 4 lines.</p>
+      </div>
+      <div class="col fix">
+        <h4>The fix</h4>
+        <p>One sentence in the hero: who it's for + what they get + a specific number (timeline, price, outcome). Five-second test: cover the page, uncover, count to five, look away. Did you get it? If no, rewrite.</p>
+      </div>
+    </div>
+    <p class="muted">Cost of getting this wrong: 30-60% of qualified traffic bouncing before they reach your offer.</p>
+
+    <h2><span class="num">02</span>The CTA isn't a CTA, it's a wish</h2>
+    <p>"Learn more." "Get in touch." "Contact us." These aren't calls to action, they're suggestions that someone consider acting. The visitor needs to know what happens when they click.</p>
+    <div class="row">
+      <div class="col problem">
+        <h4>What it looks like</h4>
+        <p>Three identical-looking buttons in the nav, hero, and footer all saying "Contact." Or a single tiny "Get a quote" link buried at the bottom. Or worse: a Calendly that opens to a 3-step form.</p>
+      </div>
+      <div class="col fix">
+        <h4>The fix</h4>
+        <p>One primary CTA repeated everywhere with the same verb and the same outcome. "Book a 30-minute audit." "Get a fixed-scope quote in 24h." Specific, time-bound, low-friction. Repeat it 4-6 times down the page, never different copy.</p>
+      </div>
+    </div>
+    <p class="muted">Cost of getting this wrong: visitors who liked your work but didn't know how to start working with you.</p>
+
+    <h2><span class="num">03</span>No proof above the fold</h2>
+    <p>Trust is binary above the fold. You either earn it in the first scroll or you start every section after that defending against doubt. Most sites bury all proof in section 5 (testimonials), 7 (logos), and 9 (case studies). By then half the visitors are already gone.</p>
+    <div class="row">
+      <div class="col problem">
+        <h4>What it looks like</h4>
+        <p>Hero, then "Our Process," then "Our Services," then maybe at the bottom a couple anonymous quotes attributed to "Sarah M., Business Owner." Real testimonials a click away in a separate "Reviews" page nobody visits.</p>
+      </div>
+      <div class="col fix">
+        <h4>The fix</h4>
+        <p>One proof element in the hero or directly under it. Star rating with a specific number ("5.0 from 12 named clients"). Two or three named-client chips. A specific outcome stat. Proof BEFORE problem-agitation, not after.</p>
+      </div>
+    </div>
+    <p class="muted">Cost of getting this wrong: every claim you make later reads as marketing copy instead of fact.</p>
+
+    <h2><span class="num">04</span>The page sells "us" instead of selling "you"</h2>
+    <p>Most service business sites are about themselves. "About us." "Our team." "Our values." "Our approach." The visitor came to solve their problem. The site keeps describing the seller's identity. They leave.</p>
+    <div class="row">
+      <div class="col problem">
+        <h4>What it looks like</h4>
+        <p>About section before the offer section. Origin story before the deliverables list. Long sections describing what makes you different without mapping it to what the visitor wants. "We were founded in 2014..." opens before the visitor knows what's in it for them.</p>
+      </div>
+      <div class="col fix">
+        <h4>The fix</h4>
+        <p>Outcome first, mechanism second, identity last. Hero outcome → problem agitation → offer with deliverables → proof → process → about → close. The "about" section earns its place AFTER the visitor decides they want what you sell. Cut it by half from whatever it currently is.</p>
+      </div>
+    </div>
+    <p class="muted">Cost of getting this wrong: visitors learn who you are but never learn whether you can solve their problem.</p>
+
+    <h2><span class="num">05</span>No risk reversal anywhere</h2>
+    <p>The best-converting service-business pages name an objection and answer it directly. Not vaguely ("satisfaction guaranteed") but specifically ("Lighthouse 90+ at launch or you don't pay"). Most service sites pretend objections don't exist. They do.</p>
+    <div class="row">
+      <div class="col problem">
+        <h4>What it looks like</h4>
+        <p>No money-back. No refund. No specific outcome guarantee. Vague references to "professionalism" and "quality." A hidden Terms of Service that says "no refunds, all sales final."</p>
+      </div>
+      <div class="col fix">
+        <h4>The fix</h4>
+        <p>One real, defensible guarantee surfaced visually right before the booking section. Make it specific to a measurable outcome you can back. "X or you don't pay." "X within Y or it's free." If you can't back ANY guarantee, your offer needs work.</p>
+      </div>
+    </div>
+    <p class="muted">Cost of getting this wrong: high-intent visitors who reached the bottom of the page but couldn't justify the leap to "Book a Call."</p>
+
+    <hr>
+
+    <h2>How to use this</h2>
+    <p>Pick the ONE pattern your current site is most guilty of. Ship the fix this week. If you can't see the issue clearly, the test is simple: open your homepage in incognito, set a 5-second timer, and try to answer:</p>
+    <ul>
+      <li><strong>What is it?</strong></li>
+      <li><strong>Who is it for?</strong></li>
+      <li><strong>Why should I care?</strong></li>
+      <li><strong>Why is it credible?</strong></li>
+      <li><strong>What do I get?</strong></li>
+      <li><strong>What's the next step?</strong></li>
+    </ul>
+    <p>If you can't answer four out of six in five seconds, the problem is structural, not cosmetic. No amount of design polish will fix it.</p>
+
+    <div class="cta">
+      <h2>Want me to do this for you?</h2>
+      <p>I run a 30-minute audit live on a call, then send you the three highest-leverage fixes specific to your site. Whether or not we work together. No deck, no pitch.</p>
+      <a href="/#booking">Book a discovery call &rarr;</a>
+    </div>
+
+    <div class="signoff">
+      <p><strong>Russ Garner</strong> / generuss design / russ@generuss.com</p>
+      <p>Custom websites that close leads while you sleep. Hand-built in 21 days. Lighthouse 90+ at launch or you don't pay.</p>
+    </div>
+  </main>
+
+</body>
+</html>

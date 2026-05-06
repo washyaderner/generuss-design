@@ -3,34 +3,60 @@ interface Props {
   alwaysVisible?: boolean;
 }
 
+// alwaysVisible was the legacy gate. Keeping the prop for blog pages but ignoring it on the main page.
+// Per Akki + Jack feedback: nav must be visible on first paint with logo, no scroll-gated reveal.
 const { alwaysVisible = false } = Astro.props;
 ---
 
 <nav
   id="site-nav"
-  class:list={[
-    "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-    "backdrop-blur-md bg-bg/70 border-b border-border/50",
-    { "opacity-0 -translate-y-full": !alwaysVisible },
-  ]}
+  class="fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 backdrop-blur-md bg-bg/80 border-b border-border/50"
   style={`padding-top: env(safe-area-inset-top, 0px);`}
   aria-label="Main navigation"
+  data-always-visible={alwaysVisible ? "true" : "false"}
 >
-  <div class="flex items-center justify-between px-8 sm:px-12 lg:px-20 h-16">
-    <!-- Logo -->
+  <div class="flex items-center justify-between px-6 sm:px-10 lg:px-16 h-16">
+    <!-- Logo (always visible above the fold) -->
     <a
       href="/"
-      class="text-lg font-bold text-text hover:text-accent transition-colors duration-200"
+      class="inline-flex items-center gap-2 text-text hover:text-accent transition-colors duration-200 group min-h-[44px] py-2"
+      aria-label="generuss design - home"
     >
-      generuss<span class="text-accent">.</span>
+      <svg
+        viewBox="0 0 32 32"
+        width="28"
+        height="28"
+        class="shrink-0"
+        aria-hidden="true"
+      >
+        <rect width="32" height="32" rx="6" fill="#1A1A1E"></rect>
+        <text
+          x="4"
+          y="26"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="28"
+          font-weight="900"
+          fill="currentColor"
+          class="text-text group-hover:text-accent transition-colors">g</text
+        >
+        <circle cx="24" cy="24" r="3" fill="#00FFEF"></circle>
+      </svg>
+      <span class="text-lg font-bold tracking-tight"
+        >generuss<span class="text-accent">.</span></span
+      >
     </a>
 
     <!-- Desktop Links -->
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden md:flex items-center gap-7">
       <a
         href="/#portfolio"
         class="nav-link text-sm text-text-muted hover:text-text transition-colors duration-200"
         >Work</a
+      >
+      <a
+        href="/#offer"
+        class="nav-link text-sm text-text-muted hover:text-text transition-colors duration-200"
+        >Offer</a
       >
       <a
         href="/#about"
@@ -44,17 +70,17 @@ const { alwaysVisible = false } = Astro.props;
       >
       <a
         href="/#booking"
-        class="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+        class="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
       >
         Book a Call
       </a>
     </div>
 
     <!-- Mobile: CTA + Hamburger -->
-    <div class="flex items-center gap-4 md:hidden">
+    <div class="flex items-center gap-3 md:hidden">
       <a
         href="/#booking"
-        class="rounded-full bg-accent px-4 py-1.5 text-xs font-semibold text-[#0C0C0C]"
+        class="rounded-full bg-accent px-4 py-2 text-xs font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center"
       >
         Book a Call
       </a>
@@ -68,13 +94,13 @@ const { alwaysVisible = false } = Astro.props;
       >
         <span class="hamburger-bars relative block h-5 w-6">
           <span
-            class="absolute left-0 top-0 h-0.5 w-full bg-text transition-all duration-200"
+            class="absolute left-0 top-0 h-0.5 w-full bg-text transition-[transform,opacity] duration-200"
           ></span>
           <span
-            class="absolute left-0 top-[9px] h-0.5 w-full bg-text transition-all duration-200"
+            class="absolute left-0 top-[9px] h-0.5 w-full bg-text transition-[transform,opacity] duration-200"
           ></span>
           <span
-            class="absolute left-0 bottom-0 h-0.5 w-full bg-text transition-all duration-200"
+            class="absolute left-0 bottom-0 h-0.5 w-full bg-text transition-[transform,opacity] duration-200"
           ></span>
         </span>
       </button>
@@ -96,6 +122,11 @@ const { alwaysVisible = false } = Astro.props;
       >Work</a
     >
     <a
+      href="/#offer"
+      class="mobile-nav-link text-2xl font-semibold text-text hover:text-accent transition-colors"
+      >Offer</a
+    >
+    <a
       href="/#about"
       class="mobile-nav-link text-2xl font-semibold text-text hover:text-accent transition-colors"
       >About</a
@@ -107,7 +138,7 @@ const { alwaysVisible = false } = Astro.props;
     >
     <a
       href="/#booking"
-      class="mt-4 rounded-full bg-accent px-8 py-3 text-lg font-semibold text-[#0C0C0C]"
+      class="mt-4 rounded-full bg-accent px-8 py-3 text-lg font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center"
     >
       Book a Call
     </a>
@@ -119,7 +150,6 @@ const { alwaysVisible = false } = Astro.props;
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
   const mobileLinks = mobileMenu?.querySelectorAll("a");
-  const isAlwaysVisible = nav?.classList.contains("opacity-0") === false;
 
   // Mobile menu toggle (no GSAP needed)
   function openMenu() {
@@ -170,64 +200,51 @@ const { alwaysVisible = false } = Astro.props;
     }
   });
 
-  // Scroll-based show/hide + active section tracking (main page only)
-  // Dynamically import GSAP so blog pages don't pay the ~45KB gzip cost
-  if (!isAlwaysVisible && nav) {
-    import("gsap").then(({ gsap }) => {
-      import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
-        gsap.registerPlugin(ScrollTrigger);
+  // Nav is always visible from first paint now (per conversion-funnel rebuild).
+  // Lightweight scroll-state toggle adds extra shadow + opacity when scrolled past the hero.
+  // Active section tracking via IntersectionObserver - no GSAP/ScrollTrigger needed.
+  if (nav) {
+    // Stronger backdrop after scrolling past first viewport
+    let scrolled = false;
+    const updateScrollState = () => {
+      const isScrolled = window.scrollY > 80;
+      if (isScrolled !== scrolled) {
+        scrolled = isScrolled;
+        nav.classList.toggle("shadow-[0_4px_20px_rgba(0,0,0,0.5)]", isScrolled);
+        nav.classList.toggle("bg-bg/95", isScrolled);
+        nav.classList.toggle("bg-bg/80", !isScrolled);
+      }
+    };
+    window.addEventListener("scroll", updateScrollState, { passive: true });
 
-        const showNav = () => {
-          nav.classList.remove("opacity-0", "-translate-y-full");
-        };
-        const hideNav = () => {
-          nav.classList.add("opacity-0", "-translate-y-full");
-        };
+    // Active section tracking (lightweight, no GSAP)
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = ["portfolio", "offer", "about"];
 
-        ScrollTrigger.create({
-          trigger: "#hero",
-          start: "bottom top+=100",
-          onEnter: showNav,
-          onLeaveBack: hideNav,
-        });
-
-        // Active section tracking
-        const navLinks = document.querySelectorAll(".nav-link");
-        const sections = ["portfolio", "about"];
-
-        function setActive(id: string) {
-          navLinks.forEach((link) => {
-            if (link.getAttribute("href")?.includes(id)) {
-              link.classList.add("text-accent");
-              link.classList.remove("text-text-muted");
-            }
-          });
-        }
-
-        function clearActive(id: string) {
-          navLinks.forEach((link) => {
-            if (link.getAttribute("href")?.includes(id)) {
-              link.classList.remove("text-accent");
-              link.classList.add("text-text-muted");
-            }
-          });
-        }
-
-        sections.forEach((id) => {
-          const section = document.getElementById(id);
-          if (!section) return;
-
-          ScrollTrigger.create({
-            trigger: section,
-            start: "top center",
-            end: "bottom center",
-            onEnter: () => setActive(id),
-            onEnterBack: () => setActive(id),
-            onLeave: () => clearActive(id),
-            onLeaveBack: () => clearActive(id),
-          });
-        });
+    const setActive = (id: string) => {
+      navLinks.forEach((link) => {
+        const isMatch = link.getAttribute("href")?.includes(id);
+        link.classList.toggle("text-accent", isMatch);
+        link.classList.toggle("text-text-muted", !isMatch);
       });
-    });
+    };
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -55% 0px" },
+      );
+
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) sectionObserver.observe(section);
+      });
+    }
   }
 </script>
