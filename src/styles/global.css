@@ -59,14 +59,122 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── GSAP Hidden (initial state for animated elements) ── */
+/* Mobile: enforce 16px minimum to prevent iOS zoom + readability fail */
+@media (max-width: 639px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* ── Scroll-margin so anchor jumps don't hide under sticky nav (in @layer base for Tailwind v4) ── */
+@layer base {
+  section[id],
+  div[id="hero"],
+  div[id="proof"],
+  div[id="problem-solution"],
+  div[id="portfolio"],
+  div[id="offer"],
+  div[id="process"],
+  div[id="reviews"],
+  div[id="about"],
+  div[id="guarantee"],
+  div[id="booking"],
+  div[id="contact"] {
+    scroll-margin-top: 88px;
+  }
+
+  /* Heading micro-tightening (T1: large headings get negative letter-spacing) */
+  h1,
+  h2 {
+    letter-spacing: -0.025em;
+  }
+  h3 {
+    letter-spacing: -0.015em;
+  }
+}
+
+/* ── Elevation utility set (top-level so cssRules iteration finds them per pilot-qa P1) ── */
+.elevation-1 {
+  box-shadow:
+    2px 2px 6px rgba(0, 0, 0, 0.5),
+    -1px -1px 3px rgba(255, 255, 255, 0.03);
+}
+
+.elevation-2 {
+  box-shadow:
+    4px 4px 12px rgba(0, 0, 0, 0.7),
+    -2px -2px 6px rgba(255, 255, 255, 0.04);
+}
+
+.elevation-3 {
+  box-shadow:
+    8px 8px 20px rgba(0, 0, 0, 0.8),
+    -4px -4px 12px rgba(255, 255, 255, 0.06);
+}
+
+.elevation-glow {
+  box-shadow:
+    8px 8px 20px rgba(0, 0, 0, 0.8),
+    -4px -4px 12px rgba(255, 255, 255, 0.06),
+    0 0 30px var(--color-accent-dim);
+}
+
+/* ── GSAP Hidden (legacy class - now only sets a transform, visible by default) ── */
+/* Was opacity:0+visibility:hidden; that hid all below-fold content for 1.5s on every load. */
+/* Now: subtle translate so reveal animation still has a "from" state, but pixels are visible. */
 .gsap-hidden {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Hero CSS-only entrance (runs before JS loads, no gating) ── */
+/* Hero text + image are visible from first paint with a quick fade-up. */
+.hero-enter {
+  animation: hero-enter 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-enter-1 {
+  animation-delay: 0ms;
+}
+.hero-enter-2 {
+  animation-delay: 80ms;
+}
+.hero-enter-3 {
+  animation-delay: 160ms;
+}
+.hero-enter-4 {
+  animation-delay: 240ms;
+}
+.hero-enter-5 {
+  animation-delay: 320ms;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .hero-enter-1,
+  .hero-enter-2,
+  .hero-enter-3,
+  .hero-enter-4,
+  .hero-enter-5 {
+    animation: none;
+  }
 }
 
 /* ── Burn Animation Characters ── */

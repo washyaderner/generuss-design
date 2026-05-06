@@ -6,92 +6,152 @@ const year = new Date().getFullYear();
   class="border-t border-border px-8 sm:px-12 lg:px-20 py-12"
   style={`padding-bottom: max(3rem, env(safe-area-inset-bottom, 0px));`}
 >
-  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-4">
     <!-- Brand -->
-    <div>
-      <a href="/" class="text-lg font-bold text-text">
-        generuss<span class="text-accent">.</span>
+    <nav
+      class="footer-column col-span-2 sm:col-span-2 lg:col-span-1"
+      aria-label="Brand"
+    >
+      <a href="/" class="flex items-center gap-2 text-lg font-bold text-text">
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#1A1A1E"></rect>
+          <text
+            x="4"
+            y="26"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="28"
+            font-weight="900"
+            fill="currentColor">g</text
+          >
+          <circle cx="24" cy="24" r="3" fill="#00FFEF"></circle>
+        </svg>
+        <span>generuss<span class="text-accent">.</span></span>
       </a>
-      <p class="mt-2 text-sm text-text-muted">AI Automation & Web Design</p>
-    </div>
+      <p class="mt-3 text-sm text-text-muted leading-relaxed max-w-xs">
+        Custom websites that close leads while you sleep. Hand-built in 21 days.
+      </p>
+      <p class="mt-3 text-xs text-text-muted/70 font-mono">
+        Lighthouse 90+ at launch or you don't pay.
+      </p>
+    </nav>
 
-    <!-- Nav -->
-    <div>
-      <h3 class="mb-3 text-sm font-semibold text-text">Navigate</h3>
+    <!-- Site Nav -->
+    <nav class="footer-column" aria-label="Site sections">
+      <h3 class="mb-3 text-sm font-semibold text-text">Site</h3>
       <ul class="space-y-2">
         <li>
           <a
             href="/"
-            class="text-sm text-text-muted hover:text-text transition-colors"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
             >Home</a
           >
         </li>
         <li>
           <a
             href="/#portfolio"
-            class="text-sm text-text-muted hover:text-text transition-colors"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
             >Work</a
           >
         </li>
         <li>
           <a
+            href="/#offer"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
+            >Offer</a
+          >
+        </li>
+        <li>
+          <a
             href="/#about"
-            class="text-sm text-text-muted hover:text-text transition-colors"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
             >About</a
           >
         </li>
         <li>
           <a
             href="/blog"
-            class="text-sm text-text-muted hover:text-text transition-colors"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
             >Blog</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Services / Offer -->
+    <nav class="footer-column" aria-label="Services">
+      <h3 class="mb-3 text-sm font-semibold text-text">Services</h3>
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="/#offer"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
+            >Custom website builds</a
           >
         </li>
         <li>
           <a
-            href="/#booking"
-            class="text-sm text-text-muted hover:text-accent transition-colors"
+            href="/#offer"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
+            >Conversion engineering</a
           >
-            Book a Call
-          </a>
+        </li>
+        <li>
+          <a
+            href="https://pharallax.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
+            >Pharallax strategic AI</a
+          >
+        </li>
+        <li>
+          <a
+            href="/connect"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
+            >Connect</a
+          >
         </li>
       </ul>
-    </div>
+    </nav>
 
     <!-- Connect -->
-    <div>
-      <h3 class="mb-3 text-sm font-semibold text-text">Connect</h3>
+    <nav class="footer-column" aria-label="Get in touch">
+      <h3 class="mb-3 text-sm font-semibold text-text">Get in touch</h3>
       <ul class="space-y-2">
+        <li>
+          <a
+            href="/#booking"
+            class="block py-2 text-sm text-accent hover:text-text transition-colors font-semibold min-h-[44px] inline-flex items-center"
+            >Book a discovery call</a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:russ@generuss.com"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
+            >russ@generuss.com</a
+          >
+        </li>
         <li>
           <a
             href="https://github.com/washyaderner"
             target="_blank"
-            rel="noopener"
-            class="text-sm text-text-muted hover:text-text transition-colors"
+            rel="noopener noreferrer"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
+            >GitHub</a
           >
-            GitHub
-          </a>
         </li>
         <li>
           <a
             href="https://x.com/generussai"
             target="_blank"
-            rel="noopener"
-            class="text-sm text-text-muted hover:text-text transition-colors"
+            rel="noopener noreferrer"
+            class="block py-2 text-sm text-text-muted hover:text-text transition-colors min-h-[44px] inline-flex items-center"
+            >X / Twitter</a
           >
-            X / Twitter
-          </a>
-        </li>
-        <li>
-          <a
-            href="mailto:russ@generuss.com"
-            class="text-sm text-text-muted hover:text-text transition-colors"
-          >
-            russ@generuss.com
-          </a>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
 
   <div class="mt-10 border-t border-border pt-6 text-center">
