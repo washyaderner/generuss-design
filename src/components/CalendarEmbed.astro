@@ -114,6 +114,7 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
 <!-- Fallback link -->
 <p class="text-text-muted text-sm text-center mt-4">
   If the calendar doesn't load, <a
+    id="cal-fallback-link"
     href={url}
     target="_blank"
     rel="noopener noreferrer"
@@ -127,17 +128,58 @@ const { url = "https://app.cal.com/generuss/discovery-call" } = Astro.props;
     var calSlot = document.getElementById("cal-trigger");
     var iframe = document.getElementById("cal-iframe");
     var skeleton = document.getElementById("cal-skeleton");
+    var fallback = document.getElementById("cal-fallback-link");
 
     if (!calSlot || !iframe) return;
+
+    // Forward UTM attribution into the booking. Query string wins; sessionStorage
+    // is a fallback so attribution survives in-session navigation. No UTMs present
+    // (e.g. the homepage) means this is a no-op and the URL is unchanged.
+    function collectUtms() {
+      var keys = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+      ];
+      var params = new URLSearchParams(window.location.search);
+      var pairs = [];
+      keys.forEach(function (k) {
+        var v = params.get(k);
+        if (!v) {
+          try {
+            v = sessionStorage.getItem(k);
+          } catch (e) {
+            v = null;
+          }
+        }
+        if (v) pairs.push(k + "=" + encodeURIComponent(v));
+      });
+      return pairs;
+    }
+
+    function withParams(base, extra) {
+      if (!extra.length) return base;
+      var sep = base.indexOf("?") === -1 ? "?" : "&";
+      return base + sep + extra.join("&");
+    }
+
+    var utms = collectUtms();
+
+    // Keep the manual fallback link attributed too.
+    if (fallback) fallback.href = withParams(url, utms);
 
     calSlot.addEventListener("click", function () {
       // Hide trigger, show loading state
       calSlot.style.display = "none";
       if (skeleton) skeleton.style.display = "";
 
-      // Load iframe
+      // Load iframe (mobile trims event-type details; UTMs ride along if present)
       var isMobile = window.innerWidth < 640;
-      var embedUrl = url + (isMobile ? "?hideEventTypeDetails=true" : "");
+      var extra = utms.slice();
+      if (isMobile) extra.unshift("hideEventTypeDetails=true");
+      var embedUrl = withParams(url, extra);
       iframe.src = embedUrl;
 
       iframe.addEventListener("load", function () {
