@@ -1,0 +1,760 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import CalendarEmbed from "../components/CalendarEmbed.astro";
+
+// Reuse the live form infra (Formspree) already used on the homepage.
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+---
+
+<BaseLayout
+  title="Websites for Oregon Ghost Conference Vendors | Generuss Design"
+  description="I built the Oregon Ghost Conference website. Custom sites for OGC vendors and speakers, from $500 with 20% off. Live in 21 days, you own everything, free hosting."
+>
+  <Nav />
+
+  <main id="main-content">
+    <!-- ===== HERO: proof-first ===== -->
+    <section
+      id="hero"
+      class="relative flex min-h-screen min-h-[100dvh] items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-24 pb-12 lg:pt-28"
+    >
+      <div
+        class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center w-full max-w-7xl mx-auto"
+      >
+        <!-- LEFT -->
+        <div class="lg:col-span-7 xl:col-span-7">
+          <span
+            class="hero-enter hero-enter-1 inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+          >
+            <span
+              class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+            ></span>
+            For Oregon Ghost Conference vendors and speakers
+          </span>
+          <h1
+            class="hero-enter hero-enter-2 text-balance text-[2.4rem] sm:text-[3.1rem] md:text-[3.6rem] lg:text-[3.9rem] xl:text-[4.3rem] font-black tracking-[-0.03em] leading-[1.03] text-text"
+          >
+            I built the
+            <span class="text-accent glow-text">Oregon Ghost Conference</span>
+            website.
+          </h1>
+          <p
+            class="hero-enter hero-enter-3 mt-6 text-pretty text-lg sm:text-xl md:text-[1.3rem] text-text-muted leading-relaxed max-w-2xl"
+          >
+            You just came from it, so you already know what I do. Fast, custom
+            sites that make a small business look like the real thing. I know
+            the paranormal and metaphysical community, which means I understand
+            your business better than most web designers ever will.
+          </p>
+
+          <!-- Compact offer line -->
+          <p
+            class="hero-enter hero-enter-4 mt-6 text-base sm:text-lg text-text leading-relaxed max-w-2xl"
+          >
+            Custom websites from <span class="font-semibold text-text"
+              >$500</span
+            >. OGC vendors and speakers get <span
+              class="text-accent font-semibold">20% off</span
+            > the first build. Hosting is free and the site is yours to keep.
+          </p>
+
+          <div
+            class="hero-enter hero-enter-4 mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          >
+            <a
+              href="#booking"
+              class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+            >
+              Book a Call &rarr;
+            </a>
+            <a
+              href="#offer"
+              class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+            >
+              See the Offer
+            </a>
+          </div>
+
+          <!-- Proof strip -->
+          <div
+            class="hero-enter hero-enter-5 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs sm:text-sm text-text-muted"
+          >
+            <div class="flex items-center gap-1.5">
+              <span class="text-accent text-base leading-none tracking-tight"
+                >&#9733;&#9733;&#9733;&#9733;&#9733;</span
+              >
+              <span class="font-mono text-text">5.0</span>
+              <span class="text-text-muted/70">from named clients</span>
+            </div>
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              ><span class="text-text font-semibold">12+</span> sites shipped</span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              ><span class="text-text font-semibold">$0/mo</span> hosting</span
+            >
+          </div>
+        </div>
+
+        <!-- RIGHT: OGC screenshot in browser chrome + overlapping phone -->
+        <div
+          class="hero-enter hero-enter-3 lg:col-span-5 xl:col-span-5 relative"
+        >
+          <div class="relative">
+            <!-- Desktop screenshot -->
+            <div class="neu-raised rounded-2xl overflow-hidden bg-bg-secondary">
+              <div
+                class="flex items-center gap-1.5 px-3 py-2 bg-[#0a0a0d] border-b border-border/50"
+              >
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3c]"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3c]"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3c]"></span>
+                <span
+                  class="ml-3 text-[0.6rem] font-mono text-text-muted/60 truncate"
+                  >oregon-ghost-conference.pages.dev</span
+                >
+              </div>
+              <img
+                src="/images/ogc/desktop.webp"
+                alt="The Oregon Ghost Conference website, built by Generuss Design"
+                width="1440"
+                height="810"
+                class="block w-full h-auto aspect-video object-cover object-top"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Mobile screenshot (overlapping, bottom-right) -->
+            <div
+              class="absolute -bottom-6 -right-2 sm:-right-4 lg:-bottom-8 lg:-right-6 w-[110px] sm:w-[130px] lg:w-[150px]"
+            >
+              <div
+                class="relative bg-[#1c1c1e] rounded-[20px] border-[2px] border-[#3a3a3c] p-[4px] shadow-[8px_8px_24px_rgba(0,0,0,0.85),-2px_-2px_8px_rgba(255,255,255,0.04),0_0_30px_var(--color-accent-dim)]"
+              >
+                <div
+                  class="relative rounded-[16px] overflow-hidden aspect-[390/844]"
+                >
+                  <img
+                    src="/images/ogc/mobile.webp"
+                    alt="The Oregon Ghost Conference website on mobile"
+                    width="390"
+                    height="844"
+                    class="block w-full h-full object-cover object-top"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <div
+                    class="absolute top-[6px] left-1/2 -translate-x-1/2 w-[42px] h-[12px] bg-black rounded-full"
+                  >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating "live" badge -->
+            <div
+              class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 px-3 py-1.5 rounded-full bg-bg border border-accent/40 text-[0.6rem] sm:text-[0.65rem] font-mono uppercase tracking-widest text-accent flex items-center gap-1.5 shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
+            >
+              <span
+                class="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse"
+              ></span>
+              Live, 100+ vendors
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60"
+      >
+        <span
+          class="text-[0.6rem] text-text-muted font-mono tracking-[0.2em] uppercase"
+          >Scroll</span
+        >
+        <div class="h-6 w-px bg-text-muted/40"></div>
+      </div>
+    </section>
+
+    <!-- ===== OFFER ===== -->
+    <section
+      id="offer"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-dark px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            The OGC offer
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-black tracking-tight leading-[1.05]"
+          >
+            A real website. <span class="text-accent">Starting at $500.</span>
+          </h2>
+        </div>
+
+        <div
+          class="neu-raised rounded-3xl bg-bg p-6 sm:p-10 lg:p-12 relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60"
+          >
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+            <!-- LEFT: price + terms -->
+            <div class="lg:col-span-5 flex flex-col">
+              <p
+                class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+              >
+                OGC vendor and speaker rate
+              </p>
+              <h3
+                class="text-2xl sm:text-3xl lg:text-4xl font-black text-text leading-tight mb-5"
+              >
+                Your own custom site
+              </h3>
+              <p class="text-pretty text-text-muted leading-relaxed mb-7">
+                Hand-built around your craft and the way your customers actually
+                book or buy. Not a template with your logo dropped on top.
+              </p>
+
+              <div class="flex flex-col gap-4 mt-auto">
+                <div class="flex items-baseline gap-3">
+                  <span
+                    class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-widest"
+                    >From</span
+                  >
+                  <span
+                    class="text-4xl sm:text-5xl font-black text-accent glow-text"
+                    >$500</span
+                  >
+                </div>
+                <div
+                  class="inline-flex w-fit items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 text-sm font-semibold text-accent"
+                >
+                  20% off your first build
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg
+                    class="h-4 w-4 text-accent shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><circle cx="12" cy="12" r="10"></circle><polyline
+                      points="12 6 12 12 16 14"></polyline></svg
+                  >
+                  <span
+                    ><span class="text-text font-semibold">Live in 21 days</span
+                    >, kickoff to launch</span
+                  >
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg
+                    class="h-4 w-4 text-accent shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
+                    ></path><polyline points="22 4 12 14.01 9 11.01"
+                    ></polyline></svg
+                  >
+                  <span
+                    ><span class="text-text font-semibold">Free hosting</span>,
+                    $0 a month, forever</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: what you get -->
+            <div class="lg:col-span-7">
+              <p
+                class="text-[0.65rem] font-mono text-text-muted uppercase tracking-widest mb-4"
+              >
+                What you get
+              </p>
+              <ul
+                class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5 text-sm sm:text-base text-text"
+              >
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Custom design, no templates or page builders</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Built around how your customers actually book</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span
+                    >Mobile-first, because that is where your people find you</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Fast and light, quietly high performance</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Contact form or booking wired in and working</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>You own the code, the domain, and the content</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>A real human who answers, before and after launch</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Free hosting on Cloudflare, nothing monthly</span>
+                </li>
+              </ul>
+
+              <div class="mt-8">
+                <a
+                  href="#booking"
+                  class="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+                >
+                  Book a Call &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE THREE GUARANTEES (trust core) ===== -->
+    <section
+      id="guarantee"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Three guarantees
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            The risk is <span class="text-accent">mine, not yours.</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <!-- 1. Live in 21 days -->
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border border-accent/40 text-accent mb-5"
+              aria-hidden="true"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><circle cx="12" cy="12" r="10"></circle><polyline
+                  points="12 6 12 12 16 14"></polyline></svg
+              >
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              Live in 21 days
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              Your new site is live within 21 days of kickoff. If I miss it, you
+              do not pay the balance until it is.
+            </p>
+          </div>
+
+          <!-- 2. You own everything -->
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border border-accent/40 text-accent mb-5"
+              aria-hidden="true"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                ></path><polyline points="9 22 9 12 15 12 15 22"
+                ></polyline></svg
+              >
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              You own everything, $0 a month
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              Your domain, your code, your content, all yours. Hosted free on
+              Cloudflare, so nothing holds your site hostage. Leave whenever you
+              want and take it with you.
+            </p>
+          </div>
+
+          <!-- 3. Love the design or deposit back -->
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border border-accent/40 text-accent mb-5"
+              aria-hidden="true"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"
+                ></path></svg
+              >
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              Love the first design, or your deposit back
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              You see a real design direction before you commit. If it is not
+              right for you, I return your deposit. No pressure, no awkward
+              follow-ups.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INSIDER FRAMING ===== -->
+    <section
+      id="insider"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          Why me, for you
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-6"
+        >
+          I already speak <span class="text-accent">your language.</span>
+        </h2>
+        <div
+          class="space-y-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-3xl"
+        >
+          <p>
+            Most web designers have never set foot in a room like the Oregon
+            Ghost Conference. I built its website. I also built Crystal Seed
+            Tarot's site, a working reader's whole business online.
+          </p>
+          <p>
+            So I know the difference between a crystal shop, a tarot reader, and
+            a medium. I know that "professional" for you does not mean corporate
+            and cold. It means trustworthy, a little mysterious, and
+            unmistakably yours. You will not spend the first three calls
+            explaining your world to me. We start there.
+          </p>
+        </div>
+
+        <ul class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+          <li class="neu-inset rounded-2xl p-5 sm:p-6">
+            <p class="text-text font-semibold mb-1.5">Booking that fits</p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              Set up the way readings, sessions, and events actually run, not
+              how a template assumes they do.
+            </p>
+          </li>
+          <li class="neu-inset rounded-2xl p-5 sm:p-6">
+            <p class="text-text font-semibold mb-1.5">A vibe that matches</p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              The look matches your craft. Atmospheric where it should be, clear
+              where it counts.
+            </p>
+          </li>
+          <li class="neu-inset rounded-2xl p-5 sm:p-6">
+            <p class="text-text font-semibold mb-1.5">Mobile-first</p>
+            <p class="text-sm text-text-muted leading-relaxed">
+              Your people find you on their phone at a festival or a market.
+              That is where the site has to win.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== BOOKING (primary CTA) ===== -->
+    <div id="contact"></div>
+    <section
+      id="booking"
+      class="px-8 sm:px-12 lg:px-20 py-(--spacing-section) relative"
+    >
+      <div
+        class="absolute inset-0 pointer-events-none flex items-center justify-center"
+      >
+        <div
+          class="w-[600px] h-[600px] rounded-full bg-accent/[0.04] blur-[120px]"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-2xl mx-auto text-center mb-10 sm:mb-12">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          The next step
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-5"
+        >
+          A quick call. <span class="text-accent glow-text">No pitch.</span>
+        </h2>
+        <p
+          class="text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-xl mx-auto"
+        >
+          Tell me about your business and what you want the site to do. I will
+          tell you exactly how I would build it, what it costs after your 20%
+          off, and the timeline. Whether we work together or not, you leave with
+          a plan.
+        </p>
+      </div>
+
+      <div class="relative z-10 max-w-[850px] mx-auto">
+        <CalendarEmbed />
+      </div>
+
+      <!-- ===== SECONDARY CTA: not ready to call, send your site for a quote ===== -->
+      <div class="relative z-10 mt-16 sm:mt-20">
+        <div class="max-w-2xl mx-auto">
+          <div
+            class="neu-raised rounded-2xl bg-bg-secondary p-6 sm:p-8 flex flex-col gap-5"
+          >
+            <div class="flex items-start gap-5 sm:gap-7">
+              <div
+                class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 text-accent"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-7 h-7"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+                >
+              </div>
+              <div class="flex-1 min-w-0">
+                <p
+                  class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+                >
+                  Not ready for a call?
+                </p>
+                <h3 class="text-lg sm:text-xl font-bold text-text mb-1.5">
+                  Send me your current site, I will send a quote
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  Drop your email and your current site or social link. I will
+                  reply with a real number and a couple of quick wins, no drip
+                  campaign.
+                </p>
+              </div>
+            </div>
+
+            <form
+              id="ogc-quote-form"
+              action={`https://formspree.io/f/${formspreeId}`}
+              method="POST"
+              class="flex flex-col gap-3"
+            >
+              <!-- Honeypot -->
+              <input
+                type="text"
+                name="_gotcha"
+                style="display:none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+              <input
+                type="hidden"
+                name="_subject"
+                value="OGC vendor site inquiry"
+              />
+              <!-- Attribution: tag the source + carry OGC UTM params (populated on load) -->
+              <input type="hidden" name="source" value="ogc" />
+              <input type="hidden" name="utm_source" value="" />
+              <input type="hidden" name="utm_medium" value="" />
+              <input type="hidden" name="utm_content" value="" />
+
+              <div class="flex flex-col sm:flex-row gap-3">
+                <div class="flex-1">
+                  <label class="sr-only" for="ogc-email">Email address</label>
+                  <input
+                    type="email"
+                    id="ogc-email"
+                    name="email"
+                    required
+                    placeholder="you@yourbusiness.com"
+                    class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                  />
+                </div>
+                <div class="flex-1">
+                  <label class="sr-only" for="ogc-site"
+                    >Your current site or social link</label
+                  >
+                  <input
+                    type="text"
+                    id="ogc-site"
+                    name="current_site"
+                    placeholder="yoursite.com or @yourhandle"
+                    class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="self-start rounded-full bg-accent px-6 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+              >
+                Send me a quote &rarr;
+              </button>
+            </form>
+          </div>
+          <p
+            id="ogc-quote-success"
+            class="hidden text-center text-sm text-accent mt-4 font-mono"
+          >
+            Got it. I will be in touch from russ@generuss.com.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- Smooth in-page anchor scrolling (reduced-motion safe via global.css override) -->
+  <style is:global>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+  <script>
+    // ===== UTM capture + attribution =====
+    // Read incoming UTM params, persist to sessionStorage so they survive
+    // navigation, and write them into the quote form's hidden fields. The
+    // booking embed reads the same params/sessionStorage independently.
+    const KEYS = [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+    ];
+    const params = new URLSearchParams(window.location.search);
+
+    KEYS.forEach((k) => {
+      const v = params.get(k);
+      if (v) {
+        try {
+          sessionStorage.setItem(k, v);
+        } catch (e) {
+          /* sessionStorage unavailable, fall through */
+        }
+      }
+    });
+
+    const quoteForm = document.getElementById("ogc-quote-form");
+    if (quoteForm) {
+      ["utm_source", "utm_medium", "utm_content"].forEach((k) => {
+        let v = params.get(k);
+        if (!v) {
+          try {
+            v = sessionStorage.getItem(k);
+          } catch (e) {
+            v = null;
+          }
+        }
+        const field = quoteForm.querySelector(`input[name="${k}"]`);
+        if (field && v) field.value = v;
+      });
+    }
+
+    // ===== Quote form submit (mirrors the homepage Formspree pattern) =====
+    const form = document.getElementById("ogc-quote-form");
+    const successMsg = document.getElementById("ogc-quote-success");
+    const submitBtn = form?.querySelector('button[type="submit"]');
+    const submitText = submitBtn?.textContent;
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        submitBtn.classList.add("opacity-60", "cursor-not-allowed");
+      }
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+
+        if (res.ok) {
+          form.classList.add("hidden");
+          successMsg?.classList.remove("hidden");
+        } else {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitText ?? "Send me a quote →";
+            submitBtn.classList.remove("opacity-60", "cursor-not-allowed");
+          }
+          alert("Something went wrong. Please try again.");
+        }
+      } catch {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitText ?? "Send me a quote →";
+          submitBtn.classList.remove("opacity-60", "cursor-not-allowed");
+        }
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</BaseLayout>
