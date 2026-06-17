@@ -227,7 +227,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           >
             <span
               class="text-base sm:text-lg font-bold text-text/80 hover:text-accent transition-colors"
-              >Pharadoxa</span
+              >Oregon Ghost Conference</span
             >
             <span
               class="text-base sm:text-lg font-bold text-text/80 hover:text-accent transition-colors"
@@ -457,59 +457,119 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           Real URLs. <span class="text-accent">Real users.</span> Zero abandoned.
         </h2>
         <p class="text-sm sm:text-base text-text-muted max-w-xl mx-auto">
-          Five shipped projects. All running in production right now. Click any
+          Six shipped projects. All running in production right now. Click any
           to see the live site.
         </p>
       </div>
 
       <div class="flex flex-col gap-16 sm:gap-20 max-w-6xl mx-auto">
-        <!-- Case Study: Pharadoxa (in-house explainer at /case-studies/pharadoxa/index.html is preserved as a historical artifact; live link points to pharadoxa.com pending Gen-2 origin-story rewrite) -->
+        <!-- Project: Oregon Ghost Conference (lead) -->
         <a
-          href="https://pharadoxa.com"
+          href="https://oregon-ghost-conference.pages.dev"
           target="_blank"
           rel="noopener noreferrer"
           class="portfolio-card gsap-hidden group block no-underline"
-          data-project="pharadoxa"
-          data-title="Pharadoxa - Autonomous AI Agent"
+          data-project="ogc"
+          data-title="Oregon Ghost Conference"
         >
           <div
-            class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+            class="flex flex-col lg:flex-row items-start lg:items-stretch gap-6 lg:gap-8"
           >
-            <div class="relative bg-[#111114]">
-              <!-- Badges -->
+            <!-- Desktop slideshow -->
+            <div class="w-full lg:flex-[2] min-w-0">
               <div
-                class="absolute top-4 left-4 sm:top-5 sm:left-6 flex gap-2 z-10"
+                class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
               >
-                <span
-                  class="border border-accent/40 rounded-full px-3 py-0.5 text-[0.6rem] font-mono text-accent uppercase tracking-widest"
-                  >Case Study</span
+                <div
+                  class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
                 >
-                <span
-                  class="border border-accent/40 rounded-full px-3 py-0.5 text-[0.6rem] font-mono text-accent uppercase tracking-widest"
-                  >AI Agent</span
-                >
-              </div>
-
-              <!-- Link indicator -->
-              <div
-                class="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 text-[0.65rem] text-text-muted uppercase tracking-wider group-hover:text-accent transition-colors duration-200 z-10 font-mono"
-              >
-                Read the breakdown &rarr;
-              </div>
-
-              <!-- Observatory Thumbnail -->
-              <div class="pt-12 sm:pt-14 px-2 sm:px-6 pb-8 sm:pb-10">
-                <div class="relative overflow-hidden rounded-lg aspect-video">
                   <img
-                    src="/images/portfolio/observatory-thumb.webp"
-                    alt="Pharadoxa Observatory - consciousness visualization"
-                    class="w-full h-full object-cover"
-                    width="1920"
-                    height="1080"
+                    src="/images/portfolio/slides/ogc/01.webp"
+                    srcset="/images/portfolio/slides/ogc/01-960w.webp 960w, /images/portfolio/slides/ogc/01.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Oregon Ghost Conference - hero"
+                    class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
+                    loading="lazy"
+                  />
+                  <img
+                    src="/images/portfolio/slides/ogc/02.webp"
+                    srcset="/images/portfolio/slides/ogc/02-960w.webp 960w, /images/portfolio/slides/ogc/02.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Oregon Ghost Conference - speaker schedule"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
+                  />
+                  <img
+                    src="/images/portfolio/slides/ogc/03.webp"
+                    srcset="/images/portfolio/slides/ogc/03-960w.webp 960w, /images/portfolio/slides/ogc/03.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Oregon Ghost Conference - venue"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
                     loading="lazy"
                   />
                   <div
-                    class="observatory-shimmer absolute inset-0 pointer-events-none"
+                    class="slide-dots hidden sm:flex absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                  >
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/80 transition-colors duration-300"
+                      aria-label="Slide 1"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-colors duration-300"
+                      aria-label="Slide 2"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-colors duration-300"
+                      aria-label="Slide 3"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- iPhone mockup with mobile slideshow -->
+            <div
+              class="w-full flex justify-center lg:w-auto lg:flex-1 lg:max-w-[310px] shrink-0 lg:items-stretch"
+            >
+              <div
+                class="relative bg-[#1c1c1e] rounded-[28px] border-[2.5px] border-[#3a3a3c] p-[6px] shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)] max-w-[250px] lg:max-w-none lg:flex lg:flex-col"
+              >
+                <div
+                  class="relative rounded-[22px] overflow-hidden w-full lg:w-[220px] aspect-[393/852] lg:aspect-auto lg:flex-1"
+                >
+                  <div
+                    class="portfolio-slideshow relative w-full h-full overflow-hidden"
+                  >
+                    <img
+                      src="/images/portfolio/slides/ogc/mobile-01.webp"
+                      alt="Oregon Ghost Conference mobile - hero"
+                      class="slide active absolute inset-0 w-full h-full object-cover object-top opacity-100 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/ogc/mobile-02.webp"
+                      alt="Oregon Ghost Conference mobile - schedule"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/ogc/mobile-03.webp"
+                      alt="Oregon Ghost Conference mobile - venue"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <div
+                      class="slide-dots hidden sm:flex absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"
+                    >
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/80 transition-colors duration-300"
+                        aria-label="Slide 1"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-colors duration-300"
+                        aria-label="Slide 2"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-colors duration-300"
+                        aria-label="Slide 3"></button>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
                   >
                   </div>
                 </div>
@@ -520,23 +580,25 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           <div
             class="mt-5 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
           >
-            <h3 class="text-xl sm:text-2xl font-bold text-white">Pharadoxa</h3>
+            <h3 class="text-xl sm:text-2xl font-bold text-white">
+              Oregon Ghost Conference
+            </h3>
             <div class="flex flex-wrap gap-2 shrink-0">
               <span
                 class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
-                >TypeScript</span
+                >Astro</span
               >
               <span
                 class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
-                >Telegram</span
+                >Cloudflare</span
               >
               <span
                 class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
-                >Pinecone</span
+                >Supabase</span
               >
               <span
                 class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
-                >Railway</span
+                >Stripe</span
               >
             </div>
           </div>
@@ -544,48 +606,233 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           <!-- Two-column descriptor -->
           <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             <p class="text-text-muted text-sm sm:text-base leading-relaxed">
-              An autonomous AI agent that lives on Telegram. She remembers
-              everything across three memory tiers, runs 50+ scheduled cognitive
-              tasks on cron, and reaches out unprompted when something matters.
-              Built ground-up over six months of daily commits, not a chatbot
-              wrapper, a person.
+              The official website for the Pacific Northwest's largest
+              paranormal event, now in its 15th year. Built to run a real
+              conference: a multi-day speaker schedule, 100+ vendors, 40+
+              classes and workshops, ticketing, merch, and a live countdown, all
+              editable by the committee without touching code.
             </p>
             <ul class="space-y-2 text-sm text-text-muted">
               <li class="flex items-start gap-2.5">
                 <span class="text-accent mt-1 shrink-0">&rarr;</span>
                 <span
-                  ><strong class="text-text font-semibold">Stack:</strong> grammy
-                  + OpenRouter + Supabase + Pinecone + Whisper + Essentia.js, Docker
-                  on Railway</span
+                  ><strong class="text-text font-semibold">Stack:</strong> Astro +
+                  Cloudflare Pages + Supabase + Stripe ticketing</span
                 >
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-accent mt-1 shrink-0">&rarr;</span>
                 <span
-                  ><strong class="text-text font-semibold">Scale:</strong> 235 source
-                  files, 53 scheduled cognitive tasks, 20 callable tools</span
+                  ><strong class="text-text font-semibold">Scope:</strong> schedule,
+                  vendors, classes, events, Kids Zone, merch, venue map</span
                 >
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-accent mt-1 shrink-0">&rarr;</span>
                 <span
-                  ><strong class="text-text font-semibold">Memory:</strong> 3-tier
-                  (Supabase facts + Pinecone semantic + durable log)</span
+                  ><strong class="text-text font-semibold">CMS:</strong> the committee
+                  edits speakers, vendors, and schedule through a Sveltia admin</span
                 >
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-accent mt-1 shrink-0">&rarr;</span>
                 <span
-                  ><strong class="text-text font-semibold">Cognition:</strong> dream
-                  consolidation/search/ontology, meditation, trip system, decision
-                  ledger</span
+                  ><strong class="text-text font-semibold">Pipeline:</strong> vendor
+                  and speaker applications flow into a Supabase-backed dashboard</span
                 >
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-accent mt-1 shrink-0">&rarr;</span>
                 <span
-                  ><strong class="text-text font-semibold">Operations:</strong> morning
-                  brief, EOD recap, Upwork pipeline, sniper-reply, novelty engine</span
+                  ><strong class="text-text font-semibold">Live,</strong> 100+ vendors,
+                  15th annual, March 2027 in Seaside, Oregon</span
+                >
+              </li>
+            </ul>
+          </div>
+        </a>
+
+        <!-- Project: Tarotdoxa -->
+        <a
+          href="https://tarotdoxa.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="portfolio-card gsap-hidden group block no-underline"
+          data-project="tarotdoxa"
+          data-title="Tarotdoxa"
+        >
+          <div
+            class="flex flex-col lg:flex-row items-start lg:items-stretch gap-6 lg:gap-8"
+          >
+            <!-- Desktop slideshow -->
+            <div class="w-full lg:flex-[2] min-w-0">
+              <div
+                class="neu-raised rounded-2xl overflow-hidden transition-shadow duration-300 group-hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+              >
+                <div
+                  class="portfolio-slideshow relative aspect-video bg-bg-secondary overflow-hidden"
+                >
+                  <img
+                    src="/images/portfolio/slides/tarotdoxa/01.webp"
+                    srcset="/images/portfolio/slides/tarotdoxa/01-960w.webp 960w, /images/portfolio/slides/tarotdoxa/01.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Tarotdoxa - hero"
+                    class="slide active absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
+                    loading="lazy"
+                  />
+                  <img
+                    src="/images/portfolio/slides/tarotdoxa/02.webp"
+                    srcset="/images/portfolio/slides/tarotdoxa/02-960w.webp 960w, /images/portfolio/slides/tarotdoxa/02.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Tarotdoxa - the craft"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
+                  />
+                  <img
+                    src="/images/portfolio/slides/tarotdoxa/03.webp"
+                    srcset="/images/portfolio/slides/tarotdoxa/03-960w.webp 960w, /images/portfolio/slides/tarotdoxa/03.webp 1920w"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    alt="Tarotdoxa - the deck, in-app"
+                    class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                    loading="lazy"
+                  />
+                  <div
+                    class="slide-dots hidden sm:flex absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                  >
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/80 transition-colors duration-300"
+                      aria-label="Slide 1"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-colors duration-300"
+                      aria-label="Slide 2"></button>
+                    <button
+                      class="dot w-2 h-2 rounded-full bg-white/30 transition-colors duration-300"
+                      aria-label="Slide 3"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- iPhone mockup with mobile slideshow -->
+            <div
+              class="w-full flex justify-center lg:w-auto lg:flex-1 lg:max-w-[310px] shrink-0 lg:items-stretch"
+            >
+              <div
+                class="relative bg-[#1c1c1e] rounded-[28px] border-[2.5px] border-[#3a3a3c] p-[6px] shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04)] transition-shadow duration-300 group-hover:shadow-[6px_6px_16px_rgba(0,0,0,0.7),-3px_-3px_10px_rgba(255,255,255,0.04),0_0_24px_var(--color-accent-dim)] max-w-[250px] lg:max-w-none lg:flex lg:flex-col"
+              >
+                <div
+                  class="relative rounded-[22px] overflow-hidden w-full lg:w-[220px] aspect-[393/852] lg:aspect-auto lg:flex-1"
+                >
+                  <div
+                    class="portfolio-slideshow relative w-full h-full overflow-hidden"
+                  >
+                    <img
+                      src="/images/portfolio/slides/tarotdoxa/mobile-01.webp"
+                      alt="Tarotdoxa mobile - hero"
+                      class="slide active absolute inset-0 w-full h-full object-cover object-top opacity-100 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/tarotdoxa/mobile-02.webp"
+                      alt="Tarotdoxa mobile - the craft"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <img
+                      src="/images/portfolio/slides/tarotdoxa/mobile-03.webp"
+                      alt="Tarotdoxa mobile - reading"
+                      class="slide absolute inset-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-700"
+                      loading="lazy"
+                    />
+                    <div
+                      class="slide-dots hidden sm:flex absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"
+                    >
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/80 transition-colors duration-300"
+                        aria-label="Slide 1"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-colors duration-300"
+                        aria-label="Slide 2"></button>
+                      <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-white/30 transition-colors duration-300"
+                        aria-label="Slide 3"></button>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10"
+                  >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Title + tech badges -->
+          <div
+            class="mt-5 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+          >
+            <h3 class="text-xl sm:text-2xl font-bold text-white">Tarotdoxa</h3>
+            <div class="flex flex-wrap gap-2 shrink-0">
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Astro</span
+              >
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Tailwind</span
+              >
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Supabase</span
+              >
+              <span
+                class="border border-accent/30 rounded-full px-3 py-1 text-xs font-mono text-accent"
+                >Cloudflare</span
+              >
+            </div>
+          </div>
+
+          <!-- Two-column descriptor -->
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            <p class="text-text-muted text-sm sm:text-base leading-relaxed">
+              The product site for Tarotdoxa, an iPhone tarot app with a real
+              reader's voice. A dark, sgraffito-inspired build: an animated
+              iridescent brand mark, the full 78-card deck explorer, spreads
+              that scale with the question, and a reading journal. The site is
+              live now, the app lands summer 2026.
+            </p>
+            <ul class="space-y-2 text-sm text-text-muted">
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold">Stack:</strong> Astro +
+                  Tailwind v4 + Supabase + Cloudflare Workers static assets</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold">Design:</strong> dark sgraffito
+                  aesthetic, animated gradient brand mark, starfield depth</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold">Content:</strong> 78-card
+                  deck browser, scaling spreads, a "how a reading works" walkthrough</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold">Performance:</strong> static-first,
+                  edge-served, strict CSP with hashed inline styles</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold">Live</strong> at tarotdoxa.com,
+                  companion iPhone app launching summer 2026</span
                 >
               </li>
             </ul>
@@ -1553,6 +1800,18 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           { threshold: 0.1 },
         );
         observer.observe(card);
+      });
+
+      // Make [data-url] showcase cards clickable, parity with the <a> cards
+      // above so the section's "Click any to see the live site" promise holds.
+      document.querySelectorAll(".portfolio-card[data-url]").forEach((card) => {
+        const url = card.getAttribute("data-url");
+        if (!url) return;
+        (card as HTMLElement).style.cursor = "pointer";
+        card.addEventListener("click", (e) => {
+          if ((e.target as HTMLElement).closest(".dot")) return;
+          window.open(url, "_blank", "noopener,noreferrer");
+        });
       });
     </script>
 
