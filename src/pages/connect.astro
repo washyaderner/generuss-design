@@ -36,186 +36,244 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="edge-top"></div>
         <div class="cyan-wash"></div>
 
-        <div class="card-label">// Recent Work</div>
-
-        <div class="site-carousel">
-          <div class="site-slide">
-            <div class="site-preview">
-              <img
-                src="/images/slides/generuss.webp"
-                alt="generuss design - conversion-engineered websites"
-                class="site-preview-img"
-              />
-            </div>
-            <div class="site-meta">
-              <span class="site-name">generuss design</span>
-              <span class="site-url">generussdesign.com</span>
-            </div>
-          </div>
-          <div class="site-slide">
-            <div class="site-preview">
-              <img
-                src="/images/slides/tarotdoxa.webp"
-                alt="Tarotdoxa - iPhone tarot app"
-                class="site-preview-img"
-                loading="lazy"
-              />
-            </div>
-            <div class="site-meta">
-              <span class="site-name">Tarotdoxa</span>
-              <span class="site-url">iOS app · tarotdoxa.com</span>
-            </div>
-          </div>
-          <div class="site-slide">
-            <div class="site-preview">
-              <img
-                src="/images/slides/crystal.webp"
-                alt="Crystal Seed Tarot screenshot"
-                class="site-preview-img"
-                loading="lazy"
-              />
-            </div>
-            <div class="site-meta">
-              <span class="site-name">Crystal Seed Tarot</span>
-              <span class="site-url">crystalseedtarot.com</span>
-            </div>
-          </div>
-          <div class="site-slide">
-            <div class="site-preview">
-              <img
-                src="/images/slides/vibe.webp"
-                alt="Vibe N Thrive Therapy screenshot"
-                class="site-preview-img"
-                loading="lazy"
-              />
-            </div>
-            <div class="site-meta">
-              <span class="site-name">Vibe'N Thrive</span>
-              <span class="site-url">vibenthrivetherapy.com</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-item">
-            <span class="stat-val cyan-val">17+</span><span class="stat-label"
-              >Shipped</span
-            >
-          </div>
-          <div class="stat-sep"></div>
-          <div class="stat-item">
-            <span class="stat-val">5.0</span><span class="stat-label"
-              >Rated</span
-            >
-          </div>
-          <div class="stat-sep"></div>
-          <div class="stat-item">
-            <span class="stat-val">96</span><span class="stat-label"
-              >Lighthouse</span
-            >
-          </div>
-          <div class="stat-sep"></div>
-          <div class="stat-item">
-            <span class="stat-val">$0</span><span class="stat-label"
-              >Hosting</span
-            >
-          </div>
-        </div>
-
-        <div class="reviews-wrap">
-          <div class="reviews-track">
-            <div class="review-chip">
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
-              <div class="review-text">
-                "His ability to solve problems makes him a rare find."
-              </div>
-              <div class="review-author">Jonny - Invincible Media</div>
-            </div>
-            <div class="review-chip">
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
-              <div class="review-text">
-                "I've never had anybody provide such detail to their work."
-              </div>
-              <div class="review-author">Carson - Vibe'N Thrive</div>
-            </div>
-            <div class="review-chip">
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
-              <div class="review-text">
-                "Exceeded my expectations by miles."
-              </div>
-              <div class="review-author">
-                Leon McConnell - Resist Entertainment
-              </div>
-            </div>
-            <div class="review-chip">
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
-              <div class="review-text">
-                "You took a simple thing and brought it to life."
-              </div>
-              <div class="review-author">Dirty Chai - Struggle Crew</div>
-            </div>
-            <!-- Duplicate for seamless loop -->
-            <div class="review-chip">
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
-              <div class="review-text">
-                "His ability to solve problems makes him a rare find."
-              </div>
-              <div class="review-author">Jonny - Invincible Media</div>
-            </div>
-            <div class="review-chip">
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
-              <div class="review-text">
-                "I've never had anybody provide such detail to their work."
-              </div>
-              <div class="review-author">Carson - Vibe'N Thrive</div>
-            </div>
-            <div class="review-chip">
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
-              <div class="review-text">
-                "Exceeded my expectations by miles."
-              </div>
-              <div class="review-author">
-                Leon McConnell - Resist Entertainment
-              </div>
-            </div>
-            <div class="review-chip">
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
-              <div class="review-text">
-                "You took a simple thing and brought it to life."
-              </div>
-              <div class="review-author">Dirty Chai - Struggle Crew</div>
-            </div>
-          </div>
-        </div>
-
+        <!-- whole-card fallback link: anywhere not a slide/dot/link goes to the portfolio -->
         <a
+          class="card-cover"
           href="https://generussdesign.com"
           target="_blank"
           rel="noopener noreferrer"
-          class="card-link"
-        >
-          See the work <span class="arrow">&rarr;</span>
-        </a>
+          aria-hidden="true"
+          tabindex="-1"></a>
+
+        <div class="card-content">
+          <div class="card-label">// Recent Work</div>
+
+          <div class="site-carousel" id="design-carousel">
+            <a
+              class="site-slide"
+              href="https://generussdesign.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="site-preview">
+                <img
+                  src="/images/slides/generuss.webp"
+                  alt="generuss design - conversion-engineered websites"
+                  class="site-preview-img"
+                />
+              </div>
+              <div class="site-meta">
+                <span class="site-name">generuss design</span>
+                <span class="site-url"
+                  >generussdesign.com <span class="ext">&#8599;</span></span
+                >
+              </div>
+            </a>
+            <a
+              class="site-slide"
+              href="https://tarotdoxa.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="site-preview">
+                <img
+                  src="/images/slides/tarotdoxa.webp"
+                  alt="Tarotdoxa - iPhone tarot app"
+                  class="site-preview-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="site-meta">
+                <span class="site-name">Tarotdoxa</span>
+                <span class="site-url"
+                  >iOS app · tarotdoxa.com <span class="ext">&#8599;</span
+                  ></span
+                >
+              </div>
+            </a>
+            <a
+              class="site-slide"
+              href="https://crystalseedtarot.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="site-preview">
+                <img
+                  src="/images/slides/crystal.webp"
+                  alt="Crystal Seed Tarot screenshot"
+                  class="site-preview-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="site-meta">
+                <span class="site-name">Crystal Seed Tarot</span>
+                <span class="site-url"
+                  >crystalseedtarot.com <span class="ext">&#8599;</span></span
+                >
+              </div>
+            </a>
+            <a
+              class="site-slide"
+              href="https://vibenthrivetherapy.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="site-preview">
+                <img
+                  src="/images/slides/vibe.webp"
+                  alt="Vibe N Thrive Therapy screenshot"
+                  class="site-preview-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="site-meta">
+                <span class="site-name">Vibe'N Thrive</span>
+                <span class="site-url"
+                  >vibenthrivetherapy.com <span class="ext">&#8599;</span></span
+                >
+              </div>
+            </a>
+          </div>
+
+          <div class="carousel-dots" id="design-dots">
+            <button class="dot" type="button" aria-label="View generuss design"
+            ></button>
+            <button class="dot" type="button" aria-label="View Tarotdoxa"
+            ></button>
+            <button
+              class="dot"
+              type="button"
+              aria-label="View Crystal Seed Tarot"></button>
+            <button class="dot" type="button" aria-label="View Vibe N Thrive"
+            ></button>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-val cyan-val">17+</span><span class="stat-label"
+                >Shipped</span
+              >
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat-item">
+              <span class="stat-val">5.0</span><span class="stat-label"
+                >Rated</span
+              >
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat-item">
+              <span class="stat-val">96</span><span class="stat-label"
+                >Lighthouse</span
+              >
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat-item">
+              <span class="stat-val">$0</span><span class="stat-label"
+                >Hosting</span
+              >
+            </div>
+          </div>
+
+          <div class="reviews-wrap">
+            <div class="reviews-track">
+              <div class="review-chip">
+                <div class="review-stars">
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                </div>
+                <div class="review-text">
+                  "His ability to solve problems makes him a rare find."
+                </div>
+                <div class="review-author">Jonny - Invincible Media</div>
+              </div>
+              <div class="review-chip">
+                <div class="review-stars">
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                </div>
+                <div class="review-text">
+                  "I've never had anybody provide such detail to their work."
+                </div>
+                <div class="review-author">Carson - Vibe'N Thrive</div>
+              </div>
+              <div class="review-chip">
+                <div class="review-stars">
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                </div>
+                <div class="review-text">
+                  "Exceeded my expectations by miles."
+                </div>
+                <div class="review-author">
+                  Leon McConnell - Resist Entertainment
+                </div>
+              </div>
+              <div class="review-chip">
+                <div class="review-stars">
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                </div>
+                <div class="review-text">
+                  "You took a simple thing and brought it to life."
+                </div>
+                <div class="review-author">Dirty Chai - Struggle Crew</div>
+              </div>
+              <!-- Duplicate for seamless loop -->
+              <div class="review-chip">
+                <div class="review-stars">
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                </div>
+                <div class="review-text">
+                  "His ability to solve problems makes him a rare find."
+                </div>
+                <div class="review-author">Jonny - Invincible Media</div>
+              </div>
+              <div class="review-chip">
+                <div class="review-stars">
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                </div>
+                <div class="review-text">
+                  "I've never had anybody provide such detail to their work."
+                </div>
+                <div class="review-author">Carson - Vibe'N Thrive</div>
+              </div>
+              <div class="review-chip">
+                <div class="review-stars">
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                </div>
+                <div class="review-text">
+                  "Exceeded my expectations by miles."
+                </div>
+                <div class="review-author">
+                  Leon McConnell - Resist Entertainment
+                </div>
+              </div>
+              <div class="review-chip">
+                <div class="review-stars">
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                </div>
+                <div class="review-text">
+                  "You took a simple thing and brought it to life."
+                </div>
+                <div class="review-author">Dirty Chai - Struggle Crew</div>
+              </div>
+            </div>
+          </div>
+
+          <a
+            href="https://generussdesign.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card-link"
+          >
+            See all work <span class="arrow">&rarr;</span>
+          </a>
+        </div>
       </section>
 
-      <!-- PHARALLAX CARD -->
-      <section class="card card-pharallax fade-in">
+      <!-- PHARALLAX CARD (whole card clickable) -->
+      <a
+        href="https://pharallax.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="card card-pharallax fade-in"
+      >
         <div class="shine-primary"></div>
         <div class="edge-top"></div>
         <div class="cyan-wash"></div>
@@ -237,7 +295,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
           <div class="site-meta">
             <span class="site-name">Pharallax</span>
-            <span class="site-url">pharallax.ai</span>
+            <span class="site-url"
+              >pharallax.ai <span class="ext">&#8599;</span></span
+            >
           </div>
         </div>
 
@@ -246,18 +306,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <span class="collision-unit">structured claims · 160 domains</span>
         </div>
 
-        <a
-          href="https://pharallax.ai/analyze"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="card-link"
-        >
-          Run a free analysis <span class="arrow">&rarr;</span>
-        </a>
+        <span class="card-link">
+          Explore Pharallax <span class="arrow">&rarr;</span>
+        </span>
         <span class="card-sub"
-          >free in 2 minutes · full Structural Read $497</span
+          >free analysis in 2 min · full Structural Read $497</span
         >
-      </section>
+      </a>
 
       <!-- BOOK A CALL -->
       <a
@@ -595,7 +650,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     display: block;
     transition: box-shadow 0.25s ease;
   }
-  a.card:hover {
+  a.card:hover,
+  .card-design:hover {
     box-shadow:
       3px 3px 7px var(--b-sdark),
       -2px -2px 5px var(--b-slight),
@@ -660,6 +716,27 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     pointer-events: none;
     z-index: 2;
   }
+
+  /* Whole-card cover link (Recent Work) */
+  .card-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: 16px;
+  }
+  .card-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+  }
+  /* re-enable pointer events only on the genuinely interactive bits */
+  .card-content .card-link,
+  .card-content .dot {
+    pointer-events: auto;
+  }
+
   /* ---- SHARED CARD ELEMENTS ---- */
   .card-label {
     font-family: var(--font-mono);
@@ -687,15 +764,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     position: relative;
     z-index: 3;
     transition: color 0.2s;
+    width: fit-content;
   }
-  .card-link:hover {
+  .card-link:hover,
+  .card-design:hover .card-link,
+  .card-pharallax:hover .card-link {
     color: var(--b-cyan);
   }
   .arrow {
     font-size: 13px;
     transition: transform 0.2s ease;
   }
-  .card-link:hover .arrow {
+  .card-link:hover .arrow,
+  .card-pharallax:hover .arrow {
     transform: translateX(3px);
   }
 
@@ -715,6 +796,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     display: flex;
     flex-direction: column;
     padding: 0;
+    transition: box-shadow 0.25s ease;
   }
 
   /* Site carousel */
@@ -736,19 +818,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     display: flex;
     flex-direction: column;
     opacity: 0;
-    animation: site-fade 16s infinite;
+    pointer-events: none;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.6s ease;
   }
-  .site-slide:nth-child(1) {
-    animation-delay: 0s;
+  /* no-JS fallback: show the first project */
+  .site-carousel:not(.ready) .site-slide:first-child {
+    opacity: 1;
+    pointer-events: auto;
   }
-  .site-slide:nth-child(2) {
-    animation-delay: 4s;
-  }
-  .site-slide:nth-child(3) {
-    animation-delay: 8s;
-  }
-  .site-slide:nth-child(4) {
-    animation-delay: 12s;
+  .site-carousel.ready .site-slide.active {
+    opacity: 1;
+    pointer-events: auto;
   }
   .site-preview {
     flex: 1;
@@ -763,6 +845,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     height: 100%;
     object-fit: cover;
     object-position: top center;
+    transition: transform 0.4s ease;
+  }
+  .site-slide:hover .site-preview-img {
+    transform: scale(1.03);
   }
   .site-meta {
     padding: 8px 14px;
@@ -770,7 +856,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.03);
+    transition: background 0.2s ease;
+  }
+  .site-slide:hover .site-meta {
+    background: rgba(0, 0, 0, 0.55);
   }
   .site-name {
     font-family: var(--font-sans);
@@ -783,6 +874,57 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     font-size: 9px;
     font-weight: 400;
     color: var(--b-txt3);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .ext {
+    color: var(--b-cyan);
+    font-size: 11px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+  .site-slide:hover .ext {
+    opacity: 1;
+    text-shadow: 0 0 6px var(--b-mid);
+  }
+
+  /* Carousel dots */
+  .carousel-dots {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    padding: 12px 24px 0;
+    position: relative;
+    z-index: 3;
+  }
+  .carousel-dots.ready {
+    display: flex;
+  }
+  .carousel-dots .dot {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 0;
+    border-radius: 9999px;
+    background: var(--b-txt3);
+    opacity: 0.35;
+    cursor: pointer;
+    transition:
+      width 0.25s ease,
+      opacity 0.2s ease,
+      background 0.2s ease;
+  }
+  .carousel-dots .dot:hover {
+    opacity: 0.7;
+  }
+  .carousel-dots .dot.active {
+    width: 18px;
+    opacity: 1;
+    background: var(--b-cyan);
+    box-shadow: 0 0 6px var(--b-mid);
   }
 
   /* Stats row */
@@ -899,15 +1041,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
 
   /* Design card CTA */
-  .card-design > .card-link {
+  .card-design .card-content > .card-link {
     padding: 12px 24px 16px;
   }
 
   /* ---- PHARALLAX CARD ---- */
-  .card-pharallax {
-    padding: 0;
+  a.card-pharallax {
     display: flex;
     flex-direction: column;
+    padding: 0;
   }
   /* Rotating cyan glow border - the signature treatment */
   .card-pharallax::after {
@@ -937,13 +1079,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     animation: glow-rotate 7s linear infinite;
     pointer-events: none;
     z-index: 5;
-  }
-  .card-pharallax:hover {
-    box-shadow:
-      3px 3px 7px var(--b-sdark),
-      -2px -2px 5px var(--b-slight),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05),
-      0 0 20px var(--b-dim);
   }
   .pharallax-headline {
     font-family: var(--font-sans);
@@ -975,6 +1110,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
   .site-preview-wrap .site-preview {
     aspect-ratio: 16 / 9;
+  }
+  .card-pharallax:hover .site-preview-img {
+    transform: scale(1.03);
   }
   .pharallax-stat {
     display: flex;
@@ -1203,24 +1341,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
   }
 
-  @keyframes site-fade {
-    0% {
-      opacity: 0;
-    }
-    2% {
-      opacity: 1;
-    }
-    22% {
-      opacity: 1;
-    }
-    25% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
   @keyframes scroll-reviews {
     from {
       transform: translateX(0);
@@ -1255,11 +1375,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
     }
     .site-slide {
-      animation: none;
-      opacity: 1;
+      transition: none;
     }
-    .site-slide:nth-child(n + 2) {
-      display: none;
+    .site-preview-img {
+      transition: none;
     }
     .fade-in {
       opacity: 1;
@@ -1311,7 +1430,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         -4px -4px 10px var(--b-slight),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
-    a.card:hover {
+    a.card:hover,
+    .card-design:hover {
       box-shadow:
         6px 6px 14px var(--b-sdark),
         -4px -4px 10px var(--b-slight),
@@ -1332,14 +1452,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       grid-row: 2;
     }
 
-    .card-pharallax:hover {
-      box-shadow:
-        6px 6px 14px var(--b-sdark),
-        -4px -4px 10px var(--b-slight),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 0 24px var(--b-dim);
-    }
-
     .cta-huge {
       font-size: clamp(48px, 5vw, 72px);
     }
@@ -1357,7 +1469,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </style>
 
 <script>
-  // Sticky pill: show when header scrolls out of view
+  // ---- Carousel: dynamic per-slide links + dots + pause on interaction ----
+  const carousel = document.getElementById("design-carousel");
+  const dotsWrap = document.getElementById("design-dots");
+  if (carousel && dotsWrap) {
+    const slides = Array.from(carousel.querySelectorAll(".site-slide"));
+    const dots = Array.from(dotsWrap.querySelectorAll(".dot"));
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    let idx = 0;
+    let timer;
+
+    carousel.classList.add("ready");
+    dotsWrap.classList.add("ready");
+
+    const show = (i) => {
+      idx = (i + slides.length) % slides.length;
+      slides.forEach((s, j) => s.classList.toggle("active", j === idx));
+      dots.forEach((d, j) => d.classList.toggle("active", j === idx));
+    };
+    const stop = () => {
+      if (timer) {
+        clearInterval(timer);
+        timer = undefined;
+      }
+    };
+    const start = () => {
+      if (reduce) return;
+      stop();
+      timer = setInterval(() => show(idx + 1), 4500);
+    };
+
+    show(0);
+    start();
+
+    dots.forEach((d, j) =>
+      d.addEventListener("click", (e) => {
+        e.preventDefault();
+        show(j);
+        start();
+      }),
+    );
+    carousel.addEventListener("mouseenter", stop);
+    carousel.addEventListener("mouseleave", start);
+    carousel.addEventListener("focusin", stop);
+    carousel.addEventListener("focusout", start);
+  }
+
+  // ---- Sticky pill: show when header scrolls out of view ----
   const pill = document.getElementById("sticky-pill");
   const header = document.getElementById("header");
   if (pill && header) {
@@ -1370,7 +1530,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     observer.observe(header);
   }
 
-  // Fade-in on scroll
+  // ---- Fade-in on scroll ----
   const fadeEls = document.querySelectorAll(".fade-in");
   if (fadeEls.length) {
     const fadeObserver = new IntersectionObserver(
