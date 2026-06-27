@@ -407,12 +407,20 @@ Be pragmatic. Be reliable. Self-anneal. Compound.
 
 ## Project State
 
-**Last Updated**: 2026-02-25
-**Current Status**: Business Card Tooling & Generative Assets Built
+**Last Updated**: 2026-06-27
+**Current Status**: `/connect` bento hub - Tarotdoxa hero card + brand-logo social icons shipped (live on generussdesign.com/connect)
 **New Files Added**:
 
+- `public/images/slides/tarotdoxa-hero.webp` (composed 16:9 hero banner: `presence-hero.jpg` dancer + `wordmark-cut.png` TAROTDOXA wordmark, sourced from the tarotdoxa-site repo)
+- `execution/compose-tarotdoxa-hero.py` (reproducible PIL compositor for the banner above; re-run with `--mark-frac` / `--y-bias` to retune)
 - `execution/outlier_sniper.py` (Outlier Sniper dark neumorphic compositing tool using `PIL`)
-  **Changes Made**:
-- Updated `astro.config.mjs` with a server-side redirect (`/connect` -> `https://generuss.com/connect`).
+
+**Changes Made**:
+
+- Added a dedicated Tarotdoxa card to `src/pages/connect.astro` linking to tarotdoxa.com (full-width horizontal banner on desktop, image-over-text stacked on mobile; brand gradient on "It's revealed.").
+- Replaced the text social labels (X / GH / YT / LI) in the footer with real X, GitHub, YouTube, and LinkedIn brand SVG logos (`fill: currentColor`, inherits the cyan hover).
+- `/connect` is a real static page (the old `astro.config.mjs` `/connect` -> generuss.com redirect was replaced with the bento hub in commit `1ae820a`; there is no redirect now).
 - Removed `numpy` dependency from Python scripts in favor of `os.urandom` to support local Mac environments.
 - Handled multiline text `ValueError` anchor limitation in PIL inside the compositing script.
+
+**Deploy note**: Cloudflare Pages project `generuss-design` is git-connected to `main` (push to `main` triggers the build). The `~/.secrets` `CLOUDFLARE_API_TOKEN` is DNS-only (generuss.com zone); manual `wrangler pages deploy` needs `env -u CLOUDFLARE_API_TOKEN` to fall back to the OAuth login.
