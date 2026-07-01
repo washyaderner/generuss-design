@@ -3,12 +3,14 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = "Custom websites for service businesses and founders who outgrew templates. No bloat. Designed to convert.",
   ogImage = "/og-default.png",
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -23,6 +25,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Fonts -->

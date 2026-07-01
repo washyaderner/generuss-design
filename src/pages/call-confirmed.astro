@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+// Google Ads conversion tracking.
+// Paste the two values the Google Ads onboarding gives you and this page will
+// fire the "Book a Call" conversion on load. Left empty, it renders nothing.
+const ADS_TAG_ID = ""; // e.g. "AW-1234567890"
+const ADS_CONVERSION_LABEL = ""; // e.g. "aBcDeFgHiJkL_MnO"
+---
+
+<BaseLayout
+  title="You're booked | Generuss Design"
+  description="Your discovery call with Generuss Design is confirmed."
+  noindex={true}
+>
+  <script is:inline>
+    // If Cal.com's post-booking redirect loaded this page inside the booking
+    // iframe, promote it to the full window for a real confirmation screen.
+    if (window.top && window.top !== window.self) {
+      try {
+        window.top.location.href = window.location.href;
+      } catch (e) {}
+    }
+  </script>
+
+  <Nav />
+
+  <main
+    id="main-content"
+    class="relative flex min-h-[80vh] flex-col items-center justify-center px-6 pt-28 pb-20 text-center"
+  >
+    <!-- Confirmation badge -->
+    <div
+      class="mb-6 flex h-16 w-16 items-center justify-center rounded-full neu-raised bg-bg-secondary"
+    >
+      <svg
+        class="h-7 w-7 text-accent"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <p class="font-mono text-sm text-accent mb-4">// booking confirmed</p>
+    <h1 class="text-4xl sm:text-5xl font-bold text-text mb-4">
+      You're booked<span class="text-accent">.</span>
+    </h1>
+    <p class="text-lg text-text-muted mb-10 max-w-xl leading-relaxed">
+      Your discovery call is confirmed. A calendar invite with the Google Meet
+      link is on its way to your inbox.
+    </p>
+
+    <!-- What happens next -->
+    <div
+      class="neu-raised bg-bg-secondary rounded-2xl p-6 sm:p-8 max-w-xl w-full text-left"
+    >
+      <h2 class="text-sm font-semibold text-text mb-5 font-mono">
+        What happens next
+      </h2>
+      <ol class="space-y-5">
+        <li class="flex gap-4">
+          <span
+            class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full bg-accent/10 text-accent text-sm font-bold"
+            >1</span
+          >
+          <p class="text-text-muted leading-relaxed">
+            <span class="text-text font-medium">Check your inbox.</span> The invite
+            and Meet link are landing now. Add it to your calendar so it doesn't slip.
+          </p>
+        </li>
+        <li class="flex gap-4">
+          <span
+            class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full bg-accent/10 text-accent text-sm font-bold"
+            >2</span
+          >
+          <p class="text-text-muted leading-relaxed">
+            <span class="text-text font-medium">Bring the messy version.</span> The
+            half-formed idea, the site that isn't converting, the thing you keep meaning
+            to fix. That is exactly what the call is for.
+          </p>
+        </li>
+        <li class="flex gap-4">
+          <span
+            class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full bg-accent/10 text-accent text-sm font-bold"
+            >3</span
+          >
+          <p class="text-text-muted leading-relaxed">
+            <span class="text-text font-medium"
+              >We find the highest-leverage move.</span
+            > Thirty minutes on where your site is leaking leads and what to do first,
+            whether or not we end up working together.
+          </p>
+        </li>
+      </ol>
+    </div>
+
+    <p class="text-sm text-text-muted/80 mt-6 max-w-xl">
+      Need a different time? The calendar invite has a reschedule link, or just
+      reply to the email.
+    </p>
+
+    <!-- Secondary actions -->
+    <div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
+      <a
+        href="/"
+        class="rounded-full bg-accent px-8 py-3 text-base font-semibold text-[#0C0C0C] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+      >
+        Back to home
+      </a>
+      <a
+        href="/#portfolio"
+        class="rounded-full border border-border px-8 py-3 text-base font-semibold text-text transition-colors duration-200 hover:border-accent hover:text-accent"
+      >
+        See recent work
+      </a>
+    </div>
+
+    <p class="mt-8 text-sm text-text-muted max-w-md">
+      While you wait, get a free structural read of your business at <a
+        href="https://pharallax.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-accent underline hover:no-underline">Pharallax</a
+      >.
+    </p>
+  </main>
+
+  <Footer />
+
+  {
+    ADS_TAG_ID && (
+      <Fragment>
+        <script
+          is:inline
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${ADS_TAG_ID}`}
+        />
+        <script
+          is:inline
+          set:html={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${ADS_TAG_ID}');
+        if (window.top === window.self) {
+          gtag('event', 'conversion', {send_to: '${ADS_TAG_ID}/${ADS_CONVERSION_LABEL}'});
+        }
+      `}
+        />
+      </Fragment>
+    )
+  }
+</BaseLayout>

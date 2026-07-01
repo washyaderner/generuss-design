@@ -7,7 +7,9 @@ export default defineConfig({
   output: "static",
   adapter: cloudflare(),
   site: "https://generussdesign.com",
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({ filter: (page) => !page.includes("/call-confirmed") }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
