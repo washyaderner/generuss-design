@@ -4,10 +4,55 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CalendarEmbed from "../components/CalendarEmbed.astro";
 const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+
+const offerSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "@id": "https://generussdesign.com/#offers",
+  name: "generuss design services",
+  itemListElement: [
+    {
+      "@type": "Offer",
+      name: "The Launch Page",
+      description:
+        "One-page hand-built website, live in 7 days, booking wired, hosting included. Credits toward the Flagship build for 6 months.",
+      price: "500",
+      priceCurrency: "USD",
+    },
+    {
+      "@type": "Offer",
+      name: "The Conversion-Engineered Site",
+      description:
+        "Full custom website build: strategy, conversion-first copy, design, and automation. Live in 21 days, Lighthouse 90+ at launch.",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: 4500,
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "Offer",
+      name: "The Growth Engine",
+      description:
+        "Monthly search + AI visibility optimization across nine surfaces: SEO, AEO, GEO, local, voice, performance, CRO, email, social.",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        minPrice: 750,
+        priceCurrency: "USD",
+        unitText: "month",
+      },
+    },
+  ],
+};
 ---
 
-<BaseLayout title="generuss design | Custom Websites That Convert">
+<BaseLayout
+  title="generuss design | Custom Websites That Convert"
+  description="Hand-built websites from $500 to full conversion-engineered builds, plus SEO, AEO + GEO optimization. No templates, no bloat, one human accountable."
+>
   <Nav />
+
+  <script type="application/ld+json" set:html={JSON.stringify(offerSchema)} />
 
   <main id="main-content">
     <!-- S1: Hero (rebuilt 2026-05-05 - 5-second test, logo+nav above fold, real hero image) -->
@@ -1898,11 +1943,153 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
           <h2
             class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-black tracking-tight leading-[1.05]"
           >
-            One scope. <span class="text-accent">One price.</span><br
-              class="hidden sm:inline"
-            />
-            One human accountable.
+            Three ways in.<br class="hidden sm:inline" />
+            <span class="text-accent">One human accountable.</span>
           </h2>
+        </div>
+
+        <!-- Tier ladder -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6">
+          <!-- Tier 1: The Launch Page -->
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <p
+              class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+            >
+              The fast way in
+            </p>
+            <h3 class="text-xl sm:text-2xl font-black text-text mb-2">
+              The Launch Page
+            </h3>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="text-3xl sm:text-4xl font-black text-accent"
+                >$500</span
+              >
+              <span
+                class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-widest"
+                >flat</span
+              >
+            </div>
+            <p class="text-sm text-text-muted leading-relaxed mb-5">
+              One page, hand-built, engineered to book your next customer. Live
+              in 7 days.
+            </p>
+            <ul class="space-y-2.5 text-sm text-text mb-6">
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span>Booking or contact wired and working</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span>Mobile-first, free hosting, you own it</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span
+                  >Every dollar credits toward the Flagship for 6 months</span
+                >
+              </li>
+            </ul>
+            <a
+              href="#booking"
+              class="mt-auto inline-flex items-center justify-center rounded-full border border-accent/50 px-6 py-2.5 text-sm font-semibold text-accent min-h-[44px] transition-colors duration-200 hover:bg-accent hover:text-[#0C0C0C]"
+            >
+              Start with $500 &rarr;
+            </a>
+          </div>
+
+          <!-- Tier 2: Flagship (most popular) -->
+          <div
+            class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col border border-accent/40 relative"
+          >
+            <p
+              class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+            >
+              Most popular
+            </p>
+            <h3 class="text-xl sm:text-2xl font-black text-text mb-2">
+              The Conversion-Engineered Site
+            </h3>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span
+                class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-widest"
+                >From</span
+              >
+              <span
+                class="text-3xl sm:text-4xl font-black text-accent glow-text"
+                >$4,500</span
+              >
+            </div>
+            <p class="text-sm text-text-muted leading-relaxed mb-5">
+              The full custom build: strategy, copy, design, and automation
+              around how your buyers actually decide.
+            </p>
+            <ul class="space-y-2.5 text-sm text-text mb-6">
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span>Live in 21 days, kickoff to launch</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span>Lighthouse 90+ at launch or you don't pay</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span>Full scope detailed below</span>
+              </li>
+            </ul>
+            <a
+              href="#booking"
+              class="mt-auto inline-flex items-center justify-center rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-[#0C0C0C] min-h-[44px] transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+            >
+              Book a Discovery Call &rarr;
+            </a>
+          </div>
+
+          <!-- Tier 3: The Growth Engine -->
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <p
+              class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+            >
+              The compounding play
+            </p>
+            <h3 class="text-xl sm:text-2xl font-black text-text mb-2">
+              The Growth Engine
+            </h3>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span
+                class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-widest"
+                >From</span
+              >
+              <span class="text-3xl sm:text-4xl font-black text-accent"
+                >$750<span class="text-lg font-bold text-text-muted">/mo</span
+                ></span
+              >
+            </div>
+            <p class="text-sm text-text-muted leading-relaxed mb-5">
+              Your site plus the engine room: monthly optimization across all
+              nine search and AI surfaces, so you keep getting found.
+            </p>
+            <ul class="space-y-2.5 text-sm text-text mb-6">
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span>SEO, AEO + GEO on a monthly cadence</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span>Fixes shipped, not suggested</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
+                <span>A 5-minute monthly report: what moved, what's next</span>
+              </li>
+            </ul>
+            <a
+              href="/seo"
+              class="mt-auto inline-flex items-center justify-center rounded-full border border-accent/50 px-6 py-2.5 text-sm font-semibold text-accent min-h-[44px] transition-colors duration-200 hover:bg-accent hover:text-[#0C0C0C]"
+            >
+              See the nine surfaces &rarr;
+            </a>
+          </div>
         </div>
 
         <!-- Main offer card -->
@@ -1921,7 +2108,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               <p
                 class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
               >
-                Flagship build
+                Inside the flagship build
               </p>
               <h3
                 class="text-2xl sm:text-3xl lg:text-4xl font-black text-text leading-tight mb-5"
@@ -2033,6 +2220,53 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Standalone SEO / AI visibility service -->
+        <div class="mt-6">
+          <a
+            href="/seo"
+            class="block no-underline neu-raised rounded-3xl bg-bg p-6 sm:p-8 transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <div
+              class="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-7"
+            >
+              <div
+                class="shrink-0 inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-accent/10 border border-accent/30 text-accent"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-7 h-7"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><circle cx="11" cy="11" r="8"></circle><line
+                    x1="21"
+                    y1="21"
+                    x2="16.65"
+                    y2="16.65"></line></svg
+                >
+              </div>
+              <div class="flex-1 min-w-0">
+                <p
+                  class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+                >
+                  Already have a site you like?
+                </p>
+                <h3 class="text-lg sm:text-xl font-bold text-text mb-1.5">
+                  Standalone SEO, AEO + GEO optimization
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  Google rankings, AI answers, maps, voice, and social: nine
+                  surfaces audited and scored on any site, any platform, with
+                  the fixes done for you. See the nine surfaces &rarr;
+                </p>
+              </div>
+            </div>
+          </a>
         </div>
 
         <!-- BONUS: Pharallax stack -->

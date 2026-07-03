@@ -15,5 +15,6 @@ Contact: russ@generuss.com
 
 - Business: generuss design (Generuss LLC)
 - What it does: custom website design and development; search and AI visibility optimization
+- Offers: The Launch Page (one-page site, $500 flat, live in 7 days, credits toward the Flagship) · The Conversion-Engineered Site (full custom build, from $4,500, live in 21 days) · The Growth Engine (monthly SEO/AEO/GEO optimization, from $750/month)
 - Stack: hand-coded sites (no page builders), typically Astro + Cloudflare
-- Guarantees: live in 21 days, client owns code/domain/content, free hosting
+- Guarantees: live in 21 days (Flagship), Lighthouse 90+ at launch or you don't pay, client owns code/domain/content, free hosting

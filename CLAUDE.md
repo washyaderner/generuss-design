@@ -408,7 +408,7 @@ Be pragmatic. Be reliable. Self-anneal. Compound.
 ## Project State
 
 **Last Updated**: 2026-07-03
-**Current Status**: `/seo` service page live - Search + AI visibility optimization offering (SEO / AEO / GEO-GSO / Local / Voice / Perf / CRO / Email / Social, each labeled and explained), plus sitewide SEO fixes from the first /seo audit
+**Current Status**: Offer restructured into a 3-tier ladder on the homepage (The Launch Page $500 flat / The Conversion-Engineered Site from $4,500 / The Growth Engine from $750/mo) + standalone SEO service card; /seo in the nav (desktop + mobile), /seo hero centered; OfferCatalog JSON-LD + homepage meta description with price hook; /seo service page live (nine labeled surfaces). NOTE: Growth Engine $750/mo and the tier names were Kit's call per Russ's "you decide the tiers" - adjust freely.
 **New Files Added**:
 
 - `src/pages/seo.astro` (service landing page: nine labeled surface cards, how-it-works, FAQ w/ FAQPage + Service JSON-LD, CalendarEmbed booking + Formspree top-3-gaps form with `source=seo` attribution)
