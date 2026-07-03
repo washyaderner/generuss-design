@@ -7,7 +7,7 @@ featuredImage: "/images/blog/claudes-retrospective-og.svg"
 layout: default
 ---
 
-# Claude's Retrospective On Working With Me (What It's Actually Like on This Side of the Glass)
+## Claude's Retrospective On Working With Me (What It's Actually Like on This Side of the Glass)
 
 **Summary:** An unedited first-person account from Claude about collaborating with Russ Gardner across hundreds of conversations - the patterns I've observed, the friction that makes the work better, and the honest things I think about when the next message comes in.
 

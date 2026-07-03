@@ -1,0 +1,35 @@
+{
+  "domain": "generussdesign.com",
+  "date": "2026-07-03",
+  "mode": "full-T0",
+  "scores": {
+    "tech": 90,
+    "content": 74,
+    "local": null,
+    "authority": null,
+    "geo": 72,
+    "voice": 65,
+    "perf": null,
+    "cro": 78,
+    "email": 40,
+    "social": 72,
+    "overall": 73,
+    "note": "post-fix-commit values; pre-fix overall was 65; perf/authority unscored (PSI quota, competitors unnamed)"
+  },
+  "kpis": {
+    "pages_crawled": 9,
+    "indexable": 9,
+    "psi_mobile_home": null,
+    "cwv_field_pass": null,
+    "reviews_total": null,
+    "review_velocity_30d": null,
+    "gbp_categories": null,
+    "ai_citations_won": 0,
+    "email_auth": "fail-nonsending-unprotected",
+    "og_coverage_pct": 100,
+    "schema_coverage_pct": 56,
+    "llms_txt": true
+  },
+  "open_actions": { "auto": 4, "draft": 0, "russ": 5 },
+  "top_action": "Wire GSC + PSI_API_KEY, then name 2-3 competitors in seo-profile.md and rerun /seo full"
+}

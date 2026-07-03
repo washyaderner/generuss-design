@@ -407,20 +407,21 @@ Be pragmatic. Be reliable. Self-anneal. Compound.
 
 ## Project State
 
-**Last Updated**: 2026-06-27
-**Current Status**: `/connect` bento hub - Tarotdoxa hero card + brand-logo social icons shipped (live on generussdesign.com/connect)
+**Last Updated**: 2026-07-03
+**Current Status**: `/seo` service page live - Search + AI visibility optimization offering (SEO / AEO / GEO-GSO / Local / Voice / Perf / CRO / Email / Social, each labeled and explained), plus sitewide SEO fixes from the first /seo audit
 **New Files Added**:
 
-- `public/images/slides/tarotdoxa-hero.webp` (composed 16:9 hero banner: `presence-hero.jpg` dancer + `wordmark-cut.png` TAROTDOXA wordmark, sourced from the tarotdoxa-site repo)
-- `execution/compose-tarotdoxa-hero.py` (reproducible PIL compositor for the banner above; re-run with `--mark-frac` / `--y-bias` to retune)
-- `execution/outlier_sniper.py` (Outlier Sniper dark neumorphic compositing tool using `PIL`)
+- `src/pages/seo.astro` (service landing page: nine labeled surface cards, how-it-works, FAQ w/ FAQPage + Service JSON-LD, CalendarEmbed booking + Formspree top-3-gaps form with `source=seo` attribution)
+- `public/llms.txt` (AI-crawler site summary: business facts, key pages, guarantees)
+- `seo/` (audit workspace: profile + dated audit runs from the global /seo skill; `seo/audits/YYYY-MM-DD/`)
 
 **Changes Made**:
 
-- Added a dedicated Tarotdoxa card to `src/pages/connect.astro` linking to tarotdoxa.com (full-width horizontal banner on desktop, image-over-text stacked on mobile; brand gradient on "It's revealed.").
-- Replaced the text social labels (X / GH / YT / LI) in the footer with real X, GitHub, YouTube, and LinkedIn brand SVG logos (`fill: currentColor`, inherits the cyan hover).
-- `/connect` is a real static page (the old `astro.config.mjs` `/connect` -> generuss.com redirect was replaced with the bento hub in commit `1ae820a`; there is no redirect now).
-- Removed `numpy` dependency from Python scripts in favor of `os.urandom` to support local Mac environments.
-- Handled multiline text `ValueError` anchor limitation in PIL inside the compositing script.
+- Footer Services column links to `/seo` ("SEO, AEO + GEO optimization").
+- `/connect` title keyworded ("Connect | Booking, Socials + Links | generuss design"), was brand-only.
+- Demoted in-content markdown H1s in `claudes-retrospective.md` + `pharadoxa-build.md` (layout already renders the title H1; pages had 2 H1s).
+- BaseLayout Person schema name fixed: "Russ Garner" -> "Russ Gardner" (matched blog prose; entity consistency for GEO).
+
+**Prior milestone (2026-06-27)**: `/connect` bento hub - Tarotdoxa hero card + brand-logo social icons (tarotdoxa-hero.webp compositor, PIL scripts `compose-tarotdoxa-hero.py` / `outlier_sniper.py`, numpy removed, `/connect` redirect replaced by real page in `1ae820a`).
 
 **Deploy note**: Cloudflare Pages project `generuss-design` is git-connected to `main` (push to `main` triggers the build). The `~/.secrets` `CLOUDFLARE_API_TOKEN` is DNS-only (generuss.com zone); manual `wrangler pages deploy` needs `env -u CLOUDFLARE_API_TOKEN` to fall back to the OAuth login.

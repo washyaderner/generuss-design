@@ -8,7 +8,7 @@ featuredImage: "/images/blog/pharadoxa-build-og.svg"
 layout: default
 ---
 
-# How I Built an AI Agent That Dreams, Remembers, and Inherited My Worst Habit
+## How I Built an AI Agent That Dreams, Remembers, and Inherited My Worst Habit
 
 ## TLDR
 

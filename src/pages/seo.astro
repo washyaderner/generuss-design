@@ -1,0 +1,646 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import CalendarEmbed from "../components/CalendarEmbed.astro";
+
+// Reuse the live form infra (Formspree) already used on the homepage + /ogc.
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+
+const surfaces = [
+  {
+    label: "SEO",
+    name: "Search Engine Optimization",
+    body: "The classic layer: rankings on Google and Bing. Technical health, titles and metadata, keywords mapped to pages, internal links, and content that earns its position.",
+  },
+  {
+    label: "AEO",
+    name: "Answer Engine Optimization",
+    body: "Featured snippets, People Also Ask, and assistant answers. Your pages get restructured so the direct answer is extractable, quotable, and yours.",
+  },
+  {
+    label: "GEO / GSO",
+    name: "Generative Engine Optimization",
+    body: "When ChatGPT, Claude, Perplexity, or Google's AI Overviews answer questions in your category, they cite somebody. Schema depth, entity signals, llms.txt, and citable content make that somebody you.",
+  },
+  {
+    label: "LOCAL",
+    name: "Map Pack + Business Profile",
+    body: "Categories, attributes, reviews, posts, and photos, audited against the competitors actually outranking you. You get the exact gap list and the copy to close it.",
+  },
+  {
+    label: "VOICE",
+    name: "Voice Search",
+    body: "Siri, Alexa, and Assistant read one answer out loud. Conversational question coverage and snippet-length answers put your business in that slot.",
+  },
+  {
+    label: "PERF",
+    name: "Performance + Core Web Vitals",
+    body: "Speed is a ranking factor, a conversion factor, and an AI-selection factor. Images, fonts, scripts, and caching tuned until the site is quietly fast.",
+  },
+  {
+    label: "CRO",
+    name: "UX + Conversion",
+    body: "Traffic that does not convert is decoration. Search intent matched above the fold, friction pulled out of forms and booking, trust signals where the eye lands.",
+  },
+  {
+    label: "EMAIL",
+    name: "Deliverability",
+    body: "SPF, DKIM, and DMARC checked at the DNS level, plus list hygiene and engagement, so the mail you send actually lands in inboxes instead of spam.",
+  },
+  {
+    label: "SOCIAL",
+    name: "Share + Platform Fit",
+    body: "Every link you paste unfurls with the right image and title, your profiles feed your entity graph, and content gets shaped for how each platform actually ranks it.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What is the difference between SEO, AEO, and GEO?",
+    a: "SEO gets you ranked in the list of links. AEO gets you into the answer box at the top of the page. GEO, sometimes called GSO, gets you cited when an AI writes the answer. They share foundations, but each has its own checklist, and most sites have only ever done the first one.",
+  },
+  {
+    q: "Do you work with sites you didn't build?",
+    a: "Yes. The audit runs on any site, any platform. If I built it, fixes ship faster because I already know the codebase, but the engine does not care who wrote the code.",
+  },
+  {
+    q: "How long until results?",
+    a: "Technical fixes land immediately and get re-measured the same day. Rankings and AI citations typically move over weeks, not days. That is exactly why the plan is ranked: quick wins first, compounding work behind them.",
+  },
+  {
+    q: "What does it cost?",
+    a: "It depends on the size of the site and what the audit finds. Book a call and you will leave with a real number and a plan, whether or not we work together.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://generussdesign.com/seo#service",
+      name: "Search + AI Visibility Optimization",
+      serviceType: "SEO, AEO, and GEO optimization",
+      description:
+        "Audit-first optimization across nine surfaces: SEO, answer engines, generative AI citations, map pack, voice search, performance, conversion, email deliverability, and social sharing.",
+      provider: { "@id": "https://generussdesign.com/#org" },
+      url: "https://generussdesign.com/seo",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://generussdesign.com/seo#faq",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="SEO, AEO + GEO Optimization Services | generuss design"
+  description="One engine for every surface people search: Google rankings, AI answers, maps, voice, and social. Audit-first, ranked in plain English, with the fixes done for you."
+>
+  <Nav bookingHref="#booking" offerHref="#surfaces" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <main id="main-content">
+    <!-- ===== HERO ===== -->
+    <section
+      id="hero"
+      class="relative flex min-h-screen min-h-[100dvh] items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-24 pb-12 lg:pt-28"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto lg:mx-0 lg:max-w-7xl">
+        <div class="max-w-3xl">
+          <span
+            class="hero-enter hero-enter-1 inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+          >
+            <span
+              class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+            ></span>
+            Search + AI visibility optimization
+          </span>
+          <h1
+            class="hero-enter hero-enter-2 text-balance text-[2.4rem] sm:text-[3.1rem] md:text-[3.6rem] lg:text-[3.9rem] xl:text-[4.3rem] font-black tracking-[-0.03em] leading-[1.03] text-text"
+          >
+            Be the answer,
+            <span class="text-accent glow-text">everywhere they ask.</span>
+          </h1>
+          <p
+            class="hero-enter hero-enter-3 mt-6 text-pretty text-lg sm:text-xl md:text-[1.3rem] text-text-muted leading-relaxed max-w-2xl"
+          >
+            People find businesses through Google, ChatGPT, Perplexity, the map
+            pack, and voice assistants. I audit all of it, hand you a ranked
+            plan in plain English, and do the fixes myself. Not a 40-page PDF
+            you never open.
+          </p>
+
+          <p
+            class="hero-enter hero-enter-4 mt-6 text-base sm:text-lg text-text leading-relaxed max-w-2xl"
+          >
+            Nine surfaces, each labeled and scored, so you can see exactly where
+            you stand and <span class="text-accent font-semibold"
+              >what moves first</span
+            >.
+          </p>
+
+          <div
+            class="hero-enter hero-enter-4 mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          >
+            <a
+              href="#booking"
+              class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+            >
+              Book a Call &rarr;
+            </a>
+            <a
+              href="#surfaces"
+              class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+            >
+              See the nine surfaces
+            </a>
+          </div>
+
+          <!-- Proof strip -->
+          <div
+            class="hero-enter hero-enter-5 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs sm:text-sm text-text-muted"
+          >
+            <span
+              ><span class="text-text font-semibold">9</span> surfaces per audit</span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              >ranked by <span class="text-text font-semibold">impact</span>,
+              not opinion</span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              >fixes <span class="text-text font-semibold">done</span>, not just
+              found</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60"
+      >
+        <span
+          class="text-[0.6rem] text-text-muted font-mono tracking-[0.2em] uppercase"
+          >Scroll</span
+        >
+        <div class="h-6 w-px bg-text-muted/40"></div>
+      </div>
+    </section>
+
+    <!-- ===== THE SHIFT ===== -->
+    <section
+      id="shift"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-dark px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          Why this matters now
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-6"
+        >
+          Search didn't die. It <span class="text-accent">multiplied.</span>
+        </h2>
+        <div
+          class="space-y-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-3xl"
+        >
+          <p>
+            Ranking on Google still matters. But now ChatGPT recommends
+            businesses by name. Perplexity cites its sources. Google's AI
+            Overviews answer the question before anyone scrolls to the links.
+            Every one of those answers comes from somewhere.
+          </p>
+          <p>
+            The sites getting picked are not lucky. They are structured so
+            machines can read them, trust them, and quote them. That is a build
+            problem, and building is what I do. Most agencies are still selling
+            last decade's checklist. This is the whole board.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE NINE SURFACES ===== -->
+    <section
+      id="surfaces"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            The nine surfaces
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            One engine. <span class="text-accent">Every surface.</span>
+          </h2>
+          <p
+            class="mt-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-2xl mx-auto"
+          >
+            Each one is audited, scored, and labeled in your plan, so "how
+            visible are we" stops being a feeling and becomes a number.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+        >
+          {
+            surfaces.map((s) => (
+              <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col">
+                <span class="inline-flex w-fit items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[0.65rem] font-mono font-semibold uppercase tracking-[0.15em] text-accent mb-4">
+                  {s.label}
+                </span>
+                <h3 class="text-base sm:text-lg font-bold text-text mb-2">
+                  {s.name}
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  {s.body}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section
+      id="process"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            How it works
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            Audit. Plan. <span class="text-accent">Fix.</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <p
+              class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+            >
+              Step one
+            </p>
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              The audit
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              Every surface gets crawled, tested, and scored with real data:
+              your pages, your competitors, your DNS, your speed. Evidence
+              attached to every finding, not vibes.
+            </p>
+          </div>
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <p
+              class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+            >
+              Step two
+            </p>
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              The ranked plan
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              One list, sorted by impact against effort, written in plain
+              English. The top three are marked "this week", and you can see
+              exactly why each one earns its spot.
+            </p>
+          </div>
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <p
+              class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+            >
+              Step three
+            </p>
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              The fixes
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              I implement the technical work directly: metadata, schema, speed,
+              structure. For surfaces only you can touch, like your Google
+              profile, you get paste-ready copy. Then we measure what moved.
+            </p>
+          </div>
+        </div>
+
+        <p
+          class="mt-8 text-center text-sm sm:text-base text-text-muted leading-relaxed"
+        >
+          Prefer a cadence? The same engine runs monthly as a report that tracks
+          what moved and calls the next play.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section
+      id="faq"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10 sm:mb-12">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Quick answers
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05]"
+          >
+            The questions everyone <span class="text-accent">asks first.</span>
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {
+            faqs.map((f) => (
+              <div class="neu-inset rounded-2xl p-5 sm:p-6">
+                <h3 class="text-base sm:text-lg font-bold text-text mb-2">
+                  {f.q}
+                </h3>
+                <p class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed">
+                  {f.a}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOOKING (primary CTA) ===== -->
+    <section
+      id="booking"
+      class="px-8 sm:px-12 lg:px-20 py-(--spacing-section) relative bg-bg-secondary section-fade-in section-fade-from-dark"
+    >
+      <div
+        class="absolute inset-0 pointer-events-none flex items-center justify-center"
+      >
+        <div
+          class="w-[600px] h-[600px] rounded-full bg-accent/[0.04] blur-[120px]"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-2xl mx-auto text-center mb-10 sm:mb-12">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          The next step
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-5"
+        >
+          A quick call. <span class="text-accent glow-text">No pitch.</span>
+        </h2>
+        <p
+          class="text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-xl mx-auto"
+        >
+          Tell me where customers are supposed to find you. I will tell you
+          exactly what the audit covers for your site, what it costs, and what I
+          would fix first. Whether we work together or not, you leave with a
+          plan.
+        </p>
+      </div>
+
+      <div class="relative z-10 max-w-[850px] mx-auto">
+        <CalendarEmbed />
+      </div>
+
+      <!-- ===== SECONDARY CTA: free top-3 gaps ===== -->
+      <div class="relative z-10 mt-16 sm:mt-20">
+        <div class="max-w-2xl mx-auto">
+          <div
+            class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col gap-5"
+          >
+            <div class="flex items-start gap-5 sm:gap-7">
+              <div
+                class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 text-accent"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-7 h-7"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><circle cx="11" cy="11" r="8"></circle><line
+                    x1="21"
+                    y1="21"
+                    x2="16.65"
+                    y2="16.65"></line></svg
+                >
+              </div>
+              <div class="flex-1 min-w-0">
+                <p
+                  class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+                >
+                  Not ready for a call?
+                </p>
+                <h3 class="text-lg sm:text-xl font-bold text-text mb-1.5">
+                  Send your site, get your top three gaps free
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  Drop your email and your site. I will run a quick pass and
+                  reply with the three most damaging gaps I find, no drip
+                  campaign, no strings.
+                </p>
+              </div>
+            </div>
+
+            <form
+              id="seo-quote-form"
+              action={`https://formspree.io/f/${formspreeId}`}
+              method="POST"
+              class="flex flex-col gap-3"
+            >
+              <!-- Honeypot -->
+              <input
+                type="text"
+                name="_gotcha"
+                style="display:none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+              <input
+                type="hidden"
+                name="_subject"
+                value="SEO service inquiry"
+              />
+              <input type="hidden" name="source" value="seo" />
+              <input type="hidden" name="utm_source" value="" />
+              <input type="hidden" name="utm_medium" value="" />
+              <input type="hidden" name="utm_content" value="" />
+
+              <div class="flex flex-col sm:flex-row gap-3">
+                <div class="flex-1">
+                  <label class="sr-only" for="seo-email">Email address</label>
+                  <input
+                    type="email"
+                    id="seo-email"
+                    name="email"
+                    required
+                    placeholder="you@yourbusiness.com"
+                    class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                  />
+                </div>
+                <div class="flex-1">
+                  <label class="sr-only" for="seo-site">Your website</label>
+                  <input
+                    type="text"
+                    id="seo-site"
+                    name="current_site"
+                    required
+                    placeholder="yoursite.com"
+                    class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="self-start rounded-full bg-accent px-6 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+              >
+                Send my top three gaps &rarr;
+              </button>
+            </form>
+          </div>
+          <p
+            id="seo-quote-success"
+            class="hidden text-center text-sm text-accent mt-4 font-mono"
+          >
+            Got it. I will be in touch from russ@generuss.com.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- Smooth in-page anchor scrolling (reduced-motion safe via global.css override) -->
+  <style is:global>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+  <script>
+    // ===== UTM capture + attribution (same pattern as /ogc) =====
+    const KEYS = [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+    ];
+    const params = new URLSearchParams(window.location.search);
+
+    KEYS.forEach((k) => {
+      const v = params.get(k);
+      if (v) {
+        try {
+          sessionStorage.setItem(k, v);
+        } catch (e) {
+          /* sessionStorage unavailable, fall through */
+        }
+      }
+    });
+
+    const quoteForm = document.getElementById("seo-quote-form");
+    if (quoteForm) {
+      ["utm_source", "utm_medium", "utm_content"].forEach((k) => {
+        let v = params.get(k);
+        if (!v) {
+          try {
+            v = sessionStorage.getItem(k);
+          } catch (e) {
+            v = null;
+          }
+        }
+        const field = quoteForm.querySelector(`input[name="${k}"]`);
+        if (field && v) field.value = v;
+      });
+    }
+
+    // ===== Quote form submit (mirrors the homepage Formspree pattern) =====
+    const form = document.getElementById("seo-quote-form");
+    const successMsg = document.getElementById("seo-quote-success");
+    const submitBtn = form?.querySelector('button[type="submit"]');
+    const submitText = submitBtn?.textContent;
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        submitBtn.classList.add("opacity-60", "cursor-not-allowed");
+      }
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+
+        if (res.ok) {
+          form.classList.add("hidden");
+          successMsg?.classList.remove("hidden");
+        } else {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitText ?? "Send my top three gaps →";
+            submitBtn.classList.remove("opacity-60", "cursor-not-allowed");
+          }
+          alert("Something went wrong. Please try again.");
+        }
+      } catch {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitText ?? "Send my top three gaps →";
+          submitBtn.classList.remove("opacity-60", "cursor-not-allowed");
+        }
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</BaseLayout>

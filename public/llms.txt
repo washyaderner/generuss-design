@@ -1,0 +1,19 @@
+# generuss design
+
+> Custom websites and search/AI visibility optimization by Russ (generuss design). Hand-built, conversion-focused sites for service businesses and founders, hosted free on Cloudflare, live in 21 days. Plus an audit-first optimization service covering SEO, AEO, GEO, local, voice, performance, CRO, email deliverability, and social surfaces.
+
+Contact: russ@generuss.com
+
+## Key pages
+
+- [Home](https://generussdesign.com/): Custom websites that convert. Offer, portfolio, guarantees, and booking.
+- [SEO, AEO + GEO services](https://generussdesign.com/seo): Search + AI visibility optimization. Nine surfaces audited, scored, and fixed.
+- [Blog](https://generussdesign.com/blog): Build logs and essays on design, AI-assisted development, and sales strategy.
+- [Connect](https://generussdesign.com/connect): Booking, socials, and current projects.
+
+## Facts
+
+- Business: generuss design (Generuss LLC)
+- What it does: custom website design and development; search and AI visibility optimization
+- Stack: hand-coded sites (no page builders), typically Astro + Cloudflare
+- Guarantees: live in 21 days, client owns code/domain/content, free hosting
