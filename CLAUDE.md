@@ -332,6 +332,8 @@ When something breaks:
 ## Copy Style
 
 - **Never use em dashes** (the long `—` character). Use a hyphen with spaces ( - ), a colon, or rephrase instead.
+- **No widows/orphans in display text (ABSOLUTE RULE, Russ 2026-07-03).** A heading or short display line must never wrap leaving one or two words alone on the last line (top-heavy wrap). Every display heading gets `text-balance`; wrap short tail phrases in `<span class="whitespace-nowrap">` when balance alone can't prevent the orphan; rewrite or shorten copy if it still breaks badly. Check headings at mobile, tablet, and desktop widths before shipping. Body copy in narrow columns gets `text-pretty`.
+- **Wide beats tall on horizontal cards.** A card with icon + text + form must never squeeze its text into a skinny column (one or two words per line). Header row full-width, form on its own row below.
 
 ---
 
@@ -407,8 +409,8 @@ Be pragmatic. Be reliable. Self-anneal. Compound.
 
 ## Project State
 
-**Last Updated**: 2026-07-03
-**Current Status**: Offer restructured into a 3-tier ladder on the homepage (The Launch Page $500 flat / The Conversion-Engineered Site from $4,500 / The Growth Engine from $750/mo) + standalone SEO service card; /seo in the nav (desktop + mobile), /seo hero centered; OfferCatalog JSON-LD + homepage meta description with price hook; /seo service page live (nine labeled surfaces). NOTE: Growth Engine $750/mo and the tier names were Kit's call per Russ's "you decide the tiers" - adjust freely.
+**Last Updated**: 2026-07-03 (PM pass)
+**Current Status**: Guarantee replaced sitewide (Lighthouse framing retired for the tangible trio: live-in-21-days-or-no-balance / love-the-first-design-or-deposit-back / you-own-everything-$0-hosting; Lighthouse survives only as "96/100 avg speed score" stats); tier cards are now clickable and swap the detail panel below (launch/flagship/growth panels + vanilla JS); 5-Site Teardown card restructured wide (form on its own row); no-widow rule applied (text-balance + nowrap tails) and codified in Copy Style. Earlier today: offer restructured into a 3-tier ladder on the homepage (The Launch Page $500 flat / The Conversion-Engineered Site from $4,500 / The Growth Engine from $750/mo) + standalone SEO service card; /seo in the nav (desktop + mobile), /seo hero centered; OfferCatalog JSON-LD + homepage meta description with price hook; /seo service page live (nine labeled surfaces). NOTE: Growth Engine $750/mo and the tier names were Kit's call per Russ's "you decide the tiers" - adjust freely.
 **New Files Added**:
 
 - `src/pages/seo.astro` (service landing page: nine labeled surface cards, how-it-works, FAQ w/ FAQPage + Service JSON-LD, CalendarEmbed booking + Formspree top-3-gaps form with `source=seo` attribution)

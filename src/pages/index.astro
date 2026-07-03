@@ -23,7 +23,7 @@ const offerSchema = {
       "@type": "Offer",
       name: "The Conversion-Engineered Site",
       description:
-        "Full custom website build: strategy, conversion-first copy, design, and automation. Live in 21 days, Lighthouse 90+ at launch.",
+        "Full custom website build: strategy, conversion-first copy, design, and automation. Live in 21 days or you don't pay the balance.",
       priceSpecification: {
         "@type": "PriceSpecification",
         minPrice: 4500,
@@ -84,8 +84,8 @@ const offerSchema = {
             class="hero-enter hero-enter-3 mt-6 text-lg sm:text-xl md:text-[1.35rem] text-text-muted leading-relaxed max-w-2xl"
           >
             Hand-built in 21 days for service businesses and founders who
-            outgrew their templates. No page builders. No bloat. Lighthouse 90+
-            or you don't pay.
+            outgrew their templates. No page builders. No bloat. Live in 21 days
+            or you don't pay the balance.
           </p>
 
           <div
@@ -122,7 +122,7 @@ const offerSchema = {
             >
             <span class="hidden sm:inline text-text-muted/40">|</span>
             <span
-              ><span class="text-text font-semibold">Lighthouse 96</span> avg</span
+              ><span class="text-text font-semibold">96/100</span> avg speed score</span
             >
           </div>
         </div>
@@ -375,8 +375,8 @@ const offerSchema = {
             <p
               class="text-sm sm:text-base text-text-muted leading-relaxed mb-3"
             >
-              Most agency sites score 40-60 on Lighthouse. Slow loads, bloated
-              bundles, third-party script soup that compounds with every plugin.
+              Most agency sites crawl. Bloated themes, heavy bundles,
+              third-party script soup that compounds with every plugin.
             </p>
             <p class="text-xs sm:text-sm text-accent/90 font-mono mt-auto">
               Cost: 1 second slower = 7% conversion drop, every visit
@@ -391,11 +391,11 @@ const offerSchema = {
               What I do instead
             </p>
             <h3 class="text-lg sm:text-xl font-bold text-accent mb-2">
-              Lighthouse 90+ guaranteed
+              Fast on every phone
             </h3>
             <p class="text-sm sm:text-base text-text-muted leading-relaxed">
-              Static-first architecture, zero unnecessary JavaScript. If your
-              site doesn't hit 90+ at launch, you don't pay.
+              Static-first architecture, zero unnecessary JavaScript. Your site
+              loads before a visitor can think about leaving.
             </p>
           </div>
 
@@ -1951,7 +1951,13 @@ const offerSchema = {
         <!-- Tier ladder -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6">
           <!-- Tier 1: The Launch Page -->
-          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+          <div
+            data-tier="launch"
+            role="button"
+            tabindex="0"
+            aria-pressed="false"
+            class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col cursor-pointer border border-transparent transition-colors duration-200 hover:border-accent/20"
+          >
             <p
               class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
             >
@@ -1999,7 +2005,11 @@ const offerSchema = {
 
           <!-- Tier 2: Flagship (most popular) -->
           <div
-            class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col border border-accent/40 relative"
+            data-tier="flagship"
+            role="button"
+            tabindex="0"
+            aria-pressed="true"
+            class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col cursor-pointer border border-accent/40 transition-colors duration-200 hover:border-accent/20 relative"
           >
             <p
               class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
@@ -2026,11 +2036,11 @@ const offerSchema = {
             <ul class="space-y-2.5 text-sm text-text mb-6">
               <li class="flex items-start gap-2.5">
                 <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
-                <span>Live in 21 days, kickoff to launch</span>
+                <span>Live in 21 days or you don't pay the balance</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
-                <span>Lighthouse 90+ at launch or you don't pay</span>
+                <span>Love the first design or your deposit back</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-accent mt-0.5 shrink-0">&#10003;</span>
@@ -2046,7 +2056,13 @@ const offerSchema = {
           </div>
 
           <!-- Tier 3: The Growth Engine -->
-          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+          <div
+            data-tier="growth"
+            role="button"
+            tabindex="0"
+            aria-pressed="false"
+            class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col cursor-pointer border border-transparent transition-colors duration-200 hover:border-accent/20"
+          >
             <p
               class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
             >
@@ -2092,9 +2108,10 @@ const offerSchema = {
           </div>
         </div>
 
-        <!-- Main offer card -->
+        <!-- Main offer card (flagship detail panel) -->
         <div
-          class="neu-raised rounded-3xl bg-bg p-6 sm:p-10 lg:p-12 relative overflow-hidden"
+          id="tier-panel-flagship"
+          class="tier-panel neu-raised rounded-3xl bg-bg p-6 sm:p-10 lg:p-12 relative overflow-hidden"
         >
           <!-- Top accent bar -->
           <div
@@ -2158,8 +2175,9 @@ const offerSchema = {
                     ></polyline></svg
                   >
                   <span
-                    ><span class="text-text font-semibold">Lighthouse 90+</span> at
-                    launch or you don't pay</span
+                    ><span class="text-text font-semibold"
+                      >Love the first design</span
+                    >, or your deposit back</span
                   >
                 </div>
               </div>
@@ -2189,7 +2207,7 @@ const offerSchema = {
                 </li>
                 <li class="flex items-start gap-2.5">
                   <span class="text-accent mt-1 shrink-0">&#10003;</span>
-                  <span>Mobile-first, Lighthouse 90+ performance</span>
+                  <span>Mobile-first and fast on every phone</span>
                 </li>
                 <li class="flex items-start gap-2.5">
                   <span class="text-accent mt-1 shrink-0">&#10003;</span>
@@ -2221,6 +2239,318 @@ const offerSchema = {
             </div>
           </div>
         </div>
+
+        <!-- Launch Page detail panel -->
+        <div
+          id="tier-panel-launch"
+          class="tier-panel hidden neu-raised rounded-3xl bg-bg p-6 sm:p-10 lg:p-12 relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60"
+          >
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+            <div class="lg:col-span-5 flex flex-col">
+              <p
+                class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+              >
+                Inside the Launch Page
+              </p>
+              <h3
+                class="text-2xl sm:text-3xl lg:text-4xl font-black text-text leading-tight mb-5"
+              >
+                The Launch Page
+              </h3>
+              <p class="text-pretty text-text-muted leading-relaxed mb-7">
+                One page with one job: turn a visitor into a booked call or a
+                paying customer. Hand-built, no template, and the fastest way to
+                look like the real thing this week.
+              </p>
+
+              <div class="flex flex-col gap-4 mt-auto">
+                <div class="flex items-baseline gap-3">
+                  <span
+                    class="text-4xl sm:text-5xl font-black text-accent glow-text"
+                    >$500</span
+                  >
+                  <span
+                    class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-widest"
+                    >flat, no surprises</span
+                  >
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg
+                    class="h-4 w-4 text-accent"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><circle cx="12" cy="12" r="10"></circle><polyline
+                      points="12 6 12 12 16 14"></polyline></svg
+                  >
+                  <span
+                    ><span class="text-text font-semibold">7 days</span> kickoff to
+                    launch, or you don't pay the balance</span
+                  >
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg
+                    class="h-4 w-4 text-accent"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
+                    ></path><polyline points="22 4 12 14.01 9 11.01"
+                    ></polyline></svg
+                  >
+                  <span
+                    ><span class="text-text font-semibold">Every dollar</span> credits
+                    toward the Flagship for 6 months</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7">
+              <p
+                class="text-[0.65rem] font-mono text-text-muted uppercase tracking-widest mb-4"
+              >
+                What you get
+              </p>
+              <ul
+                class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5 text-sm sm:text-base text-text"
+              >
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span
+                    >One conversion-engineered page: hero, offer, proof, CTA</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Copy written for you, in your voice</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Booking or contact form wired and working</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Mobile-first and fast on every phone</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Free hosting, $0 a month</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>You own the code, domain, and content</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Loom walkthrough at handoff</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Upgrade path to the Flagship, credit included</span>
+                </li>
+              </ul>
+
+              <div class="mt-8">
+                <a
+                  href="#booking"
+                  class="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+                >
+                  Start with $500 &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Growth Engine detail panel -->
+        <div
+          id="tier-panel-growth"
+          class="tier-panel hidden neu-raised rounded-3xl bg-bg p-6 sm:p-10 lg:p-12 relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60"
+          >
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+            <div class="lg:col-span-5 flex flex-col">
+              <p
+                class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-3"
+              >
+                Inside the Growth Engine
+              </p>
+              <h3
+                class="text-2xl sm:text-3xl lg:text-4xl font-black text-text leading-tight mb-5"
+              >
+                The Growth Engine
+              </h3>
+              <p class="text-pretty text-text-muted leading-relaxed mb-7">
+                The site is the start. The Growth Engine keeps you getting
+                found: monthly optimization across every surface people search,
+                from Google rankings to AI answers.
+              </p>
+
+              <div class="flex flex-col gap-4 mt-auto">
+                <div class="flex items-baseline gap-3">
+                  <span
+                    class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-widest"
+                    >From</span
+                  >
+                  <span
+                    class="text-4xl sm:text-5xl font-black text-accent glow-text"
+                    >$750<span class="text-xl font-bold text-text-muted"
+                      >/mo</span
+                    ></span
+                  >
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg
+                    class="h-4 w-4 text-accent"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
+                    ></path><polyline points="22 4 12 14.01 9 11.01"
+                    ></polyline></svg
+                  >
+                  <span
+                    ><span class="text-text font-semibold">Month to month</span
+                    >, cancel anytime</span
+                  >
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg
+                    class="h-4 w-4 text-accent"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><circle cx="12" cy="12" r="10"></circle><polyline
+                      points="12 6 12 12 16 14"></polyline></svg
+                  >
+                  <span
+                    ><span class="text-text font-semibold">Month one</span> starts
+                    with the full nine-surface audit</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7">
+              <p
+                class="text-[0.65rem] font-mono text-text-muted uppercase tracking-widest mb-4"
+              >
+                What you get
+              </p>
+              <ul
+                class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5 text-sm sm:text-base text-text"
+              >
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Monthly audit across SEO, AEO + GEO</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span
+                    >Maps, voice, speed, conversion, email + social covered</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span
+                    >Fixes implemented directly, not a PDF of suggestions</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Paste-ready copy for your Google profile + socials</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>A 5-minute monthly report: what moved, what's next</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Quick wins first, compounding work behind them</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Priority turnaround on site changes</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-accent mt-1 shrink-0">&#10003;</span>
+                  <span>Works on sites I built and sites I didn't</span>
+                </li>
+              </ul>
+
+              <div
+                class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              >
+                <a
+                  href="#booking"
+                  class="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+                >
+                  Book a Discovery Call &rarr;
+                </a>
+                <a
+                  href="/seo"
+                  class="inline-flex items-center justify-center rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+                >
+                  See the nine surfaces
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          // Tier ladder: click a card, the detail panel below swaps to match.
+          const tierCards = Array.from(
+            document.querySelectorAll<HTMLElement>("[data-tier]"),
+          );
+          const tierPanels: Record<string, HTMLElement | null> = {
+            launch: document.getElementById("tier-panel-launch"),
+            flagship: document.getElementById("tier-panel-flagship"),
+            growth: document.getElementById("tier-panel-growth"),
+          };
+
+          function selectTier(key: string) {
+            tierCards.forEach((card) => {
+              const active = card.getAttribute("data-tier") === key;
+              card.classList.toggle("border-accent/40", active);
+              card.classList.toggle("border-transparent", !active);
+              card.setAttribute("aria-pressed", String(active));
+            });
+            Object.entries(tierPanels).forEach(([k, el]) => {
+              el?.classList.toggle("hidden", k !== key);
+            });
+          }
+
+          tierCards.forEach((card) => {
+            card.addEventListener("click", () => {
+              const key = card.getAttribute("data-tier");
+              if (key) selectTier(key);
+            });
+            card.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                const key = card.getAttribute("data-tier");
+                if (key) selectTier(key);
+              }
+            });
+          });
+        </script>
 
         <!-- Standalone SEO / AI visibility service -->
         <div class="mt-6">
@@ -2737,7 +3067,7 @@ const offerSchema = {
               >
               <span
                 class="text-[0.6rem] text-text-muted font-mono uppercase tracking-wider"
-                >avg Lighthouse</span
+                >avg speed score</span
               >
             </div>
             <div
@@ -2762,73 +3092,147 @@ const offerSchema = {
       id="guarantee"
       class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
     >
-      <div class="max-w-4xl mx-auto">
-        <div
-          class="relative neu-raised rounded-3xl bg-gradient-to-br from-bg via-bg to-bg-secondary p-8 sm:p-10 lg:p-12 text-center overflow-hidden"
-        >
-          <!-- Ambient accent glow -->
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <!-- Seal icon -->
           <div
-            class="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full bg-accent/[0.08] blur-[100px] pointer-events-none"
+            class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border border-accent/40 mb-5"
           >
+            <svg
+              class="w-8 h-8 text-accent"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
           </div>
+          <p
+            class="text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-3"
+          >
+            The guarantees
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            The risk is <span class="text-accent glow-text"
+              >mine, not yours.</span
+            >
+          </h2>
+        </div>
 
-          <div class="relative z-10">
-            <!-- Seal icon -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <!-- 1. Live in 21 days -->
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
             <div
-              class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border border-accent/40 mb-5"
+              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border border-accent/40 text-accent mb-5"
+              aria-hidden="true"
             >
               <svg
-                class="w-8 h-8 text-accent"
+                class="w-6 h-6"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                aria-hidden="true"
+                ><circle cx="12" cy="12" r="10"></circle><polyline
+                  points="12 6 12 12 16 14"></polyline></svg
               >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                <polyline points="9 12 11 14 15 10"></polyline>
-              </svg>
             </div>
-
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              Live in 21 days
+            </h3>
             <p
-              class="text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-3"
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
             >
-              The guarantee
+              Your site launches within 21 days of kickoff. If I miss the date,
+              you don't pay the balance until it's live.
             </p>
-            <h2
-              class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-black tracking-tight leading-[1.1] mb-5 max-w-3xl mx-auto"
-            >
-              Lighthouse 90+ at launch.
-              <span class="text-accent glow-text">Or you don't pay.</span>
-            </h2>
-            <p
-              class="text-base sm:text-lg text-text-muted leading-relaxed max-w-2xl mx-auto"
-            >
-              Every site I build hits Lighthouse 90+ on mobile and desktop at
-              launch. If yours doesn't, the invoice is voided and you keep the
-              build. Simple as that.
-            </p>
-
-            <!-- Risk-reversal supporting points -->
-            <div
-              class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm"
-            >
-              <span class="flex items-center gap-2 text-text-muted">
-                <span class="text-accent">&#10003;</span>
-                Two rounds of revisions included
-              </span>
-              <span class="flex items-center gap-2 text-text-muted">
-                <span class="text-accent">&#10003;</span>
-                30 days post-launch support
-              </span>
-              <span class="flex items-center gap-2 text-text-muted">
-                <span class="text-accent">&#10003;</span>
-                Fixed scope, no surprise bills
-              </span>
-            </div>
           </div>
+
+          <!-- 2. Love the first design -->
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border border-accent/40 text-accent mb-5"
+              aria-hidden="true"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"
+                ></path></svg
+              >
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              Love the first design, or your deposit back
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              You see a real design direction before you commit. If it's not
+              right, your deposit comes back. No pressure, no awkward
+              follow-ups.
+            </p>
+          </div>
+
+          <!-- 3. You own everything -->
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border border-accent/40 text-accent mb-5"
+              aria-hidden="true"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                ></path><polyline points="9 22 9 12 15 12 15 22"
+                ></polyline></svg
+              >
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              You own everything, $0 a month
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              Your domain, your code, your content, hosted free. Nothing holds
+              your site hostage. Leave whenever you want and take it all with
+              you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Risk-reversal supporting points -->
+        <div class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
+          <span class="flex items-center gap-2 text-text-muted">
+            <span class="text-accent">&#10003;</span>
+            Two rounds of revisions included
+          </span>
+          <span class="flex items-center gap-2 text-text-muted">
+            <span class="text-accent">&#10003;</span>
+            30 days post-launch support
+          </span>
+          <span class="flex items-center gap-2 text-text-muted">
+            <span class="text-accent">&#10003;</span>
+            Fixed scope, no surprise bills
+          </span>
         </div>
       </div>
     </section>
@@ -2857,12 +3261,13 @@ const offerSchema = {
           The next step
         </p>
         <h2
-          class="booking-heading text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-5"
+          class="booking-heading text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-5"
         >
           30 minutes. <span class="text-accent glow-text">3 fixes.</span><br
             class="hidden sm:inline"
           />
-          Whether we work together or not.
+          Whether we work together <span class="whitespace-nowrap">or not.</span
+          >
         </h2>
         <p
           class="booking-sub text-base sm:text-lg text-text-muted leading-relaxed max-w-xl mx-auto"
@@ -2880,47 +3285,50 @@ const offerSchema = {
       <div class="relative z-10 mt-16 sm:mt-20">
         <div class="max-w-2xl mx-auto">
           <div
-            class="neu-raised rounded-2xl bg-bg-secondary p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-7"
+            class="neu-raised rounded-2xl bg-bg-secondary p-6 sm:p-8 flex flex-col gap-5"
           >
-            <div
-              class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 text-accent"
-              aria-hidden="true"
-            >
-              <svg
-                class="w-7 h-7"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+            <div class="flex items-start gap-5 sm:gap-7">
+              <div
+                class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 text-accent"
+                aria-hidden="true"
               >
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                ></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="9" y1="15" x2="15" y2="15"></line>
-              </svg>
-            </div>
-            <div class="flex-1 min-w-0">
-              <p
-                class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
-              >
-                Not ready to book?
-              </p>
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-1.5">
-                The 5-Site Teardown
-              </h3>
-              <p class="text-sm text-text-muted leading-relaxed">
-                The five patterns that are quietly killing service-business
-                conversion, with the exact fix for each. Free. No drip campaign.
-              </p>
+                <svg
+                  class="w-7 h-7"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  ></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="9" y1="15" x2="15" y2="15"></line>
+                </svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p
+                  class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+                >
+                  Not ready to book?
+                </p>
+                <h3 class="text-lg sm:text-xl font-bold text-text mb-1.5">
+                  The 5-Site Teardown
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  The five patterns that are quietly killing service-business
+                  conversion, with the exact fix for each. Free. No drip
+                  campaign.
+                </p>
+              </div>
             </div>
             <form
               id="lead-magnet-form"
               action={`https://formspree.io/f/${formspreeId}`}
               method="POST"
-              class="w-full sm:w-auto sm:shrink-0 flex flex-col sm:flex-row gap-2"
+              class="flex flex-col sm:flex-row gap-3"
             >
               <input
                 type="text"
@@ -2948,7 +3356,7 @@ const offerSchema = {
                 name="email"
                 required
                 placeholder="you@company.com"
-                class="w-full sm:w-56 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                class="w-full flex-1 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
               />
               <button
                 type="submit"
