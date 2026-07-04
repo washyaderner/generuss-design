@@ -1,0 +1,458 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+// Live Stripe payment link (product prod_UozDOraJA1uYfm, campaign 2026-07-taste-audit).
+// Collects the buyer's website URL at checkout, auto-invoices, stamps campaign metadata.
+const checkoutUrl = "https://buy.stripe.com/5kQ8wQdty6Hn8B6bkmc7u0d";
+
+const tasteChecks = [
+  {
+    name: "Heading tightening",
+    body: "Large headlines need tighter letter-spacing than body text. Loose display type is the fastest tell of a template site.",
+  },
+  {
+    name: "Line-height rhythm",
+    body: "Body, headings, and display sizes each need their own line-height. One value everywhere reads as noise.",
+  },
+  {
+    name: "Reading width",
+    body: "Body text past 75 characters per line quietly exhausts readers. Your paragraphs get measured.",
+  },
+  {
+    name: "Spacing hierarchy",
+    body: "Space above a heading should beat the space below it. Inverted spacing detaches headings from their content.",
+  },
+  {
+    name: "Weight range",
+    body: "Three or more font weights, or the page has no volume knob for emphasis.",
+  },
+  {
+    name: "Accent restraint",
+    body: "Accent color is medicine, not seasoning. When everything is highlighted, nothing is.",
+  },
+  {
+    name: "Surface depth",
+    body: "Two or more background levels beyond the base. Flat single-color pages feel unfinished.",
+  },
+  {
+    name: "Easing quality",
+    body: "Real motion uses custom curves. Default CSS easing is another template tell.",
+  },
+  {
+    name: "Motion restraint",
+    body: "Fewer than five animated properties, transform and opacity only. Everything moving equals nothing moving.",
+  },
+  {
+    name: "Intentional asymmetry",
+    body: "At least one deliberate composition break. Perfectly uniform grids read as machine output.",
+  },
+];
+
+const powerChecks = [
+  {
+    name: "8-point spacing grid",
+    body: "Margins and padding on a consistent 8px system, not ad-hoc values.",
+  },
+  {
+    name: "Modular type scale",
+    body: "Font sizes derived from one ratio, the way print typography has done it for a century.",
+  },
+  {
+    name: "Type size discipline",
+    body: "A hard cap on distinct font sizes. Past six, hierarchy collapses.",
+  },
+  {
+    name: "AAA contrast",
+    body: "Body text checked against WCAG 2.2 AAA thresholds, measured on the rendered page.",
+  },
+  {
+    name: "Attention placement",
+    body: "Headline and key visual in the zone eye-tracking research says people actually look at first.",
+  },
+  {
+    name: "Whitespace ratios",
+    body: "Sections scored against minimum breathing-room ratios. Cramped pages feel cheap.",
+  },
+  {
+    name: "One accent per section",
+    body: "Competing accent colors kill hierarchy. Each section gets one.",
+  },
+  {
+    name: "60-30-10 color balance",
+    body: "Dominant, secondary, and accent color proportions sampled from the actual screenshot.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What exactly do I get for $197?",
+    a: "A scorecard of all 18 checks on your site, each marked pass or fail with the specific fix written out, a top-five fix plan ranked worst first, and a screen-recorded walkthrough of your site. Delivered to your email within 48 hours of purchase.",
+  },
+  {
+    q: "Does this work on any platform?",
+    a: "Yes. Wix, Squarespace, WordPress, Shopify, custom code, anything with a URL. The audit reads the rendered site on desktop and mobile plus the underlying source, so the platform does not matter.",
+  },
+  {
+    q: "Is this an SEO audit?",
+    a: "No. This is the taste and conversion layer: how your site looks, feels, and converts. Search visibility is its own engine with its own audit, over at the SEO page. Plenty of sites rank fine and still leak trust the moment a visitor lands.",
+  },
+  {
+    q: "What happens after the audit?",
+    a: "You can take the fix list to anyone, including your own developer. If you want me to do the fixes or rebuild, the full $197 credits toward any build engagement started within 30 days.",
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://generussdesign.com/taste-audit#service",
+      name: "Website Taste Audit",
+      serviceType: "Website design and conversion audit",
+      description:
+        "18 pass-or-fail design and conversion checks on desktop and mobile, each fail paired with its specific fix, ranked worst first, delivered with a recorded walkthrough within 48 hours.",
+      provider: { "@id": "https://generussdesign.com/#org" },
+      url: "https://generussdesign.com/taste-audit",
+      offers: {
+        "@type": "Offer",
+        price: "197",
+        priceCurrency: "USD",
+        url: "https://generussdesign.com/taste-audit",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://generussdesign.com/taste-audit#faq",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Website Taste Audit, $197 Flat | generuss design"
+  description="18 pass-or-fail design and conversion checks on your website, desktop and mobile. Every fail comes with its specific fix, ranked worst first, plus a recorded walkthrough. Delivered in 48 hours."
+>
+  <Nav bookingHref="/#booking" offerHref="#checks" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <main id="main-content">
+    <!-- ===== HERO ===== -->
+    <section
+      id="hero"
+      class="relative flex min-h-screen min-h-[100dvh] items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-24 pb-12 lg:pt-28"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto">
+        <div class="max-w-3xl mx-auto text-center">
+          <span
+            class="hero-enter hero-enter-1 inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+          >
+            <span
+              class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+            ></span>
+            Website Taste Audit
+          </span>
+          <h1
+            class="hero-enter hero-enter-2 text-balance text-[2.4rem] sm:text-[3.1rem] md:text-[3.6rem] lg:text-[3.9rem] xl:text-[4.3rem] font-black tracking-[-0.03em] leading-[1.03] text-text"
+          >
+            Your site feels off. I can show you
+            <span class="text-accent glow-text">exactly where.</span>
+          </h1>
+          <p
+            class="hero-enter hero-enter-3 mt-6 text-pretty text-lg sm:text-xl md:text-[1.3rem] text-text-muted leading-relaxed max-w-2xl mx-auto"
+          >
+            18 pass-or-fail design and conversion checks on your site, desktop
+            and mobile. Every fail comes with the specific fix, ranked worst
+            first, plus a recorded walkthrough. In your inbox within 48 hours.
+          </p>
+
+          <div
+            class="hero-enter hero-enter-4 mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href={checkoutUrl}
+              class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+            >
+              Get the audit, $197 &rarr;
+            </a>
+            <a
+              href="#checks"
+              class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+            >
+              See the 18 checks
+            </a>
+          </div>
+
+          <!-- Proof strip -->
+          <div
+            class="hero-enter hero-enter-5 mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs sm:text-sm text-text-muted"
+          >
+            <span
+              ><span class="text-text font-semibold">18</span> pass-or-fail checks</span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              >fixes ranked <span class="text-text font-semibold"
+                >worst first</span
+              ></span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              ><span class="text-text font-semibold">48-hour</span> delivery</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY ===== -->
+    <section
+      id="why"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-dark px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          Why this exists
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-6"
+        >
+          "Looks fine" is not a <span class="text-accent">diagnosis.</span>
+        </h2>
+        <div
+          class="space-y-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-3xl"
+        >
+          <p>
+            Visitors decide in seconds whether your site feels trustworthy, and
+            they can never tell you why. You cannot see it either, because you
+            have looked at your own site too many times. So you ask around and
+            get "looks fine," or you buy an audit and get a 40-page PDF that
+            never says what to change on Monday morning.
+          </p>
+          <p>
+            This audit is the missing layer: the taste layer. 18 named checks
+            with real thresholds, cited to WCAG accessibility standards, Nielsen
+            Norman eye-tracking research, and typographic standards that predate
+            the web. Your site passes each one or it does not, and every fail
+            arrives holding its fix.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE 18 CHECKS ===== -->
+    <section
+      id="checks"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            The 18 checks
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            Pass or fail. <span class="text-accent">No vibes.</span>
+          </h2>
+          <p
+            class="mt-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-2xl mx-auto"
+          >
+            Ten taste checks calibrated across dozens of shipped sites, plus
+            eight checks with published research behind their thresholds. Run on
+            desktop and mobile, against the rendered page and the source.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <span
+            class="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[0.65rem] font-mono font-semibold uppercase tracking-[0.15em] text-accent"
+          >
+            Taste, 10 checks
+          </span>
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12"
+        >
+          {
+            tasteChecks.map((c) => (
+              <div class="neu-raised rounded-2xl bg-bg p-6 flex flex-col">
+                <h3 class="text-base font-bold text-text mb-2">{c.name}</h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  {c.body}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mb-4">
+          <span
+            class="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[0.65rem] font-mono font-semibold uppercase tracking-[0.15em] text-accent"
+          >
+            Power design, 8 checks
+          </span>
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+        >
+          {
+            powerChecks.map((c) => (
+              <div class="neu-raised rounded-2xl bg-bg p-6 flex flex-col">
+                <h3 class="text-base font-bold text-text mb-2">{c.name}</h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  {c.body}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHAT YOU GET ===== -->
+    <section
+      id="deliverable"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          What lands in your inbox
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-10"
+        >
+          Three things, <span class="text-accent">48 hours.</span>
+        </h2>
+
+        <div class="space-y-6">
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex gap-5">
+            <span class="font-mono text-accent font-bold text-lg shrink-0"
+              >01</span
+            >
+            <div>
+              <h3 class="text-lg font-bold text-text mb-2">The scorecard</h3>
+              <p
+                class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+              >
+                All 18 checks, each marked pass or fail on your actual site,
+                with the specific fix written out for every fail. Not "improve
+                your typography." The value to change and what to change it to.
+              </p>
+            </div>
+          </div>
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex gap-5">
+            <span class="font-mono text-accent font-bold text-lg shrink-0"
+              >02</span
+            >
+            <div>
+              <h3 class="text-lg font-bold text-text mb-2">
+                The worst-first fix plan
+              </h3>
+              <p
+                class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+              >
+                Your top five fixes ranked by damage done, so if you only fix
+                five things, they are the right five. Hand it to your own
+                developer or do it yourself. It is written to be executed.
+              </p>
+            </div>
+          </div>
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex gap-5">
+            <span class="font-mono text-accent font-bold text-lg shrink-0"
+              >03</span
+            >
+            <div>
+              <h3 class="text-lg font-bold text-text mb-2">The walkthrough</h3>
+              <p
+                class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+              >
+                A screen recording of your site, top to bottom, desktop and
+                mobile, narrating what a first-time visitor feels and where
+                trust leaks. Watch it once and you will never unsee it.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+        >
+          <a
+            href={checkoutUrl}
+            class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Get the audit, $197 &rarr;
+          </a>
+          <p class="text-sm text-text-muted">
+            Flat price. Credits toward any build engagement within 30 days.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section
+      id="faq"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Questions
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05]"
+          >
+            The short version.
+          </h2>
+        </div>
+        <div class="space-y-4">
+          {
+            faqs.map((f) => (
+              <details class="neu-raised rounded-2xl bg-bg p-6 group">
+                <summary class="cursor-pointer text-base font-bold text-text list-none flex items-center justify-between gap-4">
+                  {f.q}
+                  <span class="text-accent transition-transform duration-200 group-open:rotate-45 shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p class="text-pretty mt-4 text-sm sm:text-base text-text-muted leading-relaxed">
+                  {f.a}
+                </p>
+              </details>
+            ))
+          }
+        </div>
+        <p class="mt-8 text-center text-sm text-text-muted">
+          Want to talk first? <a
+            href="/connect"
+            class="text-accent hover:underline">Reach out here.</a
+          >
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
