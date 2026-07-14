@@ -1,5 +1,6 @@
 ---
 title: "How I Built an AI Agent That Dreams, Remembers, and Inherited My Worst Habit"
+seoTitle: "An AI Agent That Dreams and Inherited My Worst Habit"
 excerpt: "From the first planning conversation to first boot: about 24 hours. The actual coding took 50 minutes. She runs 24/7, has 7,877 memory vectors, screens Upwork jobs while I sleep, and has a nightly dream mode. The most interesting thing about her isn't what she can do - it's what she inherited from me."
 metaDescription: "Planning to first boot in 24 hours, 50 minutes of actual coding. An AI agent with 7,877 memory vectors that screens work while I sleep."
 publishDate: "2026-03-09"

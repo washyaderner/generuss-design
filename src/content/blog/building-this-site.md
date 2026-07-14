@@ -1,5 +1,6 @@
 ---
 title: "How I Built a Full Website in 30 Hours (After Failing Spectacularly the First Time)"
+seoTitle: "How I Built a Full Website in 30 Hours"
 excerpt: "I spent two weeks planning a website with Claude before writing a single line of code. Then I built it in 30 hours across one weekend. But the real story isn't the build weekend - it's the complete failure that forced me to rethink how I work with AI from the ground up."
 metaDescription: "Two weeks of planning with Claude, one failed start, then a full custom website built in 30 hours. The AI workflow lessons are the real story."
 publishDate: "2026-02-18"

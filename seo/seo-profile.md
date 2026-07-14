@@ -47,7 +47,7 @@ SERP context: the winning result format for our head queries is the productized 
 - Framework/host: Astro + Tailwind v4 + Cloudflare Pages
 - Deploy: git push to main (Pages project `generuss-design` git-connected). Manual: `npm run deploy` needs `env -u CLOUDFLARE_API_TOKEN` (secrets token is DNS-only).
 - Analytics: booking conversion tracked via Google Ads gtag on /call-confirmed (repo-verified 7/14); no sitewide analytics in repo (CF-dashboard-level injection unverified)
-- Search Console: domain property VERIFIED 2026-07-14, sitemap-index.xml submitted same day. Owning Google account: (ask at Gate A, record the one word here). API/browser read access not yet wired; wire before next full run to unlock striking-distance data
+- Search Console: domain property VERIFIED 2026-07-14, sitemap-index.xml submitted same day. Owning Google account: **russ@generuss.com** (receipt: sc-noreply@google.com welcome email to that address, 7/14 2:41 PM PT). API/browser read access not yet wired; wire before next full run to unlock striking-distance data
 - PSI: PSI_API_KEY in ~/.secrets (test-fired 7/14; psi.mjs reads it from env)
 - Email sender: russ@generuss.com (Google Workspace + Resend; auth lives on generuss.com). generussdesign.com sends nothing and is LOCKED DOWN as of 2026-07-14 (dig-verified: null MX, SPF `v=spf1 -all`, DMARC `p=reject`; rua tag still open, paste-ready in 7/14 audit E3). generuss.com DMARC moved p=none -> p=quarantine 7/14
 - Social: GitHub washyaderner, X @generussai (footer)
