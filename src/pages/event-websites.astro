@@ -1,0 +1,283 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import SectionHead from "../components/plates/SectionHead.astro";
+
+const faqs = [
+  {
+    q: "How fast can an event website go live?",
+    a: "21 days from kickoff, guaranteed, and a one-page event site can be live in 7. If your event is closer than that, book the call anyway: rush timelines are a scoping question, not an automatic no.",
+  },
+  {
+    q: "Can it sell tickets and list vendors?",
+    a: "Yes. Ticketing links or embedded checkout, schedules, speaker and vendor directories, maps, and FAQ pages are all standard scope. The Oregon Ghost Conference site runs 40+ vendors and ticket sales on this exact architecture.",
+  },
+  {
+    q: "What happens to the site after the event?",
+    a: "You own it, and hosting stays $0 a month. Most organizers flip the homepage to a recap plus next-year waitlist within a week of closing, which keeps the domain collecting attendees year-round.",
+  },
+];
+
+const pains = [
+  {
+    n: "01",
+    pain: "Ticket links buried",
+    fix: "One primary action per page. The buy button follows the visitor, and the path from any page to checkout is one click.",
+  },
+  {
+    n: "02",
+    pain: "Schedule chaos on phones",
+    fix: "Attendees browse on phones in the hallway. The schedule, maps, and vendor list are built mobile-first, not shrunk down.",
+  },
+  {
+    n: "03",
+    pain: "Vendors and speakers as an afterthought",
+    fix: "Every vendor and speaker gets a real listing. They share their own pages, which markets your event for free.",
+  },
+  {
+    n: "04",
+    pain: "The site dies with the event",
+    fix: "Recap mode, photo plates, and a next-year waitlist ship with the build, so this year's traffic buys next year's attendance.",
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://generussdesign.com/event-websites#service",
+      name: "Event + conference website design",
+      description:
+        "Custom websites for conferences, festivals, and live events: ticket sales, schedules, vendor directories, hand-coded and live in 21 days.",
+      provider: { "@id": "https://generussdesign.com/#org" },
+      areaServed: "Worldwide",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://generussdesign.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Event websites",
+          item: "https://generussdesign.com/event-websites/",
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Event + Conference Website Design | generuss design"
+  description="Custom event websites that sell tickets: schedules, vendor directories, and mobile-first speed, hand-coded and live in 21 days. Built the Oregon Ghost Conference site."
+  ogImage="/og/event-websites.png"
+>
+  <Nav />
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <main id="main-content" class="relative">
+    <!-- Hero -->
+    <section id="hero" class="px-6 sm:px-12 lg:px-20 pt-32 sm:pt-40 pb-16">
+      <div
+        class="max-w-7xl mx-auto grid gap-12 lg:grid-cols-[1fr_14rem] lg:items-center"
+      >
+        <div>
+          <p class="fig-label rise visible-init">
+            Sheet E-01 &middot; event + conference websites
+          </p>
+          <h1
+            class="rise visible-init mt-6 max-w-4xl text-4xl sm:text-5xl font-medium text-text"
+            style="--rise-i: 1"
+          >
+            Event websites that sell the ticket <em
+              class="italic font-[450] text-accent">before the hype dies.</em
+            >
+          </h1>
+          <p
+            class="rise visible-init mt-6 max-w-xl text-base sm:text-lg text-text-muted"
+            style="--rise-i: 2"
+          >
+            Conferences, festivals, and live events run on urgency. I hand-build
+            event sites where the schedule loads instantly, the vendors look
+            taken care of, and buying a ticket is never more than one click
+            away.
+          </p>
+          <div
+            class="rise visible-init mt-9 flex flex-wrap items-center gap-6"
+            style="--rise-i: 3"
+          >
+            <a href="/#booking" class="cta-ink">Book a discovery call</a>
+            <a
+              href="/ogc"
+              class="link-draft mono-note !text-accent min-h-[48px] inline-flex items-center"
+              >See the OGC case study →</a
+            >
+          </div>
+        </div>
+        <aside
+          class="rise visible-init hidden lg:block note-rule"
+          style="--rise-i: 5"
+          aria-label="Margin note"
+        >
+          <p class="fig-label mb-1.5">Fig. E-01a / precedent</p>
+          <p class="mono-note">
+            oregonghostconference.com runs ticketing, schedule, and 40+ vendors
+            on this exact architecture, through the spring traffic spike.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Pains -->
+    <section class="px-6 sm:px-12 lg:px-20 pt-16 pb-20">
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="E-02"
+          name="the failure modes"
+          title="Where event sites lose <em>ticket revenue.</em>"
+        />
+        <div class="grid gap-5 md:grid-cols-2">
+          {
+            pains.map((p, i) => (
+              <div
+                class="card-plate cascade-card p-6 sm:p-7"
+                style={`--cascade-i: ${i}`}
+              >
+                <p class="fig-label !text-seal mb-2">Failure {p.n}</p>
+                <h3 class="font-display text-xl font-medium text-text">
+                  {p.pain}
+                </h3>
+                <p class="mt-3 text-sm sm:text-base text-text-muted">{p.fix}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- The build -->
+    <section
+      class="px-6 sm:px-12 lg:px-20 pt-20 pb-20 bg-paper-deep border-y border-border"
+    >
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="E-03"
+          name="the build"
+          title="Same flagship build, <em>tuned for doors-open day.</em>"
+          lede="From $4,500, live in 21 days or you do not pay the balance. Every event build ships with:"
+        />
+        <ul class="grid gap-x-10 gap-y-3 sm:grid-cols-2 max-w-4xl">
+          {
+            [
+              "Ticketing wired: embedded checkout or your platform's links",
+              "Mobile-first schedule, speakers, and venue maps",
+              "Vendor + sponsor directory with per-listing pages",
+              "Countdown and urgency states that follow the calendar",
+              "Recap mode + next-year waitlist for the day after",
+              "You own everything, hosting $0 a month, forever",
+            ].map((item, i) => (
+              <li
+                class="cascade-card flex gap-3 text-sm sm:text-base text-text-muted"
+                style={`--cascade-i: ${i}`}
+              >
+                <span class="text-accent" aria-hidden="true">
+                  +
+                </span>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-10 flex flex-wrap items-center gap-6">
+          <a href="/#booking" class="cta-ink">Book a discovery call</a>
+          <a
+            href="/#offer"
+            class="link-draft mono-note !text-accent min-h-[48px] inline-flex items-center"
+            >See all three tiers →</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="px-6 sm:px-12 lg:px-20 pt-20 pb-24">
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="E-04"
+          name="specifications"
+          title="Organizer questions, <em>answered straight.</em>"
+        />
+        <div class="max-w-3xl">
+          {
+            faqs.map((f, i) => (
+              <details
+                class="cascade-card group border-t border-border"
+                style={`--cascade-i: ${i}`}
+              >
+                <summary class="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+                  <h3 class="font-display text-lg sm:text-xl font-medium text-text">
+                    {f.q}
+                  </h3>
+                  <span
+                    class="mono-note shrink-0 !text-accent transition-transform duration-300 group-open:rotate-45"
+                    style="transition-timing-function: var(--ease-out-expo)"
+                    aria-hidden="true"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p class="max-w-2xl pb-6 text-sm sm:text-base text-text-muted">
+                  {f.a}
+                </p>
+              </details>
+            ))
+          }
+          <div class="rule-draw"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .visible-init {
+    animation: hero-rise 0.85s var(--ease-out-expo) both;
+    animation-delay: calc(var(--rise-i, 0) * 95ms);
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .visible-init {
+      animation: none;
+    }
+  }
+</style>

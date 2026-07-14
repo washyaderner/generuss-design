@@ -31,11 +31,9 @@ function toPost(entry: any): BlogPost {
     publishDate: entry.data.publishDate,
     updatedDate: entry.data.updatedDate,
     tags: entry.data.tags,
-    featuredImage:
-      !entry.data.featuredImage ||
-      entry.data.featuredImage === "/images/placeholder.svg"
-        ? `/images/blog/${entry.id}-og.svg`
-        : entry.data.featuredImage,
+    // Workbench v2: every post carries its drafting-plate image (frontmatter
+    // featuredImage retired with the dark theme; kept in schema for history).
+    featuredImage: `/og/blog-${entry.id}.png`,
     layout: entry.data.layout,
     timeline: entry.data.timeline,
   };

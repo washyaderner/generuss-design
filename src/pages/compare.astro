@@ -1,0 +1,331 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import SectionHead from "../components/plates/SectionHead.astro";
+
+const rows = [
+  ["Upfront cost", "$500 to $4,500 once", "$0 down", "$16 to $50/mo forever"],
+  [
+    "Five-year cost",
+    "one build fee, $0 hosting",
+    "$10,500+ at $175/mo",
+    "$1,000 to $3,000 + your weekends",
+  ],
+  [
+    "Who owns the site",
+    "you, all of it",
+    "usually the vendor",
+    "the platform's templates",
+  ],
+  [
+    "Leave anytime",
+    "take code, domain, content",
+    "site often stays behind",
+    "export is a zip of regret",
+  ],
+  [
+    "Built around your buyer",
+    "yes, that is the job",
+    "template with your logo",
+    "whatever the theme allows",
+  ],
+  [
+    "Speed on a phone",
+    "96 avg speed score",
+    "varies by template",
+    "plugin roulette",
+  ],
+  [
+    "Who does the work",
+    "one accountable human",
+    "an agency queue",
+    "you, at midnight",
+  ],
+];
+
+const faqs = [
+  {
+    q: "Is a $175/month website subscription worth it?",
+    a: "It solves the upfront-cost problem but costs more over time: $175 a month is $10,500 over five years, and with most subscription shops you never own the site. A flat-fee build costs $500 to $4,500 once, you own everything, and hosting is $0.",
+  },
+  {
+    q: "When is a DIY template the right call?",
+    a: "When the site only needs to exist, not perform: a menu, hours, and a phone number. The moment the site is supposed to WIN customers against competitors, template sameness and plugin weight start costing more than a build.",
+  },
+  {
+    q: "Why is flat-fee custom more upfront?",
+    a: "Because the work happens once, properly: strategy, copy, design, and hand-written code shaped around how your buyers decide. After that the economics flip: no monthly ransom, no plugin licenses, $0 hosting, and a site you fully own.",
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://generussdesign.com/compare/",
+      name: "Flat-fee custom vs subscription vs DIY template",
+      isPartOf: { "@id": "https://generussdesign.com/#website" },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://generussdesign.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Compare",
+          item: "https://generussdesign.com/compare/",
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Flat-Fee Custom vs $175/mo Subscription vs DIY Template | generuss design"
+  description="The honest math on hand-coded websites: flat-fee custom, monthly subscription shops, and DIY builders compared on cost, ownership, speed, and who does the work."
+  ogImage="/og/compare.png"
+>
+  <Nav />
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <main id="main-content" class="relative">
+    <section id="hero" class="px-6 sm:px-12 lg:px-20 pt-32 sm:pt-40 pb-16">
+      <div
+        class="max-w-7xl mx-auto grid gap-12 lg:grid-cols-[1fr_14rem] lg:items-center"
+      >
+        <div>
+          <p class="fig-label rise visible-init">
+            Sheet C-01 &middot; the honest comparison
+          </p>
+          <h1
+            class="rise visible-init mt-6 max-w-4xl text-4xl sm:text-5xl font-medium text-text"
+            style="--rise-i: 1"
+          >
+            Flat-fee custom. Subscription. DIY. <em
+              class="italic font-[450] text-accent">The math, drawn out.</em
+            >
+          </h1>
+          <p
+            class="rise visible-init mt-6 max-w-xl text-base sm:text-lg text-text-muted"
+            style="--rise-i: 2"
+          >
+            Three honest ways to get a website, and the one question that picks
+            between them: is the site supposed to exist, or is it supposed to
+            win? Here is each option with the numbers attached.
+          </p>
+        </div>
+        <aside
+          class="rise visible-init hidden lg:block note-rule"
+          style="--rise-i: 5"
+          aria-label="Margin note"
+        >
+          <p class="fig-label mb-1.5">Fig. C-01a / method</p>
+          <p class="mono-note">
+            Five-year math, list prices, no asterisks. Where an option beats
+            mine, the table says so.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-12 lg:px-20 pt-10 pb-20">
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="C-02"
+          name="the schedule"
+          title="Side by side, <em>nothing hidden.</em>"
+        />
+        <div class="card-plate overflow-x-auto">
+          <table
+            class="w-full min-w-[720px] border-collapse text-sm sm:text-base"
+          >
+            <thead>
+              <tr class="border-b-2 border-ink text-left">
+                <th
+                  class="mono-note !text-text-muted p-4 sm:p-5 font-medium uppercase tracking-[0.08em]"
+                  >Line item</th
+                >
+                <th
+                  class="p-4 sm:p-5 font-display text-lg font-medium text-text"
+                  >Flat-fee custom<br /><span class="fig-label"
+                    >this studio</span
+                  ></th
+                >
+                <th
+                  class="p-4 sm:p-5 font-display text-lg font-medium text-text"
+                  >Subscription shop<br /><span
+                    class="fig-label !text-text-muted">$0 down, $175/mo</span
+                  ></th
+                >
+                <th
+                  class="p-4 sm:p-5 font-display text-lg font-medium text-text"
+                  >DIY builder<br /><span class="fig-label !text-text-muted"
+                    >Wix, Squarespace</span
+                  ></th
+                >
+              </tr>
+            </thead>
+            <tbody>
+              {
+                rows.map(([label, a, b, c], i) => (
+                  <tr
+                    class={`border-b border-border align-top ${i % 2 ? "bg-paper-deep/60" : ""}`}
+                  >
+                    <td class="mono-note p-4 sm:p-5 !text-text-muted">
+                      {label}
+                    </td>
+                    <td class="p-4 sm:p-5 font-medium text-text">{a}</td>
+                    <td class="p-4 sm:p-5 text-text-muted">{b}</td>
+                    <td class="p-4 sm:p-5 text-text-muted">{c}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mono-note mt-5 max-w-3xl">
+          subscription math: $175/mo &times; 60 months = $10,500, ownership
+          varies by contract. numbers for this studio are the standing offer on <a
+            href="/#offer"
+            class="link-draft !text-accent">the bill of materials</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="px-6 sm:px-12 lg:px-20 pt-16 pb-20 bg-paper-deep border-y border-border"
+    >
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="C-03"
+          name="the verdicts"
+          title="Honest verdicts, <em>including against me.</em>"
+        />
+        <div class="grid gap-5 md:grid-cols-3">
+          <div
+            class="card-plate cascade-card p-6 sm:p-7"
+            style="--cascade-i: 0"
+          >
+            <p class="fig-label mb-2">Choose DIY when</p>
+            <p class="text-sm sm:text-base text-text-muted">
+              The site just needs to exist: hours, menu, phone number. No shame
+              in it. Come back when the site is supposed to win customers.
+            </p>
+          </div>
+          <div
+            class="card-plate cascade-card p-6 sm:p-7"
+            style="--cascade-i: 1"
+          >
+            <p class="fig-label mb-2">Choose subscription when</p>
+            <p class="text-sm sm:text-base text-text-muted">
+              Cash flow is the whole constraint and $0 down is the only way a
+              site happens this quarter. Read the ownership clause twice before
+              signing.
+            </p>
+          </div>
+          <div
+            class="card-plate cascade-card border-l-2 border-l-accent p-6 sm:p-7"
+            style="--cascade-i: 2"
+          >
+            <p class="fig-label mb-2">Choose flat-fee custom when</p>
+            <p class="text-sm sm:text-base text-text">
+              The site is a sales asset: it should book calls, sell tickets, or
+              win jobs against competitors, and you want to own it outright.
+              That is this studio's entire job.
+            </p>
+          </div>
+        </div>
+        <div class="mt-10 flex flex-wrap items-center gap-6">
+          <a href="/#booking" class="cta-ink">Book a discovery call</a>
+          <a
+            href="/taste-audit"
+            class="link-draft mono-note !text-accent min-h-[48px] inline-flex items-center"
+            >Not sure? Start with the $197 audit →</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="px-6 sm:px-12 lg:px-20 pt-20 pb-24">
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="C-04"
+          name="specifications"
+          title="The questions the pricing pages <em>skip.</em>"
+        />
+        <div class="max-w-3xl">
+          {
+            faqs.map((f, i) => (
+              <details
+                class="cascade-card group border-t border-border"
+                style={`--cascade-i: ${i}`}
+              >
+                <summary class="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+                  <h3 class="font-display text-lg sm:text-xl font-medium text-text">
+                    {f.q}
+                  </h3>
+                  <span
+                    class="mono-note shrink-0 !text-accent transition-transform duration-300 group-open:rotate-45"
+                    style="transition-timing-function: var(--ease-out-expo)"
+                    aria-hidden="true"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p class="max-w-2xl pb-6 text-sm sm:text-base text-text-muted">
+                  {f.a}
+                </p>
+              </details>
+            ))
+          }
+          <div class="rule-draw"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .visible-init {
+    animation: hero-rise 0.85s var(--ease-out-expo) both;
+    animation-delay: calc(var(--rise-i, 0) * 95ms);
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .visible-init {
+      animation: none;
+    }
+  }
+</style>

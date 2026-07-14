@@ -431,6 +431,33 @@ body.xray .xr-outline {
   z-index: 20;
 }
 
+/* Construction view: margin ruler ticks down the left sheet edge */
+body.xray::after {
+  content: "";
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  width: 14px;
+  pointer-events: none;
+  z-index: 45;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      var(--color-accent-mid) 0 1px,
+      transparent 1px 24px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--color-accent) 0 1px,
+      transparent 1px 96px
+    );
+  background-size:
+    7px 24px,
+    14px 96px;
+  background-repeat: repeat-y;
+}
+
 /* ── Marquee ── */
 .marquee-row {
   width: 100%;

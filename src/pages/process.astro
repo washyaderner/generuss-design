@@ -1,0 +1,281 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import SectionHead from "../components/plates/SectionHead.astro";
+
+const steps = [
+  {
+    n: "01",
+    days: "day 0",
+    name: "Discovery call",
+    body: "30 minutes, your screen shared. We audit the current site live and pinpoint where leads leak. You leave with 3 specific fixes whether or not we work together.",
+  },
+  {
+    n: "02",
+    days: "days 1-3",
+    name: "Stack audit + scope",
+    body: "I map how your buyers decide, pick the lightest stack that serves it (usually Astro on Cloudflare), and lock a fixed price. No hourly meter.",
+  },
+  {
+    n: "03",
+    days: "days 4-18",
+    name: "Build, with weekly Looms",
+    body: "Hand-written code, sections shipped in order of what sells, weekly Loom walkthroughs so nothing surprises you at the end.",
+  },
+  {
+    n: "04",
+    days: "days 19-21",
+    name: "Launch + 30-day support",
+    body: "Live on your domain with documentation, a handoff Loom, and 30 days of direct-line support.",
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "@id": "https://generussdesign.com/process/#method",
+      name: "How a generuss design website gets built in 21 days",
+      description:
+        "The four-step method behind every hand-coded build: discovery, stack audit, build with weekly Looms, launch with 30-day support.",
+      totalTime: "P21D",
+      step: steps.map((s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.name,
+        text: s.body,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://generussdesign.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Process",
+          item: "https://generussdesign.com/process/",
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="The Process: Hand-Coded Astro Websites in 21 Days | generuss design"
+  description="How an Astro web designer actually builds in 21 days: the four-step method, the real code conventions, and the hostile critique passes every page survives before launch."
+  ogImage="/og/process.png"
+>
+  <Nav />
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <main id="main-content" class="relative">
+    <section id="hero" class="px-6 sm:px-12 lg:px-20 pt-32 sm:pt-40 pb-16">
+      <div
+        class="max-w-7xl mx-auto grid gap-12 lg:grid-cols-[1fr_14rem] lg:items-center"
+      >
+        <div>
+          <p class="fig-label rise visible-init">
+            Sheet P-01 &middot; the method, published
+          </p>
+          <h1
+            class="rise visible-init mt-6 max-w-4xl text-4xl sm:text-5xl font-medium text-text"
+            style="--rise-i: 1"
+          >
+            This is how the sausage <em class="italic font-[450] text-accent"
+              >gets hand-made.</em
+            >
+          </h1>
+          <p
+            class="rise visible-init mt-6 max-w-xl text-base sm:text-lg text-text-muted"
+            style="--rise-i: 2"
+          >
+            Most studios hide their process behind "our proven approach." Mine
+            is published, code samples included, because the way a site is built
+            IS the pitch. This page documents the method that built the page you
+            are reading.
+          </p>
+        </div>
+        <aside
+          class="rise visible-init hidden lg:block note-rule"
+          style="--rise-i: 5"
+          aria-label="Margin note"
+        >
+          <p class="fig-label mb-1.5">Fig. P-01a / recursion</p>
+          <p class="mono-note">
+            This page follows its own rules: the tokens it quotes are the tokens
+            rendering it.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- The four steps -->
+    <section class="px-6 sm:px-12 lg:px-20 pt-16 pb-20">
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="P-02"
+          name="the method"
+          title="Four steps. Twenty-one days. <em>Zero hand-offs.</em>"
+        />
+        <ol class="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+          {
+            steps.map((s, i) => (
+              <li class="cascade-card note-rule" style={`--cascade-i: ${i}`}>
+                <p class="font-display text-3xl font-light italic text-accent">
+                  {s.n}
+                </p>
+                <p class="fig-label mt-3 !text-text-muted">{s.days}</p>
+                <h3 class="font-display mt-2 text-xl font-medium text-text">
+                  {s.name}
+                </h3>
+                <p class="mt-3 text-sm text-text-muted">{s.body}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <!-- Conventions, with real code -->
+    <section
+      class="px-6 sm:px-12 lg:px-20 pt-20 pb-20 bg-paper-deep border-y border-border"
+    >
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="P-03"
+          name="the conventions"
+          title="Real excerpts from <em>this site's own code.</em>"
+          lede="Every value below is running on the page you are looking at. Toggle the construction view on the homepage to see them labeled in place."
+        />
+        <div class="grid gap-5 lg:grid-cols-3">
+          <div class="card-plate cascade-card p-6" style="--cascade-i: 0">
+            <p class="fig-label mb-3">Motion: one easing, earned</p>
+            <pre
+              class="mono-note overflow-x-auto border border-border bg-paper p-4 !text-text"><code>--ease-out-expo:
+  cubic-bezier(0.16, 1, 0.3, 1);
+
+/* nothing on this site moves
+   on a default curve */</code></pre>
+            <p class="mt-3 text-sm text-text-muted">
+              Transitions run on transform and opacity only, so scrolling stays
+              at 60fps on a mid-tier phone.
+            </p>
+          </div>
+          <div class="card-plate cascade-card p-6" style="--cascade-i: 1">
+            <p class="fig-label mb-3">Type: a scale, not vibes</p>
+            <pre
+              class="mono-note overflow-x-auto border border-border bg-paper p-4 !text-text"><code>/* 1.333 modular scale,
+   leading + tracking coupled */
+--text-4xl: 3.157rem;
+--text-4xl--line-height: 1.06;
+--text-4xl--letter-spacing: -0.02em;</code></pre>
+            <p class="mt-3 text-sm text-text-muted">
+              Fraunces for statements, Archivo for sentences, IBM Plex Mono for
+              the margins. Self-hosted, subset, swap-safe.
+            </p>
+          </div>
+          <div class="card-plate cascade-card p-6" style="--cascade-i: 2">
+            <p class="fig-label mb-3">Scroll: the page draws itself</p>
+            <pre
+              class="mono-note overflow-x-auto border border-border bg-paper p-4 !text-text"><code>@supports (animation-timeline: view()) &#123;
+  .cascade-card &#123;
+    animation-timeline: view();
+    animation-range: entry 5% entry 45%;
+  &#125;
+&#125;</code></pre>
+            <p class="mt-3 text-sm text-text-muted">
+              Scroll-driven entrances with no JavaScript where the browser
+              supports it, an observer fallback where it does not.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The critique passes -->
+    <section class="px-6 sm:px-12 lg:px-20 pt-20 pb-20">
+      <div class="max-w-7xl mx-auto">
+        <SectionHead
+          fig="P-04"
+          name="quality control"
+          title="Every page survives <em>hostile critique.</em>"
+          lede="Before anything ships, the build gets rendered at real sizes, screenshotted, and attacked. Three passes minimum. This site went through it too:"
+        />
+        <div class="max-w-3xl space-y-0">
+          {
+            [
+              [
+                "Pass structure",
+                "Render real pixels at 1440px and 390px, critique rhythm, contrast, alignment, widows, dead zones, and template smell, fix everything found, then raise the bar once per pass.",
+              ],
+              [
+                "What pass one caught here",
+                "A roman/italic font file swap hiding in plain sight, a dead grid cell in the portfolio, a cramped booking calendar, and a seal stamp whose text started mid-ring.",
+              ],
+              [
+                "The floor it must clear",
+                "Zero console errors, composed at 390px, no widowed lines, accessible contrast, working links, honest copy. Then the harder gate: does it have a point of view.",
+              ],
+            ].map(([name, body], i) => (
+              <div
+                class="cascade-card note-rule py-6"
+                style={`--cascade-i: ${i}`}
+              >
+                <div class="grid gap-2 sm:grid-cols-[13rem_1fr] sm:gap-8">
+                  <h3 class="font-display text-lg font-medium text-text">
+                    {name}
+                  </h3>
+                  <p class="text-sm sm:text-base text-text-muted">{body}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="mt-10 flex flex-wrap items-center gap-6">
+          <a href="/#booking" class="cta-ink">Put the method to work</a>
+          <a
+            href="/blog/building-this-site"
+            class="link-draft mono-note !text-accent min-h-[48px] inline-flex items-center"
+            >Read a full build log →</a
+          >
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .visible-init {
+    animation: hero-rise 0.85s var(--ease-out-expo) both;
+    animation-delay: calc(var(--rise-i, 0) * 95ms);
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .visible-init {
+      animation: none;
+    }
+  }
+</style>

@@ -91,7 +91,7 @@ const articleSchema = {
     <TimelineBlogLayout
       title={title}
       description={description}
-      ogImage={post.featuredImage}
+      ogImage={`/og/blog-${post.slug}.png`}
       timeline={post.timeline || []}
     >
       <script
@@ -115,7 +115,7 @@ const articleSchema = {
     <BlogLayout
       title={title}
       description={description}
-      ogImage={post.featuredImage}
+      ogImage={`/og/blog-${post.slug}.png`}
     >
       <script
         type="application/ld+json"
@@ -141,7 +141,7 @@ const articleSchema = {
         </div>
       )}
 
-      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+      <h1 class="text-3xl sm:text-4xl font-bold text-text mb-4">
         {post.title}
       </h1>
 
@@ -153,7 +153,7 @@ const articleSchema = {
         />
       </div>
 
-      <article class="prose prose-invert max-w-none">
+      <article class="prose max-w-none">
         <Content />
       </article>
     </BlogLayout>

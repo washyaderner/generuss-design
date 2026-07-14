@@ -20,7 +20,7 @@ interface Props {
 const {
   title,
   description = "Build logs and essays on web design, AI automation, and sales strategy from generuss design.",
-  ogImage = "/og-default.png",
+  ogImage = "/og/blog.png",
   timeline = [],
 } = Astro.props;
 
@@ -277,7 +277,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <body>
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-[#0C0C0C] focus:font-semibold focus:outline-none"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-paper focus:font-semibold focus:outline-none"
     >
       Skip to content
     </a>
@@ -333,7 +333,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             <slot name="meta" />
           </div>
 
-          <article class="prose prose-invert max-w-none" id="blog-article">
+          <article class="prose max-w-none" id="blog-article">
             <slot />
           </article>
         </div>

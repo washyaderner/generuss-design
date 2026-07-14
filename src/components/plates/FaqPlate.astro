@@ -34,38 +34,68 @@ export const faqs = [
       title="Straight answers, <em>before you even ask.</em>"
     />
 
-    <div class="max-w-3xl">
-      {
-        faqs.map((f, i) => (
-          <details
-            class="cascade-card group border-t border-border"
-            style={`--cascade-i: ${i}`}
-          >
-            <summary class="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
-              <h3 class="font-display text-lg sm:text-xl font-medium text-text">
-                {f.q}
-              </h3>
-              <span
-                class="mono-note shrink-0 !text-accent transition-transform duration-300 group-open:rotate-45"
-                style="transition-timing-function: var(--ease-out-expo)"
-                aria-hidden="true"
-              >
-                +
-              </span>
-            </summary>
-            <p class="max-w-2xl pb-6 text-sm sm:text-base text-text-muted">
-              {f.a}
-            </p>
-          </details>
-        ))
-      }
-      <div class="rule-draw"></div>
-      <p class="mono-note mt-6">
-        different question? <a
-          href="mailto:russ@generuss.com"
-          class="link-draft !text-accent">russ@generuss.com</a
-        > answers same-day.
-      </p>
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,48rem)_1fr] lg:items-start">
+      <div>
+        {
+          faqs.map((f, i) => (
+            <details
+              class="cascade-card group border-t border-border"
+              style={`--cascade-i: ${i}`}
+            >
+              <summary class="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+                <h3 class="font-display text-lg sm:text-xl font-medium text-text">
+                  {f.q}
+                </h3>
+                <span
+                  class="mono-note shrink-0 !text-accent transition-transform duration-300 group-open:rotate-45"
+                  style="transition-timing-function: var(--ease-out-expo)"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </summary>
+              <p class="max-w-2xl pb-6 text-sm sm:text-base text-text-muted">
+                {f.a}
+              </p>
+            </details>
+          ))
+        }
+        <div class="rule-draw"></div>
+        <p class="mono-note mt-6">
+          different question? <a
+            href="mailto:russ@generuss.com"
+            class="link-draft !text-accent">russ@generuss.com</a
+          > answers same-day.
+        </p>
+      </div>
+
+      <!-- at-a-glance rail -->
+      <aside
+        class="rise hidden lg:block lg:sticky lg:top-28 lg:ml-auto lg:w-56"
+        aria-label="Specs at a glance"
+      >
+        <div class="note-rule">
+          <p class="fig-label mb-3">Fig. 09a / at a glance</p>
+          <dl class="space-y-3">
+            {
+              [
+                ["$500", "launch page, flat"],
+                ["$4,500", "flagship, from"],
+                ["21 days", "or the balance is $0"],
+                ["$0/mo", "hosting, forever"],
+                ["100%", "yours when it ships"],
+              ].map(([v, k]) => (
+                <div class="flex items-baseline justify-between gap-3">
+                  <dt class="mono-note order-2 text-right">{k}</dt>
+                  <dd class="font-display text-lg font-medium text-text">
+                    {v}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
