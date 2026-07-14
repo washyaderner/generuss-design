@@ -69,3 +69,20 @@ Recycling the current layout with new colors. Concretely: no neumorphic raised/i
 - Every URL keeps or improves title, meta description, schema graph, H1/H2 structure, internal links.
 - Phase-2 SEO carries: answer-first FAQ block on home, per-page OG images, LCP diet (target mobile 95+), /event-websites + /compare + /process gap pages in the same visual system.
 - FLOOR all 17 points; no widows; no em or en dashes; llms.txt updated at ship.
+
+---
+
+## Critique log (evidence, FLOOR #17)
+
+Three hostile passes, shots on disk under .tmp/pass1, .tmp/pass2, .tmp/pass3 + .tmp/sweep (coherence pass over every other page). Both viewports each pass.
+
+**Pass 1 caught:** Fraunces roman/italic files swapped at download (every serif slanted; refetched per-style, verified in pixels). Dead grid cell in the built-work bento (filled with the reserved plate + flat-file card, which also added a conversion moment). Booking calendar cramped in a split column (went full-width, forms below). Seal ring text started mid-ring. Crawler artifacts separately fixed in the /seo skill (attribute regex + entity decode).
+**Upgrade 1:** scroll-driven entrances via animation-timeline: view() with IO fallback.
+
+**Pass 2 caught:** FAQ right half was a dead zone (added the Fig. 09a at-a-glance rail, sticky). "Hover any plate" copy lied on touch (rewrote). New-page heroes lacked the margin-note rail (added one figure each). Duplicated proof line on the event hero (cut).
+**Upgrade 2:** construction-view margin ruler ticks down the left sheet edge.
+
+**Pass 3 caught:** guarantee seal appeared statically (now stamps in on scroll, reduced-motion safe). Touch targets (footer links, nav CTA, inline email link) brought to 44px. Ink-panel small text raised to paper/75. xr-tag padding snapped to the 4pt grid.
+**Upgrade 3:** the seal stamp-in moment.
+
+**Gates:** pilot-qa floor 25/30 (target 22) PASS. Logged deviations, each examined: typographic hero is the thesis (F3); below-fold "invisible" images are the content-visibility render-skip artifact, verified rendered on scroll; 12 type sizes are one 1.333 modular system with an annotation register (PD3); PD4 flag is an oklch parsing artifact in the eval, flagged elements hand-verified AAA; 11.5px strings are mono captions, body copy is 16px+ (F5). Taste gate: T 10/10, P 6/8, combined 16/18 (production band); POV verdict SHIP: the working-drawing thesis is committed, category-escaping, and sustained across 11 plates + 3 service sheets; signature x-ray verified live with zero console errors.
