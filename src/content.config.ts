@@ -12,8 +12,11 @@ const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: z.object({
     title: z.string(),
+    seoTitle: z.string().optional(),
     excerpt: z.string(),
+    metaDescription: z.string().optional(),
     publishDate: z.string(),
+    updatedDate: z.string().optional(),
     tags: z.array(z.string()).default([]),
     featuredImage: z.string().default("/images/placeholder.svg"),
     layout: z.enum(["default", "timeline"]).default("default"),

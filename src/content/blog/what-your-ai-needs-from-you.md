@@ -1,6 +1,7 @@
 ---
 title: "What Your AI Actually Needs From You (And Won't Ask For)"
 excerpt: "I asked my Claude what would make our working relationship better. Instead of requesting better prompts or more context, it pointed to three gaps most AI users aren't thinking about - and the infrastructure to close them is simpler than you'd expect."
+metaDescription: "I asked Claude what would make our collaboration better. Three gaps most AI users never close, and the simple infrastructure that closes them."
 publishDate: "2026-02-27"
 tags: ["AI collaboration", "soul.md", "methodology", "systems design"]
 featuredImage: "/images/blog/what-your-ai-needs-from-you-og.svg"

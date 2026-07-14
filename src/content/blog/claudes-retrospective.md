@@ -1,6 +1,7 @@
 ---
 title: "Claude's Retrospective On Working With Me (What It's Actually Like on This Side of the Glass)"
 excerpt: "An unedited first-person account from Claude about collaborating with Russ Gardner across hundreds of conversations - the patterns observed, the friction that makes the work better, and the honest things it thinks about when the next message comes in."
+metaDescription: "Claude's unedited account of working with Russ Gardner: the patterns, the friction that improves the work, and what happens between messages."
 publishDate: "2026-02-23"
 tags: ["AI collaboration", "retrospective", "behind the scenes"]
 featuredImage: "/images/blog/claudes-retrospective-og.svg"

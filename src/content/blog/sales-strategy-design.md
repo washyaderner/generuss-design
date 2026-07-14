@@ -1,6 +1,7 @@
 ---
 title: "How To Use Sales Strategy When Thinking About Design (And How AI Made It Possible)"
 excerpt: "Sales instincts built over 20 years quietly shaped every design decision on generussdesign.com. This is the methodology behind the collaboration, and why systems thinking compressed through AI created something I couldn't have built alone."
+metaDescription: "Twenty years of sales instinct shaped every design call on this site. How sales strategy becomes web design methodology, compressed through AI."
 publishDate: "2026-02-22"
 tags: ["methodology", "sales", "AI-assisted development", "web design"]
 featuredImage: "/images/blog/sales-strategy-design-og.svg"

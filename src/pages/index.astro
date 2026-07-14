@@ -54,6 +54,21 @@ const offerSchema = {
 
   <script type="application/ld+json" set:html={JSON.stringify(offerSchema)} />
 
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": String(Astro.site),
+      name: "generuss design | Custom Websites That Convert",
+      isPartOf: { "@id": `${Astro.site}#website` },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["#hero h1", "#hero p"],
+      },
+    })}
+  />
+
   <main id="main-content">
     <!-- S1: Hero (rebuilt 2026-05-05 - 5-second test, logo+nav above fold, real hero image) -->
     <section

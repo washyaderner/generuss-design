@@ -15,11 +15,43 @@ const paginatedPosts = posts.slice(
 ---
 
 <BlogLayout
-  title="Blog | generuss design"
-  description="Thoughts on web design, AI automation, and building things that work."
+  title="Web Design + AI Build Logs | generuss design"
+  description="Build logs and essays on web design, AI automation, and sales strategy from real shipped projects. How the sites get made and what they teach."
   wide={true}
   ogType="website"
 >
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": new URL("/blog/", Astro.site).toString(),
+          name: "Web Design + AI Build Logs",
+          url: new URL("/blog/", Astro.site).toString(),
+          isPartOf: { "@id": `${Astro.site}#website` },
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: String(Astro.site),
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Blog",
+              item: new URL("/blog/", Astro.site).toString(),
+            },
+          ],
+        },
+      ],
+    })}
+  />
   <a href="/" class="text-accent hover:underline text-sm mb-8 inline-block"
     >&larr; Back to Home</a
   >

@@ -1,6 +1,7 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { siteGraph } from "../lib/schema";
 
 interface TimelinePhase {
   phase: number;
@@ -18,7 +19,7 @@ interface Props {
 
 const {
   title,
-  description = "Blog | generuss design",
+  description = "Build logs and essays on web design, AI automation, and sales strategy from generuss design.",
   ogImage = "/og-default.png",
   timeline = [],
 } = Astro.props;
@@ -62,6 +63,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
 
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": siteGraph(Astro.site!),
+      })}
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
 

@@ -1,4 +1,6 @@
 ---
+import { siteGraph } from "../lib/schema";
+
 interface Props {
   title: string;
   description?: string;
@@ -59,34 +61,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": `${Astro.site}#org`,
-            name: "Generuss Design",
-            url: Astro.site,
-            logo: {
-              "@type": "ImageObject",
-              url: new URL("/og-default.png", Astro.site),
-            },
-          },
-          {
-            "@type": "Person",
-            "@id": `${Astro.site}#person`,
-            name: "Russ Gardner",
-            url: Astro.site,
-            jobTitle: "Web Designer & Developer",
-            worksFor: { "@id": `${Astro.site}#org` },
-          },
-          {
-            "@type": "WebSite",
-            "@id": `${Astro.site}#website`,
-            url: Astro.site,
-            name: title,
-            description,
-            publisher: { "@id": `${Astro.site}#org` },
-          },
-        ],
+        "@graph": siteGraph(Astro.site!),
       })}
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -10,8 +10,11 @@ export interface TimelinePhase {
 export interface BlogPost {
   slug: string;
   title: string;
+  seoTitle?: string;
   excerpt: string;
+  metaDescription?: string;
   publishDate: string;
+  updatedDate?: string;
   tags: string[];
   featuredImage: string;
   layout: "default" | "timeline";
@@ -22,8 +25,11 @@ function toPost(entry: any): BlogPost {
   return {
     slug: entry.id,
     title: entry.data.title,
+    seoTitle: entry.data.seoTitle,
     excerpt: entry.data.excerpt,
+    metaDescription: entry.data.metaDescription,
     publishDate: entry.data.publishDate,
+    updatedDate: entry.data.updatedDate,
     tags: entry.data.tags,
     featuredImage:
       !entry.data.featuredImage ||
