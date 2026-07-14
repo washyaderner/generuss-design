@@ -1,0 +1,25 @@
+{
+  "url": "https://generussdesign.com/seo",
+  "strategy": "mobile",
+  "date": "2026-07-14T22:05:37.893Z",
+  "scores": {
+    "performance": 92,
+    "seo": 100,
+    "accessibility": 96,
+    "bestPractices": 100
+  },
+  "lab": {
+    "LCP": "3.2 s",
+    "FCP": "1.1 s",
+    "CLS": "0",
+    "TBT": "0 ms",
+    "SI": "4.0 s"
+  },
+  "field": null,
+  "opportunities": [
+    {
+      "title": "Avoid multiple page redirects",
+      "savingsMs": 752
+    }
+  ]
+}

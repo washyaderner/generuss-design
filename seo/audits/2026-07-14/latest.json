@@ -1,0 +1,38 @@
+{
+  "domain": "generussdesign.com",
+  "date": "2026-07-14",
+  "mode": "full-T0+PSI",
+  "scores": {
+    "tech": 92,
+    "content": 74,
+    "local": null,
+    "authority": 37,
+    "geo": 57,
+    "voice": 65,
+    "perf": 90,
+    "cro": 78,
+    "email": 91,
+    "social": 70,
+    "overall": 73,
+    "note": "post-fix (commit 6afc512, live-verified). Pre-fix 70. First full-coverage run: perf/authority/GEO-presence now measured (7/3 deferred them), so overall holds at 73 while email banked +51 and geo presence materialized at 0/20. Like-for-like vs 7/3 lens: ~78."
+  },
+  "kpis": {
+    "pages_crawled": 11,
+    "indexable": 11,
+    "psi_mobile_home": 86,
+    "psi_desktop_home": 100,
+    "cwv_field_pass": null,
+    "reviews_total": null,
+    "review_velocity_30d": null,
+    "gbp_categories": null,
+    "ai_citations_won": 0,
+    "email_auth": "pass-lockdown-enforced",
+    "og_coverage_pct": 100,
+    "schema_coverage_pct": 100,
+    "llms_txt": true,
+    "indexed_bing_family": 0,
+    "domain_age_months": 5
+  },
+  "open_actions": { "auto": 8, "draft": 2, "russ": 7 },
+  "top_action": "Gate A batch (title trims + GSC account word + /ogc ruling + competitor confirm), then Phase 2 redesign carries answer-first home, 3 gap pages, LCP diet, per-page OG images"
+}

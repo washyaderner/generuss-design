@@ -1,0 +1,22 @@
+== email-auth: generussdesign.com ==
+INFO  null MX published: domain explicitly receives no mail
+PASS  SPF: "v=spf1 -all"
+INFO  SPF includes: 0
+PASS  DMARC: p=reject (enforced)
+WARN  DMARC: no rua= (nobody sees reports)
+WARN  DKIM: none of the common selectors resolved (platforms use custom selectors; verify in the sender's dashboard before calling this a failure)
+INFO  BIMI: none (optional; needs DMARC enforcement)
+INFO  MTA-STS: none (optional)
+INFO  TLS-RPT: none (optional)
+== verdict: WARN (0 fail, 2 warn) ==
+== email-auth: generuss.com ==
+PASS  MX: 5 alt2.aspmx.l.google.com. 1 aspmx.l.google.com. 10 alt3.aspmx.l.google.com. 10 alt4.aspmx.l.google.com. 5 alt1.aspmx.l.google.com. 
+PASS  SPF: "v=spf1 include:_spf.google.com -all"
+INFO  SPF includes: 1
+PASS  DMARC: p=quarantine (partially enforced)
+INFO  DMARC reporting: rua=mailto:02b42d121985435193ae10b429b25e7d@dmarc-reports.cloudflare.net
+PASS  DKIM selectors found: google resend
+INFO  BIMI: none (optional; needs DMARC enforcement)
+INFO  MTA-STS: none (optional)
+INFO  TLS-RPT: none (optional)
+== verdict: PASS (0 fail, 0 warn) ==

@@ -1,0 +1,102 @@
+{
+  "site": "https://generussdesign.com",
+  "resolvedFrom": null,
+  "date": "2026-07-14T22:24:13.050Z",
+  "crawled": 11,
+  "max": 150,
+  "seconds": 1,
+  "sitemap": {
+    "found": true,
+    "urlCount": 11,
+    "declaredInRobots": true
+  },
+  "robotsTxt": true,
+  "llmsTxt": true,
+  "llmsFullTxt": false,
+  "aiBots": {
+    "GPTBot": "allowed",
+    "OAI-SearchBot": "allowed",
+    "ClaudeBot": "allowed",
+    "anthropic-ai": "allowed",
+    "PerplexityBot": "allowed",
+    "Google-Extended": "allowed",
+    "CCBot": "allowed",
+    "Applebot-Extended": "allowed",
+    "Bytespider": "allowed",
+    "meta-externalagent": "allowed"
+  },
+  "counts": {
+    "html200": 11,
+    "indexable": 11,
+    "noindex": 0,
+    "broken": 0,
+    "redirectsHit": 0,
+    "avgMs": 150
+  },
+  "issues": {
+    "missingTitle": [],
+    "titleLength": [
+      {
+        "url": "https://generussdesign.com/blog/building-this-site/",
+        "len": 101
+      },
+      {
+        "url": "https://generussdesign.com/blog/claudes-retrospective/",
+        "len": 111
+      },
+      {
+        "url": "https://generussdesign.com/blog/pharadoxa-build/",
+        "len": 94
+      },
+      {
+        "url": "https://generussdesign.com/blog/sales-strategy-design/",
+        "len": 100
+      },
+      {
+        "url": "https://generussdesign.com/blog/what-your-ai-needs-from-you/",
+        "len": 74
+      },
+      {
+        "url": "https://generussdesign.com/ogc/",
+        "len": 62
+      }
+    ],
+    "duplicateTitles": [],
+    "missingDescription": [],
+    "descriptionLength": [],
+    "duplicateDescriptions": [],
+    "missingCanonical": [],
+    "canonicalMismatch": [],
+    "noindexPages": [],
+    "noH1": [],
+    "multipleH1": [],
+    "thinPages": [
+      {
+        "url": "https://generussdesign.com/connect/",
+        "words": 216
+      }
+    ],
+    "imagesMissingAlt": [],
+    "brokenOrErrored": [],
+    "sitemapOrphans": ["https://generussdesign.com/ogc/"],
+    "missingLang": 0
+  },
+  "coverage": {
+    "schemaPct": 100,
+    "schemaTypes": {
+      "Organization": 11,
+      "Person": 11,
+      "WebSite": 11,
+      "CollectionPage": 1,
+      "BreadcrumbList": 6,
+      "Article": 5,
+      "OfferCatalog": 1,
+      "WebPage": 1,
+      "Service": 2,
+      "FAQPage": 2
+    },
+    "ogCompletePct": 100,
+    "twitterCardPct": 100,
+    "canonicalPct": 100
+  }
+}

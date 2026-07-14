@@ -1,0 +1,25 @@
+{
+  "url": "https://generussdesign.com/taste-audit",
+  "strategy": "mobile",
+  "date": "2026-07-14T22:05:52.252Z",
+  "scores": {
+    "performance": 90,
+    "seo": 100,
+    "accessibility": 91,
+    "bestPractices": 100
+  },
+  "lab": {
+    "LCP": "3.2 s",
+    "FCP": "1.7 s",
+    "CLS": "0",
+    "TBT": "0 ms",
+    "SI": "4.4 s"
+  },
+  "field": null,
+  "opportunities": [
+    {
+      "title": "Avoid multiple page redirects",
+      "savingsMs": 754
+    }
+  ]
+}

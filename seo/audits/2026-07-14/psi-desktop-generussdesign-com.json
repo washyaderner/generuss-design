@@ -1,0 +1,20 @@
+{
+  "url": "https://generussdesign.com",
+  "strategy": "desktop",
+  "date": "2026-07-14T22:05:23.609Z",
+  "scores": {
+    "performance": 100,
+    "seo": 100,
+    "accessibility": 93,
+    "bestPractices": 100
+  },
+  "lab": {
+    "LCP": "0.6 s",
+    "FCP": "0.3 s",
+    "CLS": "0",
+    "TBT": "0 ms",
+    "SI": "0.8 s"
+  },
+  "field": null,
+  "opportunities": []
+}

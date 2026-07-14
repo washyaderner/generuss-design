@@ -1,0 +1,143 @@
+{
+  "site": "https://generussdesign.com",
+  "resolvedFrom": null,
+  "date": "2026-07-14T22:01:25.831Z",
+  "crawled": 11,
+  "max": 150,
+  "seconds": 2,
+  "sitemap": {
+    "found": true,
+    "urlCount": 11,
+    "declaredInRobots": true
+  },
+  "robotsTxt": true,
+  "llmsTxt": true,
+  "llmsFullTxt": false,
+  "aiBots": {
+    "GPTBot": "allowed",
+    "OAI-SearchBot": "allowed",
+    "ClaudeBot": "allowed",
+    "anthropic-ai": "allowed",
+    "PerplexityBot": "allowed",
+    "Google-Extended": "allowed",
+    "CCBot": "allowed",
+    "Applebot-Extended": "allowed",
+    "Bytespider": "allowed",
+    "meta-externalagent": "allowed"
+  },
+  "counts": {
+    "html200": 11,
+    "indexable": 11,
+    "noindex": 0,
+    "broken": 0,
+    "redirectsHit": 0,
+    "avgMs": 159
+  },
+  "issues": {
+    "missingTitle": [],
+    "titleLength": [
+      {
+        "url": "https://generussdesign.com/blog/",
+        "len": 22
+      },
+      {
+        "url": "https://generussdesign.com/blog/building-this-site/",
+        "len": 101
+      },
+      {
+        "url": "https://generussdesign.com/blog/claudes-retrospective/",
+        "len": 111
+      },
+      {
+        "url": "https://generussdesign.com/blog/pharadoxa-build/",
+        "len": 94
+      },
+      {
+        "url": "https://generussdesign.com/blog/sales-strategy-design/",
+        "len": 100
+      },
+      {
+        "url": "https://generussdesign.com/blog/what-your-ai-needs-from-you/",
+        "len": 74
+      },
+      {
+        "url": "https://generussdesign.com/ogc/",
+        "len": 62
+      }
+    ],
+    "duplicateTitles": [],
+    "missingDescription": [],
+    "descriptionLength": [
+      {
+        "url": "https://generussdesign.com/blog/",
+        "len": 69
+      },
+      {
+        "url": "https://generussdesign.com/blog/building-this-site/",
+        "len": 157
+      },
+      {
+        "url": "https://generussdesign.com/blog/claudes-retrospective/",
+        "len": 251
+      },
+      {
+        "url": "https://generussdesign.com/blog/pharadoxa-build/",
+        "len": 249
+      },
+      {
+        "url": "https://generussdesign.com/blog/sales-strategy-design/",
+        "len": 219
+      },
+      {
+        "url": "https://generussdesign.com/blog/what-your-ai-needs-from-you/",
+        "len": 164
+      },
+      {
+        "url": "https://generussdesign.com/seo/",
+        "len": 164
+      },
+      {
+        "url": "https://generussdesign.com/ogc/",
+        "len": 162
+      },
+      {
+        "url": "https://generussdesign.com/taste-audit/",
+        "len": 193
+      }
+    ],
+    "duplicateDescriptions": [],
+    "missingCanonical": [],
+    "canonicalMismatch": [],
+    "noindexPages": [],
+    "noH1": [],
+    "multipleH1": [],
+    "thinPages": [
+      {
+        "url": "https://generussdesign.com/connect/",
+        "words": 216
+      }
+    ],
+    "imagesMissingAlt": [],
+    "brokenOrErrored": [],
+    "sitemapOrphans": [
+      "https://generussdesign.com/ogc/",
+      "https://generussdesign.com/taste-audit/"
+    ],
+    "missingLang": 0
+  },
+  "coverage": {
+    "schemaPct": 64,
+    "schemaTypes": {
+      "Organization": 5,
+      "Person": 5,
+      "WebSite": 5,
+      "OfferCatalog": 1,
+      "Article": 2,
+      "Service": 2,
+      "FAQPage": 2
+    },
+    "ogCompletePct": 100,
+    "twitterCardPct": 100,
+    "canonicalPct": 100
+  }
+}

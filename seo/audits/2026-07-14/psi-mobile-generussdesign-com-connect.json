@@ -1,0 +1,25 @@
+{
+  "url": "https://generussdesign.com/connect",
+  "strategy": "mobile",
+  "date": "2026-07-14T22:06:04.899Z",
+  "scores": {
+    "performance": 82,
+    "seo": 100,
+    "accessibility": 90,
+    "bestPractices": 100
+  },
+  "lab": {
+    "LCP": "4.5 s",
+    "FCP": "1.4 s",
+    "CLS": "0",
+    "TBT": "0 ms",
+    "SI": "4.3 s"
+  },
+  "field": null,
+  "opportunities": [
+    {
+      "title": "Avoid multiple page redirects",
+      "savingsMs": 754
+    }
+  ]
+}
