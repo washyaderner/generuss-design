@@ -71,14 +71,55 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       @import "../styles/global.css";
     </style>
   </head>
-  <body>
+  <body class="paper-grain">
     <a
       href="#main-content"
-      class="sr-only invisible focus:visible focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-[#0C0C0C] focus:font-semibold focus:outline-none focus:min-h-[44px] focus:inline-flex focus:items-center"
+      class="sr-only invisible focus:visible focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-paper focus:font-semibold focus:outline-none focus:min-h-[44px] focus:inline-flex focus:items-center"
     >
       Skip to content
     </a>
 
+    <!-- Sheet registration marks -->
+    <span
+      class="reg-mark hidden sm:block"
+      style="top: 76px; left: 14px;"
+      aria-hidden="true"></span>
+    <span
+      class="reg-mark hidden sm:block"
+      style="top: 76px; right: 14px;"
+      aria-hidden="true"></span>
+    <span
+      class="reg-mark hidden sm:block"
+      style="bottom: 14px; left: 14px;"
+      aria-hidden="true"></span>
+    <span
+      class="reg-mark hidden sm:block"
+      style="bottom: 14px; right: 14px;"
+      aria-hidden="true"></span>
+
     <slot />
+
+    <script>
+      // Reveal choreography: .rise/.cascade-card gain .visible, rules and
+      // dimension lines gain .drawn, when they enter the viewport.
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            e.target.classList.add(
+              e.target.classList.contains("rule-draw") ||
+                e.target.classList.contains("dim-h")
+                ? "drawn"
+                : "visible",
+            );
+            io.unobserve(e.target);
+          }
+        },
+        { threshold: 0.18, rootMargin: "0px 0px -40px 0px" },
+      );
+      document
+        .querySelectorAll(".rise, .cascade-card, .rule-draw, .dim-h")
+        .forEach((el) => io.observe(el));
+    </script>
   </body>
 </html>

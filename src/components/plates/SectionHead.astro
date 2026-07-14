@@ -1,0 +1,42 @@
+---
+// Plate header: figure number + name on a drawn rule, then the display title.
+interface Props {
+  fig: string; // "02"
+  name: string; // "the leaks"
+  title: string; // display heading, may contain <em> for the measured phrase
+  lede?: string;
+  inverted?: boolean; // on ink panels
+}
+const { fig, name, title, lede, inverted = false } = Astro.props;
+---
+
+<div class="mb-12 sm:mb-16">
+  <div class="flex items-baseline gap-4">
+    <p class={`fig-label shrink-0 ${inverted ? "!text-paper/70" : ""}`}>
+      Fig. {fig} / {name}
+    </p>
+    <div class="rule-draw flex-1 opacity-70"></div>
+  </div>
+  <h2
+    class={`rise mt-6 max-w-4xl text-3xl sm:text-4xl font-medium ${inverted ? "text-paper" : "text-text"}`}
+    set:html={title}
+  />
+  {
+    lede && (
+      <p
+        class={`rise mt-5 max-w-xl text-base sm:text-lg ${inverted ? "text-paper/75" : "text-text-muted"}`}
+        style="--rise-i: 1"
+      >
+        {lede}
+      </p>
+    )
+  }
+</div>
+
+<style>
+  h2 :global(em) {
+    font-style: italic;
+    font-weight: 480;
+    color: var(--color-accent);
+  }
+</style>

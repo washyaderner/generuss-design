@@ -1,0 +1,132 @@
+---
+// FIG. 08: the ink panel. The one inverted sheet, sealed in vermilion.
+const guarantees = [
+  {
+    name: "Live in 21 days",
+    body: "Your site launches within 21 days of kickoff. If I miss the date, you do not pay the balance until it is live.",
+  },
+  {
+    name: "Love the first design, or your deposit back",
+    body: "You see a real design direction before you commit. If it is not right, your deposit comes back. No pressure, no awkward follow-ups.",
+  },
+  {
+    name: "You own everything, $0 a month",
+    body: "Your domain, your code, your content, hosted free. Nothing holds your site hostage. Leave whenever you want and take it all with you.",
+  },
+];
+---
+
+<section
+  id="guarantee"
+  class="relative bg-ink px-6 sm:px-12 lg:px-20 pt-24 sm:pt-32 pb-24 text-paper"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12 sm:mb-16">
+      <div class="flex items-baseline gap-4">
+        <p class="fig-label shrink-0 !text-paper/60">Fig. 08 / the seal</p>
+        <div class="rule-draw flex-1 !bg-paper/25"></div>
+      </div>
+      <h2
+        class="rise mt-6 max-w-4xl text-3xl sm:text-4xl font-medium text-paper"
+      >
+        The risk is <em class="italic font-[450] text-[oklch(0.72_0.13_40)]"
+          >mine, not yours.</em
+        >
+      </h2>
+    </div>
+
+    <div class="grid gap-10 lg:grid-cols-[1fr_16rem]">
+      <div class="space-y-0">
+        {
+          guarantees.map((g, i) => (
+            <div
+              class="cascade-card border-t border-paper/15 py-8"
+              style={`--cascade-i: ${i}`}
+            >
+              <div class="grid gap-3 sm:grid-cols-[14rem_1fr] sm:gap-8">
+                <h3 class="font-display text-xl font-medium text-paper">
+                  {g.name}
+                </h3>
+                <p class="max-w-xl text-sm sm:text-base text-paper/70">
+                  {g.body}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+        <div class="border-t border-paper/15 pt-6">
+          <ul class="flex flex-wrap gap-x-8 gap-y-2">
+            <li class="mono-note !text-paper/60">
+              + two rounds of revisions included
+            </li>
+            <li class="mono-note !text-paper/60">
+              + 30 days post-launch support
+            </li>
+            <li class="mono-note !text-paper/60">
+              + fixed scope, no surprise bills
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- the seal -->
+      <div class="rise flex lg:justify-end" style="--rise-i: 2">
+        <div class="relative h-40 w-40 select-none" aria-hidden="true">
+          <svg viewBox="0 0 160 160" class="h-full w-full seal-spin">
+            <circle
+              cx="80"
+              cy="80"
+              r="76"
+              fill="none"
+              stroke="oklch(0.62 0.15 35)"
+              stroke-width="1.5"></circle>
+            <circle
+              cx="80"
+              cy="80"
+              r="58"
+              fill="none"
+              stroke="oklch(0.62 0.15 35)"
+              stroke-width="1"></circle>
+            <path id="sealpath" d="M 80 14 A 66 66 0 1 1 79.9 14" fill="none"
+            ></path>
+            <text
+              font-family="IBM Plex Mono, monospace"
+              font-size="11"
+              letter-spacing="3.2"
+              fill="oklch(0.72 0.13 40)"
+            >
+              <textPath href="#sealpath" startOffset="2"
+                >DRAWN BY HAND &#183; SIGNED BY RUSS &#183; 21 DAYS</textPath
+              >
+            </text>
+            <text
+              x="80"
+              y="87"
+              text-anchor="middle"
+              font-family="Georgia, serif"
+              font-style="italic"
+              font-size="30"
+              fill="oklch(0.72 0.13 40)">RG</text
+            >
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .seal-spin {
+    animation: seal-rotate 40s linear infinite;
+  }
+  @keyframes seal-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .seal-spin {
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const steps = [
+  {
+    n: "01",
+    days: "day 0",
+    name: "Discovery call",
+    body: "30 minutes. We audit your current site live and pinpoint where leads are actually leaking. You leave with 3 specific fixes whether or not we work together.",
+  },
+  {
+    n: "02",
+    days: "days 1-3",
+    name: "Stack audit + scope",
+    body: "I map your buyer's mental path against the right tech for the job, then deliver a fixed-scope plan with the price locked. No hourly billing surprises.",
+  },
+  {
+    n: "03",
+    days: "days 4-18",
+    name: "Build, with weekly Looms",
+    body: "Custom design + build, sharing weekly Loom walkthroughs so you see exactly what is coming and can redirect early. No giant reveal at the end.",
+  },
+  {
+    n: "04",
+    days: "days 19-21",
+    name: "Launch + 30-day support",
+    body: "Site goes live with full documentation and a personal Loom handoff, then 30 days of direct-line support to wire up anything new.",
+  },
+];
+---
+
+<section id="process" class="px-6 sm:px-12 lg:px-20 pt-28 sm:pt-36 pb-24">
+  <div class="max-w-7xl mx-auto">
+    <SectionHead
+      fig="05"
+      name="the method"
+      title="Four steps. Twenty-one days. <em>Zero hand-offs.</em>"
+    />
+
+    <!-- day dimension line spanning the whole method -->
+    <div class="mb-10 hidden md:block">
+      <div class="dim-h"></div>
+      <div class="mt-2 flex justify-between">
+        <span class="mono-note !text-accent">day 0</span>
+        <span class="mono-note !text-accent">day 21, live</span>
+      </div>
+    </div>
+
+    <ol class="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+      {
+        steps.map((s, i) => (
+          <li class="cascade-card note-rule" style={`--cascade-i: ${i}`}>
+            <p class="font-display text-3xl font-light italic text-accent">
+              {s.n}
+            </p>
+            <p class="fig-label mt-3 !text-text-muted">{s.days}</p>
+            <h3 class="font-display mt-2 text-xl font-medium text-text">
+              {s.name}
+            </h3>
+            <p class="mt-3 text-sm text-text-muted">{s.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

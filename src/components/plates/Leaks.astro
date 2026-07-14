@@ -1,0 +1,96 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const leaks = [
+  {
+    n: "01",
+    leak: "Cookie-cutter stacks",
+    leakBody:
+      "WordPress + 30 plugins because that is what the agency always sells. Your business gets whatever the template allows.",
+    fix: "Custom stack audit",
+    fixBody:
+      "The build starts by mapping how your buyers decide, then picks the lightest tech that serves it. Nothing you do not need.",
+  },
+  {
+    n: "02",
+    leak: "Slow as molasses",
+    leakBody:
+      "Every plugin, tracker, and page-builder div costs seconds. Mobile visitors leave before the hero loads.",
+    fix: "Fast on every phone",
+    fixBody:
+      "Hand-coded, static-first pages. 96 average speed score across shipped sites, measured, not promised.",
+  },
+  {
+    n: "03",
+    leak: '"Looks fine" does not convert',
+    leakBody:
+      "Pretty is not persuasive. Most sites never answer the one question a buyer brings: why you, why now.",
+    fix: "Conversion-engineered",
+    fixBody:
+      "Twenty years of sales instinct baked into structure, copy, and the path to one clear action per page.",
+  },
+  {
+    n: "04",
+    leak: "Post-launch ghosting",
+    leakBody:
+      "The agency ships, invoices, and vanishes. Your questions land in a ticket queue three time zones away.",
+    fix: "30-day post-launch support",
+    fixBody:
+      "Direct line to the person who built it. Documentation, a Loom handoff, and a month of wiring up whatever comes next.",
+  },
+];
+---
+
+<section
+  id="problem-solution"
+  class="px-6 sm:px-12 lg:px-20 pt-28 sm:pt-36 pb-20"
+>
+  <div class="max-w-7xl mx-auto">
+    <SectionHead
+      fig="02"
+      name="the leaks"
+      title="Why most websites leak money. And what yours needs <em>instead.</em>"
+      lede="Four failure modes I see in nearly every audit, drawn next to their fixes."
+    />
+
+    <div class="space-y-0">
+      {
+        leaks.map((row, i) => (
+          <div
+            class="cascade-card grid gap-5 border-t border-border py-9 sm:py-10 md:grid-cols-[1fr_4rem_1fr] md:items-start"
+            style={`--cascade-i: ${i}`}
+          >
+            <div>
+              <p class="fig-label !text-seal mb-2.5">Leak {row.n}</p>
+              <h3 class="font-display text-xl sm:text-2xl font-medium text-text">
+                {row.leak}
+              </h3>
+              <p class="mt-3 max-w-md text-sm sm:text-base text-text-muted">
+                {row.leakBody}
+              </p>
+            </div>
+            <div class="hidden md:flex justify-center pt-10" aria-hidden="true">
+              <svg width="34" height="12" viewBox="0 0 34 12" fill="none">
+                <path
+                  d="M0 6 H30 M26 1.5 L31.5 6 L26 10.5"
+                  stroke="oklch(0.5 0.085 245)"
+                  stroke-width="1.2"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="fig-label mb-2.5">Fix {row.n}</p>
+              <h3 class="font-display text-xl sm:text-2xl font-medium text-text">
+                {row.fix}
+              </h3>
+              <p class="mt-3 max-w-md text-sm sm:text-base text-text-muted">
+                {row.fixBody}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+      <div class="rule-draw"></div>
+    </div>
+  </div>
+</section>

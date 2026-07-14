@@ -1,0 +1,176 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const strip = [
+  { src: "/images/slides/generuss.webp", alt: "generuss design homepage" },
+  { src: "/images/slides/tarotdoxa-hero.webp", alt: "Tarotdoxa app site hero" },
+  { src: "/images/slides/crystal.webp", alt: "Crystal Seed Tarot website" },
+  {
+    src: "/images/slides/pharallax.webp",
+    alt: "Pharallax AI analysis engine site",
+  },
+  {
+    src: "/images/slides/vibe.webp",
+    alt: "Vibe N Thrive therapy practice website",
+  },
+  { src: "/images/slides/tarotdoxa.webp", alt: "Tarotdoxa marketing site" },
+];
+
+const featured = [
+  {
+    big: true,
+    name: "Oregon Ghost Conference",
+    kind: "Event site, ticket sales + 40 vendors",
+    body: "The Pacific Northwest's paranormal conference runs its ticketing, schedule, and vendor directory on this build. I keep it standing through the traffic spike every spring.",
+    href: "/ogc",
+    external: false,
+    img: "/images/ogc/desktop.webp",
+    alt: "Oregon Ghost Conference website on desktop",
+    note: "case study on sheet /ogc",
+  },
+  {
+    name: "Tarotdoxa",
+    kind: "iOS app + marketing site",
+    body: "A tarot app with a real reader's voice. Site, worker API, and App Store presence, one system.",
+    href: "https://tarotdoxa.com",
+    external: true,
+    img: "/images/slides/tarotdoxa-hero.webp",
+    alt: "Tarotdoxa painterly wordmark",
+  },
+  {
+    name: "Crystal Seed Tarot",
+    kind: "Local service business",
+    body: "Portland tarot reader, booked out through the site. Local SEO wired, reads beautifully on a phone.",
+    href: "https://crystalseedtarot.com",
+    external: true,
+    img: "/images/slides/crystal.webp",
+    alt: "Crystal Seed Tarot website",
+  },
+];
+---
+
+<section id="portfolio" class="pt-24 sm:pt-32 pb-20">
+  <div class="px-6 sm:px-12 lg:px-20">
+    <div class="max-w-7xl mx-auto">
+      <SectionHead
+        fig="03"
+        name="built work"
+        title="Real URLs. Real users. <em>Zero abandoned.</em>"
+        lede="Every site below is live, fast, and still cared for. Hover any plate to see it in full color."
+      />
+    </div>
+  </div>
+
+  <!-- full-bleed specimen strip -->
+  <div class="marquee-row border-y border-border" aria-hidden="true">
+    <div class="marquee-track" style="--marquee-duration: 62s;">
+      {
+        [...strip, ...strip].map((s) => (
+          <div class="w-[clamp(240px,24vw,380px)] shrink-0 border-r border-border bg-paper-deep p-3">
+            <img
+              src={s.src}
+              alt=""
+              loading="lazy"
+              width="380"
+              height="238"
+              class="photo-plate block aspect-[8/5] w-full object-cover object-top"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="px-6 sm:px-12 lg:px-20 mt-14">
+    <div class="max-w-7xl mx-auto grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {
+        featured.map((f, i) => (
+          <a
+            href={f.href}
+            target={f.external ? "_blank" : undefined}
+            rel={f.external ? "noopener noreferrer" : undefined}
+            class={`card-plate group cascade-card relative block p-5 sm:p-6 ${f.big ? "lg:col-span-2 lg:row-span-1" : ""}`}
+            style={`--cascade-i: ${i}`}
+          >
+            <div class="overflow-hidden border border-border">
+              <img
+                src={f.img}
+                alt={f.alt}
+                loading="lazy"
+                width={f.big ? 960 : 460}
+                height={f.big ? 600 : 288}
+                class={`photo-plate w-full object-cover object-top ${f.big ? "aspect-[16/9]" : "aspect-[8/5]"}`}
+              />
+            </div>
+            <div class="mt-5 flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-display text-xl font-medium text-text">
+                  {f.name}
+                </h3>
+                <p class="mono-note mt-1 !text-accent">{f.kind}</p>
+              </div>
+              <span class="mono-note mt-1 shrink-0" aria-hidden="true">
+                {f.external ? "↗" : "→"}
+              </span>
+            </div>
+            <p class="mt-3 text-sm text-text-muted max-w-xl">{f.body}</p>
+            {f.note && (
+              <p class="mono-note note-rule mt-4 inline-block">{f.note}</p>
+            )}
+          </a>
+        ))
+      }
+
+      <!-- the empty plate: reserved for the visitor -->
+      <a
+        href="#booking"
+        class="card-plate group cascade-card relative flex flex-col justify-between border-dashed p-5 sm:p-6"
+        style="--cascade-i: 3"
+      >
+        <div>
+          <div
+            class="flex aspect-[8/5] w-full items-center justify-center border border-dashed border-rule bg-paper"
+          >
+            <p class="fig-label !text-accent">plate reserved</p>
+          </div>
+          <h3 class="font-display mt-5 text-xl font-medium text-text">
+            Your build goes here
+          </h3>
+          <p class="mono-note mt-1 !text-accent">next opening: this month</p>
+          <p class="mt-3 text-sm text-text-muted">
+            One build at a time, drawn by hand. Claim the slot with a 30-minute
+            call.
+          </p>
+        </div>
+        <p
+          class="link-draft mono-note !text-accent mt-4 inline-flex min-h-[44px] items-center self-start"
+        >
+          Reserve the plate →
+        </p>
+      </a>
+
+      <!-- full index -->
+      <a
+        href="/connect"
+        class="card-plate group cascade-card relative flex flex-col justify-between p-5 sm:p-6"
+        style="--cascade-i: 4"
+      >
+        <div>
+          <p class="fig-label mb-2">Plate index</p>
+          <h3 class="font-display text-xl font-medium text-text">
+            The full flat file
+          </h3>
+          <p class="mt-3 max-w-xl text-sm text-text-muted">
+            Every live build, the socials, and the projects still on the bench,
+            filed on one sheet at /connect.
+          </p>
+        </div>
+        <p
+          class="link-draft mono-note !text-accent mt-4 inline-flex min-h-[44px] items-center self-start"
+        >
+          Open the flat file →
+        </p>
+      </a>
+    </div>
+  </div>
+</section>

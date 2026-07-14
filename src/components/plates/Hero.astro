@@ -1,0 +1,211 @@
+---
+// FIG. 01: the hero is a working drawing that can inspect itself (x-ray).
+// Every value shown in an xr-tag is the real token running on this page.
+---
+
+<section
+  id="hero"
+  class="relative px-6 sm:px-12 lg:px-20 pt-32 sm:pt-40 pb-20 sm:pb-24 min-h-[92vh] flex flex-col"
+>
+  <!-- x-ray construction grid (visible only in construction view) -->
+  <div class="xr-gridlines xr-only" aria-hidden="true"></div>
+
+  <div
+    class="relative grid lg:grid-cols-[1fr_15rem] gap-16 flex-1 items-center max-w-7xl mx-auto w-full"
+  >
+    <div class="relative">
+      <p class="rise visible-init fig-label" style="--rise-i: 0">
+        Sheet 01 &middot; conversion-engineered website &middot; hand-coded, no
+        templates
+      </p>
+
+      <div class="relative mt-7">
+        <h1
+          class="rise visible-init text-4xl sm:text-5xl lg:text-6xl font-medium text-text"
+          style="--rise-i: 1"
+        >
+          Custom websites that close leads<br class="hidden sm:block" />
+          <span
+            class="relative inline-block italic font-[450] text-accent whitespace-nowrap"
+            >while you sleep.<span
+              class="dim-h absolute -bottom-3 left-1 right-1 hidden sm:block"
+              aria-hidden="true"></span>
+          </span>
+        </h1>
+        <span
+          class="xr-tag xr-only hidden lg:block"
+          style="top: -1.4rem; right: 4rem;"
+          aria-hidden="true">Fraunces opsz 144 · wght 500 · -0.028em</span
+        >
+      </div>
+
+      <p
+        class="rise visible-init mono-note mt-7 !text-accent"
+        style="--rise-i: 2"
+      >
+        measured span: 21 days from deposit to live, or the balance is $0
+      </p>
+
+      <p
+        class="rise visible-init mt-8 max-w-lg text-base sm:text-lg text-text-muted"
+        style="--rise-i: 3"
+      >
+        <strong class="font-semibold text-text"
+          >Every pixel here is a working drawing.</strong
+        ><br />
+        I build by hand, show the seams, and sign the work. You own the code, the
+        domain, and the content the day it ships.
+      </p>
+
+      <div
+        class="rise visible-init mt-10 flex flex-wrap items-center gap-6"
+        style="--rise-i: 4"
+      >
+        <div class="relative">
+          <a href="#booking" class="cta-ink xr-outline">Book a discovery call</a
+          >
+          <span
+            class="xr-tag xr-only hidden lg:block"
+            style="bottom: -2rem; left: 0;"
+            aria-hidden="true">ease: cubic-bezier(0.16, 1, 0.3, 1)</span
+          >
+        </div>
+        <button
+          id="xray-toggle"
+          type="button"
+          class="link-draft mono-note !text-text-muted hover:!text-text min-h-[48px] inline-flex items-center gap-2"
+          aria-pressed="false"
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            aria-hidden="true"
+          >
+            <rect
+              x="0.5"
+              y="0.5"
+              width="13"
+              height="13"
+              stroke="currentColor"
+              stroke-dasharray="2.5 2"></rect>
+            <circle cx="7" cy="7" r="1.6" fill="oklch(0.5 0.085 245)"></circle>
+          </svg>
+          <span data-xray-label>View the construction</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- annotation rail (desktop) -->
+    <aside
+      class="hidden lg:flex flex-col gap-9 self-center"
+      aria-label="Construction notes"
+    >
+      <div class="rise note-rule" style="--rise-i: 5">
+        <p class="fig-label mb-1.5">Fig. 01a / proof</p>
+        <p class="mono-note">
+          17 sites shipped. 96 avg speed score. 5.0 rated. All of them real,
+          most of them below.
+        </p>
+      </div>
+      <div class="rise note-rule" style="--rise-i: 6">
+        <p class="fig-label mb-1.5">Fig. 01b / method</p>
+        <p class="mono-note">
+          Static-first Astro on Cloudflare. No page builders, no plugin rot,
+          nothing between you and fast.
+        </p>
+      </div>
+      <div class="rise note-rule" style="--rise-i: 7">
+        <p class="fig-label mb-1.5">Fig. 01c / terms</p>
+        <p class="mono-note">
+          Love the first design or your deposit back. Hosting $0, forever. Leave
+          anytime, take everything.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- scroll cue -->
+  <div
+    class="rise visible-init relative mt-12 flex items-center gap-4 max-w-7xl mx-auto w-full"
+    style="--rise-i: 8"
+  >
+    <span class="mono-note">continue to fig. 02</span>
+    <div class="rule-draw w-24"></div>
+    <svg
+      width="12"
+      height="14"
+      viewBox="0 0 12 14"
+      fill="none"
+      class="animate-bounce-slow"
+      aria-hidden="true"
+    >
+      <path
+        d="M6 0 V12 M1.5 8 L6 12.5 L10.5 8"
+        stroke="oklch(0.5 0.085 245)"
+        stroke-width="1.2"></path>
+    </svg>
+  </div>
+</section>
+
+<style>
+  /* Hero choreography must not wait for the IO script: run on load. */
+  .visible-init {
+    animation: hero-rise 0.85s var(--ease-out-expo) both;
+    animation-delay: calc(var(--rise-i, 0) * 95ms);
+    /* neutralize the IO-driven initial state; animation owns the entrance */
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .animate-bounce-slow {
+    animation: cue 2.6s var(--ease-out-quart) infinite;
+  }
+  @keyframes cue {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.9;
+    }
+    50% {
+      transform: translateY(4px);
+      opacity: 0.5;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .visible-init {
+      animation: none;
+    }
+    .animate-bounce-slow {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById("xray-toggle");
+  const label = toggle?.querySelector("[data-xray-label]");
+  toggle?.addEventListener("click", () => {
+    const on = document.body.classList.toggle("xray");
+    toggle.setAttribute("aria-pressed", String(on));
+    if (label)
+      label.textContent = on
+        ? "Close the construction"
+        : "View the construction";
+    // draw the hero dimension line when the drawing is inspected
+    document
+      .querySelectorAll("#hero .dim-h")
+      .forEach((d) => d.classList.add("drawn"));
+  });
+</script>

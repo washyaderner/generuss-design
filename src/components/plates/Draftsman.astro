@@ -1,0 +1,89 @@
+---
+import SectionHead from "./SectionHead.astro";
+---
+
+<section
+  id="about"
+  class="px-6 sm:px-12 lg:px-20 pt-28 sm:pt-36 pb-24 bg-paper-deep border-y border-border"
+>
+  <div class="max-w-7xl mx-auto">
+    <SectionHead
+      fig="07"
+      name="the draftsman"
+      title="Hey, <em>I'm Russ.</em>"
+    />
+
+    <div class="grid items-start gap-10 lg:grid-cols-[24rem_1fr]">
+      <figure class="rise relative max-w-sm">
+        <div class="card-plate overflow-hidden p-3">
+          <img
+            src="/images/russ-headshot2.webp"
+            alt="Russ Gardner, the designer and builder behind generuss design"
+            width="640"
+            height="800"
+            loading="lazy"
+            class="photo-plate block aspect-[4/5] w-full object-cover"
+          />
+        </div>
+        <figcaption class="mono-note mt-3">
+          fig. 07a &middot; the human accountable
+        </figcaption>
+      </figure>
+
+      <div class="max-w-xl lg:pt-4">
+        <p class="rise text-lg sm:text-xl text-text" style="--rise-i: 1">
+          <strong class="font-semibold"
+            >20 years in sales taught me how people decide.</strong
+          ><br />
+          I bring that instinct to every pixel: no template, no guesswork, no junior
+          handoffs. When you hire generuss design you get one person, start to finish,
+          who has closed deals for two decades and now builds the pages that close
+          them for you.
+        </p>
+        <p class="rise mt-5 text-base text-text-muted" style="--rise-i: 2">
+          The AI tooling I build with gets a lot of attention. The part that
+          matters: it lets one craftsman ship agency-grade work in 21 days,
+          while the sales brain decides what deserves to be on the page at all.
+        </p>
+
+        <dl
+          class="rise mt-10 grid grid-cols-3 gap-6 border-t border-border pt-7"
+          style="--rise-i: 3"
+        >
+          <div>
+            <dt class="mono-note order-2">yrs in sales</dt>
+            <dd class="font-display text-3xl sm:text-4xl font-medium text-text">
+              20+
+            </dd>
+          </div>
+          <div>
+            <dt class="mono-note order-2">avg speed score</dt>
+            <dd class="font-display text-3xl sm:text-4xl font-medium text-text">
+              96
+            </dd>
+          </div>
+          <div>
+            <dt class="mono-note order-2">star rated</dt>
+            <dd class="font-display text-3xl sm:text-4xl font-medium text-text">
+              5.0
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  dl div {
+    display: flex;
+    flex-direction: column;
+  }
+  dd {
+    order: 1;
+  }
+  dt {
+    order: 2;
+    margin-top: 0.4rem;
+  }
+</style>

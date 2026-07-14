@@ -1,0 +1,174 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+// Flagship bill of materials: dotted-leader schedule, drafting-table style.
+const bom = [
+  ["Discovery call + tech stack audit", "day 0"],
+  ["Conversion-first copy + structure", "days 1-3"],
+  ["Custom design, no templates or builders", "days 4-12"],
+  ["Mobile-first, fast on every phone", "throughout"],
+  ["Static-first architecture, no plugin rot", "throughout"],
+  ["Contact-to-CRM automation wired", "days 13-18"],
+  ["Launch docs + Loom walkthrough", "day 21"],
+  ["30 days post-launch support", "included"],
+];
+---
+
+<section
+  id="offer"
+  class="px-6 sm:px-12 lg:px-20 pt-28 sm:pt-36 pb-20 bg-paper-deep border-y border-border"
+>
+  <div class="max-w-7xl mx-auto">
+    <SectionHead
+      fig="04"
+      name="bill of materials"
+      title="Three ways in. <em>One human accountable.</em>"
+      lede="Fixed scope, locked price, no hourly surprises. Every entry below ships exactly as drawn."
+    />
+
+    <div class="grid gap-5 lg:grid-cols-[1.5fr_1fr]">
+      <!-- Flagship sheet -->
+      <article
+        class="card-plate cascade-card relative p-6 sm:p-9"
+        style="--cascade-i: 0"
+      >
+        <div class="flex flex-wrap items-baseline justify-between gap-3">
+          <div>
+            <p class="fig-label mb-2">The flagship &middot; most popular</p>
+            <h3 class="font-display text-2xl sm:text-3xl font-medium text-text">
+              The Conversion-Engineered Site
+            </h3>
+          </div>
+          <p class="font-display text-3xl sm:text-4xl font-medium text-text">
+            <span class="mono-note align-top mr-1">from</span>$4,500
+          </p>
+        </div>
+        <p class="mt-4 max-w-xl text-sm sm:text-base text-text-muted">
+          The full custom build: strategy, copy, design, and automation around
+          how your buyers actually decide. Live in 21 days or you do not pay the
+          balance.
+        </p>
+
+        <div class="mt-7 border-t border-border pt-5">
+          <p
+            class="mono-note mb-4 !text-text-muted uppercase tracking-[0.08em]"
+          >
+            Schedule of work
+          </p>
+          <ul class="space-y-2.5">
+            {
+              bom.map(([item, when]) => (
+                <li class="flex items-baseline gap-3 text-sm">
+                  <span class="text-text">{item}</span>
+                  <span
+                    class="flex-1 border-b border-dotted border-border translate-y-[-3px]"
+                    aria-hidden="true"
+                  />
+                  <span class="mono-note shrink-0">{when}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-5">
+          <a href="#booking" class="cta-ink">Book a discovery call</a>
+          <p class="mono-note">deposit back if the first design misses</p>
+        </div>
+        <span
+          class="xr-tag xr-only hidden lg:block"
+          style="top: 1.2rem; right: -0.6rem;"
+          aria-hidden="true">plate: paper on paper-deep · 1px hairline</span
+        >
+      </article>
+
+      <!-- Side entries -->
+      <div class="flex flex-col gap-5">
+        <article
+          class="card-plate cascade-card p-6 sm:p-7"
+          style="--cascade-i: 1"
+        >
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <p class="fig-label mb-2">The fast way in</p>
+              <h3
+                class="font-display text-xl sm:text-2xl font-medium text-text"
+              >
+                The Launch Page
+              </h3>
+            </div>
+            <p class="font-display text-2xl font-medium text-text">
+              $500<span class="mono-note ml-1">flat</span>
+            </p>
+          </div>
+          <p class="mt-3 text-sm text-text-muted">
+            One page, hand-built, engineered to book your next customer. Live in
+            7 days.
+          </p>
+          <ul class="mt-4 space-y-1.5 text-sm text-text-muted">
+            <li class="flex gap-2">
+              <span class="text-accent" aria-hidden="true">+</span> Booking or contact
+              wired and working
+            </li>
+            <li class="flex gap-2">
+              <span class="text-accent" aria-hidden="true">+</span> Mobile-first,
+              free hosting, you own it
+            </li>
+            <li class="flex gap-2">
+              <span class="text-accent" aria-hidden="true">+</span> Every dollar credits
+              toward the flagship for 6 months
+            </li>
+          </ul>
+          <a
+            href="#booking"
+            class="link-draft mono-note !text-accent mt-5 inline-flex min-h-[44px] items-center"
+            >Start with $500 →</a
+          >
+        </article>
+
+        <article
+          class="card-plate cascade-card p-6 sm:p-7"
+          style="--cascade-i: 2"
+        >
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <p class="fig-label mb-2">The compounding play</p>
+              <h3
+                class="font-display text-xl sm:text-2xl font-medium text-text"
+              >
+                The Growth Engine
+              </h3>
+            </div>
+            <p class="font-display text-2xl font-medium text-text">
+              <span class="mono-note mr-1">from</span>$750<span
+                class="mono-note">/mo</span>
+            </p>
+          </div>
+          <p class="mt-3 text-sm text-text-muted">
+            Your site plus the engine room: monthly optimization across all nine
+            search and AI surfaces.
+          </p>
+          <ul class="mt-4 space-y-1.5 text-sm text-text-muted">
+            <li class="flex gap-2">
+              <span class="text-accent" aria-hidden="true">+</span> SEO, AEO + GEO
+              on a monthly cadence
+            </li>
+            <li class="flex gap-2">
+              <span class="text-accent" aria-hidden="true">+</span> Fixes shipped,
+              not suggested
+            </li>
+            <li class="flex gap-2">
+              <span class="text-accent" aria-hidden="true">+</span> A 5-minute monthly
+              report: what moved, what is next
+            </li>
+          </ul>
+          <a
+            href="/seo"
+            class="link-draft mono-note !text-accent mt-5 inline-flex min-h-[44px] items-center"
+            >See the nine surfaces →</a
+          >
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,142 @@
+---
+import CalendarEmbed from "../CalendarEmbed.astro";
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+---
+
+<section
+  id="booking"
+  class="px-6 sm:px-12 lg:px-20 pt-28 sm:pt-36 pb-24 bg-paper-deep border-t border-border"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12 sm:mb-16">
+      <div class="flex items-baseline gap-4">
+        <p class="fig-label shrink-0">Fig. 10 / the call</p>
+        <div class="rule-draw flex-1 opacity-70"></div>
+      </div>
+      <h2
+        class="rise mt-6 max-w-4xl text-3xl sm:text-4xl font-medium text-text"
+      >
+        30 minutes. 3 fixes. <em class="italic font-[450] text-accent"
+          >Whether we work together or not.</em
+        >
+      </h2>
+      <p
+        class="rise mt-5 max-w-xl text-base sm:text-lg text-text-muted"
+        style="--rise-i: 1"
+      >
+        We audit your current site live on the call. You leave with three
+        specific fixes either way. No pitch, no pressure.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-8">
+      <!-- the calendar, full width so Cal.com breathes -->
+      <div class="rise card-plate p-3 sm:p-4">
+        <CalendarEmbed />
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
+        <!-- direct message -->
+        <form
+          id="contact-form"
+          action={`https://formspree.io/f/${formspreeId}`}
+          method="POST"
+          class="rise card-plate space-y-4 p-6 sm:p-7"
+          style="--rise-i: 1"
+        >
+          <p class="fig-label">Or send a direct message</p>
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+          <div>
+            <label for="name" class="mono-note mb-1.5 block">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full border border-border bg-paper px-4 py-3 text-sm text-text placeholder:text-text-muted/50 focus:outline-none focus:border-accent min-h-[48px]"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label for="email" class="mono-note mb-1.5 block">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full border border-border bg-paper px-4 py-3 text-sm text-text placeholder:text-text-muted/50 focus:outline-none focus:border-accent min-h-[48px]"
+              placeholder="you@company.com"
+            />
+          </div>
+          <div>
+            <label for="message" class="mono-note mb-1.5 block">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              class="w-full border border-border bg-paper px-4 py-3 text-sm text-text placeholder:text-text-muted/50 focus:outline-none focus:border-accent"
+              placeholder="What are you building?"></textarea>
+          </div>
+          <button type="submit" class="cta-ink w-full">Send it over</button>
+        </form>
+
+        <!-- 5-site teardown lead magnet -->
+        <div class="rise card-plate p-6 sm:p-7" style="--rise-i: 2">
+          <p class="fig-label mb-2">Free specimen</p>
+          <h3 class="font-display text-xl font-medium text-text">
+            The 5-Site Teardown
+          </h3>
+          <p class="mt-2 text-sm text-text-muted">
+            Five real service-business sites pulled apart line by line: what
+            leaks, what converts, and the fix for each. In your inbox in one
+            click.
+          </p>
+          <form
+            id="lead-magnet-form"
+            action={`https://formspree.io/f/${formspreeId}`}
+            method="POST"
+            class="mt-4 flex flex-col gap-3 sm:flex-row"
+          >
+            <input
+              type="text"
+              name="_gotcha"
+              style="display:none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+            <input
+              type="hidden"
+              name="_subject"
+              value="5-Site Teardown request"
+            />
+            <input type="hidden" name="lead_magnet" value="5-site-teardown" />
+            <input
+              type="hidden"
+              name="_next"
+              value="https://generussdesign.com/resources/5-site-teardown/index.html"
+            />
+            <label class="sr-only" for="lead-email">Email address</label>
+            <input
+              type="email"
+              id="lead-email"
+              name="email"
+              required
+              placeholder="you@company.com"
+              class="w-full flex-1 border border-border bg-paper px-4 py-3 text-sm text-text placeholder:text-text-muted/50 focus:outline-none focus:border-accent min-h-[48px]"
+            />
+            <button type="submit" class="cta-ink shrink-0 !px-5"
+              >Get the teardown</button
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const reports = [
+  {
+    quote: "I've never had anybody provide such detail to their work.",
+    who: "Carson",
+    org: "Vibe'N Thrive",
+  },
+  {
+    quote: "His ability to solve problems makes him a rare find.",
+    who: "Jonny",
+    org: "Invincible Media",
+  },
+  {
+    quote: "You took a simple thing and brought it to life.",
+    who: "Dirty Chai",
+    org: "Struggle Crew",
+  },
+];
+---
+
+<section id="reviews" class="px-6 sm:px-12 lg:px-20 pt-28 sm:pt-36 pb-24">
+  <div class="max-w-7xl mx-auto">
+    <SectionHead
+      fig="06"
+      name="field reports"
+      title="All killer. <em>No filler.</em>"
+    />
+
+    <!-- lead report: oversized, offset right, annotated left -->
+    <div class="grid gap-8 lg:grid-cols-[13rem_1fr] lg:items-end">
+      <div class="rise note-rule hidden lg:block">
+        <p class="fig-label mb-1.5">Fig. 06a / sources</p>
+        <p class="mono-note">
+          Verbatim, names attached, receipts on file. Nothing here was polished
+          after the fact.
+        </p>
+      </div>
+      <figure class="rise ml-auto max-w-3xl lg:mr-16">
+        <blockquote
+          class="font-display text-2xl sm:text-3xl lg:text-4xl font-light italic text-text"
+        >
+          "Exceeded my expectations
+          <span class="whitespace-nowrap">by miles."</span>
+        </blockquote>
+        <figcaption class="mono-note note-rule mt-6 inline-block">
+          Leon McConnell &middot; Resist Entertainment &middot; ★★★★★
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="mt-16 grid gap-5 md:grid-cols-3">
+      {
+        reports.map((r, i) => (
+          <figure
+            class="card-plate cascade-card p-6"
+            style={`--cascade-i: ${i}`}
+          >
+            <p class="fig-label mb-4 !text-text-muted">
+              Report {String(i + 2).padStart(2, "0")}
+            </p>
+            <blockquote class="font-display text-lg font-medium text-text">
+              "{r.quote}"
+            </blockquote>
+            <figcaption class="mono-note mt-5">
+              {r.who} &middot; {r.org} &middot;{" "}
+              <span class="text-seal">★★★★★</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

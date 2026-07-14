@@ -1,0 +1,23 @@
+---
+// FIG. 01d: thin trust strip; preserves the #proof anchor from v1.
+const names = [
+  "Oregon Ghost Conference",
+  "Pharallax",
+  "Tarotdoxa",
+  "Invincible Media",
+  "Vibe'N Thrive",
+  "Crystal Seed Tarot",
+];
+---
+
+<section
+  id="proof"
+  class="border-y border-border bg-paper-deep px-6 sm:px-12 lg:px-20 py-5"
+>
+  <div class="max-w-7xl mx-auto flex flex-wrap items-baseline gap-x-8 gap-y-2">
+    <p class="mono-note shrink-0 !text-text-muted">
+      trusted by founders building:
+    </p>
+    {names.map((n) => <span class="mono-note !text-text">{n}</span>)}
+  </div>
+</section>

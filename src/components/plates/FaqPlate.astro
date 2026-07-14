@@ -1,0 +1,71 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+// Answer-first: every answer's first sentence is extractable on its own.
+export const faqs = [
+  {
+    q: "How much does a custom website cost?",
+    a: "Three fixed prices: a one-page Launch Page is $500 flat, the full Conversion-Engineered Site starts at $4,500, and monthly Growth Engine optimization starts at $750 a month. Scope and price are locked before the build starts, so there are no hourly surprises.",
+  },
+  {
+    q: "How long does a website take to build?",
+    a: "21 days from kickoff to live, guaranteed: if I miss the date you do not pay the balance until it ships. The Launch Page goes live in 7 days.",
+  },
+  {
+    q: "Do I own the website when it's done?",
+    a: "Yes, all of it: domain, code, and content, with free hosting at $0 a month. Nothing is held hostage, and you can leave anytime and take everything with you.",
+  },
+  {
+    q: "What if I don't like the design?",
+    a: "You get your deposit back. You see a real design direction before committing, and if it is not right, the deposit returns with no pressure and no awkward follow-ups.",
+  },
+  {
+    q: "Do you handle SEO and AI search too?",
+    a: "Yes. The Growth Engine covers nine surfaces monthly: SEO, AEO, GEO, voice, performance, CRO, email deliverability, and social, with fixes shipped rather than suggested. The full breakdown lives on the SEO service page.",
+  },
+];
+---
+
+<section id="faq" class="px-6 sm:px-12 lg:px-20 pt-28 sm:pt-36 pb-24">
+  <div class="max-w-7xl mx-auto">
+    <SectionHead
+      fig="09"
+      name="specifications"
+      title="Straight answers, <em>before you even ask.</em>"
+    />
+
+    <div class="max-w-3xl">
+      {
+        faqs.map((f, i) => (
+          <details
+            class="cascade-card group border-t border-border"
+            style={`--cascade-i: ${i}`}
+          >
+            <summary class="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+              <h3 class="font-display text-lg sm:text-xl font-medium text-text">
+                {f.q}
+              </h3>
+              <span
+                class="mono-note shrink-0 !text-accent transition-transform duration-300 group-open:rotate-45"
+                style="transition-timing-function: var(--ease-out-expo)"
+                aria-hidden="true"
+              >
+                +
+              </span>
+            </summary>
+            <p class="max-w-2xl pb-6 text-sm sm:text-base text-text-muted">
+              {f.a}
+            </p>
+          </details>
+        ))
+      }
+      <div class="rule-draw"></div>
+      <p class="mono-note mt-6">
+        different question? <a
+          href="mailto:russ@generuss.com"
+          class="link-draft !text-accent">russ@generuss.com</a
+        > answers same-day.
+      </p>
+    </div>
+  </div>
+</section>
