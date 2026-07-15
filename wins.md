@@ -125,3 +125,7 @@
 **Signal:** Full conversion-first page restructure shipped from handoff to production in under 10 minutes. Section reorder, Principles removal, testimonial cleanup, Pharallax card shrink, copy alignment, GSAP cleanup - all in one pass.
 **What worked:** Handoff doc had exact line numbers, clear priorities, and specific options (A/B/C for Pharallax). Used Python script for the section reorder (too many moving parts for sequential edits), then surgical Edit calls for content changes. Build-verified after structural change, then again after content changes.
 **Pattern:** For large page restructures, use a script for the initial reorder (fragile with sequential edits), then use Edit for content-level changes. Verify build between structural and content phases.
+
+## 2026-07-14: Astronaut A/B/C direction judging + the x-ray signature
+
+Three real one-screen mocks (Workbench / Ledger / Night Shift) judged before any build code: the losing directions cost ~30 min total and made the winner defensible (and the Ledger's dotted-leader table + Night Shift's mood survived as adopted elements). The self-annotating "construction view" (body-class toggle + xr-\* classes + real token values) is a reusable technique: any craft-positioned site can ship a working-drawing layer. Also validated: OG images generated via the shot harness from an HTML template (zero new deps, on-brand plates, 14 images in one loop).

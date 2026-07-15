@@ -84,3 +84,11 @@
 
 **Correction:** Card CSS had two different cyans - `--cyan: #00FFEF` in the card HTML vs `QR_COLOR = "#00e5ff"` in the QR generator. Both the hex values AND rgba equivalents (0,255,239 vs 0,229,255) needed updating.
 **Rule:** When unifying a color across a print pipeline, check three places: CSS custom properties, hardcoded hex in inline SVGs, and rgba() values in shadows/glows. A hex find-replace misses the rgba form.
+
+## 2026-07-14 (level-up session)
+
+- **Google Fonts CSS2 multi-request downloads: never infer roman vs italic from URL order.** Fetch one style per request and map deterministically; the swapped-file failure mode is "every serif is slanted" and it hides in plain sight until pixels are rendered.
+- **zsh does not word-split unquoted vars**: `for u in "url --flag x"; do cmd $u` passes ONE arg. Burned the first PSI run (self-overwriting files hid it) and a shot loop. Write loops with explicit args in this shell.
+- **cwd drifts across Bash calls**: a `cd` for one tool call (shot.mjs in fable-10) nearly committed to the wrong repo later. Absolute paths or per-command `cd` prefixes in long sessions, always.
+- **pilot-qa.mjs PD4 contrast parses colors as rgb; oklch() themes false-positive** (reported SPAN 2.5:1 on an element that hand-verifies ~13:1). Known artifact until the eval gets an oklch converter; hand-verify flagged elements on oklch sites. Same trap in ad-hoc page-eval snippets.
+- **crawl.mjs was truncating attr values at apostrophes + eating entities before decode** (fixed in the skill 7/14): if an audit shows meta descriptions ending mid-word, suspect the parser before the site.
