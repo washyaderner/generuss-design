@@ -58,3 +58,13 @@ SERP context: the winning result format for our head queries is the productized 
 - 2026-07-03: first full /seo audit + fix pass (see audits/2026-07-03/): 65 -> 73
 - 2026-07-14: email lockdown DNS trio + generuss.com DMARC quarantine executed live (Comet) + GSC verified + PSI keyed, all dig-verified
 - 2026-07-14: full re-audit, run 2 (audits/2026-07-14/): first full-coverage scoring (all 9 modules, no nulls), 70 pre-fix -> 73 post-fix; fix pass commit 6afc512 (schema 100%, sameAs, Article x5, descs, de-orphan); competitors named; path-to-90 ledger written; part of the level-up run (Phase 2 redesign follows Gate A)
+
+## Goal thread: overall 90+ (set 2026-07-14, rides the monthly cron)
+
+- **Target:** /seo overall score 90 or better on two consecutive monthly audits. Rubric fixed: reporting.md formula + external instruments (PSI, GSC, dig); no module re-weighting, experimental bench stays opt-in.
+- **Baseline:** 73 (2026-07-03 audit; re-confirmed at full coverage 2026-07-14). Path-to-90 ledger: audits/2026-07-14/AUDIT.md.
+- **Rails:** the monthly report cron (com.studio.seo-report, 1st of month, 6:47 AM PT) already covers this site; each digest reports the score delta vs baseline and what moved.
+- **Extra trigger:** when a Russ-gated item executes (DNS-class records, Bing import, authority profile rollout), re-measure the affected module within 48 hours instead of waiting for the calendar. (The 7/14 email DNS trio was re-measured same-day: email 40 -> 91, banked.)
+- **Kill condition (law 8):** two consecutive monthly cycles with zero score delta AND zero kit-actionable items remaining = goal goes dormant here and the digest says so. No loop that produces zeros in silence.
+- **Done:** 90+ twice in a row -> close this block, one line to wins.md, site stays in the normal monthly cycle.
+- **Status note (2026-07-14):** Workbench redesign (branch redesign/v2) holds ~+4 of the ledger's points (answer-first home, 3 gap pages, OG images, CRO); it is parked at Gate B pending Russ's fine-tune + day/night theme direction, so those points land when it ships.
