@@ -409,15 +409,18 @@ Be pragmatic. Be reliable. Self-anneal. Compound.
 
 ## Project State
 
-**Last Updated**: 2026-07-03 (PM pass)
-**Current Status**: Guarantee replaced sitewide (Lighthouse framing retired for the tangible trio: live-in-21-days-or-no-balance / love-the-first-design-or-deposit-back / you-own-everything-$0-hosting; Lighthouse survives only as "96/100 avg speed score" stats); tier cards are now clickable and swap the detail panel below (launch/flagship/growth panels + vanilla JS); 5-Site Teardown card restructured wide (form on its own row); no-widow rule applied (text-balance + nowrap tails) and codified in Copy Style. Earlier today: offer restructured into a 3-tier ladder on the homepage (The Launch Page $500 flat / The Conversion-Engineered Site from $4,500 / The Growth Engine from $750/mo) + standalone SEO service card; /seo in the nav (desktop + mobile), /seo hero centered; OfferCatalog JSON-LD + homepage meta description with price hook; /seo service page live (nine labeled surfaces). NOTE: Growth Engine $750/mo and the tier names were Kit's call per Russ's "you decide the tiers" - adjust freely.
+**Last Updated**: 2026-07-15 (late night pass)
+**Current Status**: Gap-pages build MERGED + DEPLOYED (merge e49be27): three new pages from the 7/14 audit's content plan: `/compare` (hand-coded cost vs subscription vs template, C4), `/event-websites` (event/conference ICP money page with OGC live-embed proof, C5; also the landing surface for events-wide outreach, paracon beachhead killed 7/15), `/process` (Astro build process with honest PSI receipts 86/100, C3), plus an answer-first homepage FAQ (5 questions, FAQPage JSON-LD in the shared graph, V2). Footer + contextual links wired, llms.txt updated, /ogc orphan resolved contextually (T4). Built by a worktree agent under build-protocol v1.3 with a 10-assertion validation contract; independent adversarial review verdict SHIP (zero findings); visual QA at 375/1440 clean. Build receipts live in `seo/audits/2026-07-14/gap-pages-build/`. Remaining from the path-to-90 ledger: LCP diet + per-page OG images + CRO pass (ride with the parked light-mode redesign or a dedicated pass), Russ's ~25-min batch (DMARC rua, Bing import, authority hour). Prior state (7/03): guarantee trio sitewide, 3-tier offer ladder, /seo service page live.
 **New Files Added**:
 
+- `src/pages/compare.astro`, `src/pages/event-websites.astro`, `src/pages/process.astro` (2026-07-15 gap pages; schema via shared `breadcrumbs()` helper in `src/lib/schema.ts`)
 - `src/pages/seo.astro` (service landing page: nine labeled surface cards, how-it-works, FAQ w/ FAQPage + Service JSON-LD, CalendarEmbed booking + Formspree top-3-gaps form with `source=seo` attribution)
 - `public/llms.txt` (AI-crawler site summary: business facts, key pages, guarantees)
 - `seo/` (audit workspace: profile + dated audit runs from the global /seo skill; `seo/audits/YYYY-MM-DD/`)
 
-**Changes Made**:
+NOTE (standing, from 7/03): Growth Engine $750/mo and the tier names were Kit's call per Russ's "you decide the tiers" - adjust freely.
+
+**Changes Made (2026-07-03 pass)**:
 
 - Footer Services column links to `/seo` ("SEO, AEO + GEO optimization").
 - `/connect` title keyworded ("Connect | Booking, Socials + Links | generuss design"), was brand-only.
