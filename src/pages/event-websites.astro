@@ -1,0 +1,687 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import CalendarEmbed from "../components/CalendarEmbed.astro";
+import { breadcrumbs } from "../lib/schema";
+
+const base = String(Astro.site);
+
+// Reuse the live Formspree infra used on the homepage, /ogc, and /seo.
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+
+const needs = [
+  {
+    name: "Ticket sales that just work",
+    body: "Checkout wired to the ticketing you already use, or a clean flow built in. The path from landing page to paid ticket is the whole job, so it gets built first, not bolted on.",
+  },
+  {
+    name: "A schedule people can actually read",
+    body: "Sessions, tracks, and times laid out so an attendee finds their next talk in one glance on a phone, standing in a hallway, with one bar of signal.",
+  },
+  {
+    name: "Speaker and vendor directories",
+    body: "Every speaker, exhibitor, and sponsor gets a real presence. Directories that make your lineup look like the event it is, and give your partners a reason to share the link.",
+  },
+  {
+    name: "Sponsor and partner logos that earn their spot",
+    body: "Tiered sponsor walls that make a sponsorship feel worth buying again next year, placed where eyes actually land instead of in a footer nobody scrolls to.",
+  },
+  {
+    name: "Fast when everyone shows up at once",
+    body: "Announcement day and the final week before doors are when traffic spikes. Hand-built sites stay quick under load because they carry only the code they need.",
+  },
+  {
+    name: "Built for the phone in the room",
+    body: "Attendees pull up your site on their phones during the event. Mobile is not the small version here, it is the main version, so that is where the build starts.",
+  },
+];
+
+const faqs = [
+  {
+    q: "How much does a conference or event website cost?",
+    a: "Event sites start at $500 for a focused single-page build and scale to a full multi-section site from $4,500, depending on ticketing, schedule, and directory needs. It is a one-time price with free hosting, so there is no monthly fee eating your event budget.",
+  },
+  {
+    q: "Can the site sell tickets directly?",
+    a: "Yes. I wire checkout to the ticketing platform you already use, or build a clean purchase flow, so attendees go from landing page to paid ticket without detours. The route to a sold ticket is designed first, because it is the point of the whole site.",
+  },
+  {
+    q: "How fast can it be live before my event?",
+    a: "A full build goes live within 21 days of kickoff, and a single-page event site can be up in about a week. If I miss the 21-day mark on a full build, you do not pay the balance until it is live.",
+  },
+  {
+    q: "Do you only work with paranormal or niche events?",
+    a: "No. The Oregon Ghost Conference is one proof point, but the build is the same for any conference, festival, expo, or professional summit: sell tickets, show the schedule, feature the people, stay fast. The subject of your event does not change the craft.",
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${base}event-websites`,
+      url: `${base}event-websites`,
+      name: "Conference and Event Website Design",
+      description:
+        "Custom conference and event websites that sell tickets, show the schedule, and feature speakers and sponsors. Hand-built, live in 21 days, you own everything.",
+      isPartOf: { "@id": `${base}#website` },
+      about: { "@id": `${base}#org` },
+    },
+    breadcrumbs(base, [
+      { name: "Home", path: "/" },
+      { name: "Event Websites", path: "/event-websites" },
+    ]),
+    {
+      "@type": "Service",
+      "@id": `${base}event-websites#service`,
+      name: "Conference and Event Website Design",
+      serviceType: "Website design and development for events",
+      description:
+        "Custom websites for conference and event organizers: ticket sales, schedules, speaker and vendor directories, sponsor placement, built hand-coded and mobile-first.",
+      provider: { "@id": `${base}#org` },
+      areaServed: "US",
+      url: `${base}event-websites`,
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${base}event-websites#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Conference + Event Website Design | generuss design"
+  description="Custom conference and event websites that sell tickets, show the schedule, and feature your speakers. Hand-built, live in 21 days, you own it."
+>
+  <Nav bookingHref="#booking" offerHref="#needs" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <main id="main-content">
+    <!-- ===== HERO ===== -->
+    <section
+      id="hero"
+      class="relative flex min-h-screen min-h-[100dvh] items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-24 pb-12 lg:pt-28"
+    >
+      <div
+        class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center w-full max-w-7xl mx-auto"
+      >
+        <!-- LEFT -->
+        <div class="lg:col-span-7 xl:col-span-7">
+          <span
+            class="hero-enter hero-enter-1 inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+          >
+            <span
+              class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+            ></span>
+            For conference and event organizers
+          </span>
+          <h1
+            class="hero-enter hero-enter-2 text-balance text-[2.4rem] sm:text-[3.1rem] md:text-[3.6rem] lg:text-[3.9rem] xl:text-[4.3rem] font-black tracking-[-0.03em] leading-[1.03] text-text"
+          >
+            Event websites that
+            <span class="text-accent glow-text">sell the tickets.</span>
+          </h1>
+          <p
+            class="hero-enter hero-enter-3 mt-6 text-pretty text-lg sm:text-xl md:text-[1.3rem] text-text-muted leading-relaxed max-w-2xl"
+          >
+            Your conference, festival, or expo deserves more than a template
+            with a countdown timer. I build custom event sites that sell
+            tickets, show the schedule, and make your speakers and sponsors look
+            like the draw they are.
+          </p>
+
+          <p
+            class="hero-enter hero-enter-4 mt-6 text-base sm:text-lg text-text leading-relaxed max-w-2xl"
+          >
+            Hand-built from <span class="font-semibold text-text">$500</span>,
+            live in 21 days, and <span class="text-accent font-semibold"
+              >you own everything</span
+            > with free hosting. No monthly platform fee riding on your event budget.
+          </p>
+
+          <div
+            class="hero-enter hero-enter-4 mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          >
+            <a
+              href="#booking"
+              class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+            >
+              Book a Call &rarr;
+            </a>
+            <a
+              href="#proof"
+              class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+            >
+              See a live event site
+            </a>
+          </div>
+
+          <!-- Proof strip -->
+          <div
+            class="hero-enter hero-enter-5 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs sm:text-sm text-text-muted"
+          >
+            <span
+              >Built the <span class="text-text font-semibold"
+                >Oregon Ghost Conference</span
+              > site</span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              ><span class="text-text font-semibold">Live in 21 days</span
+              ></span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              ><span class="text-text font-semibold">$0/mo</span> hosting</span
+            >
+          </div>
+        </div>
+
+        <!-- RIGHT: OGC screenshot in browser chrome -->
+        <div
+          class="hero-enter hero-enter-3 lg:col-span-5 xl:col-span-5 relative"
+        >
+          <div class="relative">
+            <div class="neu-raised rounded-2xl overflow-hidden bg-bg-secondary">
+              <div
+                class="flex items-center gap-1.5 px-3 py-2 bg-[#0a0a0d] border-b border-border/50"
+              >
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3c]"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3c]"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3c]"></span>
+                <span
+                  class="ml-3 text-[0.6rem] font-mono text-text-muted/60 truncate"
+                  >oregon-ghost-conference.pages.dev</span
+                >
+              </div>
+              <img
+                src="/images/ogc/desktop.webp"
+                alt="The Oregon Ghost Conference event website, built by generuss design"
+                width="1440"
+                height="810"
+                class="block w-full h-auto aspect-video object-cover object-top"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Floating "live" badge -->
+            <div
+              class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 px-3 py-1.5 rounded-full bg-bg border border-accent/40 text-[0.6rem] sm:text-[0.65rem] font-mono uppercase tracking-widest text-accent flex items-center gap-1.5 shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
+            >
+              <span
+                class="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse"
+              ></span>
+              Live, 100+ vendors
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60"
+      >
+        <span
+          class="text-[0.6rem] text-text-muted font-mono tracking-[0.2em] uppercase"
+          >Scroll</span
+        >
+        <div class="h-6 w-px bg-text-muted/40"></div>
+      </div>
+    </section>
+
+    <!-- ===== WHAT AN EVENT SITE NEEDS ===== -->
+    <section
+      id="needs"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-dark px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            What an event site really needs
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            Six jobs, done <span class="text-accent">properly.</span>
+          </h2>
+          <p
+            class="mt-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-2xl mx-auto"
+          >
+            An event website is not a brochure. It is the machine that turns
+            interest into tickets and makes the day run smoother. Here is what
+            that machine has to do.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+        >
+          {
+            needs.map((n) => (
+              <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col">
+                <h3 class="text-base sm:text-lg font-bold text-text mb-2">
+                  {n.name}
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  {n.body}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROOF: THE OGC BUILD ===== -->
+    <section
+      id="proof"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Proof, not promises
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            I built the <span class="text-accent">Oregon Ghost Conference</span>
+            site.
+          </h2>
+        </div>
+
+        <div
+          class="neu-raised rounded-3xl bg-bg p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+        >
+          <div>
+            <div
+              class="space-y-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed"
+            >
+              <p>
+                The Oregon Ghost Conference is a real, live event with over 100
+                vendors, and its website is one I hand-built and shipped. Ticket
+                path, vendor presence, schedule, and a look that fits the event,
+                all running fast on free hosting.
+              </p>
+              <p>
+                It is one of 17-plus sites I have shipped, and it is the
+                clearest proof of how I approach an event build: understand the
+                audience, design the route to a ticket, and make the people on
+                your lineup look like a reason to come.
+              </p>
+            </div>
+            <div
+              class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            >
+              <a
+                href="/ogc"
+                class="rounded-full bg-accent px-7 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+              >
+                Read the OGC case study &rarr;
+              </a>
+              <a
+                href="https://oregon-ghost-conference.pages.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm font-semibold text-text-muted hover:text-accent transition-colors"
+              >
+                Visit the live site
+              </a>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="neu-inset rounded-2xl overflow-hidden bg-bg-secondary">
+              <img
+                src="/images/ogc/desktop.webp"
+                alt="The Oregon Ghost Conference website homepage, an event site built by generuss design"
+                width="1440"
+                height="810"
+                class="block w-full h-auto aspect-video object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE THREE GUARANTEES ===== -->
+    <section
+      id="guarantee"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Three guarantees
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            The risk is <span class="text-accent">mine, not yours.</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              Live in 21 days
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              Your event site is live within 21 days of kickoff. Miss it and you
+              do not pay the balance until it is. Event dates do not move, so
+              neither does my deadline.
+            </p>
+          </div>
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              You own everything, $0 a month
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              Your domain, your code, your content, hosted free on Cloudflare.
+              Nothing holds next year's event hostage, and there is no monthly
+              rent draining the budget.
+            </p>
+          </div>
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 flex flex-col">
+            <h3 class="text-lg sm:text-xl font-bold text-text mb-2">
+              Love the first design, or deposit back
+            </h3>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              You see a real design direction before you commit further. If it
+              is not right, I return your deposit. No pressure, no awkward
+              follow-ups.
+            </p>
+          </div>
+        </div>
+
+        <p
+          class="mt-8 text-center text-sm sm:text-base text-text-muted leading-relaxed"
+        >
+          Curious how the build itself works? See the
+          <a href="/process" class="text-accent hover:underline"
+            >build process</a
+          >, weigh it against
+          <a href="/compare" class="text-accent hover:underline"
+            >the cost of other options</a
+          >, or browse the
+          <a href="/#offer" class="text-accent hover:underline">full offer</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== BOOKING (primary CTA) ===== -->
+    <section
+      id="booking"
+      class="px-8 sm:px-12 lg:px-20 py-(--spacing-section) relative"
+    >
+      <div
+        class="absolute inset-0 pointer-events-none flex items-center justify-center"
+      >
+        <div
+          class="w-[600px] h-[600px] rounded-full bg-accent/[0.04] blur-[120px]"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-2xl mx-auto text-center mb-10 sm:mb-12">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          The next step
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-5"
+        >
+          A quick call. <span class="text-accent glow-text">No pitch.</span>
+        </h2>
+        <p
+          class="text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-xl mx-auto"
+        >
+          Tell me about your event, your dates, and how you sell tickets today.
+          I will tell you exactly how I would build the site, what it costs, and
+          the timeline. Whether we work together or not, you leave with a plan.
+        </p>
+      </div>
+
+      <div class="relative z-10 max-w-[850px] mx-auto">
+        <CalendarEmbed />
+      </div>
+
+      <!-- ===== SECONDARY CTA: send your event details ===== -->
+      <div class="relative z-10 mt-16 sm:mt-20">
+        <div class="max-w-2xl mx-auto">
+          <div
+            class="neu-raised rounded-2xl bg-bg-secondary p-6 sm:p-8 flex flex-col gap-5"
+          >
+            <div class="flex items-start gap-5 sm:gap-7">
+              <div
+                class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 text-accent"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-7 h-7"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><rect x="3" y="4" width="18" height="18" rx="2" ry="2"
+                  ></rect><line x1="16" y1="2" x2="16" y2="6"></line><line
+                    x1="8"
+                    y1="2"
+                    x2="8"
+                    y2="6"></line><line x1="3" y1="10" x2="21" y2="10"
+                  ></line></svg
+                >
+              </div>
+              <div class="flex-1 min-w-0">
+                <p
+                  class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+                >
+                  Not ready for a call?
+                </p>
+                <h3 class="text-lg sm:text-xl font-bold text-text mb-1.5">
+                  Send your event details, get a real quote
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  Drop your email and your event or current site. I will reply
+                  with a real number and a couple of quick wins, no drip
+                  campaign.
+                </p>
+              </div>
+            </div>
+
+            <form
+              id="event-quote-form"
+              action={`https://formspree.io/f/${formspreeId}`}
+              method="POST"
+              class="flex flex-col gap-3"
+            >
+              <!-- Honeypot -->
+              <input
+                type="text"
+                name="_gotcha"
+                style="display:none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+              <input
+                type="hidden"
+                name="_subject"
+                value="Event website inquiry"
+              />
+              <input type="hidden" name="source" value="event-websites" />
+              <input type="hidden" name="utm_source" value="" />
+              <input type="hidden" name="utm_medium" value="" />
+              <input type="hidden" name="utm_content" value="" />
+
+              <div class="flex flex-col sm:flex-row gap-3">
+                <div class="flex-1">
+                  <label class="sr-only" for="event-email">Email address</label>
+                  <input
+                    type="email"
+                    id="event-email"
+                    name="email"
+                    required
+                    placeholder="you@yourevent.com"
+                    class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                  />
+                </div>
+                <div class="flex-1">
+                  <label class="sr-only" for="event-site"
+                    >Your event or current site</label
+                  >
+                  <input
+                    type="text"
+                    id="event-site"
+                    name="current_site"
+                    placeholder="yourevent.com or @yourhandle"
+                    class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="self-start rounded-full bg-accent px-6 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+              >
+                Send me a quote &rarr;
+              </button>
+            </form>
+          </div>
+          <p
+            id="event-quote-success"
+            class="hidden text-center text-sm text-accent mt-4 font-mono"
+          >
+            Got it. I will be in touch from russ@generuss.com.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <style is:global>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+  <script>
+    // ===== UTM capture + attribution (same pattern as /ogc and /seo) =====
+    const KEYS = [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+    ];
+    const params = new URLSearchParams(window.location.search);
+
+    KEYS.forEach((k) => {
+      const v = params.get(k);
+      if (v) {
+        try {
+          sessionStorage.setItem(k, v);
+        } catch (e) {
+          /* sessionStorage unavailable, fall through */
+        }
+      }
+    });
+
+    const quoteForm = document.getElementById("event-quote-form");
+    if (quoteForm) {
+      ["utm_source", "utm_medium", "utm_content"].forEach((k) => {
+        let v = params.get(k);
+        if (!v) {
+          try {
+            v = sessionStorage.getItem(k);
+          } catch (e) {
+            v = null;
+          }
+        }
+        const field = quoteForm.querySelector(`input[name="${k}"]`);
+        if (field && v) (field as HTMLInputElement).value = v;
+      });
+    }
+
+    // ===== Quote form submit (mirrors the homepage Formspree pattern) =====
+    const form = document.getElementById(
+      "event-quote-form",
+    ) as HTMLFormElement | null;
+    const successMsg = document.getElementById("event-quote-success");
+    const submitBtn = form?.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement | null;
+    const submitText = submitBtn?.textContent;
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        submitBtn.classList.add("opacity-60", "cursor-not-allowed");
+      }
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+
+        if (res.ok) {
+          form.classList.add("hidden");
+          successMsg?.classList.remove("hidden");
+        } else {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitText ?? "Send me a quote";
+            submitBtn.classList.remove("opacity-60", "cursor-not-allowed");
+          }
+          alert("Something went wrong. Please try again.");
+        }
+      } catch {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitText ?? "Send me a quote";
+          submitBtn.classList.remove("opacity-60", "cursor-not-allowed");
+        }
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</BaseLayout>
