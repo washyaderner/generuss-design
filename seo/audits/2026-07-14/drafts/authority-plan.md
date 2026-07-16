@@ -21,6 +21,26 @@ GitHub profile link only. This module starts from the floor; that is normal for 
 5. Crunchbase org profile (free tier): name, entity sentence, founder, site. FREE.
 6. Bing Webmaster Tools: import the verified GSC property (10 min; second engine indexation + its own AI surface, Copilot). FREE.
 
+## The standing lane - client-site credits (added 2026-07-15, Russ's backlinks question)
+
+The web designer's native backlink engine: a small footer credit ("Site by generuss design",
+linked) on every client build. One permanent, contextual, real-business-domain link per shipped
+site, compounding automatically with every project forever. Rules that keep it clean:
+
+1. **Consent, in writing**: a one-line clause in the proposal/agreement ("a small 'Site by
+   generuss design' credit appears in the footer; say the word to remove it"). Client can always
+   opt out; goodwill beats a link.
+2. **Brand anchor ONLY** ("generuss design", never "Portland web designer" or keyword anchors).
+   Sitewide keyword-anchor footer links are a known Google discount/penalty pattern; brand-name
+   credits are the industry norm and age safely.
+3. **One link, footer, small.** Never multiple links, never hidden, never in content.
+4. **Pair it with the case study**: our /ogc-style case-study page links TO the client; their
+   footer links back. Both sides earn something real.
+
+Where it can start: OGC (ask Rocky, one line; fold into the DNS-cutover conversation, already
+noted in Month 3), Taylor's site (friend build), and every build from here forward. Wiring the
+credit as a default footer component + proposal clause is a template change: GATED, Russ says go.
+
 ## Month 2 - directories that count for web studios
 
 - Clutch.co profile (free listing; reviews come from real clients: Jonny/Invincible, Carson/Vibe'N Thrive, Leon/Resist are candidates to invite)
