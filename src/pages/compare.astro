@@ -1,0 +1,600 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { breadcrumbs } from "../lib/schema";
+
+const base = String(Astro.site);
+
+// Comparison rows. Three real models, one honest line each. The subscription
+// figure (~$175/mo) is the one the 2026-07-14 SERP audit sampled, used to
+// describe the model, not to assert any one competitor's price.
+const rows = [
+  {
+    dimension: "Upfront cost",
+    flat: "$500 to $4,500+, one time",
+    sub: "$0 down",
+    template: "Low or nothing to start",
+  },
+  {
+    dimension: "Ongoing cost",
+    flat: "$0 a month hosting",
+    sub: "Around $175 a month, forever",
+    template: "A monthly platform fee, forever",
+  },
+  {
+    dimension: "Who owns it",
+    flat: "You. Code, domain, content",
+    sub: "The agency, until you keep paying",
+    template: "The platform. You rent it",
+  },
+  {
+    dimension: "If you stop paying",
+    flat: "Nothing changes. Site stays yours",
+    sub: "The site can go dark",
+    template: "The site comes down",
+  },
+  {
+    dimension: "Built by",
+    flat: "One developer, hand-coded",
+    sub: "Often a shared template underneath",
+    template: "You, on a drag-and-drop builder",
+  },
+  {
+    dimension: "Speed and performance",
+    flat: "Tuned to load fast, no bloat",
+    sub: "Varies, usually template-weight",
+    template: "Heavy scripts you cannot remove",
+  },
+  {
+    dimension: "Customization",
+    flat: "Anything, it is your codebase",
+    sub: "Inside the agency's system",
+    template: "Inside the builder's limits",
+  },
+  {
+    dimension: "Time to launch",
+    flat: "7 to 21 days",
+    sub: "Fast, from a template",
+    template: "Fast, if you do the work",
+  },
+  {
+    dimension: "Three-year cost",
+    flat: "The build, then $0 a month",
+    sub: "Roughly $6,300 in fees, own nothing",
+    template: "Years of rent, own nothing",
+  },
+];
+
+const faqs = [
+  {
+    q: "How much does a hand-coded website cost?",
+    a: "A one-page hand-coded site starts at $500 flat. A full conversion-engineered build starts at $4,500. Both are one-time: hosting is free on Cloudflare, so there is no monthly fee and nothing to keep renewing. You pay once and own the result.",
+  },
+  {
+    q: "Is a hand-coded website worth more than a $175-a-month subscription site?",
+    a: "Over three years, a subscription around $175 a month adds up to roughly $6,300, and you still own nothing at the end. Past about 26 months, the flat-fee build has already cost less than renting, and it keeps working after you stop paying. If you plan to keep the site more than two years, buying beats renting.",
+  },
+  {
+    q: "What happens to my site if I stop paying?",
+    a: "With a flat-fee build, nothing. The code, the domain, and the content are yours, hosted free, so it stays live whether or not we ever work together again. With most subscription and template sites, the site goes dark or comes down when the payments stop, because you were renting it the whole time.",
+  },
+  {
+    q: "Are subscription or template websites a scam?",
+    a: "No. They are a real service with a real trade-off: little or no money down in exchange for paying forever and never owning the asset. For a site you will replace soon, that can be reasonable. For a business asset you want to keep and grow, ownership is almost always the cheaper and stronger choice.",
+  },
+  {
+    q: "Can I move a hand-coded site somewhere else later?",
+    a: "Yes. Because you own the code and the domain, you can move hosts, hire another developer, or take the whole thing with you at any time. Nothing holds it hostage. That portability is the entire point of owning your site instead of renting it.",
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${base}compare`,
+      url: `${base}compare`,
+      name: "Hand-Coded Website Cost: Flat Fee vs Subscription",
+      description:
+        "What a hand-coded website really costs, compared honestly against monthly subscription sites and DIY template builders, on price, ownership, speed, and three-year total.",
+      isPartOf: { "@id": `${base}#website` },
+      about: { "@id": `${base}#org` },
+    },
+    breadcrumbs(base, [
+      { name: "Home", path: "/" },
+      { name: "Website Cost Comparison", path: "/compare" },
+    ]),
+    {
+      "@type": "FAQPage",
+      "@id": `${base}compare#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Hand-Coded Website Cost: Flat Fee vs Subscription"
+  description="What a hand-coded website really costs versus a monthly subscription or DIY template: price, ownership, speed, and the three-year total."
+>
+  <Nav bookingHref="/#booking" offerHref="/#offer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <main id="main-content">
+    <!-- ===== HERO ===== -->
+    <section
+      id="hero"
+      class="relative flex min-h-screen min-h-[100dvh] items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-24 pb-12 lg:pt-28"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto">
+        <div class="max-w-3xl mx-auto text-center">
+          <span
+            class="hero-enter hero-enter-1 inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+          >
+            <span
+              class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+            ></span>
+            The honest cost breakdown
+          </span>
+          <h1
+            class="hero-enter hero-enter-2 text-balance text-[2.4rem] sm:text-[3.1rem] md:text-[3.6rem] lg:text-[3.9rem] xl:text-[4.3rem] font-black tracking-[-0.03em] leading-[1.03] text-text"
+          >
+            What a hand-coded website
+            <span class="text-accent glow-text">actually costs.</span>
+          </h1>
+          <p
+            class="hero-enter hero-enter-3 mt-6 text-pretty text-lg sm:text-xl md:text-[1.3rem] text-text-muted leading-relaxed max-w-2xl mx-auto"
+          >
+            There are three ways to get a business website: pay once for a
+            custom build, rent one on a monthly subscription, or do it yourself
+            on a template builder. Here is the real math on all three, including
+            the part nobody puts on the pricing page.
+          </p>
+
+          <div
+            class="hero-enter hero-enter-4 mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="#table"
+              class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+            >
+              See the comparison &rarr;
+            </a>
+            <a
+              href="/#booking"
+              class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+            >
+              Get a real number
+            </a>
+          </div>
+
+          <!-- Proof strip -->
+          <div
+            class="hero-enter hero-enter-5 mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs sm:text-sm text-text-muted"
+          >
+            <span
+              ><span class="text-text font-semibold">One-time</span> pricing</span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              ><span class="text-text font-semibold">$0/mo</span> hosting</span
+            >
+            <span class="hidden sm:inline text-text-muted/40">|</span>
+            <span
+              >you <span class="text-text font-semibold">own</span> everything</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE THREE MODELS ===== -->
+    <section
+      id="models"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-dark px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          Three ways to buy
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-6"
+        >
+          Same goal. Very <span class="text-accent">different deals.</span>
+        </h2>
+        <div
+          class="space-y-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-3xl"
+        >
+          <p>
+            Most people never compare these three side by side, because they are
+            sold at different moments by different people. A subscription shop
+            sells you a low monthly number. A template builder sells you a free
+            trial. A custom developer sells you a one-time price. The sticker
+            that looks smallest today is rarely the one that costs least by year
+            three.
+          </p>
+          <p>
+            So let us line them up on the things that actually decide the bill:
+            what you pay up front, what you pay every month after, who owns the
+            site, and what happens the day you stop paying.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col">
+            <span
+              class="inline-flex w-fit items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[0.65rem] font-mono font-semibold uppercase tracking-[0.15em] text-accent mb-4"
+              >Flat-fee custom</span
+            >
+            <h3 class="text-base sm:text-lg font-bold text-text mb-2">
+              Pay once, own it
+            </h3>
+            <p class="text-pretty text-sm text-text-muted leading-relaxed">
+              A developer hand-builds the site, you pay a one-time price, and
+              the code, domain, and content are yours. Hosting is free. This is
+              what I do.
+            </p>
+          </div>
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col">
+            <span
+              class="inline-flex w-fit items-center rounded-full border border-border bg-bg-secondary px-3 py-1 text-[0.65rem] font-mono font-semibold uppercase tracking-[0.15em] text-text-muted mb-4"
+              >Monthly subscription</span
+            >
+            <h3 class="text-base sm:text-lg font-bold text-text mb-2">
+              Rent it from an agency
+            </h3>
+            <p class="text-pretty text-sm text-text-muted leading-relaxed">
+              A shop puts you on a site for little or nothing down, then charges
+              a monthly fee. Convenient to start, but you are renting, and the
+              meter never stops.
+            </p>
+          </div>
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col">
+            <span
+              class="inline-flex w-fit items-center rounded-full border border-border bg-bg-secondary px-3 py-1 text-[0.65rem] font-mono font-semibold uppercase tracking-[0.15em] text-text-muted mb-4"
+              >DIY template</span
+            >
+            <h3 class="text-base sm:text-lg font-bold text-text mb-2">
+              Build it on a platform
+            </h3>
+            <p class="text-pretty text-sm text-text-muted leading-relaxed">
+              You assemble a site yourself on a drag-and-drop builder and pay
+              the platform monthly. Cheapest to try, but your time and their
+              limits are the real price.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE TABLE ===== -->
+    <section
+      id="table"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Side by side
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            The comparison, <span class="text-accent">no spin.</span>
+          </h2>
+        </div>
+
+        <div class="neu-raised rounded-2xl bg-bg p-2 sm:p-3 overflow-x-auto">
+          <table class="w-full min-w-[640px] border-collapse text-left">
+            <caption class="sr-only">
+              Hand-coded flat-fee websites compared to monthly subscription
+              sites and DIY template builders across cost, ownership, speed, and
+              three-year total.
+            </caption>
+            <thead>
+              <tr class="border-b border-border">
+                <th
+                  scope="col"
+                  class="p-3 sm:p-4 text-[0.7rem] font-mono uppercase tracking-[0.15em] text-text-muted font-semibold"
+                  >What matters</th
+                >
+                <th scope="col" class="p-3 sm:p-4 text-sm font-bold text-accent"
+                  >Flat-fee custom</th
+                >
+                <th
+                  scope="col"
+                  class="p-3 sm:p-4 text-sm font-bold text-text-muted"
+                  >Monthly subscription</th
+                >
+                <th
+                  scope="col"
+                  class="p-3 sm:p-4 text-sm font-bold text-text-muted"
+                  >DIY template</th
+                >
+              </tr>
+            </thead>
+            <tbody>
+              {
+                rows.map((r) => (
+                  <tr class="border-b border-border/50 align-top">
+                    <th
+                      scope="row"
+                      class="p-3 sm:p-4 text-sm font-semibold text-text"
+                    >
+                      {r.dimension}
+                    </th>
+                    <td class="p-3 sm:p-4 text-sm text-text leading-relaxed">
+                      {r.flat}
+                    </td>
+                    <td class="p-3 sm:p-4 text-sm text-text-muted leading-relaxed">
+                      {r.sub}
+                    </td>
+                    <td class="p-3 sm:p-4 text-sm text-text-muted leading-relaxed">
+                      {r.template}
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p
+          class="mt-4 text-xs text-text-muted/70 text-center max-w-2xl mx-auto"
+        >
+          Flat-fee figures are my published prices. The subscription and
+          template columns describe those models in general, not one named
+          company.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== THE MATH ===== -->
+    <section
+      id="math"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          The math nobody shows you
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-6"
+        >
+          Cheap today, <span class="text-accent">expensive by year three.</span>
+        </h2>
+        <div
+          class="space-y-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-3xl"
+        >
+          <p>
+            A subscription around $175 a month feels painless next to a
+            four-figure invoice. But that fee does not stop. Run it out and it
+            is roughly $2,100 a year, about $6,300 across three years, and at
+            the end of those three years you still do not own the site. Stop
+            paying and it can disappear.
+          </p>
+          <p>
+            Put a flat-fee build next to that. A full conversion-engineered site
+            starts at $4,500, one time, then $0 a month to host. Somewhere
+            around month 26, the subscription has already cost more than the
+            build, and it keeps charging while the flat-fee site keeps working
+            for free. A $500 launch page crosses that line in a single quarter.
+          </p>
+          <p>
+            The template route hides its price in a different place: your hours.
+            The monthly platform fee is small, but you become the designer, the
+            developer, and the person who fights the builder's limits at 11pm.
+            For some people that trade is fine. For a business owner whose time
+            is the scarce resource, it is the most expensive option on the page.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY OWNERSHIP WINS ===== -->
+    <section
+      id="ownership"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          Why I build flat-fee
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-6"
+        >
+          You should own the thing <span class="text-accent">you paid for.</span
+          >
+        </h2>
+        <div
+          class="space-y-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-3xl"
+        >
+          <p>
+            A website is a business asset, like a storefront or a phone number.
+            Renting it puts your most important sales tool on someone else's
+            switch. When the relationship ends, or the price goes up, or the
+            shop folds, a rented site leaves with them. An owned site stays.
+          </p>
+          <p>
+            Hand-coding is what makes real ownership possible. There is no
+            proprietary platform to escape, no page-builder lock-in, no export
+            that quietly breaks. You get clean code, your own domain, and free
+            hosting you control. Move it, hand it to another developer, or keep
+            it exactly as it is. It answers to you.
+          </p>
+          <p>
+            It is also just faster and cleaner. Hand-built sites carry only the
+            code they need, so they load quickly, read well to search engines
+            and AI assistants, and do not haul around the weight a template
+            drops on every page. You can see how I build them on the
+            <a href="/process" class="text-accent hover:underline"
+              >build process page</a
+            >, or start with a
+            <a href="/taste-audit" class="text-accent hover:underline"
+              >Website Taste Audit</a
+            > if you want your current site scored first.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHEN RENTING IS FINE (steelman) ===== -->
+    <section
+      id="honest"
+      class="relative z-10 bg-bg-secondary section-fade-in section-fade-from-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          The honest exception
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05] mb-6"
+        >
+          When a subscription or template is the right call.
+        </h2>
+        <div
+          class="space-y-5 text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-3xl"
+        >
+          <p>
+            I am not going to pretend renting is never smart. If you need
+            something live tonight for zero dollars down, if the site is a
+            short-lived campaign you will throw away in a few months, or if you
+            genuinely enjoy building it yourself and have the time, a
+            subscription or a template can be the sensible move. Cash flow is
+            real, and a bridge is a bridge.
+          </p>
+          <p>
+            The trap is using a rental as a permanent home. If this is the site
+            your business will lean on for years, the model that looked cheapest
+            at signup becomes the one you resent, because you keep paying and
+            never get to keep anything. Buy when you plan to stay. Rent only
+            when you plan to leave.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section
+      id="faq"
+      class="relative z-10 px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10 sm:mb-12">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Quick answers
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05]"
+          >
+            What people ask <span class="text-accent">about cost.</span>
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {
+            faqs.map((f) => (
+              <details class="neu-raised rounded-2xl bg-bg p-6 group">
+                <summary class="cursor-pointer text-base font-bold text-text list-none flex items-center justify-between gap-4">
+                  {f.q}
+                  <span class="text-accent transition-transform duration-200 group-open:rotate-45 shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p class="text-pretty mt-4 text-sm sm:text-base text-text-muted leading-relaxed">
+                  {f.a}
+                </p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section
+      id="cta"
+      class="px-8 sm:px-12 lg:px-20 py-(--spacing-section) relative bg-bg-secondary section-fade-in section-fade-from-dark"
+    >
+      <div
+        class="absolute inset-0 pointer-events-none flex items-center justify-center"
+      >
+        <div
+          class="w-[600px] h-[600px] rounded-full bg-accent/[0.04] blur-[120px]"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-2xl mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <span class="h-px w-8 bg-accent/60"></span>
+          The next step
+        </p>
+        <h2
+          class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-5"
+        >
+          Want the number for <span class="text-accent glow-text"
+            >your site?</span
+          >
+        </h2>
+        <p
+          class="text-pretty text-base sm:text-lg text-text-muted leading-relaxed max-w-xl mx-auto mb-8"
+        >
+          Book a quick call and I will tell you exactly what a hand-coded build
+          would cost for what you need, with no monthly rent hiding behind it.
+          Whether we work together or not, you leave with a real number.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="/#booking"
+            class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Book a Call &rarr;
+          </a>
+          <a
+            href="/#offer"
+            class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+          >
+            See the offer
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <style is:global>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</BaseLayout>

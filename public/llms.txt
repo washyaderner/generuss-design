@@ -12,6 +12,9 @@ Contact: russ@generuss.com
 - [Blog](https://generussdesign.com/blog): Build logs and essays on design, AI-assisted development, and sales strategy.
 - [Connect](https://generussdesign.com/connect): Booking, socials, and current projects.
 - [OGC vendor sites](https://generussdesign.com/ogc): Custom websites for Oregon Ghost Conference vendors and speakers, from $500.
+- [Event + conference websites](https://generussdesign.com/event-websites): Custom sites for conference and event organizers that sell tickets, show the schedule, and feature speakers and sponsors.
+- [Build process](https://generussdesign.com/process): How sites get built as a hand-coded Astro web designer, why hand-coded Astro beats page builders, with real PageSpeed numbers.
+- [Website cost comparison](https://generussdesign.com/compare): Flat-fee custom vs monthly subscription vs DIY template: price, ownership, speed, and three-year total.
 
 ## Facts
 

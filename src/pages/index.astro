@@ -44,6 +44,31 @@ const offerSchema = {
     },
   ],
 };
+
+// Answer-first homepage FAQ (audit V2). Each answer leads with the direct
+// answer in its first sentence; rendered below and mirrored into FAQPage JSON-LD.
+const homeFaqs = [
+  {
+    q: "How much does a custom website cost?",
+    a: "A one-page launch site is $500 flat. A full conversion-engineered build starts at $4,500, one time, with free hosting and no monthly fee. Every project is quoted up front with fixed scope, so you get a real number on the first call and there are no surprise bills.",
+  },
+  {
+    q: "How long does it take to build a website?",
+    a: "Your site is live within 21 days of kickoff. A single-page launch can go up in about a week. If I miss the 21-day mark on a full build, you do not pay the balance until it is live. Launch dates do not move, so neither does the deadline.",
+  },
+  {
+    q: "Do I own my website and domain?",
+    a: "Yes, completely. You own the code, the domain, and the content outright, hosted free on Cloudflare. Nothing is locked to a platform or a page builder, so you can leave any time and take the entire site with you. It is an asset you keep, not a rental.",
+  },
+  {
+    q: "Why hand-code a site instead of using a template or website builder?",
+    a: "A hand-coded site carries only the code it needs, so it loads faster, ranks better, and reads cleanly to AI assistants. Templates and builders ship bloat to every visitor and charge a monthly fee forever. Ownership and speed are the whole reason to build by hand.",
+  },
+  {
+    q: "Can you redesign my existing site or work with my industry?",
+    a: "Yes. I build for service businesses, founders, and event organizers, and I redesign existing sites as often as I build new ones. Send me your current site on a quick call and I will tell you exactly what I would change and what it would cost.",
+  },
+];
 ---
 
 <BaseLayout
@@ -58,14 +83,28 @@ const offerSchema = {
     type="application/ld+json"
     set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "WebPage",
-      "@id": String(Astro.site),
-      name: "generuss design | Custom Websites That Convert",
-      isPartOf: { "@id": `${Astro.site}#website` },
-      speakable: {
-        "@type": "SpeakableSpecification",
-        cssSelector: ["#hero h1", "#hero p"],
-      },
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": String(Astro.site),
+          name: "generuss design | Custom Websites That Convert",
+          isPartOf: { "@id": `${Astro.site}#website` },
+          speakable: {
+            "@type": "SpeakableSpecification",
+            cssSelector: ["#hero h1", "#hero p"],
+          },
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${Astro.site}#faq`,
+          isPartOf: { "@id": `${Astro.site}#website` },
+          mainEntity: homeFaqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        },
+      ],
     })}
   />
 
@@ -3249,6 +3288,56 @@ const offerSchema = {
             Fixed scope, no surprise bills
           </span>
         </div>
+      </div>
+    </section>
+
+    <!-- S9b: FAQ (answer-first, audit V2) -->
+    <section
+      id="faq"
+      class="relative z-10 bg-bg-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10 sm:mb-12">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Quick answers
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            The questions I hear <span class="text-accent">most.</span>
+          </h2>
+        </div>
+        <div class="space-y-4">
+          {
+            homeFaqs.map((f) => (
+              <details class="neu-raised rounded-2xl bg-bg p-6 group">
+                <summary class="cursor-pointer text-base font-bold text-text list-none flex items-center justify-between gap-4">
+                  {f.q}
+                  <span class="text-accent transition-transform duration-200 group-open:rotate-45 shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p class="text-pretty mt-4 text-sm sm:text-base text-text-muted leading-relaxed">
+                  {f.a}
+                </p>
+              </details>
+            ))
+          }
+        </div>
+        <p
+          class="mt-8 text-center text-sm sm:text-base text-text-muted leading-relaxed"
+        >
+          More detail: <a href="/compare" class="text-accent hover:underline"
+            >what a site really costs</a
+          >, <a href="/process" class="text-accent hover:underline"
+            >how I build</a
+          >, and <a href="/event-websites" class="text-accent hover:underline"
+            >websites for events</a
+          >.
+        </p>
       </div>
     </section>
 
