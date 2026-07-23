@@ -363,3 +363,7 @@ Key changes:
 
 - Hero subheading split into two lines for better visual rhythm
 - Fixed lava lamp Firefox rendering glitch + Chrome GSAP ScrollTrigger timing
+
+## 2026-07-23 ~10:40 PM PT: HORMOZI PIVOT v2 SHIPPED (gogo end-to-end, Fable session)
+
+Plan + handoff + Russ's inline notes -> live production in one session. dev -> main merge b8e95e7, CF Pages deploy success, 12/12 live URLs 200, live sitemap 87 URLs (was 14). Site now: free-scanner-first hero, /tools (7), /free-build, /automation, /paths, /case-studies, /insights + 50 guides. Claims cleanup per notes (NO Upwork numbers), Jen review-ask drafted (held), VSL scripts written, scoreboard seeded. 2 kit_gates rows for Russ's moves. RECONCILE: sibling sessions were active on OTHER projects (obsidian-inbox archiver etc.); no same-project collisions; MEMORY.md + context_handoff.md were updated by siblings mid-session, no conflicts with this build.

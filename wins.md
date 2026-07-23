@@ -129,3 +129,22 @@
 ## 2026-07-14: Astronaut A/B/C direction judging + the x-ray signature
 
 Three real one-screen mocks (Workbench / Ledger / Night Shift) judged before any build code: the losing directions cost ~30 min total and made the winner defensible (and the Ledger's dotted-leader table + Night Shift's mood survived as adopted elements). The self-annotating "construction view" (body-class toggle + xr-\* classes + real token values) is a reusable technique: any craft-positioned site can ship a working-drawing layer. Also validated: OG images generated via the shot harness from an HTML template (zero new deps, on-brand plates, 14 images in one loop).
+
+### 2026-07-15 | architecture
+
+**Signal:** Full autonomous loop shipped while Russ slept: dispatch, contract, independent SHIP verdict, visual QA, deploy, live-verify, zero human touches.
+**What worked:** The Factory-absorbed pattern on its first field run: worktree builder under build-protocol v1.3 with a 10-assertion validation contract written before code, then a fresh-context adversarial reviewer graded against the CONTRACT (not the builder's own checks), then orchestrator visual QA at 375/1440, then merge + deploy + live curl receipts. Reviewer found ZERO issues on a 6-commit build; every number on the pages traced to a source.
+**Pattern:** Contract-before-code + builder-never-approves turns an overnight dispatch into mergeable-by-morning work. This is the /factory v2 missions-lane thesis validated at single-build scale.
+
+### 2026-07-15 | speed
+
+**Signal:** Three money pages + home FAQ from audit brief to live production in one evening (~+2.6 points on the path-to-90 ledger banked).
+**What worked:** The 7/14 audit's gap briefs were written as near-specs (target keyword, intent tier, proof sources, internal links), so the dispatch prompt was mostly assembly. Audits that emit build-ready briefs collapse the plan-to-ship gap.
+**Pattern:** Write audit findings as dispatchable briefs, not observations.
+
+## 2026-07-23: Pivot v2 shipped end-to-end in one gogo session (Hormozi front door)
+
+- **Managed fan-out with a contract brief works at 50-file scale.** 5 Opus writers x ~10 guides each, all reading one brief file + one exemplar, self-verifying, then a mechanical sweep (dashes/prices/frontmatter/links via one python pass) + an independent Opus review gate. 50/50 files passed every hard rule; the review gate's ONLY blocker was a title I authored myself. Pattern: brief file + exemplar + per-file specs in the dispatch + machine sweep + independent reader.
+- **Folklore-stat research before copy.** The Sonnet research pass killed "1s = 7%" (Kissmetrics 2011, no primary) BEFORE it could ship, and delivered SOCi 2026 LVI (ChatGPT recommends businesses 1.2% vs map pack 35.9%) as a verified, fresh, citable wedge stat. Registry lives at directives/tools-research.md with a NEVER-SHIP folklore list; concierge reports draw from it.
+- **Concierge v1 beats automation v1 for tools.** Leak scanner + AI visibility ship as form + same-day human fulfillment: zero client-side API keys, real Hormozi services-magnet math, and the fulfillment doubles as discovery-call prep. Automate after volume proves it.
+- **Deploy gate as a script** (execution/check-dist.mjs): sitemap-vs-dist 404/noindex check, 87 URLs, runs before every merge to main. Silent-green rule satisfied by exit codes.

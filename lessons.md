@@ -92,3 +92,19 @@
 - **cwd drifts across Bash calls**: a `cd` for one tool call (shot.mjs in fable-10) nearly committed to the wrong repo later. Absolute paths or per-command `cd` prefixes in long sessions, always.
 - **pilot-qa.mjs PD4 contrast parses colors as rgb; oklch() themes false-positive** (reported SPAN 2.5:1 on an element that hand-verifies ~13:1). Known artifact until the eval gets an oklch converter; hand-verify flagged elements on oklch sites. Same trap in ad-hoc page-eval snippets.
 - **crawl.mjs was truncating attr values at apostrophes + eating entities before decode** (fixed in the skill 7/14): if an audit shows meta descriptions ending mid-word, suspect the parser before the site.
+
+### 2026-07-15 | tooling
+
+**Correction:** My Edit of CLAUDE.md's Project State anchored on the first line of a long paragraph and left the paragraph's tail orphaned mid-file plus a duplicated New Files block, and it got committed before I caught it in the post-edit system diff.
+**Rule:** When replacing any part of a multi-line prose block, the old_string must span the ENTIRE block being replaced, and the very next action is grep-verifying the section's structure (duplicate headers, orphaned fragments) BEFORE committing. Amend was only safe because the commit had not been pushed.
+
+### 2026-07-15 | process
+
+**Correction:** Astro preview does not exist under the Cloudflare adapter (exit 1), and my first dev-server launch died from piping the foreground command to head (SIGPIPE), then a second from a stale cwd after a backgrounded cd.
+**Rule:** For local QA on CF-adapter Astro sites, use the dev server, launch it with an explicit absolute cd inside the same command, and never pipe a long-running server through head; check the task output before navigating.
+
+## 2026-07-23 (pivot build)
+
+- **Lint the contract author with the contract.** I banned "genuinely" in the guide brief, then put it in an assigned title AND used genuinely/honestly six times in pillar copy I wrote myself. All five hired writers ran clean; the violations were mine. Fix going forward: run the same mechanical sweep over MY files before dispatching writers, not just over theirs.
+- **`git checkout` on a dirty tree aborts quietly mid-chain.** First branch switch printed "Aborting" and the follow-up merge ran against the WRONG branch (main) as a no-op. Caught by checking `git branch --show-current` immediately after. Rule: in any chained git sequence, verify the branch changed before the next command runs.
+- **CF token scopes are narrower than the account.** The TDX token reads Pages projects + zones account-wide but cannot touch RUM (Web Analytics) or zone settings on generussdesign.com; the generuss token is DNS-only on generuss.com. Both analytics enablement and email-obfuscation toggles are dashboard-only for Russ. Recorded in the gate row so nobody re-derives it.
