@@ -1,6 +1,6 @@
 ---
 title: "The Hidden Costs of a Cheap Website"
-description: "The hidden costs of a cheap website: the slow-template tax, plugin sprawl, platform lock-in, migration ransoms, your own weekends, and when cheap is the right call."
+description: "The hidden costs of a cheap website: the slow-template tax, plugin sprawl, platform lock-in, migration ransoms, your own weekends, and when cheap is fine."
 parent: "website-cost"
 relatedTool: "/tools/slow-site-cost"
 relatedToolName: "Slow-Site Cost Calculator"
@@ -20,6 +20,8 @@ A cheap website's price tag is rarely its real cost. The sticker is small and th
 
 Drag-and-drop builders and heavy themes ship far more code than your page actually needs, and all of it has to load before a visitor sees anything. On a phone with a weak signal, that's the difference between a page that appears and a page someone abandons at second four. You never see those lost visitors; they just don't call. The template saved you money once and quietly spends it back, one bounced visitor at a time.
 
+The tax compounds, too. Search engines treat slow pages as a worse experience and are slower to send you traffic, so a heavy site costs you visitors at both ends: the ones who leave, and the ones who never arrive because you ranked lower. You pay that bill every day the site is live, and it never appears as a line item anywhere.
+
 ## Plugin sprawl
 
 The free template rarely does everything you wanted, so you add a plugin for the contact form, another for the gallery, another for speed, another for security. Each one is a new thing to update, a new thing that can break, and a new door that can be attacked. What started as a cheap site turns you into an unpaid systems administrator, patching a stack you never meant to own.
@@ -31,6 +33,8 @@ Some builders make it easy to get in and hard to get out. Your content lives in 
 ## Your own weekends
 
 This is the largest hidden cost and the one nobody prices. Doing it yourself means you're the designer, the copywriter, the tech support, and the person up at 11pm figuring out why the form stopped emailing you. Every hour on the site is an hour not spent doing the work your business actually sells. For a lot of owners, that time is worth far more than the money a cheap site saved.
+
+There's a quieter version of this cost as well: the mental overhead. A DIY site is one more thing you're half-watching, one more login, one more thing that might be broken right now while you're busy with something else. That background drain on your attention is real even when the site works, and it's the first thing that lifts the day someone else owns the upkeep.
 
 ## When cheap is the right call
 

@@ -36,6 +36,10 @@ The difference between attentive and spammy is almost entirely voice. Rewrite an
 
 Be realistic about the job a sequence does. It recovers the forgotten and the distracted, the leads that were basically yes but slipped through a busy week. It won't rescue a bad fit, a price that was never going to work, or someone who already hired elsewhere, and it shouldn't try; chasing those just trains you to sound desperate. Aim the sequence at warm leads who went quiet, and let the cold ones go. That focus is what keeps it feeling like service instead of pressure.
 
+## Match the channel the lead used
+
+A small detail that changes results: reply where the customer reached out. If they texted, text back; if they filled a web form, email is fine, but a text often gets read faster. Texts get opened in minutes; emails get filed for later and later never comes. For most service work, a short text sequence outperforms a polished email one, because it lands on the device already in their hand. Whatever the channel, keep the thread in one place so the conversation reads as continuous, not like three disconnected systems taking turns at the customer.
+
 ## The stop-on-reply rule
 
 This is the single most important setting, and the one that separates a sequence that feels human from one that exposes itself. The moment a customer replies, the automation halts and a real person takes over. Without that rule, someone answers your message and then receives the next scheduled nudge on top of their live reply, and the illusion of attentiveness breaks instantly. Get this right and follow-up reads as good service. The [speed of that first reply](/guides/speed-to-lead-guide) sets up the sequence, [a CRM](/guides/crm-for-small-service-business) is where it lives once you outgrow a spreadsheet, the [automation work](/automation) builds it in your voice, and [the follow-up pillar](/insights/lead-follow-up) maps the rest.

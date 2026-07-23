@@ -18,11 +18,11 @@ What you're paying a good web designer for isn't pixels, it's decisions. The rea
 
 ## Message architecture
 
-The first and most valuable thing a designer does is decide what the site says and in what sequence. Which problem you lead with, what the headline promises, what proof comes next, what objection gets answered before it's raised, and where the ask goes. This is the part that determines whether a visitor understands you in five seconds or bounces, and it happens before a single color is chosen. Most sites that look fine but don't convert failed right here, in the order of the words, not in the design.
+The first and most valuable thing a designer does is decide what the site says and in what sequence. Which problem you lead with, what the headline promises, what proof comes next, what objection gets answered before it's raised, and where the ask goes. This is the part that determines whether a visitor understands you in five seconds or bounces, and it happens before a single color is chosen. Most sites that look fine but don't convert failed right here, in the order of the words, not in the design. It's the least visible part of the work and the most valuable, which is exactly why a decorator skips it: nobody points at a paragraph order and calls it beautiful, even when that order is what earns the call.
 
 ## Conversion engineering
 
-A good designer builds a path, not a page. Every section has a job: earn attention, build trust, remove a specific hesitation, and move the visitor one step closer to calling or booking. Competing buttons get removed, friction gets stripped from forms, and the next action stays obvious the whole way down. This is engineering because it's deliberate and testable, not a matter of taste. It's also the exact part that templates and DIY builds almost never get, which is why so many good-looking sites are quiet. [Where templates hit their ceiling](/guides/website-templates-limits) covers why builders miss this part.
+A good designer builds a path, not a page. Every section has a job: earn attention, build trust, remove a specific hesitation, and move the visitor one step closer to calling or booking. Competing buttons get removed, friction gets stripped from forms, and the next action stays obvious the whole way down. This is engineering because it's deliberate and testable, not a matter of taste. It's also the exact part that templates and DIY builds almost never get, which is why so many good-looking sites are quiet. You can feel the difference as a visitor even if you can't name it: on an engineered page you always know what to do next, and on a decorated one you admire it and then leave. [Where templates hit their ceiling](/guides/website-templates-limits) covers why builders miss this part.
 
 ## Speed and findability
 
@@ -30,7 +30,7 @@ Two kinds of engineering decide whether the persuasion ever gets a chance. Speed
 
 ## What the bad ones sell instead
 
-The tell of a weak designer is that they sell you appearance and stop there. Trendy animations, a slider on the homepage, stock photography, a logo refresh, and a lot of talk about looking modern, with nothing underneath about what the site is supposed to make happen. It photographs well and performs poorly. Decoration isn't worthless, but sold as the whole job it's a bill for the least important part while the parts that make money go unbuilt.
+The tell of a weak designer is that they sell you appearance and stop there. Trendy animations, a slider on the homepage, stock photography, a logo refresh, and a lot of talk about looking modern, with nothing underneath about what the site is supposed to make happen. It photographs well and performs poorly. Decoration isn't worthless, but sold as the whole job it's a bill for the least important part while the parts that make money go unbuilt. A good rule when you're being pitched: if everything on offer is about how the site will look and nothing is about what it will do, you're buying paint, not a machine.
 
 ## Questions that expose the difference
 

@@ -14,7 +14,7 @@ The [Launch Page](/paths#launch-page) is one page with one job: a stranger lands
 
 ## What $4,500+ adds
 
-The full build is an acquisition engine: pages matched to the searches customers actually make, local and AI visibility engineered in, and conversion attention on every step from first click to booked call. [What the bigger build buys](/guides/5000-dollar-website-what-you-get) itemizes that side, and [how much website your stage needs](/guides/website-investment-by-stage) maps price band to business stage honestly.
+The full build is an acquisition engine: pages matched to the searches customers actually make, local and AI visibility engineered in, and conversion attention on every step from first click to booked call. [What the bigger build buys](/guides/5000-dollar-website-what-you-get) itemizes that side, and [how much website your stage needs](/guides/website-investment-by-stage) maps price band to business stage with no upsell in it.
 
 ## The upgrade path is the point
 

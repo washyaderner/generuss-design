@@ -32,6 +32,10 @@ A reality check keeps this grounded. Google still carries enormous volume, its r
 
 None of this requires a big budget or a new skill set. It requires that the basics you may already have, a real profile, real reviews, a clear site, are consistent and quotable enough that a machine can use them. A small business that gets there isn't competing with national brands for a link on page one. It's competing to be one of two or three local names an assistant offers, which is a fight a focused local operator can win. Scale is less of an advantage here than clarity and consistency, and those you control.
 
+## Customers cross-check before they call
+
+One more habit is worth naming, because it decides who wins the two paths. People rarely act on a single source. A customer might ask an assistant for a shortlist, then open Google to read your reviews and glance at your site before they call. That means your reputation has to hold up under a second look, not just get you named once. Strong reviews and a clear, current site do double duty here: they help you get recommended in the first place, and they close the deal when the customer checks your work. A name with nothing solid behind it gets named, clicked, and dropped.
+
 ## The both-not-either strategy for this quarter
 
 The practical takeaway is a short list you can act on now. Keep your Google Business Profile and reviews strong, which wins the classic results and feeds the AI ones. Make your content quotable, question-shaped headings with the answer up front, which wins the synthesized answers and is [what AEO is about](/guides/what-is-aeo). And keep your facts identical everywhere, which wins the citations that decide who gets named. It's one body of work paying off on two surfaces, not two separate campaigns. [The pillar on AI visibility](/insights/ai-visibility) ties it together, and if you want both surfaces handled at once, that's the [search and AI visibility work](/seo).

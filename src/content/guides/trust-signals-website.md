@@ -1,6 +1,6 @@
 ---
 title: "Trust Signals: Why Visitors Don't Believe Your Site"
-description: "Why visitors don't believe your site and how to fix it: the quiet legitimacy check every stranger runs, trust signals ranked strongest first, and fakeable vs not."
+description: "Why visitors don't believe your site and how to fix it: the legitimacy check every stranger runs, trust signals ranked strongest first, and fakeable vs not."
 parent: "why-websites-dont-convert"
 relatedTool: "/tools/website-leak-scanner"
 relatedToolName: "Website Leak Scanner"
@@ -20,6 +20,8 @@ Visitors don't believe your site because nothing on it proves you're real and yo
 
 Put yourself in a stranger's shoes for a second. They found you, they have a problem, and before they hand over their phone number they're deciding one thing: is this a real business that will show up and do the work, or a gamble. They aren't reading closely. They're scanning for proof, fast, and if they don't find it, the missing proof itself becomes the answer. No signals reads as risk, and risk means they leave for a competitor who showed theirs.
 
+What makes this hard to fix by instinct is that you already trust yourself. You know you're real and you know your work is good, so the missing proof is invisible from where you sit. The stranger has none of that. They're meeting you for the first time through a screen, and everything you know about your own reliability has to be shown to them, not assumed. Build the page for the person who has never heard of you.
+
 ## Trust signals, strongest first
 
 Not all proof is equal. Roughly in order of how much weight each one pulls:
@@ -32,12 +34,12 @@ Not all proof is equal. Roughly in order of how much weight each one pulls:
 
 **Guarantees.** Putting something on the line signals you expect to deliver, because you'd be the one paying if you didn't.
 
-**Consistent details.** The same business name, phone number, and address everywhere a visitor or a search engine might check. Mismatched details read as careless at best and fake at worst.
+**Consistent details.** The same business name, phone number, and address everywhere a visitor or a search engine might check. Mismatched details read as careless at best and fake at worst. This is also the signal search engines lean on to decide whether you're a real local business, so keeping it consistent pays you twice.
 
 ## Fakeable versus unfakeable, and why it matters
 
 Here's the distinction that ties it together. Some signals are easy to fake: "trusted by thousands", a row of five-star graphics, "award-winning" with no award named. Visitors have seen those on every site, including the bad ones, so they've learned to discount them. They cost nothing to type, so they prove nothing.
 
-The signals that move people are the ones that would be costly or awkward to fake. A named review with a real town could be checked. A photo of your actual crew on a real site is you or it isn't. A specific guarantee is something you'd have to honor. That cost is exactly why they carry weight: a stranger reasons, correctly, that you wouldn't put your name on something you'd have to back if it weren't true. Spend your effort on the unfakeable signals and let the badges go.
+The signals that move people are the ones that would be costly or awkward to fake. A named review with a real town could be checked. A photo of your actual crew on a real site is you or it isn't. A specific guarantee is something you'd have to honor. That cost is exactly why they carry weight: a stranger reasons, correctly, that you wouldn't put your name on something you'd have to back if it weren't true. Spend your effort on the unfakeable signals and let the badges go. A quick test when you're unsure about a signal: could a dishonest competitor copy it in five minutes? If yes, it's doing less work than you think.
 
 Trust is one of five places service sites leak visitors, and it travels with the others: speed, clarity, friction, and follow-up. [The pillar on why websites don't convert](/insights/why-websites-dont-convert) maps all five, [the triage guide](/guides/why-is-my-website-not-getting-leads) helps you find which one is yours, and [the five-second test](/guides/above-the-fold-checklist) shows how proof and a clear message work together on that first screen.

@@ -2,13 +2,13 @@
 title: "DIY vs Hiring a Pro"
 description: "An honest breakdown of when to build your own website and when to hire, from someone who profits from one answer and will still tell you the other."
 question: "Should I build my own website or hire a professional?"
-directAnswer: "Build it yourself when the site's job is simple presence: you're testing an idea, budget is genuinely zero, and a clean template one-pager covers it. Hire when the site has a revenue job: when leads are worth real money, when you're invisible in search, or when you've already spent three weekends fighting a template. The honest tiebreaker is your hourly value: founders routinely spend forty hours building a site a professional ships in a week, and those hours were the expensive part."
+directAnswer: "Build it yourself when the site's job is simple presence: you're testing an idea, budget is zero, and a clean template one-pager covers it. Hire when the site has a revenue job: when leads are worth real money, when you're invisible in search, or when you've already spent three weekends fighting a template. The honest tiebreaker is your hourly value: founders routinely spend forty hours building a site a professional ships in a week, and those hours were the expensive part."
 publishedAt: "2026-07-23"
 ---
 
 I sell website builds, so read this knowing that. I'll still give you the real answer, because pushing DIY-shaped businesses into paid builds creates unhappy clients and pushing pro-shaped businesses into DIY creates slow failures.
 
-## When DIY genuinely wins
+## When DIY wins outright
 
 Pre-revenue idea tests. Hobby and community projects. Businesses whose customers all arrive by referral and just need an address to verify you exist. In those cases a template with real photos and honest copy beats an expensive build, and [when DIY is right](/guides/when-diy-is-right) walks how to do it well. On picking a builder, [Wix or Squarespace vs custom](/guides/wix-squarespace-vs-custom) sorts who should pick what.
 

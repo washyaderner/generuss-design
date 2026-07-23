@@ -18,11 +18,11 @@ For most events the answer isn't your own site or a ticketing platform, it's bot
 
 ## What platforms are good at
 
-Ticketing platforms solve real problems. They handle payments, refunds, and tax mechanics you'd rather not build yourself. They put your event in a marketplace where people already browse for things to do. And they carry a trust signal: a buyer who's never heard of you has bought through that checkout before and knows the money will be handled. For a first event or a small one, that reach and reassurance can be worth the cut they take.
+Ticketing platforms solve real problems. They handle payments, refunds, and tax mechanics you'd rather not build yourself. They put your event in a marketplace where people already browse for things to do. And they carry a trust signal: a buyer who's never heard of you has bought through that checkout before and knows the money will be handled. For a first event or a small one, that reach and reassurance can be worth the cut they take. If nobody knows your name yet, a marketplace listing can put you in front of people who were already looking for something to do that weekend, which is discovery you'd otherwise have to buy.
 
 ## What platforms cost you
 
-The fee is the obvious cost, but it isn't the biggest one. The platform sits between you and your buyer, which means the attendee relationship is theirs, not yours. Their branding wraps your checkout. Their suggestions for other events run alongside yours. And the email addresses of the people who came, the single most valuable thing an event produces, live in the platform's account rather than yours. You rented the sale instead of owning the customer, and you pay that rent again every time you run the event.
+The fee is the obvious cost, but it isn't the biggest one. The platform sits between you and your buyer, which means the attendee relationship is theirs, not yours. Their branding wraps your checkout. Their suggestions for other events run alongside yours. And the email addresses of the people who came, the single most valuable thing an event produces, live in the platform's account rather than yours. You rented the sale instead of owning the customer, and you pay that rent again every time you run the event. The fee you can see; the audience you never get to keep is the cost that doesn't show up on any invoice.
 
 ## The hub-and-spoke model
 
@@ -30,7 +30,7 @@ The setup that gets you both is simple. Your site is the hub, where you tell the
 
 ## Own the attendee list
 
-The reason this matters compounds across events. The first time, the platform's reach helps you find an audience. By the third, the thing that sells tickets fastest is a list of people who attended before and liked it, and that list is only an asset if you own it. Capture the attendee email on your own site, or make sure your ticketing setup passes it back to you, so every event you run makes the next one cheaper to fill. An owned list is the closest thing an event has to a flywheel.
+The reason this matters compounds across events. The first time, the platform's reach helps you find an audience. By the third, the thing that sells tickets fastest is a list of people who attended before and liked it, and that list is only an asset if you own it. Capture the attendee email on your own site, or make sure your ticketing setup passes it back to you, so every event you run makes the next one cheaper to fill. An owned list is the closest thing an event has to a flywheel. Think about the difference over three years. Run entirely on a platform and each event starts cold, buying attention again from scratch. Run with your own hub and list and each event starts warm, with an audience that already trusts you and a message you don't have to pay to deliver.
 
 ## The real tradeoff
 

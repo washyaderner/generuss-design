@@ -34,6 +34,10 @@ Every result lands in one of three buckets, and each one means something differe
 
 Assistants recommend what they can read and verify. That means your Google Business Profile, the review platforms, the directories that list you, and the words on your own site. Underneath all of it sits consistency: when the web agrees on your name, your service, and your location, the assistant trusts the pattern and repeats it. When your details conflict from one listing to the next, it hedges, and hedging usually means leaving you out. None of this is mysterious, and none of it is locked. It's the same foundation that decides ordinary search results, pointed at a new kind of answer. The pillar on [AI visibility](/insights/ai-visibility) shows how those layers stack up.
 
+## Why the answer isn't the same every time
+
+Don't read one result as final. Assistants pull from sources that change, they phrase things differently on each run, and they don't all draw on the same data, so ChatGPT, Perplexity, and Google's answer can disagree on the same question. That's why one test tells you little and a batch tells you a lot. Check across a few assistants, run several wordings, and note which names show up again and again. The businesses that appear consistently, across tools and across phrasings, are the ones that have made themselves easy to verify. Re-run the same batch every quarter, because the answer moves as your competitors do the work or fail to.
+
 ## Turn the check into a fix
 
 Run your prompts, note the outcome for each, and screenshot the results so you can compare them month to month. If you're absent or misdescribed, the next move is structural: make your site easy for an assistant to quote, and make your facts agree everywhere they appear. [What AEO is, in plain terms](/guides/what-is-aeo) covers the first half, and [where customers look now](/guides/ai-search-vs-google) explains why this shift is worth acting on this quarter instead of next year. If you'd rather have the audit and the fixes handled in one pass, that's what the [search and AI visibility work](/seo) is for.

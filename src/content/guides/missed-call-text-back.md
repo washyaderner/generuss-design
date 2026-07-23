@@ -32,6 +32,10 @@ Here's the sequence. At zero seconds, the call comes in and you can't pick up. W
 
 You don't need a spreadsheet to see the return. Missed-call text-back runs on a modest monthly tool cost, usually far less than a single job is worth to you. If a job is worth several hundred dollars, saving even one call a month that would otherwise have gone to voicemail and a competitor clears the cost many times over. That's what makes it the highest-ROI automation for a lot of local businesses: the downside is small and fixed, and the upside is a job you'd otherwise never have known you lost. [Running your own numbers](/guides/automation-roi-service-business) makes the size of that leak concrete.
 
+## What the text should actually say
+
+The message does the work, so keep it human and short. Name your business right away, so it doesn't read as spam: this is Sam at Ridgeline Plumbing. Apologize for the miss in a few words, ask one clear question, sorry we missed your call, what can we help with, and set an expectation for when a person will reply. Skip links, menus, and anything that feels automated. One or two plain sentences that sound like a busy owner tapping out a reply beat a formal auto-message every time, because the goal is to start a conversation, not to close the ticket.
+
 ## Where it fits with the rest
 
 Missed-call text-back is the front door of a follow-up system, not the whole house. It catches the miss; from there, the same [speed-to-lead thinking](/guides/speed-to-lead-guide) and a short sequence carry the conversation to a booking. Wired together by the [automation work](/automation), the missed call becomes a caught lead instead of a lost one, which is the difference [the follow-up pillar](/insights/lead-follow-up) is built around.

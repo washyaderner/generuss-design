@@ -1,6 +1,6 @@
 ---
 title: "Call-to-Action Mistakes That Kill Bookings"
-description: "Call-to-action mistakes that cost service businesses bookings: competing buttons, vague labels, hidden phone numbers, dead-end thank-you pages, and the one-action fix."
+description: "Call-to-action mistakes that cost you bookings: competing buttons, vague labels, hidden phone numbers, dead-end thank-you pages, and the one-action fix."
 parent: "why-websites-dont-convert"
 relatedTool: "/tools/website-leak-scanner"
 relatedToolName: "Website Leak Scanner"
@@ -20,6 +20,8 @@ Most service sites lose bookings not because visitors don't want to act, but bec
 
 Put 'Book now', 'Learn more', and 'Call us' side by side with equal weight and you haven't given the visitor three good options. You've given them a decision to make before the one you wanted. Faced with several equal choices, a lot of people make none, because choosing feels like work and leaving is free. Give each screen one primary action, the thing you most want them to do, and let everything else be visibly secondary.
 
+This isn't a reason to hide your other links, it's a reason to rank them. A visitor should always be able to find pricing or examples when they want them. But "able to find" and "presented as an equal choice" are not the same thing. One primary button styled to stand out, with the quieter options actually quieter, will out-book a row of buttons that all shout at the same volume.
+
 ## Vague button labels
 
 'Submit', 'Click here', and 'Learn more' are three of the most common buttons on the internet and three of the weakest, because none of them tells the visitor what's on the other side. 'Get my free quote', 'Book a call', and 'See pricing' name the outcome, so the click feels like progress instead of a leap. Write the label as the result the visitor gets, not the mechanical thing the button does.
@@ -35,5 +37,7 @@ The form submits and the visitor lands on a blank "Thanks, we'll be in touch" wi
 ## The one-action rule
 
 Underneath all four fixes is a single rule: each screen should ask for one thing. Decide the single most valuable action for that part of the page, make it the obvious next move, and push everything else one scroll away. A visitor who sees one clear thing to do is far more likely to do it than one staring at a wall of equal options. Clarity of action is just clarity applied to the click.
+
+You can test this on your own site in a minute. Look at any screen and ask what the single thing you want a visitor to do here is. If you can't say it in one sentence, neither can they, and a visitor who isn't sure what to do usually does nothing.
 
 This is the last of the five places service sites leak, and it compounds with the first: a clear message earns the click, a clear action collects it. [The pillar on why websites don't convert](/insights/why-websites-dont-convert) maps all five leaks, and [the five-second test](/guides/above-the-fold-checklist) covers the message that has to land before any button gets pressed.

@@ -23,6 +23,8 @@ A rebuild is a chance to start clean, and that's exactly why so many businesses 
 - **Reviews and proof.** Testimonials, case results, recognizable client names, real photos of real work: these are the hardest things to recreate and the most persuasive things on the site. They don't expire in a redesign. Migrate every piece of credible proof and give it a clear home on the new build.
 - **Analytics history.** Your existing analytics is a record of what visitors actually did: which pages they entered on, where they left, what led to bookings. Keep the same measurement account so the new site builds on that baseline instead of starting blind. You'll want the comparison when you check whether the rebuild actually helped.
 
+What ties these four together is that none of them show up in a design mockup, so none of them get budgeted for in a redesign. The mockup is all layout and color; the value lives in the URLs, the words, the proof, and the history underneath. That's why they get quietly dropped, and why naming them out loud before the build starts is the only reliable way to save them. Losing your analytics history is the sneakiest of the four, because it means you can't prove the redesign paid off, which is how good rebuilds end up blamed for problems they never caused.
+
 ## The kill list
 
 Not everything deserves to survive the move. A rebuild is the rare clean moment to cut what's dragging, as long as you redirect anything with ranking value first.

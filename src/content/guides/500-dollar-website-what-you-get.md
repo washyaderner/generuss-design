@@ -25,6 +25,8 @@ Every element earns its place against one question: does this help a visitor dec
 - **A booking action.** One obvious next step wired straight to your calendar, so the moment someone decides, they can act without hunting or emailing. Leads cool by the hour; the page removes the wait.
 - **Speed.** Fast on a mid-range phone on a normal connection, because that's the real visitor. A slow page loses people before they read a word, so speed isn't a feature here, it's the floor.
 
+The discipline is subtraction. A Launch Page is defined as much by what's left off as by what's on, because every extra element on that first screen competes with the button that matters. One page, one job, nothing fighting it. That isn't a smaller version of a real website, it's a different tool built for a different moment, the way a business card isn't a shrunken brochure. Judge it by whether strangers book you, not by how much it manages to contain.
+
 ## What it deliberately leaves out
 
 A short list of what $500 doesn't buy, said plainly so you can decide with open eyes. It doesn't rank across a spread of search terms; that's the job of a multi-page build. It doesn't host a blog or a library of content. It doesn't tell a deep brand story across many pages. It isn't a catalog of every service you offer. Those omissions aren't corners cut, they're scope held. Piling them onto one page would blunt the single thing it's built to do, which is convert the visitor in front of you into a booked call. A designer who promises all of that for $500 is either misleading you or about to disappoint you.
@@ -35,4 +37,4 @@ The Launch Page fits a specific moment: a young or lean service business whose r
 
 ## Why starting here isn't a dead end
 
-The best reason to start at $500 is that it doesn't trap you. Launch Page money credits toward the larger [Flagship build](/paths) later, so the first rung is a down payment on the next, not a sunk cost you have to abandon. That's the logic that makes starting small the smart default rather than the cheap one: you let the page prove demand and earn its own upgrade, instead of guessing at a big build before the business has told you what it needs. The full comparison of the two rungs lives in the pillar, [the $500 site versus the $5,000 site](/insights/500-vs-5000-website).
+The best reason to start at $500 is that it doesn't trap you. Launch Page money credits toward the larger [Flagship build](/paths) later, so the first rung is a down payment on the next, not a sunk cost you have to abandon. That's the logic that makes starting small the smart default rather than the cheap one: you let the page prove demand and earn its own upgrade, instead of guessing at a big build before the business has told you what it needs. The full comparison of the two rungs lives in the pillar, [the $500 site versus the full build](/insights/500-vs-5000-website).

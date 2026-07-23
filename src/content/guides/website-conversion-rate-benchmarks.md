@@ -22,14 +22,18 @@ Two service businesses in the same industry can convert wildly differently, and 
 
 Then there's the offer. A plumber promising same-week service with a clear guarantee converts differently than one with a vague "contact us" and no promise, even at the same traffic quality. Benchmarks also lump together businesses that share almost nothing, so the "average" ends up describing nobody in particular. A number that fits no real business isn't a target, it's a distraction.
 
+There's a subtler trap here as well. If your rate happens to land above some published average, it's easy to relax, even while your own site quietly leaks half its leads. If it lands below, it's easy to panic and rebuild something that was working, when the real gap was just colder traffic that month. A figure pulled from other people's businesses can't tell you either thing. Only your own trend can.
+
 ## Measure against yourself
 
 The useful benchmark is your own baseline. Count your leads for a month, divide by your visitors for the same month, and that's your line. It doesn't matter whether it's higher or lower than some published figure. What matters is which direction it moves next month, after you change something. You're competing with last month's version of your site, which is the only fair fight and the only one you can actually win.
 
 This also keeps you honest about cause. Change one thing at a time, watch the rate, and you learn what actually moves it on your site with your traffic. Change five things at once and you'll never know which one worked.
 
+Give the number enough time to mean something, too. A single slow week isn't a trend and one good day isn't a win. Compare a month against the month before, or a quarter against the quarter, so ordinary ups and downs don't get mistaken for the result of a change you made. The longer your baseline, the more it can be trusted.
+
 ## The levers that actually move it
 
 The rate responds to the same five things that decide whether any service site converts: a clear message a stranger understands in [five seconds](/guides/above-the-fold-checklist), fast load times, visible proof you're trustworthy, an easy way to make contact, and quick follow-up after someone does. Each one you fix nudges the number up. [Why is my website not getting leads](/guides/why-is-my-website-not-getting-leads) walks the triage for finding which lever is stuck on your site.
 
-The biggest lever, though, isn't on the page at all: it's the offer. What you promise, and how believable you make it, moves the rate more than any button color or layout tweak ever will. A sharper, more specific promise backed by real proof will out-convert a beautiful site with a weak one every time. Fix the leaks, then sharpen the offer, and measure each change against your own baseline. [The pillar on why websites don't convert](/insights/why-websites-dont-convert) lays out where those leaks hide.
+The biggest lever, though, isn't on the page at all: it's the offer. What you promise, and how believable you make it, moves the rate more than any button color or layout tweak ever will. A sharper, more specific promise backed by real proof will out-convert a beautiful site with a weak one every time. Fix the leaks, then sharpen the offer, and measure each change against your own baseline. And keep raw leads in view, not just the percentage: a small rate on strong traffic can pay you more than a big rate on weak traffic, and leads are the only currency that does. [The pillar on why websites don't convert](/insights/why-websites-dont-convert) lays out where those leaks hide.

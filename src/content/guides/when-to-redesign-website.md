@@ -30,7 +30,7 @@ Each of these is a job the site is failing. Run the self-check before you count 
 
 ## Two of those urges will be fake
 
-Not every itch to rebuild is a signal. Two fakes dress up as reasons. The first is competitor envy: someone launched something shiny and now yours looks dated by comparison. But "dated next to theirs" is not the same as "failing at its job." The second is boredom: you stare at your site far more than any customer, so it goes stale for you long before it does for them. A new template that makes rebuilding look easy is a close cousin, ease of building is not evidence that a rebuild is the right move. None of these point at damage. If you can't attach a lost lead, a broken screen, or a blocked feature to the feeling, it's restlessness, and restlessness is how businesses spend five figures moving a problem from one template to another.
+Not every itch to rebuild is a signal. Two fakes dress up as reasons. The first is competitor envy: someone launched something shiny and now yours looks dated by comparison. But "dated next to theirs" is not the same as "failing at its job." The second is boredom: you stare at your site far more than any customer, so it goes stale for you long before it does for them. A new template that makes rebuilding look easy is a close cousin, ease of building is not evidence that a rebuild is the right move. None of these point at damage. If you can't attach a lost lead, a broken screen, or a blocked feature to the feeling, it's restlessness, and restlessness is how businesses spend five figures moving a problem from one template to another. The tell is always the same: a real signal has a victim you can name, a lost lead or a broken screen, while restlessness only has a feeling.
 
 ## Measure before you decide
 

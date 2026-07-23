@@ -22,7 +22,7 @@ A conference site that goes up six weeks out is fighting physics. Early-bird pri
 
 ## Burying the buy button
 
-If a visitor has to scroll, open a menu, or read three paragraphs to find how to buy, you're leaking at the exact moment of intent. The button to register belongs above the fold and again at the bottom of every major section, in a color nothing else on the page uses. People who already decided shouldn't have to work to give you money. The [event website checklist](/guides/event-website-checklist) covers where the button goes and what it should say.
+If a visitor has to scroll, open a menu, or read three paragraphs to find how to buy, you're leaking at the exact moment of intent. The button to register belongs above the fold and again at the bottom of every major section, in a color nothing else on the page uses. People who already decided shouldn't have to work to give you money. At no point while a visitor is reading should the next tap toward buying be more than a thumb-reach away. The [event website checklist](/guides/event-website-checklist) covers where the button goes and what it should say.
 
 ## The PDF-only schedule
 
@@ -30,11 +30,11 @@ A schedule trapped in a downloadable PDF is invisible to phones, to search engin
 
 ## Treating the phone as an afterthought
 
-Most of your traffic opens the site on a phone, often from a text or a social post, yet many conference sites are still designed on a large screen and only checked there. Tiny tap targets, a date you have to zoom in to read, a registration form that fights your thumbs: these are the leaks nobody sees, because the person who built the site tested it on a laptop. Open your own site on your phone and try to buy a ticket. Whatever annoys you is annoying every attendee too.
+Most of your traffic opens the site on a phone, often from a text or a social post, yet many conference sites are still designed on a large screen and only checked there. Tiny tap targets, a date you have to zoom in to read, a registration form that fights your thumbs: these are the leaks nobody sees, because the person who built the site tested it on a laptop. Open your own site on your phone and try to buy a ticket, start to finish, the way a stranger would. Whatever annoys you is annoying every attendee too, and most of them won't push through it the way you will, because they don't already want the outcome the way you do.
 
 ## Going silent after signup
 
-The sale isn't the end of the relationship, it's the start of the part that reduces no-shows and refund requests. A registration that triggers nothing but a bare receipt wastes the moment a buyer is most excited. A short confirmation with the date, the location, what to expect next, and a way to add it to a calendar does real work. Silence after signup is a missed chance to turn a buyer into someone who shows up and brings a friend.
+The sale isn't the end of the relationship, it's the start of the part that reduces no-shows and refund requests. A registration that triggers nothing but a bare receipt wastes the moment a buyer is most excited. A short confirmation with the date, the location, what to expect next, and a way to add it to a calendar does real work. Silence after signup is a missed chance to turn a buyer into someone who shows up and brings a friend. It costs almost nothing to set up once and pays back on every registration after that.
 
 ## Fix them in order
 

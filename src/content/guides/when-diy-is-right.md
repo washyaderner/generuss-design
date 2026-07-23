@@ -1,5 +1,5 @@
 ---
-title: "When a DIY Website Is Genuinely the Right Call"
+title: "When a DIY Website Is the Right Call"
 description: "When building your own website is the right call, not a compromise: pre-revenue tests, referral-only businesses, and how to do a DIY site well."
 parent: "diy-vs-pro"
 relatedTool: "/tools/website-leak-scanner"
@@ -18,7 +18,7 @@ A DIY website is the right call, not a fallback, when the site's job is small an
 
 ## Pre-revenue idea tests
 
-Before an idea has paying customers, the job of a website is to exist, explain, and collect a little interest. You don't yet know what converts because you don't yet have traffic, so paying for conversion engineering is premature. Put up a one-page site yourself, say clearly what you're offering, give people a way to reach you or join a list, and spend your money on finding out whether anyone wants the thing at all. If they do, you'll know exactly what to hire for later. The [DIY vs hiring a pro breakdown](/guides/diy-website-vs-professional) covers that upgrade moment.
+Before an idea has paying customers, the job of a website is to exist, explain, and collect a little interest. You don't yet know what converts because you don't yet have traffic, so paying for conversion engineering is premature. Put up a one-page site yourself, say clearly what you're offering, give people a way to reach you or join a list, and spend your money on finding out whether anyone wants the thing at all. If they do, you'll know exactly what to hire for later. A cheap site that shows you the idea has no market isn't a failure, it's the least expensive lesson you'll ever buy. An expensive one that teaches the same thing just cost more to reach the same place. The [DIY vs hiring a pro breakdown](/guides/diy-website-vs-professional) covers that upgrade moment.
 
 ## Referral-only businesses
 
@@ -30,7 +30,7 @@ If the site is for a community group, a personal project, or something you run f
 
 ## How to do DIY well
 
-Doing DIY right is mostly about restraint. Use one page, not seven, so there's nothing to get lost in. Use real photos of real work, not stock images of strangers shaking hands, because real beats polished for trust. Write in plain words a customer would use, not slogans. Give people exactly one clear action: a booking link, a phone number, or a short form. And keep it fast by not stuffing it with sliders and widgets. A simple site done cleanly outperforms an ambitious site done badly every time. If you outgrow it, [Wix or Squarespace vs custom](/guides/wix-squarespace-vs-custom) covers when the tool itself needs to change.
+Doing DIY right is mostly about restraint. Use one page, not seven, so there's nothing to get lost in. Use real photos of real work, not stock images of strangers shaking hands, because real beats polished for trust. Write in plain words a customer would use, not slogans. Give people exactly one clear action: a booking link, a phone number, or a short form. And keep it fast by not stuffing it with sliders and widgets. A simple site done cleanly outperforms an ambitious site done badly every time. Most DIY sites fail from doing too much, not too little: the owner discovers the animations and the extra pages and the stock photos, and buries a perfectly good message under all of it. Resist that, and a free tool can carry a small business a long way. If you outgrow it, [Wix or Squarespace vs custom](/guides/wix-squarespace-vs-custom) covers when the tool itself needs to change.
 
 ## Know when it stops being right
 

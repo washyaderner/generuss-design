@@ -10,7 +10,7 @@ Website pricing looks chaotic from the outside: the same request gets quotes fro
 
 ## The bands, plainly
 
-**Template DIY (roughly $0 to $40 a month).** Wix, Squarespace, and site builders. You do the work, you own the monthly fee forever, and the ceiling is the template. Right answer for hobby projects and testing an idea. See [when DIY is genuinely the right call](/guides/when-diy-is-right).
+**Template DIY (roughly $0 to $40 a month).** Wix, Squarespace, and site builders. You do the work, you own the monthly fee forever, and the ceiling is the template. Right answer for hobby projects and testing an idea. See [when DIY is the right call](/guides/when-diy-is-right).
 
 **Focused launch site (around $500).** One page, professionally built, engineered to make you bookable: offer, proof, booking. This is the band most new service businesses should start in, because it converts real leads without betting a full-build budget before the business has proven demand.
 
@@ -20,7 +20,7 @@ Website pricing looks chaotic from the outside: the same request gets quotes fro
 
 ## What actually moves the price
 
-Custom design versus template, the number of pages that genuinely earn their place, content and copywriting, integrations like booking and payments, and whether anyone is thinking about conversion rather than decoration. Details in [why quotes vary so much](/guides/why-website-quotes-vary).
+Custom design versus template, the number of pages that earn their place, content and copywriting, integrations like booking and payments, and whether anyone is thinking about conversion rather than decoration. Details in [why quotes vary so much](/guides/why-website-quotes-vary).
 
 ## The only math that matters
 

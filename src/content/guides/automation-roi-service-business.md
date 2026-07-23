@@ -32,6 +32,10 @@ Two parts of the return don't show up on an invoice. The first is recovered hour
 
 Be skeptical of two situations. The first is judgment work: automating a nuanced sales conversation, a custom quote that needs your eye, or anything that is the actual craft of your business rarely returns its setup cost, and often costs you the relationship. The second is low volume: a system that saves you time on five leads a month isn't worth building. Automation earns its keep on repetitive, high-frequency tasks, the things you do the same way fifty times a week. Anyone promising a return on the parts of the job that are the job is selling you something. [Whether you even need a CRM](/guides/crm-for-small-service-business) is a good gut check on this.
 
+## Fix the biggest leak first
+
+ROI also depends on order. Don't automate everything at once; find your largest leak and plug that one first. For most call-driven businesses it's missed calls; for quote-heavy ones it's the un-chased estimate; for busy solo operators it's the slow first reply. Size each leak the same way, jobs lost times job value, and start where the number is biggest and the fix is cheapest. One well-chosen automation that returns its cost in a month buys you the confidence, and often the cash, to wire the next one.
+
 ## Run it on your own numbers
 
 The only ROI that matters is yours. Plug in your real leads per month, your close rate, and your average job value, and the size of your follow-up leak stops being a guess. The [missed-call automation](/guides/missed-call-text-back) is usually the cheapest place to start recovering it, the [automation work](/automation) wires the rest, and [the follow-up pillar](/insights/lead-follow-up) shows where the leaks tend to hide.

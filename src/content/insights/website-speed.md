@@ -1,5 +1,5 @@
 ---
-title: "Website Speed, Honestly"
+title: "Website Speed, Plainly"
 description: "How fast a website should load, why most small-business sites are slow, and how to turn your load time into a dollar figure instead of a vague worry."
 question: "How fast should my website load, and does it really matter?"
 directAnswer: "Aim for your site to be usable on a mid-range phone in about two seconds; every second past that measurably sheds visitors who never come back. Speed matters three ways at once: visitors bounce from slow pages, search engines rank slow sites lower, and paid traffic to a slow site is money spent delivering people to a closed door. The good news is that speed is the most fixable website problem there is."

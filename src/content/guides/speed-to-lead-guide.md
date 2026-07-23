@@ -32,6 +32,10 @@ An instant-reply system isn't a bot pretending to be you. Its job is narrow and 
 
 The trap is automating the whole conversation. Automation should open the door, not stand in it. Three rules keep the handoff clean. The auto-reply sets a timeframe you'll actually beat, not an empty promise. A real person gets pinged the instant a lead comes in, with the context already captured. And the moment the customer replies, the automation steps aside so a human is doing the talking. Done that way, the customer feels caught quickly and handed to a person, which is exactly the experience that wins the job.
 
+## The after-hours gap
+
+Here's the part owners feel most. A lot of leads arrive at night, on weekends, and during the exact hours you're not at a desk, and those are the ones most likely to sit until morning and go cold. You can't personally answer a form at nine on a Saturday, and you shouldn't have to. This is the clearest place an instant reply earns its keep: it catches the after-hours lead, sets an expectation, and keeps them warm until you're back, so the timing of when someone happens to find you stops deciding whether you get the job.
+
 ## When you can't be fast by hand
 
 Most owners can't watch an inbox during a job, a drive, or a dinner rush, and that's the real case for automation: not to replace you, but to cover the window you physically can't. If calls are your main channel, [missed-call text back](/guides/missed-call-text-back) is the sharpest version of this idea, and the [follow-up sequence](/guides/follow-up-sequence-service-business) carries a lead that doesn't convert on the first touch. The [automation work](/automation) wires the instant reply and the handoff together, and the wider picture of where follow-up leaks lives in [the lead follow-up pillar](/insights/lead-follow-up).

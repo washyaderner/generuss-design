@@ -22,14 +22,18 @@ Walk it with round numbers. Say your site gets 500 visitors a month. Say 3 in 10
 
 Those exact numbers are illustrative; yours will differ. The point is the shape. Four inputs, multiplied, turn "is a website worth it" into a number you can actually look at. It also shows where the leverage is: doubling any one of those four inputs doubles the output, which is why fixing a leaky site often beats buying more traffic.
 
+Be honest with each input rather than hopeful. Use the visitor count you actually get, not the one you want. Use the close rate from your real calls, not your best month ever. Optimistic inputs make any site look like it pays for itself, which is how people talk themselves into a build the business can't yet carry. Conservative inputs that still clear the price are the ones you can act on.
+
 ## The one-extra-client test
 
-Most owners freeze at the full number, so shrink it. Forget the whole funnel and ask a smaller question: what is one additional booked client a month worth to me? For a service business where a client is worth real money, one extra a month covers a focused build almost immediately and a full custom build not long after. You're not betting the site will transform everything. You're asking it to earn back its price one client at a time, which is a much easier thing to believe and to check.
+Most owners freeze at the full number, so shrink it. Forget the whole funnel and ask a smaller question: what is one additional booked client a month worth to me? For a service business where a client is worth real money, one extra a month covers a focused build almost immediately and a full custom build not long after. You're not betting the site will transform everything. You're asking it to earn back its price one client at a time, which is a much easier thing to believe and to check. It also scales the decision to your nerve: if betting on a full build feels like too much before the site has proven itself, start with the focused page, let it earn, and step up when the numbers tell you to.
 
 This reframe also sets your ceiling. If a single extra client easily covers a band, that band is within reach. If the math has to strain to get there, the site is priced above what your leads are worth, and you should step down a band rather than force it. That's the same logic behind [picking a price band](/guides/how-much-does-a-website-cost-2026).
 
 ## Measure after launch, don't keep guessing
 
 The estimate gets you started; real numbers finish the job. Put a form or a booking link on the site that you can actually count, then watch for a month or two. Now you know your true visitor count, your real lead rate, and your close rate, and the funnel math stops being a guess. The mistake isn't estimating wrong at the start; it's never measuring, so the site stays either a cost you can't defend or a win you can't prove. A site you measure is one you can improve on purpose instead of by hope.
+
+The same math runs in reverse once real numbers arrive. If the site brings visitors and leads but they don't become clients, the leak is in your follow-up or your sales conversation, not the page. If visitors never become leads at all, the page itself is the problem. Knowing which is which keeps you from paying to fix the part that was working.
 
 Once you can see the numbers, the fixes get obvious. [The pillar on what a website really costs](/insights/website-cost) frames the spend, and [why quotes vary](/guides/why-website-quotes-vary) helps you read what any given build is actually buying you.

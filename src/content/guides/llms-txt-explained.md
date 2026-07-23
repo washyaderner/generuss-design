@@ -32,6 +32,10 @@ Be clear-eyed here. llms.txt is emerging, not universal. Some tools read it, man
 
 The reason to add one anyway is the shape of the bet. Writing an llms.txt takes minutes and costs nothing to host. If the tools that parse it become standard, you're already there. If they never do, you've lost a few minutes and nothing else. That asymmetry, almost no downside against real upside, is the entire argument. Hand-built sites make it especially easy, because you control the files directly and can keep the summary in step with the pages as they change. You can see how that build approach works on [the process page](/process); this site publishes its own llms.txt as a working example.
 
+## How to publish one
+
+If you decide to add it, the mechanics are simple. Write a short summary in plain markdown: a line on what your business is, then your key pages as a list, each with a few words on what it covers, then the facts you want stated correctly. Save it as a file named llms.txt and place it at the root of your site, so it sits at yoursite.com/llms.txt, the same location robots.txt lives. Keep it in sync with your pages: when a service or a phone number changes, update the file in the same pass. On a hand-built site that's a one-line edit. The whole thing is closer to writing a good index card than to any kind of technical project.
+
 ## So, does your site need one?
 
 If you already have a clear site, accurate listings, and quotable content (which [AEO explains](/guides/what-is-aeo)), adding llms.txt is a sensible finishing touch. If you haven't done those basics yet, do them first: a summary file pointing at a thin, inconsistent presence doesn't help. Get the foundation right, keep your facts aligned, then publish the file as a low-cost extra. The wider picture of machine visibility is mapped in [the AI visibility pillar](/insights/ai-visibility), and the citation side sits alongside [what GEO covers](/guides/what-is-geo-generative-engine-optimization).

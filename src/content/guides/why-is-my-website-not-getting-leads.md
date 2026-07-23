@@ -1,6 +1,6 @@
 ---
 title: "Why Is My Website Not Getting Leads?"
-description: "Why your website gets visitors but no leads: triage the five failure modes in order, run a ten-minute self-check for each, and see why more traffic won't fix it."
+description: "Why your website gets visitors but no leads: triage the five failure modes in order, a ten-minute self-check for each, and see why more traffic won't fix it."
 parent: "why-websites-dont-convert"
 relatedTool: "/tools/website-leak-scanner"
 relatedToolName: "Website Leak Scanner"
@@ -30,8 +30,12 @@ You can find your leak yourself in about ten minutes. Do these five checks in or
 
 **Silence.** Submit your own contact form and time what happens next. If it's a day of nothing, you're losing leads to whoever replied first, because interest cools by the hour.
 
+One rule for the triage: fix in order, and fix one thing at a time. It's tempting to see all five and rebuild everything at once, but then you never learn which leak was actually costing you, and you can't tell whether a change helped. A slow site loses people before your headline gets a chance, so speed comes first even when the wording looks worse. Work top to bottom and re-check after each fix.
+
 ## Why buying traffic first doubles the waste
 
 The tempting move when leads are thin is to buy more visitors. If the site converts poorly, that's the most expensive thing you can do. More traffic through a leaky site just means more people falling out the same holes, except now you paid for each of them at the top. You spend twice: once for the visitor, once for the loss.
+
+This is why "we need more traffic" is the most expensive wrong diagnosis a small business can make. Traffic feels like the problem because it's the number you watch go up when you spend. Conversion stays invisible until you measure it, so it gets blamed last, after the ad budget is already gone. The visitors you have right now are the cheapest ones you will ever get, and they're the ones leaking out today.
 
 Fixing conversion works the opposite way. Every hole you close raises the value of every visitor you get afterward, paid or organic, for as long as the site runs. Doubling your conversion rate is the same as doubling your traffic, except you only pay for it once. That's why the order matters: fix what the site does with visitors before you spend a dollar getting more of them. [The pillar on why websites don't convert](/insights/why-websites-dont-convert) maps all five leaks so you can see which ones are yours.

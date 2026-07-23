@@ -26,6 +26,8 @@ Ask five people to build the same website and the quotes can range from a few hu
 
 **Ongoing work.** Updates, hosting, support, and changes after launch. A monthly retainer prices this heavily; a one-time build may include little of it. Neither is wrong, but you should know which you're buying.
 
+Most quotes weight these four unevenly without saying so. A budget quote is usually heavy on a template and light on everything else. A retainer is heavy on ongoing work. A one-time custom build front-loads design, engineering, and conversion, then hands you the keys. None of those is right in the abstract; the right one depends on whether you need a lasting asset or a quick presence.
+
 ## Questions that expose what you're buying
 
 The fastest way to compare two quotes is to make each one answer the same questions. Who writes the copy, you or them? Is the design custom or a template? Is the site built for speed, and can they show it? Who owns the files when it's done? What happens after launch, and what does it cost? Two quotes that looked ten times apart often turn out to be pricing completely different scopes once these are answered, and sometimes the cheaper one costs more after you add back everything it left out.
@@ -33,5 +35,7 @@ The fastest way to compare two quotes is to make each one answer the same questi
 ## Red flags in a quote
 
 A few things should make you look closer. A quote that never mentions copy usually means you're writing it, which is most of the work. One that says nothing about speed or conversion is selling you decoration. A single vague "design and development" line with no scope is hiding where the money goes. Being locked onto a platform you can't export from means you don't really own what you paid for. And a price so low that nobody could be thinking about your funnel is not a bargain, it's a different product wearing the same name, and the gap tends to show up later as [hidden costs](/guides/hidden-website-costs).
+
+One more red flag: watch how a quote talks about time. A build promised in a day or two is either a template with your text poured in, which is fine if that's what you want, or a corner being cut that you'll find later. Real design and copy take real time, and someone who quotes an honest timeline is usually someone who has built the thing before.
 
 None of this means expensive is safer. Above a certain point you're paying for team size and meetings, not a better outcome for your business. The goal is to match the price to what the site has to earn, which is the same logic behind [how to pick a price band](/guides/how-much-does-a-website-cost-2026). To see how a careful build is actually put together, [our process page](/process) walks through it, and [the pillar on what a website really costs](/insights/website-cost) maps the full range.

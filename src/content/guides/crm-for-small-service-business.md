@@ -40,6 +40,10 @@ When keeping track becomes its own job, that's the trigger, not before.
 
 There's a quiet penalty for adopting a CRM before you need one. A new system wants data entry, configuration, and a habit you don't yet have a reason to keep, so it becomes an admin chore that pulls time away from actual work and, often, gets abandoned half-populated. An abandoned CRM is worse than a spreadsheet, because now your information is split between two places and neither is trusted. Waiting until the pain is real means you'll actually stick with the tool, because it's solving something you feel every day.
 
+## The hidden cost is your attention
+
+There's one more figure that never makes the pricing page: the ongoing tax on your attention. Every tool you add is one more login, one more place to check, one more thing to keep current. Below the volume where a CRM earns its place, that tax is pure loss, and it's the reason so many early CRMs end up half-filled and ignored. The right question isn't whether a CRM could help in theory; almost anything could. It's whether the leads you're dropping today cost you more than the attention a new system will quietly demand tomorrow.
+
 ## Add lightweight first
 
 When you do move, resist the urge to buy the biggest platform. Start with the smallest tool that fixes your actual bottleneck, usually contact tracking, reminders, and follow-up in one place, and skip the enterprise features you'll never open. The goal is fewer dropped leads and less mental overhead, not a dashboard to admire. If a tool adds steps without removing them, it's the wrong tool. Grow into more only when a real limit shows up. A CRM is often where a [follow-up sequence](/guides/follow-up-sequence-service-business) finally lives, and it's worth sizing the [return realistically](/guides/automation-roi-service-business) before you buy. When you're ready, the [automation work](/automation) sets it up around how you actually operate, and [the follow-up pillar](/insights/lead-follow-up) covers the leaks it should close.

@@ -32,6 +32,10 @@ Some of AEO is invisible plumbing. FAQ markup is a small amount of code that lab
 
 AEO is a layer on top of SEO, not a replacement for it. Search optimization earns the visit; answer optimization makes the page quotable once it's found. Both sit on the same foundation: fast, well-structured pages with real content and consistent facts. If you've been doing the real SEO work, you're most of the way there, and AEO is the finishing pass that makes your effort legible to machines. The citation side of the same job, getting named as the source, is [what GEO covers](/guides/what-is-geo-generative-engine-optimization).
 
+## A ten-minute test of your own page
+
+You can audit a page yourself. Open it, read the first heading, and ask whether the sentence right below it answers that heading in plain words. Then do the same for every heading down the page. If you find yourself scrolling past setup, context, or a story to reach the actual answer, an assistant will give up in the same spot a customer does. Fix the ones that fail by moving the answer to the top of the section. This is the same thing a machine does when it decides whether your page is quotable, run by hand, and it usually surfaces two or three easy wins on any page you've had for a while.
+
 ## What a small service business should actually do
 
 You don't need every tactic. You need three. First, take your five most common customer questions and turn each into a heading with the answer in the first sentence. Second, add FAQ and business schema so those answers are machine-readable. Third, keep your facts consistent with your Google profile and directory listings, so nothing you publish contradicts anything else. Do those and skip the rest until they're done. The wider picture of how this fits AI visibility lives in [the pillar](/insights/ai-visibility), and if you want it handled end to end, the [search and AI visibility service](/seo) does exactly this.

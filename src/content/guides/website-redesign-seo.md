@@ -24,6 +24,8 @@ Search rankings aren't attached to your business. They're attached to specific p
 - **Thinned content.** Redesigns love clean, minimal pages, and a lot of ranking content gets cut in the name of tidiness. The trouble is that search engines ranked those pages partly because of the words on them. Strip the words to make it pretty and you strip the reason it ranked.
 - **Lost internal links.** The links between your pages tell search engines which pages matter and how they relate. A fresh build often rebuilds the navigation and forgets the in-content links, and pages that were held up by a web of internal links suddenly stand alone and slip.
 
+Notice that all three are mistakes of omission, not design. Nobody sets out to break their rankings; it happens because the redirect map, the old content, and the internal links are invisible in a mockup, so they're the first things forgotten when everyone is focused on how the new site looks. The fix is to treat them as launch requirements, not afterthoughts, and to put someone in charge of the plumbing while everyone else admires the paint.
+
 ## The migration checklist
 
 None of that is hard to prevent. Before the new site goes live, walk this list.

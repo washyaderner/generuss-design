@@ -20,6 +20,8 @@ Audit before you redesign, every time, because the audit is what tells you wheth
 
 The reason to audit isn't diligence for its own sake. It's money. A large share of "we need a redesign" problems turn out to be a handful of specific leaks: a slow-loading page, a first screen that doesn't say what you do, a booking flow with one too many steps. Those are fixable on the site you already have, for a fraction of a rebuild. Skip the audit and you can't tell that case apart from the one that truly needs a new foundation, so you default to the biggest, most expensive option and hope. The audit converts a guess into a decision. It's the difference between buying a solution and buying the right solution.
 
+There's a second reason, quieter but just as real: the person quoting the redesign is rarely a neutral party. A rebuild is the largest thing they can sell, so "you need a redesign" is the answer their incentives already point toward. An audit you can read yourself puts a fact base between you and that pitch. It doesn't make the designer dishonest, it just means you're deciding on evidence instead of on someone else's default. The good ones hand you that evidence gladly, because a clear-eyed client is a better client to work with than one buying on faith.
+
 ## What a real audit covers
 
 An audit worth the name measures, it doesn't just eyeball. Four areas carry most of the answer.

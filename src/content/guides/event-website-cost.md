@@ -18,15 +18,19 @@ An event website costs anywhere from a focused landing page to a full multi-day 
 
 ## The landing page band
 
-If your event is one day, one venue, and one or two ticket types, you need a focused landing page, not a website. The essentials above the fold, a program that justifies the price, a short FAQ, and a clean checkout handoff. This is $500 Launch Page territory: fast to build, fast to load, and enough to sell a straightforward event well. Many first-time events overbuild here, paying for a hub they don't need to sell a single afternoon, when a sharp landing page would have converted better anyway.
+If your event is one day, one venue, and one or two ticket types, you need a focused landing page, not a website. The essentials above the fold, a program that justifies the price, a short FAQ, and a clean checkout handoff. This is $500 Launch Page territory: fast to build, fast to load, and enough to sell a straightforward event well. Many first-time events overbuild here, paying for a hub they don't need to sell a single afternoon, when a sharp landing page would have converted better anyway. The discipline is to spend on the message and the checkout, the two things that actually move tickets, and skip the pages a one-day event will never use.
 
 ## The conference hub band
 
 A multi-day event is a different animal. Now you have a schedule across tracks and rooms, speaker profiles that each need their own detail, sponsor and vendor pages, several ticket tiers with different access, and often travel and hotel information. That's a full custom build in the $4,500+ Flagship range, because it is more site: more pages, more logic, and more that has to stay correct as details change. The cost tracks the real complexity, not a round number someone picked to sound official.
 
+## The middle, where most events land
+
+Between a single landing page and a full conference hub sits the site most events actually need: a few pages rather than one, but nothing like a multi-track program. A weekend workshop with a handful of sessions, a gala with sponsors to thank, a one-day summit with a short speaker list. You want the essentials that sell, a real schedule on the page, a sponsor or speaker section, and not much more. This is where overbuilding wastes money and underbuilding leaves sales on the table, so be honest about which features earn their place. The question is never what the site could have, it's what this event needs to sell its tickets.
+
 ## What actually drives the cost
 
-Three things move the price more than anything else. Ticketing complexity: one ticket type is cheap, tiered access with early-bird windows and group rates is not. Schedule depth: a single agenda is simple, a multi-track program that people can filter is real work. And integrations: pulling in a speaker feed, a sponsor directory, or a payment and email setup that all have to talk to each other adds build time. If you want to control cost, decide on these three before you start, not after.
+Three things move the price more than anything else. Ticketing complexity: one ticket type is cheap, tiered access with early-bird windows and group rates is not. Schedule depth: a single agenda is simple, a multi-track program that people can filter is real work. And integrations: pulling in a speaker feed, a sponsor directory, or a payment and email setup that all have to talk to each other adds build time. If you want to control cost, decide on these three before you start, not after. A useful test: for each feature you're tempted to add, ask whether a buyer would fail to purchase without it. If the answer is no, it's a later addition, not a launch requirement.
 
 ## Which band you need
 
