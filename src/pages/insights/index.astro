@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { breadcrumbs } from "../../lib/schema";
+
+const insights = (await getCollection("insights")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+const guides = await getCollection("guides");
+const countFor = (id: string) =>
+  guides.filter((g) => g.data.parent === id).length;
+
+const hubSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    breadcrumbs("https://generussdesign.com", [
+      { name: "Home", path: "/" },
+      { name: "Insights", path: "/insights" },
+    ]),
+    {
+      "@type": "ItemList",
+      "@id": "https://generussdesign.com/insights#list",
+      name: "Website and automation insights for service businesses",
+      itemListElement: insights.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: p.data.title,
+        url: `https://generussdesign.com/insights/${p.id}`,
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Insights: Straight Answers on Websites, Visibility + Automation | generuss design"
+  description="Pillar guides answering what service businesses actually ask: website cost, conversion, speed, local SEO, AI visibility, follow-up automation, and when to rebuild."
+>
+  <Nav bookingHref="/#booking" offerHref="/#offer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(hubSchema)} />
+
+  <main id="main-content">
+    <section
+      class="relative overflow-hidden px-6 sm:px-10 lg:px-16 pt-32 pb-12"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <span
+          class="inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+        >
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+          ></span>
+          Insights
+        </span>
+        <h1
+          class="text-balance text-[2.5rem] sm:text-[3.25rem] md:text-[3.75rem] font-black tracking-[-0.03em] leading-[1.05] text-text"
+        >
+          The questions you'd ask,
+          <span class="text-accent glow-text">answered straight.</span>
+        </h1>
+        <p
+          class="text-pretty mt-6 text-lg sm:text-xl text-text-muted leading-relaxed max-w-2xl mx-auto"
+        >
+          Every pillar below opens with a direct answer, then goes as deep as
+          you need. No fluff, no fake statistics, and every topic connects to a
+          free tool that measures your own situation.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="bg-bg-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          {
+            insights.map((p) => (
+              <a
+                href={`/insights/${p.id}`}
+                class="group neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+              >
+                <p class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3">
+                  Pillar &middot; {countFor(p.id)} guides
+                </p>
+                <h2 class="text-balance text-lg sm:text-xl font-bold text-text mb-2">
+                  {p.data.question}
+                </h2>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed mb-4">
+                  {p.data.directAnswer}
+                </p>
+                <p class="mt-auto text-sm font-semibold text-accent group-hover:underline underline-offset-4">
+                  Read the pillar &rarr;
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

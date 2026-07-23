@@ -1,0 +1,180 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { breadcrumbs } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const pillar = await getEntry("insights", entry.data.parent);
+const siblings = (await getCollection("guides"))
+  .filter((g) => g.data.parent === entry.data.parent && g.id !== entry.id)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title))
+  .slice(0, 4);
+
+const pageUrl = `https://generussdesign.com/guides/${entry.id}`;
+const guideSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": `${pageUrl}#article`,
+      headline: entry.data.title,
+      description: entry.data.description,
+      datePublished: entry.data.publishedAt,
+      dateModified: entry.data.updatedAt ?? entry.data.publishedAt,
+      author: { "@id": "https://generussdesign.com/#person" },
+      publisher: { "@id": "https://generussdesign.com/#org" },
+      mainEntityOfPage: pageUrl,
+    },
+    ...(entry.data.faqs.length
+      ? [
+          {
+            "@type": "FAQPage",
+            "@id": `${pageUrl}#faq`,
+            mainEntity: entry.data.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+        ]
+      : []),
+    breadcrumbs("https://generussdesign.com", [
+      { name: "Home", path: "/" },
+      { name: "Insights", path: "/insights" },
+      ...(pillar
+        ? [{ name: pillar.data.title, path: `/insights/${pillar.id}` }]
+        : []),
+      { name: entry.data.title, path: `/guides/${entry.id}` },
+    ]),
+  ],
+};
+---
+
+<BaseLayout
+  title={`${entry.data.title} | generuss design`}
+  description={entry.data.description}
+>
+  <Nav bookingHref="/#booking" offerHref="/#offer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(guideSchema)} />
+
+  <main id="main-content">
+    <article class="px-6 sm:px-10 lg:px-16 pt-32 pb-16">
+      <div class="max-w-3xl mx-auto">
+        <p
+          class="text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <a href="/insights" class="hover:underline underline-offset-4"
+            >Insights</a
+          >
+          {
+            pillar && (
+              <>
+                {" "}
+                &middot;{" "}
+                <a
+                  href={`/insights/${pillar.id}`}
+                  class="hover:underline underline-offset-4"
+                >
+                  {pillar.data.title}
+                </a>
+              </>
+            )
+          }
+        </p>
+        <h1
+          class="text-balance text-3xl sm:text-4xl md:text-[2.75rem] font-black tracking-tight leading-[1.1] text-text mb-8"
+        >
+          {entry.data.title}
+        </h1>
+
+        <div
+          class="prose-custom text-text-muted leading-relaxed space-y-5 [&_h2]:text-text [&_h2]:font-bold [&_h2]:text-2xl [&_h2]:mt-10 [&_h2]:mb-3 [&_h3]:text-text [&_h3]:font-bold [&_h3]:text-xl [&_h3]:mt-8 [&_h3]:mb-2 [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-4 [&_strong]:text-text [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5"
+        >
+          <Content />
+        </div>
+
+        <!-- Related tool CTA: every guide feeds a free tool -->
+        <div
+          class="mt-12 neu-raised rounded-2xl bg-bg p-6 sm:p-7 border-l-2 border-accent"
+        >
+          <p
+            class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-2"
+          >
+            Measure yours, free
+          </p>
+          <p class="text-pretty text-base text-text leading-relaxed mb-4">
+            Reading about it is one thing. The
+            <strong>{entry.data.relatedToolName}</strong> runs this on your actual
+            numbers in about two minutes, free.
+          </p>
+          <a
+            href={entry.data.relatedTool}
+            class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+          >
+            Run the {entry.data.relatedToolName} &rarr;
+          </a>
+        </div>
+
+        {
+          entry.data.faqs.length > 0 && (
+            <div class="mt-12">
+              <h2 class="text-balance text-2xl font-black tracking-tight text-text mb-5">
+                Quick answers
+              </h2>
+              <div class="space-y-3">
+                {entry.data.faqs.map((f) => (
+                  <details class="neu-raised rounded-2xl bg-bg p-5 group">
+                    <summary class="cursor-pointer text-base font-bold text-text list-none flex items-center justify-between gap-4">
+                      <span class="text-balance">{f.q}</span>
+                      <span class="text-accent shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none">
+                        +
+                      </span>
+                    </summary>
+                    <p class="text-pretty mt-2.5 text-sm text-text-muted leading-relaxed">
+                      {f.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        {
+          siblings.length > 0 && (
+            <div class="mt-12">
+              <p class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-[0.2em] mb-4">
+                More in this pillar
+              </p>
+              <div class="flex flex-wrap gap-3">
+                {siblings.map((g) => (
+                  <a
+                    href={`/guides/${g.id}`}
+                    class="rounded-full neu-raised bg-bg px-4 py-2.5 text-sm text-text-muted hover:text-accent transition-colors min-h-[44px] inline-flex items-center"
+                  >
+                    {g.data.title} &rarr;
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>

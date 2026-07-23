@@ -24,4 +24,32 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// AEO layer (pharallax recipe): insights are pillars, guides are their
+// children. Every guide names one parent pillar and one free tool.
+const insights = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/insights" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    question: z.string(),
+    directAnswer: z.string(),
+    publishedAt: z.string(),
+    updatedAt: z.string().optional(),
+  }),
+});
+
+const guides = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/guides" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    parent: z.string(),
+    relatedTool: z.string(),
+    relatedToolName: z.string(),
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    publishedAt: z.string(),
+    updatedAt: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, insights, guides };

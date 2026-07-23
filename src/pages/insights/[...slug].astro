@@ -1,0 +1,134 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { breadcrumbs } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const insights = await getCollection("insights");
+  return insights.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const children = (await getCollection("guides"))
+  .filter((g) => g.data.parent === entry.id)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const pageUrl = `https://generussdesign.com/insights/${entry.id}`;
+const pillarSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": `${pageUrl}#article`,
+      headline: entry.data.title,
+      description: entry.data.description,
+      datePublished: entry.data.publishedAt,
+      dateModified: entry.data.updatedAt ?? entry.data.publishedAt,
+      author: { "@id": "https://generussdesign.com/#person" },
+      publisher: { "@id": "https://generussdesign.com/#org" },
+      mainEntityOfPage: pageUrl,
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: entry.data.question,
+          acceptedAnswer: { "@type": "Answer", text: entry.data.directAnswer },
+        },
+      ],
+    },
+    breadcrumbs("https://generussdesign.com", [
+      { name: "Home", path: "/" },
+      { name: "Insights", path: "/insights" },
+      { name: entry.data.title, path: `/insights/${entry.id}` },
+    ]),
+  ],
+};
+---
+
+<BaseLayout
+  title={`${entry.data.title} | generuss design`}
+  description={entry.data.description}
+>
+  <Nav bookingHref="/#booking" offerHref="/#offer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(pillarSchema)} />
+
+  <main id="main-content">
+    <article class="px-6 sm:px-10 lg:px-16 pt-32 pb-16">
+      <div class="max-w-3xl mx-auto">
+        <p
+          class="text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+        >
+          <a href="/insights" class="hover:underline underline-offset-4"
+            >Insights</a
+          > &middot; pillar
+        </p>
+        <h1
+          class="text-balance text-3xl sm:text-4xl md:text-[2.75rem] font-black tracking-tight leading-[1.1] text-text mb-6"
+        >
+          {entry.data.question}
+        </h1>
+
+        <!-- Direct answer first: the AEO move -->
+        <div
+          class="neu-raised rounded-2xl bg-bg p-6 sm:p-7 mb-10 border-l-2 border-accent"
+        >
+          <p
+            class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-2"
+          >
+            Direct answer
+          </p>
+          <p class="text-pretty text-base sm:text-lg text-text leading-relaxed">
+            {entry.data.directAnswer}
+          </p>
+        </div>
+
+        <div
+          class="prose-custom text-text-muted leading-relaxed space-y-5 [&_h2]:text-text [&_h2]:font-bold [&_h2]:text-2xl [&_h2]:mt-10 [&_h2]:mb-3 [&_h3]:text-text [&_h3]:font-bold [&_h3]:text-xl [&_h3]:mt-8 [&_h3]:mb-2 [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-4 [&_strong]:text-text [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5"
+        >
+          <Content />
+        </div>
+
+        {
+          children.length > 0 && (
+            <div class="mt-14">
+              <h2 class="text-balance text-2xl font-black tracking-tight text-text mb-6">
+                Go deeper on this
+              </h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {children.map((g) => (
+                  <a
+                    href={`/guides/${g.id}`}
+                    class="group neu-raised rounded-2xl bg-bg p-5 no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+                  >
+                    <h3 class="text-balance text-base font-bold text-text mb-1.5">
+                      {g.data.title}
+                    </h3>
+                    <p class="text-sm text-text-muted leading-relaxed mb-3">
+                      {g.data.description}
+                    </p>
+                    <p class="text-sm font-semibold text-accent group-hover:underline underline-offset-4">
+                      Read it &rarr;
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>

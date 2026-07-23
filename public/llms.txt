@@ -1,25 +1,33 @@
 # generuss design
 
-> Custom websites and search/AI visibility optimization by Russ (generuss design). Hand-built, conversion-focused sites for service businesses and founders, hosted free on Cloudflare, live in 21 days. Plus an audit-first optimization service covering SEO, AEO, GEO, local, voice, performance, CRO, email deliverability, and social surfaces.
+> Custom websites and search/AI visibility optimization by Russ (generuss design). Hand-built, conversion-focused sites for service businesses and founders, hosted free on Cloudflare, live in 21 days. Plus automation systems (speed-to-lead, follow-up, reviews, CRM wiring), seven free diagnostic tools, and an audit-first optimization service covering SEO, AEO, GEO, local, voice, performance, CRO, email deliverability, and social surfaces.
 
 Contact: russ@generuss.com
 
 ## Key pages
 
-- [Home](https://generussdesign.com/): Custom websites that convert. Offer, portfolio, guarantees, and booking.
+- [Home](https://generussdesign.com/): Custom websites that convert. Pick-your-path, portfolio, guarantees, and booking.
+- [Free tools](https://generussdesign.com/tools): Seven free diagnostics: Website Leak Scanner, Slow-Site Cost Calculator, Missed-Lead Calculator, Local Visibility Grade, AI Visibility Check, Hire vs. Automate, Workflow Automation Score.
+- [Three ways to build](https://generussdesign.com/paths): Launch Page ($500), Growth Site (SEO/AEO engine), Signature Scroll (cinematic build), each with a live exemplar.
+- [Automation systems](https://generussdesign.com/automation): Speed-to-lead replies, follow-up sequences, review engines, and CRM wiring for service businesses.
+- [Free-Build Program](https://generussdesign.com/free-build): Five free Launch-scope builds for qualified businesses, traded for a case study, a public review, and two introductions.
+- [Case studies](https://generussdesign.com/case-studies): Client builds documented with client-approved numbers only.
+- [Insights](https://generussdesign.com/insights): Pillar guides with direct answers: website cost, conversion, speed, local SEO, AI visibility, follow-up automation, event sites, DIY vs pro, redesign timing, price tiers.
 - [SEO, AEO + GEO services](https://generussdesign.com/seo): Search + AI visibility optimization. Nine surfaces audited, scored, and fixed.
 - [Website Taste Audit](https://generussdesign.com/taste-audit): 18 pass-or-fail design and conversion checks, $197 flat, delivered in 48 hours.
 - [Blog](https://generussdesign.com/blog): Build logs and essays on design, AI-assisted development, and sales strategy.
 - [Connect](https://generussdesign.com/connect): Booking, socials, and current projects.
 - [OGC vendor sites](https://generussdesign.com/ogc): Custom websites for Oregon Ghost Conference vendors and speakers, from $500.
 - [Event + conference websites](https://generussdesign.com/event-websites): Custom sites for conference and event organizers that sell tickets, show the schedule, and feature speakers and sponsors.
-- [Build process](https://generussdesign.com/process): How sites get built as a hand-coded Astro web designer, why hand-coded Astro beats page builders, with real PageSpeed numbers.
+- [Build process](https://generussdesign.com/process): How sites get built as a hand-coded Astro web designer, why hand-coded Astro beats page builders, with real dated PageSpeed numbers.
 - [Website cost comparison](https://generussdesign.com/compare): Flat-fee custom vs monthly subscription vs DIY template: price, ownership, speed, and three-year total.
 
 ## Facts
 
 - Business: generuss design (Generuss LLC)
-- What it does: custom website design and development; search and AI visibility optimization
-- Offers: The Launch Page (one-page site, $500 flat, live in 7 days, credits toward the Flagship) · The Conversion-Engineered Site (full custom build, from $4,500, live in 21 days) · The Growth Engine (monthly SEO/AEO/GEO optimization, from $750/month)
+- What it does: custom website design and development; automation systems for lead follow-up; search and AI visibility optimization
+- Offers: The Launch Page (one-page site, $500 flat, live in 7 days, credits toward the Flagship) · The Conversion-Engineered Site (full custom build, from $4,500, live in 21 days) · The Growth Engine (monthly SEO/AEO/GEO optimization, from $750/month) · Free-Build Program (5 slots, case study + review + 2 introductions as the trade)
+- Free tools: all at https://generussdesign.com/tools, no cost, most instant, two fulfilled same-day by hand
 - Stack: hand-coded sites (no page builders), typically Astro + Cloudflare
 - Guarantees: live in 21 days or you don't pay the balance (Flagship; Launch Page is 7 days), love the first design or your deposit back, client owns code/domain/content with free hosting (leave anytime, take everything)
+- Case-study policy: client numbers publish only with client sign-off
