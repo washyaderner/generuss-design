@@ -1,0 +1,259 @@
+---
+import ToolShell from "../../components/ToolShell.astro";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+---
+
+<ToolShell
+  title="Slow-Site Cost Calculator: What Slow Load Time Costs Monthly | generuss design"
+  description="Turn your load time into a monthly dollar figure using your own traffic and sale numbers. Every assumption visible and adjustable. Free, instant, in the browser."
+  kicker="Free calculator · instant"
+  heading="What's your slow site"
+  headingAccent="costing you?"
+  sub="Your traffic, your average sale, your load time. Every assumption sits in the open and you can adjust all of them, so the number you get is yours, not a marketing stat."
+  slug="slow-site-cost"
+  toolName="Slow-Site Cost Calculator"
+  related={[
+    { name: "Website Leak Scanner", href: "/tools/website-leak-scanner" },
+    { name: "Missed-Lead Calculator", href: "/tools/missed-lead-calculator" },
+  ]}
+  ctaHeading="Not loving that number?"
+  ctaSub="Speed is the most fixable leak there is: my builds ship static-first and publish dated speed receipts. Limited builds per month, free call, real plan either way."
+>
+  <section class="px-6 sm:px-10 lg:px-16 pb-4">
+    <div class="max-w-2xl mx-auto">
+      <div class="neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+        <div class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                for="ssc-visitors"
+                class="block text-sm text-text-muted mb-1"
+                >Monthly website visitors</label
+              >
+              <input
+                type="number"
+                id="ssc-visitors"
+                min="0"
+                value="1000"
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+              />
+            </div>
+            <div>
+              <label for="ssc-value" class="block text-sm text-text-muted mb-1"
+                >Average sale or job value ($)</label
+              >
+              <input
+                type="number"
+                id="ssc-value"
+                min="0"
+                value="500"
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="ssc-conv" class="block text-sm text-text-muted mb-1"
+                >Visitor-to-lead rate (%)</label
+              >
+              <input
+                type="number"
+                id="ssc-conv"
+                min="0"
+                max="100"
+                step="0.1"
+                value="3"
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+              />
+            </div>
+            <div>
+              <label for="ssc-load" class="block text-sm text-text-muted mb-1"
+                >Your load time on a phone (seconds)</label
+              >
+              <input
+                type="number"
+                id="ssc-load"
+                min="0"
+                step="0.5"
+                value="5"
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+              />
+              <p class="mt-1.5 text-xs text-text-muted/70">
+                Don't know it? <a
+                  href="/tools/website-leak-scanner"
+                  class="text-accent underline underline-offset-2"
+                  >Request the leak scan</a
+                > and I'll measure it for you.
+              </p>
+            </div>
+          </div>
+          <div>
+            <label for="ssc-decay" class="block text-sm text-text-muted mb-1"
+              >Assumption: conversion lost per extra second beyond 2s (<span
+                id="ssc-decay-val"
+                class="text-accent font-mono">5</span
+              >%)</label
+            >
+            <input
+              type="range"
+              id="ssc-decay"
+              min="2"
+              max="10"
+              step="1"
+              value="5"
+              class="w-full accent-[#00FFEF]"
+            />
+            <p class="mt-1.5 text-xs text-text-muted/70">
+              This is the one assumption in the math. Industry studies put it
+              between roughly 2% and 10% per second depending on your audience
+              and device mix, so drag it wherever you find credible and watch
+              the number move.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-7 neu-inset rounded-2xl p-6 text-center">
+          <p
+            class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-[0.2em] mb-2"
+          >
+            Estimated revenue lost to load time
+          </p>
+          <p class="text-4xl sm:text-5xl font-black text-accent glow-text">
+            <span id="ssc-monthly">$0</span><span
+              class="text-lg text-text-muted font-bold">/mo</span
+            >
+          </p>
+          <p class="mt-2 text-sm text-text-muted font-mono">
+            <span id="ssc-yearly">$0</span> a year, at your own numbers
+          </p>
+          <p
+            id="ssc-detail"
+            class="text-pretty mt-3 text-xs text-text-muted/80"
+          >
+          </p>
+        </div>
+      </div>
+
+      <!-- Email gate: full report -->
+      <div class="mt-8 neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+        <p
+          class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+        >
+          Want the full breakdown?
+        </p>
+        <h3 class="text-balance text-lg font-bold text-text mb-1.5">
+          Get your numbers as a report, plus the fix list
+        </h3>
+        <p class="text-pretty text-sm text-text-muted leading-relaxed mb-4">
+          I'll send your calculation with the exact speed fixes that matter most
+          for service-business sites, ranked by effort against impact. One
+          email, no drip campaign.
+        </p>
+        <form
+          id="ssc-form"
+          action={`https://formspree.io/f/${formspreeId}`}
+          method="POST"
+          class="flex flex-col sm:flex-row gap-3"
+        >
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+          <input
+            type="hidden"
+            name="_subject"
+            value="Slow-Site Cost report request"
+          />
+          <input type="hidden" name="source" value="slow-site-cost" />
+          <input type="hidden" name="calc_inputs" id="ssc-payload" value="" />
+          <label class="sr-only" for="ssc-email">Email address</label>
+          <input
+            type="email"
+            id="ssc-email"
+            name="email"
+            required
+            placeholder="you@yourbusiness.com"
+            class="w-full flex-1 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+          />
+          <button
+            type="submit"
+            class="rounded-full bg-accent px-5 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+          >
+            Send my report &rarr;
+          </button>
+        </form>
+        <p
+          id="ssc-form-success"
+          class="hidden text-sm text-accent mt-3 font-mono"
+        >
+          On its way. Check your inbox today.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+    const fmt = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
+
+    function calc() {
+      const visitors = Number($("ssc-visitors").value) || 0;
+      const value = Number($("ssc-value").value) || 0;
+      const conv = (Number($("ssc-conv").value) || 0) / 100;
+      const load = Number($("ssc-load").value) || 0;
+      const decay = (Number($("ssc-decay").value) || 0) / 100;
+
+      document.getElementById("ssc-decay-val")!.textContent =
+        $("ssc-decay").value;
+
+      // Conversion lost compounds per extra second beyond a 2s baseline.
+      const extraSeconds = Math.max(0, load - 2);
+      const lostFraction = 1 - Math.pow(1 - decay, extraSeconds);
+      const monthly = visitors * conv * value * lostFraction;
+
+      document.getElementById("ssc-monthly")!.textContent = fmt(monthly);
+      document.getElementById("ssc-yearly")!.textContent = fmt(monthly * 12);
+      document.getElementById("ssc-detail")!.textContent =
+        extraSeconds === 0
+          ? "At 2 seconds or under, load time is not your leak. Check the other four."
+          : `${extraSeconds.toFixed(1)} extra seconds beyond the 2s baseline, losing an estimated ${(lostFraction * 100).toFixed(0)}% of the leads your traffic should produce.`;
+
+      ($("ssc-payload") as HTMLInputElement).value = JSON.stringify({
+        visitors,
+        avg_value: value,
+        conv_rate_pct: conv * 100,
+        load_seconds: load,
+        decay_pct_per_s: decay * 100,
+        est_monthly_loss: Math.round(monthly),
+      });
+    }
+
+    ["ssc-visitors", "ssc-value", "ssc-conv", "ssc-load", "ssc-decay"].forEach(
+      (id) => $(id).addEventListener("input", calc),
+    );
+    calc();
+
+    const sscForm = document.getElementById("ssc-form") as HTMLFormElement;
+    const sscOk = document.getElementById("ssc-form-success");
+    sscForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch(sscForm.action, {
+          method: "POST",
+          body: new FormData(sscForm),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          sscForm.classList.add("hidden");
+          sscOk?.classList.remove("hidden");
+        } else alert("Something went wrong. Please try again.");
+      } catch {
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</ToolShell>

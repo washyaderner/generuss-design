@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { breadcrumbs } from "../../lib/schema";
+
+const tools = [
+  {
+    slug: "website-leak-scanner",
+    badge: "FLAGSHIP · SAME-DAY",
+    name: "Website Leak Scanner",
+    hook: "Your five biggest leaks, found on your actual site",
+    body: "Drop your URL. I run a full teardown against the five patterns that kill service-business conversion and send your personalized report the same day.",
+  },
+  {
+    slug: "slow-site-cost",
+    badge: "INSTANT",
+    name: "Slow-Site Cost Calculator",
+    hook: "What's your slow site costing you every month?",
+    body: "Your traffic, your average sale, your load time. The calculator turns seconds into a monthly dollar figure you can't unsee.",
+  },
+  {
+    slug: "missed-lead-calculator",
+    badge: "INSTANT",
+    name: "Missed-Lead Calculator",
+    hook: "The price of replying in hours instead of minutes",
+    body: "Leads decay fast. Put in your volume, close rate, and current response time and see what slow follow-up costs per month.",
+  },
+  {
+    slug: "local-visibility",
+    badge: "INSTANT",
+    name: "Local Visibility Grade",
+    hook: "Score your Google presence in two minutes",
+    body: "Twelve yes/no checks on your Business Profile, reviews, and citations. Get a letter grade and the exact gaps to close first.",
+  },
+  {
+    slug: "ai-visibility",
+    badge: "SAME-DAY",
+    name: "AI Visibility Check",
+    hook: "Does ChatGPT recommend your business?",
+    body: "Customers ask AI for recommendations now. I test the actual prompts your customers use and send you what the machines say, same day.",
+  },
+  {
+    slug: "hire-vs-automate",
+    badge: "INSTANT",
+    name: "Hire vs. Automate",
+    hook: "The honest math on your most annoying task",
+    body: "Compare a hire against an automation over three years: true costs, the crossover point, and which one your volume actually justifies.",
+  },
+  {
+    slug: "automation-score",
+    badge: "INSTANT",
+    name: "Workflow Automation Score",
+    hook: "How much of your week is recoverable?",
+    body: "Rate one workflow on four dimensions and get a 0 to 100 automation score, plus the hours and dollars it's currently eating annually.",
+  },
+];
+
+const hubSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    breadcrumbs("https://generussdesign.com", [
+      { name: "Home", path: "/" },
+      { name: "Free tools", path: "/tools" },
+    ]),
+    {
+      "@type": "ItemList",
+      "@id": "https://generussdesign.com/tools#list",
+      name: "Free website and automation tools",
+      itemListElement: tools.map((t, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: t.name,
+        url: `https://generussdesign.com/tools/${t.slug}`,
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Free Website + Automation Tools | generuss design"
+  description="Seven free tools that put a number on what your website is costing you: leak scanner, slow-site cost calculator, local visibility grade, AI visibility check, and more. No drip campaigns."
+>
+  <Nav bookingHref="/#booking" offerHref="/#offer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(hubSchema)} />
+
+  <main id="main-content">
+    <section
+      class="relative overflow-hidden px-6 sm:px-10 lg:px-16 pt-32 pb-12"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <span
+          class="inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+        >
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+          ></span>
+          Free tools
+        </span>
+        <h1
+          class="text-balance text-[2.5rem] sm:text-[3.25rem] md:text-[3.75rem] font-black tracking-[-0.03em] leading-[1.05] text-text"
+        >
+          Put a number on
+          <span class="text-accent glow-text">what it's costing you.</span>
+        </h1>
+        <p
+          class="text-pretty mt-6 text-lg sm:text-xl text-text-muted leading-relaxed max-w-2xl mx-auto"
+        >
+          Seven free tools that measure your site and your follow-up with your
+          own numbers, not generic stats. Most run instantly in the browser. The
+          two marked same-day get done by hand, by me, on your actual business.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="bg-bg-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+        >
+          {
+            tools.map((t) => (
+              <a
+                href={`/tools/${t.slug}`}
+                class="group neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+              >
+                <p class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3">
+                  {t.badge}
+                </p>
+                <h2 class="text-balance text-lg sm:text-xl font-bold text-text mb-1.5">
+                  {t.name}
+                </h2>
+                <p class="text-sm font-semibold text-text-muted mb-2">
+                  {t.hook}
+                </p>
+                <p class="text-sm text-text-muted/80 leading-relaxed mb-4">
+                  {t.body}
+                </p>
+                <p class="mt-auto text-sm font-semibold text-accent group-hover:underline underline-offset-4">
+                  Run it free &rarr;
+                </p>
+              </a>
+            ))
+          }
+        </div>
+
+        <p
+          class="text-pretty mt-10 text-center text-sm text-text-muted/80 max-w-2xl mx-auto"
+        >
+          The honest version of why these are free: some of you will find a
+          problem worth hiring me to fix. No drip campaigns, no gated
+          bait-and-switch. The tools tell the truth even when the truth is that
+          your site is fine.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

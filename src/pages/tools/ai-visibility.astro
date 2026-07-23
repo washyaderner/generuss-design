@@ -1,0 +1,201 @@
+---
+import ToolShell from "../../components/ToolShell.astro";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+---
+
+<ToolShell
+  title="AI Visibility Check: Does ChatGPT Recommend Your Business? | generuss design"
+  description="Customers ask ChatGPT and Perplexity for recommendations now. I run the actual prompts your customers use and send you what the AIs say about you and your competitors, same day. Free."
+  kicker="Free check · same-day"
+  heading="Does ChatGPT"
+  headingAccent="recommend you?"
+  sub="A growing slice of your customers doesn't Google anymore; they ask an AI who to hire. Those answers come from somewhere. This check finds out whether they come from you or your competitor."
+  slug="ai-visibility"
+  toolName="AI Visibility Check"
+  related={[
+    { name: "Local Visibility Grade", href: "/tools/local-visibility" },
+    { name: "Website Leak Scanner", href: "/tools/website-leak-scanner" },
+  ]}
+  ctaHeading="Invisible to the machines?"
+  ctaSub="AI visibility is buildable: entity signals, answer-first content, schema depth, llms.txt. It's a core Growth Site surface. Free call, real plan either way."
+>
+  <section class="px-6 sm:px-10 lg:px-16 pb-4">
+    <div class="max-w-xl mx-auto">
+      <form
+        id="aiv-form"
+        action={`https://formspree.io/f/${formspreeId}`}
+        method="POST"
+        class="neu-raised rounded-3xl bg-bg p-6 sm:p-8 flex flex-col gap-3"
+      >
+        <input
+          type="text"
+          name="_gotcha"
+          style="display:none"
+          tabindex="-1"
+          autocomplete="off"
+        />
+        <input
+          type="hidden"
+          name="_subject"
+          value="AI Visibility Check request"
+        />
+        <input type="hidden" name="source" value="ai-visibility" />
+        <div>
+          <label for="aiv-business" class="block text-sm text-text-muted mb-1"
+            >Business name + city</label
+          >
+          <input
+            type="text"
+            id="aiv-business"
+            name="business"
+            required
+            placeholder="Acme Plumbing, Portland OR"
+            class="w-full rounded-full bg-bg px-5 py-3.5 text-base text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[48px]"
+          />
+        </div>
+        <div>
+          <label for="aiv-service" class="block text-sm text-text-muted mb-1"
+            >What customers would ask for</label
+          >
+          <input
+            type="text"
+            id="aiv-service"
+            name="service_query"
+            required
+            placeholder="emergency plumber, wedding photographer, tax help..."
+            class="w-full rounded-full bg-bg px-5 py-3.5 text-base text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[48px]"
+          />
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <label class="sr-only" for="aiv-email">Email address</label>
+          <input
+            type="email"
+            id="aiv-email"
+            name="email"
+            required
+            placeholder="you@yourbusiness.com"
+            class="w-full flex-1 rounded-full bg-bg px-5 py-3.5 text-base text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[48px]"
+          />
+          <label class="sr-only" for="aiv-stage">Business stage</label>
+          <select
+            id="aiv-stage"
+            name="business_stage"
+            required
+            class="w-full sm:w-auto rounded-full bg-bg px-5 py-3.5 text-base text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[48px] appearance-none"
+          >
+            <option value="" disabled selected>Business stage</option>
+            <option value="established">Revenue coming in</option>
+            <option value="early">Early, pre-revenue</option>
+            <option value="exploring">Just exploring</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[48px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+        >
+          Check my AI visibility &rarr;
+        </button>
+        <p class="text-center text-xs text-text-muted/60 font-mono">
+          Free. Run by hand on the real assistants. Same-day delivery.
+        </p>
+      </form>
+      <p
+        id="aiv-success"
+        class="hidden text-center text-sm text-accent mt-5 font-mono"
+      >
+        Request in. Your AI visibility report lands in your inbox same day.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+    <div class="max-w-3xl mx-auto">
+      <h2
+        class="text-balance text-2xl sm:text-3xl font-black tracking-tight text-center mb-10"
+      >
+        What the report <span class="text-accent">covers.</span>
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="neu-inset rounded-2xl p-6">
+          <p
+            class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-2"
+          >
+            The prompts
+          </p>
+          <p class="text-pretty text-sm text-text-muted leading-relaxed">
+            I ask ChatGPT and Perplexity the exact questions your customers ask:
+            who to hire, who's best nearby, who to trust for your service,
+            phrased the way real people phrase it.
+          </p>
+        </div>
+        <div class="neu-inset rounded-2xl p-6">
+          <p
+            class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-2"
+          >
+            The verdict
+          </p>
+          <p class="text-pretty text-sm text-text-muted leading-relaxed">
+            Whether you appear, what the AI actually says about you, and who
+            gets recommended in your place when you don't show up.
+          </p>
+        </div>
+        <div class="neu-inset rounded-2xl p-6">
+          <p
+            class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-2"
+          >
+            The why
+          </p>
+          <p class="text-pretty text-sm text-text-muted leading-relaxed">
+            The sources the assistants leaned on for their answer, which is
+            exactly where your visibility gap lives: profiles, reviews, content,
+            entity signals.
+          </p>
+        </div>
+        <div class="neu-inset rounded-2xl p-6">
+          <p
+            class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-2"
+          >
+            The fix list
+          </p>
+          <p class="text-pretty text-sm text-text-muted leading-relaxed">
+            Three moves, ranked, to make the machines start citing you. Do them
+            yourself or have me do them; the list is yours either way.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const aivForm = document.getElementById("aiv-form") as HTMLFormElement;
+    const aivOk = document.getElementById("aiv-success");
+    const aivBtn = aivForm?.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
+    aivForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      aivBtn.disabled = true;
+      aivBtn.textContent = "Submitting...";
+      try {
+        const res = await fetch(aivForm.action, {
+          method: "POST",
+          body: new FormData(aivForm),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          aivForm.classList.add("hidden");
+          aivOk?.classList.remove("hidden");
+        } else {
+          aivBtn.disabled = false;
+          aivBtn.textContent = "Check my AI visibility →";
+          alert("Something went wrong. Please try again.");
+        }
+      } catch {
+        aivBtn.disabled = false;
+        aivBtn.textContent = "Check my AI visibility →";
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</ToolShell>

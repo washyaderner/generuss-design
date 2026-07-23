@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { breadcrumbs } from "../lib/schema";
+
+interface RelatedTool {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  kicker: string;
+  heading: string;
+  headingAccent: string;
+  sub: string;
+  slug: string;
+  toolName: string;
+  related?: RelatedTool[];
+  ctaHeading?: string;
+  ctaSub?: string;
+}
+
+const {
+  title,
+  description,
+  kicker,
+  heading,
+  headingAccent,
+  sub,
+  slug,
+  toolName,
+  related = [],
+  ctaHeading = "Want it fixed instead of measured?",
+  ctaSub = "I take on a limited number of builds each month, one at a time, at full attention. The call is free and you leave with a real plan either way.",
+} = Astro.props;
+
+const toolSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": `https://generussdesign.com/tools/${slug}#tool`,
+      name: toolName,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description,
+      url: `https://generussdesign.com/tools/${slug}`,
+      provider: { "@id": "https://generussdesign.com/#org" },
+    },
+    breadcrumbs("https://generussdesign.com", [
+      { name: "Home", path: "/" },
+      { name: "Free tools", path: "/tools" },
+      { name: toolName, path: `/tools/${slug}` },
+    ]),
+  ],
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <Nav bookingHref="/#booking" offerHref="/#offer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(toolSchema)} />
+
+  <main id="main-content">
+    <section
+      class="relative overflow-hidden px-6 sm:px-10 lg:px-16 pt-32 pb-10"
+    >
+      <div class="relative z-10 w-full max-w-3xl mx-auto text-center">
+        <span
+          class="inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+        >
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+          ></span>
+          {kicker}
+        </span>
+        <h1
+          class="text-balance text-[2.25rem] sm:text-[3rem] md:text-[3.5rem] font-black tracking-[-0.03em] leading-[1.05] text-text"
+        >
+          {heading}
+          <span class="text-accent glow-text">{headingAccent}</span>
+        </h1>
+        <p
+          class="text-pretty mt-5 text-base sm:text-lg text-text-muted leading-relaxed max-w-2xl mx-auto"
+        >
+          {sub}
+        </p>
+      </div>
+    </section>
+
+    <slot />
+
+    <!-- CTA formula: clear ask + exact next step + honest capacity -->
+    <section class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2
+          class="text-balance text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-[1.05] mb-4"
+        >
+          {ctaHeading}
+        </h2>
+        <p
+          class="text-pretty text-sm sm:text-base text-text-muted mb-7 max-w-xl mx-auto"
+        >
+          {ctaSub}
+        </p>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="/#booking"
+            class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Book the free call &rarr;
+          </a>
+          <a
+            href="/free-build"
+            class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+          >
+            Or apply for a free build
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {
+      related.length > 0 && (
+        <section class="bg-bg-secondary px-6 sm:px-10 lg:px-16 py-12">
+          <div class="max-w-4xl mx-auto">
+            <p class="text-center text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-[0.2em] mb-6">
+              Keep measuring
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-3">
+              {related.map((r) => (
+                <a
+                  href={r.href}
+                  class="rounded-full neu-raised bg-bg px-5 py-2.5 text-sm text-text-muted hover:text-accent transition-colors min-h-[44px] inline-flex items-center"
+                >
+                  {r.name} &rarr;
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+  </main>
+
+  <Footer />
+</BaseLayout>

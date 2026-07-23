@@ -1,0 +1,290 @@
+---
+import ToolShell from "../../components/ToolShell.astro";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+
+const dims = [
+  {
+    id: "repetitive",
+    label: "How repetitive is it?",
+    low: "Rare / ad hoc",
+    high: "Same steps, daily",
+  },
+  {
+    id: "rulebased",
+    label: "How rule-based is it?",
+    low: "Pure judgment calls",
+    high: "Clear if-this-then-that",
+  },
+  {
+    id: "digital",
+    label: "How digital is it?",
+    low: "Paper and phone calls",
+    high: "Fully in software",
+  },
+  {
+    id: "volume",
+    label: "How much of your week does it eat?",
+    low: "Under an hour",
+    high: "A day or more",
+  },
+];
+---
+
+<ToolShell
+  title="Workflow Automation Score: Hours + Dollars Recoverable | generuss design"
+  description="Rate one workflow on four sliders and get a 0 to 100 automation score, the tier it falls in, and the hours and dollars it eats annually. Free and instant."
+  kicker="Free assessment · instant"
+  heading="How automatable is the thing"
+  headingAccent="you hate doing?"
+  sub="Pick the workflow that makes you sigh. Four sliders, honest answers, and you get a score plus the annual hours and dollars it's quietly eating."
+  slug="automation-score"
+  toolName="Workflow Automation Score"
+  related={[
+    { name: "Hire vs. Automate", href: "/tools/hire-vs-automate" },
+    { name: "Missed-Lead Calculator", href: "/tools/missed-lead-calculator" },
+  ]}
+  ctaHeading="Score above 70?"
+  ctaSub="That workflow is automation gold and every month it stays manual costs you the number above. Fixed-scope build, documented, maintained. Free call, real plan either way."
+>
+  <section class="px-6 sm:px-10 lg:px-16 pb-4">
+    <div class="max-w-2xl mx-auto">
+      <div class="neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+        <div class="mb-5">
+          <label for="was-workflow" class="block text-sm text-text-muted mb-1"
+            >The workflow (name it)</label
+          >
+          <input
+            type="text"
+            id="was-workflow"
+            placeholder="Invoicing, lead intake, scheduling, reporting..."
+            class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+          />
+        </div>
+
+        <div class="space-y-5">
+          {
+            dims.map((d) => (
+              <div>
+                <label
+                  for={`was-${d.id}`}
+                  class="block text-sm text-text-muted mb-1"
+                >
+                  {d.label}
+                  <span class="text-accent font-mono" id={`was-${d.id}-val`}>
+                    5
+                  </span>
+                  /10
+                </label>
+                <input
+                  type="range"
+                  id={`was-${d.id}`}
+                  min="1"
+                  max="10"
+                  value="5"
+                  class="w-full accent-[#00FFEF]"
+                />
+                <div class="flex justify-between text-[0.65rem] font-mono text-text-muted/60 mt-1">
+                  <span>{d.low}</span>
+                  <span>{d.high}</span>
+                </div>
+              </div>
+            ))
+          }
+          <div>
+            <label for="was-rate" class="block text-sm text-text-muted mb-1"
+              >What an hour of that time is worth ($)</label
+            >
+            <input
+              type="number"
+              id="was-rate"
+              min="0"
+              value="50"
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+            />
+          </div>
+        </div>
+
+        <div class="mt-7 neu-inset rounded-2xl p-6 text-center">
+          <p
+            class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-[0.2em] mb-2"
+          >
+            Automation score
+          </p>
+          <p
+            id="was-score"
+            class="text-5xl sm:text-6xl font-black text-accent glow-text leading-none"
+          >
+            50/100
+          </p>
+          <p id="was-tier" class="mt-2 text-sm text-text font-semibold"></p>
+          <p class="mt-3 text-sm text-text-muted font-mono">
+            ~<span id="was-hours">0</span> hrs/yr eaten &middot;
+            <span id="was-value">$0</span>/yr at your rate
+          </p>
+          <p
+            id="was-note"
+            class="text-pretty mt-3 text-xs text-text-muted/80 max-w-md mx-auto"
+          >
+          </p>
+        </div>
+      </div>
+
+      <!-- Email gate -->
+      <div class="mt-8 neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+        <p
+          class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+        >
+          Want the build map for this workflow?
+        </p>
+        <h3 class="text-balance text-lg font-bold text-text mb-1.5">
+          Get your score back with the automation blueprint
+        </h3>
+        <p class="text-pretty text-sm text-text-muted leading-relaxed mb-4">
+          I'll send your result with the specific automation shape that fits
+          this workflow, the tools I'd wire, and a realistic price band. One
+          email, no drip campaign.
+        </p>
+        <form
+          id="was-form"
+          action={`https://formspree.io/f/${formspreeId}`}
+          method="POST"
+          class="flex flex-col sm:flex-row gap-3"
+        >
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+          <input
+            type="hidden"
+            name="_subject"
+            value="Automation Score blueprint request"
+          />
+          <input type="hidden" name="source" value="automation-score" />
+          <input type="hidden" name="calc_inputs" id="was-payload" value="" />
+          <label class="sr-only" for="was-email">Email address</label>
+          <input
+            type="email"
+            id="was-email"
+            name="email"
+            required
+            placeholder="you@yourbusiness.com"
+            class="w-full flex-1 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+          />
+          <button
+            type="submit"
+            class="rounded-full bg-accent px-5 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+          >
+            Send my blueprint &rarr;
+          </button>
+        </form>
+        <p
+          id="was-form-success"
+          class="hidden text-sm text-accent mt-3 font-mono"
+        >
+          On its way. Check your inbox today.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const w = (id: string) => document.getElementById(id) as HTMLInputElement;
+
+    // Weighted dims mirror how automatable work actually scores:
+    // rule-based logic and repetition dominate; volume converts to hours.
+    const WEIGHTS: Record<string, number> = {
+      repetitive: 1.25,
+      rulebased: 1.35,
+      digital: 1.15,
+      volume: 0.25,
+    };
+    const MAX = Object.values(WEIGHTS).reduce((a, b) => a + b * 10, 0);
+
+    function calcWas() {
+      let weighted = 0;
+      const vals: Record<string, number> = {};
+      for (const id of ["repetitive", "rulebased", "digital", "volume"]) {
+        const v = Number(w(`was-${id}`).value) || 1;
+        vals[id] = v;
+        document.getElementById(`was-${id}-val`)!.textContent = String(v);
+        weighted += v * WEIGHTS[id];
+      }
+      const score = Math.round((weighted / MAX) * 100);
+      const rate = Number(w("was-rate").value) || 0;
+
+      // Volume slider maps to weekly hours: 1 -> ~0.5h, 10 -> ~10h.
+      const weeklyHours = 0.5 + ((vals.volume - 1) / 9) * 9.5;
+      const annualHours = weeklyHours * 52;
+      // Recoverable share scales with the score.
+      const recoverableHours = annualHours * (score / 100);
+      const annualValue = recoverableHours * rate;
+
+      let tier = "Low priority",
+        note =
+          "Judgment-heavy or low-volume work. Automate the sub-steps that are rule-based, keep the thinking human.";
+      if (score >= 75) {
+        tier = "Automation gold";
+        note =
+          "Repetitive, rule-based, digital, and high-volume. This is exactly the shape of workflow that pays for its own automation fast.";
+      } else if (score >= 55) {
+        tier = "Strong candidate";
+        note =
+          "Most of this workflow can run itself. The remaining judgment steps stay yours, which is how it should be.";
+      } else if (score >= 35) {
+        tier = "Partial automation";
+        note =
+          "Whole-workflow automation would fight you. Target the repetitive middle: intake, routing, reminders, records.";
+      }
+
+      const scoreEl = document.getElementById("was-score")!;
+      scoreEl.textContent = `${score}/100`;
+      document.getElementById("was-tier")!.textContent = tier;
+      document.getElementById("was-hours")!.textContent = String(
+        Math.round(recoverableHours),
+      );
+      document.getElementById("was-value")!.textContent =
+        "$" + Math.round(annualValue).toLocaleString("en-US");
+      document.getElementById("was-note")!.textContent = note;
+
+      w("was-payload").value = JSON.stringify({
+        workflow: (w("was-workflow") as HTMLInputElement).value || "unnamed",
+        ...vals,
+        hourly_value: rate,
+        score,
+        tier,
+        recoverable_hours_yr: Math.round(recoverableHours),
+        recoverable_value_yr: Math.round(annualValue),
+      });
+    }
+
+    ["repetitive", "rulebased", "digital", "volume"].forEach((id) =>
+      w(`was-${id}`).addEventListener("input", calcWas),
+    );
+    w("was-rate").addEventListener("input", calcWas);
+    w("was-workflow").addEventListener("input", calcWas);
+    calcWas();
+
+    const wasForm = document.getElementById("was-form") as HTMLFormElement;
+    const wasOk = document.getElementById("was-form-success");
+    wasForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch(wasForm.action, {
+          method: "POST",
+          body: new FormData(wasForm),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          wasForm.classList.add("hidden");
+          wasOk?.classList.remove("hidden");
+        } else alert("Something went wrong. Please try again.");
+      } catch {
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</ToolShell>

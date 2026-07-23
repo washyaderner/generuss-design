@@ -1,0 +1,239 @@
+---
+import ToolShell from "../../components/ToolShell.astro";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+
+const checks = [
+  {
+    id: "claimed",
+    w: 12,
+    text: "My Google Business Profile is claimed and I can log into it",
+  },
+  {
+    id: "category",
+    w: 10,
+    text: "The primary category exactly matches what customers search for",
+  },
+  {
+    id: "hours",
+    w: 6,
+    text: "Hours, phone, and address are complete and current",
+  },
+  {
+    id: "photos",
+    w: 7,
+    text: "Ten or more real photos, at least one added in the last 3 months",
+  },
+  { id: "reviews25", w: 12, text: "25 or more Google reviews" },
+  {
+    id: "reviewsFresh",
+    w: 10,
+    text: "At least one new review in the last 30 days",
+  },
+  { id: "replies", w: 8, text: "I reply to reviews, including the bad ones" },
+  {
+    id: "posts",
+    w: 5,
+    text: "I've posted an update or offer in the last 30 days",
+  },
+  {
+    id: "website",
+    w: 8,
+    text: "The profile links to a fast site with my city and service on the homepage",
+  },
+  {
+    id: "nap",
+    w: 8,
+    text: "My name, address, and phone match exactly across Yelp, Facebook, and directories",
+  },
+  {
+    id: "services",
+    w: 7,
+    text: "Services and service areas are filled out on the profile",
+  },
+  {
+    id: "qa",
+    w: 7,
+    text: "I've seeded and answered the profile's Q&A section",
+  },
+];
+---
+
+<ToolShell
+  title="Local Visibility Grade: Score Your Google Presence Free | generuss design"
+  description="Twelve yes/no checks on your Google Business Profile, reviews, and citations. Instant letter grade plus the exact gaps costing you map-pack visibility."
+  kicker="Free assessment · instant"
+  heading="Can your neighbors"
+  headingAccent="even find you?"
+  sub="When someone nearby searches for what you do, Google shows three businesses before everything else. These twelve checks are what decides whether you're one of them. Answer honestly; the grade is instant."
+  slug="local-visibility"
+  toolName="Local Visibility Grade"
+  related={[
+    { name: "AI Visibility Check", href: "/tools/ai-visibility" },
+    { name: "Website Leak Scanner", href: "/tools/website-leak-scanner" },
+  ]}
+  ctaHeading="Grade lower than your work deserves?"
+  ctaSub="Local visibility is checklist work: profile, reviews, citations, done in order. It's part of every Growth Engine month. Free call, and you leave with your gap list either way."
+>
+  <section class="px-6 sm:px-10 lg:px-16 pb-4">
+    <div class="max-w-2xl mx-auto">
+      <div class="neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+        <div class="space-y-3" id="lvg-checks">
+          {
+            checks.map((c) => (
+              <label class="flex items-start gap-3 cursor-pointer neu-inset rounded-xl px-4 py-3 hover:ring-1 hover:ring-accent/30 transition-shadow">
+                <input
+                  type="checkbox"
+                  data-weight={c.w}
+                  id={`lvg-${c.id}`}
+                  class="mt-0.5 h-5 w-5 shrink-0 accent-[#00FFEF]"
+                />
+                <span class="text-sm sm:text-base text-text-muted leading-relaxed">
+                  {c.text}
+                </span>
+              </label>
+            ))
+          }
+        </div>
+
+        <div class="mt-7 neu-inset rounded-2xl p-6 text-center">
+          <p
+            class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-[0.2em] mb-2"
+          >
+            Your local visibility grade
+          </p>
+          <p
+            id="lvg-grade"
+            class="text-6xl font-black text-accent glow-text leading-none"
+          >
+            F
+          </p>
+          <p class="mt-2 text-sm text-text-muted font-mono">
+            <span id="lvg-score">0</span>/100 &middot;
+            <span id="lvg-label">check the boxes that are true today</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Email gate -->
+      <div class="mt-8 neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+        <p
+          class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+        >
+          Want the gap list, prioritized?
+        </p>
+        <h3 class="text-balance text-lg font-bold text-text mb-1.5">
+          Get your unchecked boxes back as a ranked fix list
+        </h3>
+        <p class="text-pretty text-sm text-text-muted leading-relaxed mb-4">
+          I'll send your misses ordered by impact for your kind of business,
+          with the how-to for each. One email, no drip campaign.
+        </p>
+        <form
+          id="lvg-form"
+          action={`https://formspree.io/f/${formspreeId}`}
+          method="POST"
+          class="flex flex-col sm:flex-row gap-3"
+        >
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+          <input
+            type="hidden"
+            name="_subject"
+            value="Local Visibility gap list request"
+          />
+          <input type="hidden" name="source" value="local-visibility" />
+          <input type="hidden" name="calc_inputs" id="lvg-payload" value="" />
+          <label class="sr-only" for="lvg-email">Email address</label>
+          <input
+            type="email"
+            id="lvg-email"
+            name="email"
+            required
+            placeholder="you@yourbusiness.com"
+            class="w-full flex-1 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+          />
+          <button
+            type="submit"
+            class="rounded-full bg-accent px-5 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+          >
+            Send my gap list &rarr;
+          </button>
+        </form>
+        <p
+          id="lvg-form-success"
+          class="hidden text-sm text-accent mt-3 font-mono"
+        >
+          On its way. Check your inbox today.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const boxes = Array.from(
+      document.querySelectorAll<HTMLInputElement>("#lvg-checks input"),
+    );
+    const gradeEl = document.getElementById("lvg-grade")!;
+    const scoreEl = document.getElementById("lvg-score")!;
+    const labelEl = document.getElementById("lvg-label")!;
+    const payload = document.getElementById("lvg-payload") as HTMLInputElement;
+
+    function grade() {
+      const score = boxes.reduce(
+        (sum, b) => sum + (b.checked ? Number(b.dataset.weight) : 0),
+        0,
+      );
+      let letter = "F",
+        label = "invisible: the map pack doesn't know you exist";
+      if (score >= 90) {
+        letter = "A";
+        label = "dialed in: defend it with review velocity";
+      } else if (score >= 75) {
+        letter = "B";
+        label = "solid: a few gaps between you and the map pack";
+      } else if (score >= 55) {
+        letter = "C";
+        label = "leaking: competitors with worse work outrank you";
+      } else if (score >= 35) {
+        letter = "D";
+        label = "barely visible: fundamentals are missing";
+      }
+      gradeEl.textContent = letter;
+      scoreEl.textContent = String(score);
+      labelEl.textContent = label;
+      payload.value = JSON.stringify({
+        score,
+        letter,
+        missed: boxes.filter((b) => !b.checked).map((b) => b.id),
+      });
+    }
+
+    boxes.forEach((b) => b.addEventListener("change", grade));
+    grade();
+
+    const lvgForm = document.getElementById("lvg-form") as HTMLFormElement;
+    const lvgOk = document.getElementById("lvg-form-success");
+    lvgForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch(lvgForm.action, {
+          method: "POST",
+          body: new FormData(lvgForm),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          lvgForm.classList.add("hidden");
+          lvgOk?.classList.remove("hidden");
+        } else alert("Something went wrong. Please try again.");
+      } catch {
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</ToolShell>

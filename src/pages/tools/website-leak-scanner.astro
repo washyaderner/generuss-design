@@ -1,0 +1,200 @@
+---
+import ToolShell from "../../components/ToolShell.astro";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+
+const leaks = [
+  {
+    n: "01",
+    name: "The speed leak",
+    body: "Visitors decide in seconds. If your site makes them wait, they are gone before your headline loads. I measure your real load performance on a phone, not a lab machine.",
+  },
+  {
+    n: "02",
+    name: "The clarity leak",
+    body: "Five seconds on your homepage: can a stranger tell what you do, who it's for, and what to click? Most sites fail this test and never find out.",
+  },
+  {
+    n: "03",
+    name: "The trust leak",
+    body: "Reviews buried on page four, no faces, no proof, claims with no receipts. Visitors don't call businesses they can't verify.",
+  },
+  {
+    n: "04",
+    name: "The follow-up leak",
+    body: "The form works, then nothing happens for a day. Leads decay by the hour. I check what actually fires when someone reaches out.",
+  },
+  {
+    n: "05",
+    name: "The findability leak",
+    body: "Invisible on Google, absent from the map pack, unknown to ChatGPT. If customers can't find you, the other four leaks never even get their chance.",
+  },
+];
+---
+
+<ToolShell
+  title="Free Website Leak Scanner: Your 5 Biggest Leaks, Same Day | generuss design"
+  description="Drop your URL and get a personalized teardown of your site's five biggest conversion leaks, checked by hand and delivered same day. Free, no drip campaign."
+  kicker="Free tool · same-day"
+  heading="Every website leaks."
+  headingAccent="Find your five."
+  sub="Drop your URL below. I tear down your actual site against the five patterns that quietly kill service-business conversion, and your personalized report lands in your inbox the same day. The generic five-pattern guide opens instantly while you wait."
+  slug="website-leak-scanner"
+  toolName="Website Leak Scanner"
+  related={[
+    { name: "Slow-Site Cost Calculator", href: "/tools/slow-site-cost" },
+    { name: "Local Visibility Grade", href: "/tools/local-visibility" },
+    { name: "AI Visibility Check", href: "/tools/ai-visibility" },
+  ]}
+  ctaHeading="Already know it leaks?"
+  ctaSub="Skip the report and go straight to the fix. I take on a limited number of builds a month, one at a time. The call is free and you leave with a plan either way."
+>
+  <!-- SCANNER FORM -->
+  <section class="px-6 sm:px-10 lg:px-16 pb-4">
+    <div class="max-w-xl mx-auto">
+      <form
+        id="scanner-form"
+        action={`https://formspree.io/f/${formspreeId}`}
+        method="POST"
+        class="neu-raised rounded-3xl bg-bg p-6 sm:p-8 flex flex-col gap-3"
+      >
+        <input
+          type="text"
+          name="_gotcha"
+          style="display:none"
+          tabindex="-1"
+          autocomplete="off"
+        />
+        <input
+          type="hidden"
+          name="_subject"
+          value="Website Leak Scanner request"
+        />
+        <input type="hidden" name="source" value="teardown" />
+        <input type="hidden" name="lead_magnet" value="5-site-teardown" />
+        <label class="sr-only" for="scan-url">Your website URL</label>
+        <input
+          type="url"
+          id="scan-url"
+          name="website_url"
+          required
+          placeholder="https://yoursite.com"
+          class="w-full rounded-full bg-bg px-5 py-3.5 text-base text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[48px]"
+        />
+        <div class="flex flex-col sm:flex-row gap-3">
+          <label class="sr-only" for="scan-email">Email address</label>
+          <input
+            type="email"
+            id="scan-email"
+            name="email"
+            required
+            placeholder="you@yourbusiness.com"
+            class="w-full flex-1 rounded-full bg-bg px-5 py-3.5 text-base text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[48px]"
+          />
+          <label class="sr-only" for="scan-stage">Business stage</label>
+          <select
+            id="scan-stage"
+            name="business_stage"
+            required
+            class="w-full sm:w-auto rounded-full bg-bg px-5 py-3.5 text-base text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[48px] appearance-none"
+          >
+            <option value="" disabled selected>Business stage</option>
+            <option value="established">Revenue coming in</option>
+            <option value="early">Early, pre-revenue</option>
+            <option value="exploring">Just exploring</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[48px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+        >
+          Tear my site down &rarr;
+        </button>
+        <p class="text-center text-xs text-text-muted/60 font-mono">
+          Free. Checked by hand. Same-day delivery. No drip campaign.
+        </p>
+      </form>
+      <p
+        id="scanner-success"
+        class="hidden text-center text-sm text-accent mt-5 font-mono"
+      >
+        Generic guide opened in a new tab. Your personalized teardown lands in
+        your inbox same day.
+      </p>
+    </div>
+  </section>
+
+  <!-- THE FIVE LEAKS -->
+  <section class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+    <div class="max-w-3xl mx-auto">
+      <h2
+        class="text-balance text-2xl sm:text-3xl font-black tracking-tight text-center mb-10"
+      >
+        The five leaks <span class="text-accent">I check for.</span>
+      </h2>
+      <div class="space-y-4">
+        {
+          leaks.map((l) => (
+            <div class="neu-inset rounded-2xl p-6 flex gap-4">
+              <span class="font-mono text-accent text-sm shrink-0 mt-1">
+                {l.n}
+              </span>
+              <div>
+                <h3 class="text-balance text-lg font-bold text-text mb-1.5">
+                  {l.name}
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed">
+                  {l.body}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="text-pretty mt-8 text-center text-sm text-text-muted/80">
+        Every check runs on your real site, by hand, the way a customer
+        experiences it. You get what leaks, why it costs you, and the exact fix
+        for each, whether or not you ever hire me.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const scanForm = document.getElementById("scanner-form") as HTMLFormElement;
+    const scanSuccess = document.getElementById("scanner-success");
+    const scanBtn = scanForm?.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
+
+    scanForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(scanForm);
+      scanBtn.disabled = true;
+      scanBtn.textContent = "Submitting...";
+      try {
+        const res = await fetch(scanForm.action, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          window.open(
+            "/resources/5-site-teardown/index.html",
+            "_blank",
+            "noopener,noreferrer",
+          );
+          scanForm.classList.add("hidden");
+          scanSuccess?.classList.remove("hidden");
+        } else {
+          scanBtn.disabled = false;
+          scanBtn.textContent = "Tear my site down →";
+          alert("Something went wrong. Please try again.");
+        }
+      } catch {
+        scanBtn.disabled = false;
+        scanBtn.textContent = "Tear my site down →";
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</ToolShell>

@@ -1,0 +1,231 @@
+---
+import ToolShell from "../../components/ToolShell.astro";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+---
+
+<ToolShell
+  title="Missed-Lead Calculator: What Slow Follow-Up Costs | generuss design"
+  description="Leads decay by the hour. Put in your lead volume, close rate, and response time and see the monthly cost of slow follow-up. Assumptions visible and adjustable."
+  kicker="Free calculator · instant"
+  heading="Leads don't wait."
+  headingAccent="What's the delay costing?"
+  sub="A lead that gets answered in minutes books. The same lead answered tomorrow shops around. Put your own numbers in; the assumptions are on the table and adjustable."
+  slug="missed-lead-calculator"
+  toolName="Missed-Lead Calculator"
+  related={[
+    { name: "Hire vs. Automate", href: "/tools/hire-vs-automate" },
+    { name: "Workflow Automation Score", href: "/tools/automation-score" },
+    { name: "Website Leak Scanner", href: "/tools/website-leak-scanner" },
+  ]}
+  ctaHeading="Want every lead answered in under a minute?"
+  ctaSub="Speed-to-lead is a one-time build: instant reply, routing, and booking, wired into what you already use. Limited builds per month. Free call, real plan either way."
+>
+  <section class="px-6 sm:px-10 lg:px-16 pb-4">
+    <div class="max-w-2xl mx-auto">
+      <div class="neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label for="mlc-leads" class="block text-sm text-text-muted mb-1"
+              >Leads per month</label
+            >
+            <input
+              type="number"
+              id="mlc-leads"
+              min="0"
+              value="20"
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+            />
+          </div>
+          <div>
+            <label for="mlc-close" class="block text-sm text-text-muted mb-1"
+              >Close rate when you connect (%)</label
+            >
+            <input
+              type="number"
+              id="mlc-close"
+              min="0"
+              max="100"
+              value="30"
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+            />
+          </div>
+          <div>
+            <label for="mlc-value" class="block text-sm text-text-muted mb-1"
+              >Average job value ($)</label
+            >
+            <input
+              type="number"
+              id="mlc-value"
+              min="0"
+              value="800"
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+            />
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <label for="mlc-speed" class="block text-sm text-text-muted mb-1"
+            >How fast do leads hear back today?</label
+          >
+          <select
+            id="mlc-speed"
+            class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 appearance-none"
+          >
+            <option value="1"
+              >Within 5 minutes (automated or glued to the phone)</option
+            >
+            <option value="0.7" selected>Within the hour</option>
+            <option value="0.45">Same day</option>
+            <option value="0.25">Next day or later</option>
+          </select>
+          <p class="mt-1.5 text-xs text-text-muted/70">
+            The assumption per bucket: replying within 5 minutes reaches
+            effectively every lead that filled the form; within the hour reaches
+            about 70%; same day about 45%; next day about 25%. Those reflect
+            widely replicated lead-response research; adjust your bucket if your
+            reality differs.
+          </p>
+        </div>
+
+        <div class="mt-7 neu-inset rounded-2xl p-6 text-center">
+          <p
+            class="text-[0.65rem] font-mono text-text-muted/70 uppercase tracking-[0.2em] mb-2"
+          >
+            Estimated revenue lost to slow follow-up
+          </p>
+          <p class="text-4xl sm:text-5xl font-black text-accent glow-text">
+            <span id="mlc-monthly">$0</span><span
+              class="text-lg text-text-muted font-bold">/mo</span
+            >
+          </p>
+          <p class="mt-2 text-sm text-text-muted font-mono">
+            <span id="mlc-yearly">$0</span> a year &middot;
+            <span id="mlc-deals">0</span> winnable deals going quiet monthly
+          </p>
+        </div>
+      </div>
+
+      <!-- Email gate -->
+      <div class="mt-8 neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+        <p
+          class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+        >
+          Want the fix, mapped to your stack?
+        </p>
+        <h3 class="text-balance text-lg font-bold text-text mb-1.5">
+          Get the speed-to-lead blueprint for your setup
+        </h3>
+        <p class="text-pretty text-sm text-text-muted leading-relaxed mb-4">
+          Tell me what you use today (forms, phone, calendar) and I'll reply
+          with the exact instant-reply setup that fits it, and what it would
+          cost to wire. One email, no drip campaign.
+        </p>
+        <form
+          id="mlc-form"
+          action={`https://formspree.io/f/${formspreeId}`}
+          method="POST"
+          class="flex flex-col gap-3"
+        >
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+          <input
+            type="hidden"
+            name="_subject"
+            value="Missed-Lead blueprint request"
+          />
+          <input type="hidden" name="source" value="missed-lead" />
+          <input type="hidden" name="calc_inputs" id="mlc-payload" value="" />
+          <div class="flex flex-col sm:flex-row gap-3">
+            <label class="sr-only" for="mlc-email">Email address</label>
+            <input
+              type="email"
+              id="mlc-email"
+              name="email"
+              required
+              placeholder="you@yourbusiness.com"
+              class="w-full flex-1 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+            />
+            <input
+              type="text"
+              name="current_stack"
+              placeholder="e.g. Squarespace form + gmail"
+              class="w-full flex-1 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+            />
+          </div>
+          <button
+            type="submit"
+            class="rounded-full bg-accent px-5 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)] sm:self-start"
+          >
+            Send my blueprint &rarr;
+          </button>
+        </form>
+        <p
+          id="mlc-form-success"
+          class="hidden text-sm text-accent mt-3 font-mono"
+        >
+          On its way. Check your inbox today.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const g = (id: string) => document.getElementById(id) as HTMLInputElement;
+    const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
+
+    function calcMlc() {
+      const leads = Number(g("mlc-leads").value) || 0;
+      const close = (Number(g("mlc-close").value) || 0) / 100;
+      const value = Number(g("mlc-value").value) || 0;
+      const reach = Number(g("mlc-speed").value) || 1;
+
+      // Deals you win now vs deals you'd win reaching ~every lead instantly.
+      const wonNow = leads * reach * close;
+      const wonFast = leads * 1.0 * close;
+      const lostDeals = Math.max(0, wonFast - wonNow);
+      const monthly = lostDeals * value;
+
+      document.getElementById("mlc-monthly")!.textContent = money(monthly);
+      document.getElementById("mlc-yearly")!.textContent = money(monthly * 12);
+      document.getElementById("mlc-deals")!.textContent = lostDeals.toFixed(1);
+
+      g("mlc-payload").value = JSON.stringify({
+        leads_per_month: leads,
+        close_rate_pct: close * 100,
+        avg_value: value,
+        reach_fraction: reach,
+        est_monthly_loss: Math.round(monthly),
+      });
+    }
+
+    ["mlc-leads", "mlc-close", "mlc-value", "mlc-speed"].forEach((id) =>
+      g(id).addEventListener("input", calcMlc),
+    );
+    calcMlc();
+
+    const mlcForm = document.getElementById("mlc-form") as HTMLFormElement;
+    const mlcOk = document.getElementById("mlc-form-success");
+    mlcForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch(mlcForm.action, {
+          method: "POST",
+          body: new FormData(mlcForm),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          mlcForm.classList.add("hidden");
+          mlcOk?.classList.remove("hidden");
+        } else alert("Something went wrong. Please try again.");
+      } catch {
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</ToolShell>
