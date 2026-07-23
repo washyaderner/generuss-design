@@ -1,0 +1,216 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { breadcrumbs } from "../lib/schema";
+
+const paths = [
+  {
+    id: "launch-page",
+    kicker: "Path 01 · Launch Page",
+    title: "Bookable in days",
+    price: "$500, flat",
+    who: "New or rebooting service businesses that need to look hireable NOW: therapists, trades, coaches, studios. You have an offer and a calendar; you need the internet to take you seriously.",
+    ships: [
+      "One-page conversion site: offer, proof, booking, FAQ, done",
+      "Hand-coded, no page builders, loads instantly on a phone",
+      "Booking wired (Cal.com, Calendly, or yours) plus a lead form that emails you",
+      "Credits toward the Flagship if you outgrow it. The $500 is never wasted",
+    ],
+    exemplar: {
+      name: "Vibe N Thrive Therapy",
+      url: "https://www.vibenthrivetherapy.com",
+      note: "Live client build for a therapy practice. The owner's review sits on the homepage; the site itself is the proof, so click it on your phone.",
+    },
+    cta: "Start a Launch Page",
+    ctaHref: "/#booking",
+  },
+  {
+    id: "growth-site",
+    kicker: "Path 02 · Growth Site",
+    title: "Built to get found, and cited",
+    price: "from $4,500, or grown monthly on the $750/mo Growth Engine",
+    who: "Established businesses whose next customer is searching right now: local services, clinics, firms, niche B2B. You win when Google, Maps, and AI assistants all know who you are.",
+    ships: [
+      "Full multi-page site with pillar-and-cluster content architecture",
+      "SEO + AEO + GEO from day one: schema graph, llms.txt, answer-first pages",
+      "Local visibility wiring: Business Profile, citations, review engine",
+      "A compounding content engine, not a brochure that ages",
+    ],
+    exemplar: {
+      name: "Pharallax",
+      url: "https://pharallax.ai",
+      note: "My own product site, run exactly this way: 199 indexed pages of strict pillar/cluster content, every guide feeding a free tool. Click around it; that architecture is what you are buying.",
+    },
+    cta: "Scope a Growth Site",
+    ctaHref: "/#booking",
+  },
+  {
+    id: "signature-scroll",
+    kicker: "Path 03 · Signature Scroll",
+    title: "The site people send to friends",
+    price: "Flagship scope, quoted per build",
+    who: "Brands that live or die on feel: artists, venues, premium products, events. The site is the experience; scrolling it should feel like a trailer for working with you.",
+    ships: [
+      "Cinematic scroll-driven storytelling, art-directed end to end",
+      "Motion design and 3D where it earns its place, never as decoration",
+      "Still fast: the craft is invisible until you scroll, then it is everywhere",
+      "Built around one bold thesis, not a template with effects sprinkled on",
+    ],
+    exemplar: {
+      name: "Styx Stones & Bones",
+      url: "https://styx-stones-bones.pages.dev",
+      note: "In-progress cinematic build, live to click through now. This is the current bar for what a Signature Scroll feels like.",
+    },
+    cta: "Talk through a Signature build",
+    ctaHref: "/#booking",
+  },
+];
+
+const pathsSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    breadcrumbs("https://generussdesign.com", [
+      { name: "Home", path: "/" },
+      { name: "Three ways to build", path: "/paths" },
+    ]),
+  ],
+};
+---
+
+<BaseLayout
+  title="Three Ways to Build: Launch Page, Growth Site, Signature Scroll | generuss design"
+  description="Pick your path: a $500 Launch Page that makes you bookable in days, a Growth Site engineered to get found and cited, or a cinematic Signature Scroll. Each with a live exemplar you can click."
+>
+  <Nav bookingHref="/#booking" offerHref="/#offer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(pathsSchema)} />
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section
+      class="relative flex items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-32 pb-16"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <span
+          class="inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+        >
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+          ></span>
+          Pick your path
+        </span>
+        <h1
+          class="text-balance text-[2.5rem] sm:text-[3.25rem] md:text-[3.75rem] font-black tracking-[-0.03em] leading-[1.05] text-text"
+        >
+          Three ways to build.
+          <span class="text-accent glow-text">One standard.</span>
+        </h1>
+        <p
+          class="text-pretty mt-6 text-lg sm:text-xl text-text-muted leading-relaxed max-w-2xl mx-auto"
+        >
+          Every path is hand-coded, fast, and conversion-engineered. The
+          difference is the job your site has to do. Each path below links to a
+          live build, because screenshots are easy and URLs are not.
+        </p>
+      </div>
+    </section>
+
+    <!-- PATHS -->
+    {
+      paths.map((p, i) => (
+        <section
+          id={p.id}
+          class={`px-6 sm:px-10 lg:px-16 py-(--spacing-section) ${i % 2 === 0 ? "bg-bg-secondary" : ""}`}
+        >
+          <div class="max-w-5xl mx-auto">
+            <p class="text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4">
+              {p.kicker}
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              <div>
+                <h2 class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05] mb-3">
+                  {p.title}
+                </h2>
+                <p class="font-mono text-sm text-accent mb-5">{p.price}</p>
+                <p class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed mb-6">
+                  {p.who}
+                </p>
+                <ul class="space-y-2.5 text-sm sm:text-base text-text-muted">
+                  {p.ships.map((item) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={p.ctaHref}
+                  class="mt-7 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+                >
+                  {p.cta} &rarr;
+                </a>
+              </div>
+              <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8 self-start">
+                <p class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3">
+                  Live exemplar
+                </p>
+                <h3 class="text-xl font-bold text-text mb-2">
+                  {p.exemplar.name}
+                </h3>
+                <p class="text-pretty text-sm text-text-muted leading-relaxed mb-5">
+                  {p.exemplar.note}
+                </p>
+                <a
+                  href={p.exemplar.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-semibold text-accent underline underline-offset-4 hover:text-text transition-colors"
+                >
+                  Open the live site &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))
+    }
+
+    <!-- CLOSE -->
+    <section class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2
+          class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05] mb-4"
+        >
+          Not sure which path?
+          <span class="text-accent">That's the call.</span>
+        </h2>
+        <p
+          class="text-pretty text-base sm:text-lg text-text-muted mb-8 max-w-xl mx-auto"
+        >
+          Thirty minutes, free. You leave knowing which build fits and what it
+          costs, whether you book it or not. Or start with the free tools and
+          let your own numbers argue.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="/#booking"
+            class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Book the call &rarr;
+          </a>
+          <a
+            href="/tools"
+            class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+          >
+            Run the free tools
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

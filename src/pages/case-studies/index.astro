@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { breadcrumbs } from "../../lib/schema";
+
+// Case studies publish here as clients sign off on their numbers.
+// Template per study: the problem, what shipped, before/after numbers
+// (client-approved), a pull quote, the stack, and the tool that catches
+// the same problem for the reader.
+const studies = [
+  {
+    status: "IN PROGRESS",
+    title: "Email automation for a specialty food brand",
+    teaser:
+      "Welcome, browse-recovery, and post-purchase flows wired into a working e-commerce brand. Full write-up with real numbers publishes after client sign-off.",
+    tool: {
+      name: "Workflow Automation Score",
+      href: "/tools/automation-score",
+    },
+  },
+];
+
+const hubSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    breadcrumbs("https://generussdesign.com", [
+      { name: "Home", path: "/" },
+      { name: "Case studies", path: "/case-studies" },
+    ]),
+  ],
+};
+---
+
+<BaseLayout
+  title="Case Studies with Real Numbers | generuss design"
+  description="Client builds documented with real before-and-after numbers, published only with client sign-off. The receipts behind the offer."
+>
+  <Nav bookingHref="/#booking" offerHref="/#offer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(hubSchema)} />
+
+  <main id="main-content">
+    <section
+      class="relative flex items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-32 pb-16"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <span
+          class="inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+        >
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+          ></span>
+          Case studies
+        </span>
+        <h1
+          class="text-balance text-[2.5rem] sm:text-[3.25rem] md:text-[3.75rem] font-black tracking-[-0.03em] leading-[1.05] text-text"
+        >
+          Real builds.
+          <span class="text-accent glow-text">Real numbers.</span>
+        </h1>
+        <p
+          class="text-pretty mt-6 text-lg sm:text-xl text-text-muted leading-relaxed max-w-2xl mx-auto"
+        >
+          Every case study here follows one rule: numbers publish only with the
+          client's sign-off, or they don't publish at all. That keeps this page
+          slower to grow and impossible to fake.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="bg-bg-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 gap-4 sm:gap-6">
+          {
+            studies.map((s) => (
+              <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8">
+                <p class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3">
+                  Case study 01 &middot; {s.status}
+                </p>
+                <h2 class="text-balance text-xl sm:text-2xl font-bold text-text mb-2">
+                  {s.title}
+                </h2>
+                <p class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed mb-4">
+                  {s.teaser}
+                </p>
+                <p class="text-sm text-text-muted">
+                  Same problem in your business? Start with the free
+                  <a
+                    href={s.tool.href}
+                    class="text-accent underline underline-offset-4 hover:text-text transition-colors"
+                  >
+                    {s.tool.name} &rarr;
+                  </a>
+                </p>
+              </div>
+            ))
+          }
+
+          <div class="neu-inset rounded-2xl p-6 sm:p-8 text-center">
+            <p
+              class="text-[0.6rem] font-mono text-text-muted/70 uppercase tracking-widest mb-3"
+            >
+              Case studies 02 to 05
+            </p>
+            <p
+              class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed max-w-xl mx-auto"
+            >
+              Four slots in the
+              <a
+                href="/free-build"
+                class="text-accent underline underline-offset-4 hover:text-text transition-colors"
+                >Free-Build Program</a
+              > are open right now. Each build lands here with its real numbers once
+              the client signs off. One of them could be yours.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2
+          class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05] mb-4"
+        >
+          Want to be the <span class="text-accent">next one?</span>
+        </h2>
+        <p
+          class="text-pretty text-base sm:text-lg text-text-muted mb-8 max-w-xl mx-auto"
+        >
+          Apply for a free-build slot, or start with the tools and let your own
+          numbers make the argument.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="/free-build"
+            class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Apply for a free build &rarr;
+          </a>
+          <a
+            href="/tools"
+            class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+          >
+            Run the free tools
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

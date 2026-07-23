@@ -1,0 +1,412 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import CalendarEmbed from "../components/CalendarEmbed.astro";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+
+const systems = [
+  {
+    label: "SPEED-TO-LEAD",
+    name: "Answer every lead in under a minute",
+    body: "A form submission or missed call triggers an instant, personal-sounding reply and books the next step before your competitor has opened their inbox. You get pinged with context, not just a name.",
+  },
+  {
+    label: "FOLLOW-UP",
+    name: "Sequences that never forget",
+    body: "Quotes that chase themselves, no-show recovery, day-3 and day-10 nudges written in your voice. The deals you are currently losing to silence come back on their own.",
+  },
+  {
+    label: "REVIEWS",
+    name: "A review engine on autopilot",
+    body: "Happy-moment detection, a perfectly timed ask, and a direct deep link to your Google profile. Reviews compound your local ranking while you do the actual work.",
+  },
+  {
+    label: "PIPELINE",
+    name: "CRM wiring that stays clean",
+    body: "Leads land tagged, deduped, and routed. Handoffs happen without copy-paste. You see one pipeline instead of four inboxes, and nothing falls between tools.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What do you actually automate for a service business?",
+    a: "The four leaks that cost the most: response time to new leads, follow-up on quotes and no-shows, review collection, and the CRM plumbing between your forms, calendar, and inbox. Each one runs after a single setup and keeps working without you touching it.",
+  },
+  {
+    q: "Does automation make my business feel robotic to customers?",
+    a: "Done badly, yes. Every sequence I wire is written in your voice, timed like a human would time it, and stops the moment a real conversation starts. Customers experience it as you being impressively on top of things.",
+  },
+  {
+    q: "What does an automation build cost?",
+    a: "A single system, like speed-to-lead or a review engine, is a fixed-scope build quoted after a short call. Full pipeline wiring is part of the Growth Engine at $750 a month. Run the calculators first: they will tell you what doing nothing costs, which is the number that matters.",
+  },
+  {
+    q: "I'm not technical. Who maintains this?",
+    a: "I do. Everything ships documented with a walkthrough video, and Growth Engine clients get ongoing monitoring and changes. If something breaks, it is my phone that buzzes, not yours.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://generussdesign.com/automation#service",
+      name: "Lead Follow-Up + Business Automation Systems",
+      serviceType: "Marketing and sales automation for service businesses",
+      description:
+        "Speed-to-lead response, follow-up sequences, review engines, and CRM wiring for service businesses. Built once, runs continuously, documented and maintained.",
+      provider: { "@id": "https://generussdesign.com/#org" },
+      url: "https://generussdesign.com/automation",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://generussdesign.com/automation#faq",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Automation Systems for Service Businesses | generuss design"
+  description="Speed-to-lead replies, follow-up sequences, review engines, and CRM wiring. Built in your voice, documented, and maintained. Calculate what slow follow-up costs you first."
+>
+  <Nav bookingHref="#booking" offerHref="#systems" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section
+      class="relative flex min-h-[80vh] items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-28 pb-12"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <span
+          class="inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+        >
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+          ></span>
+          Automation systems
+        </span>
+        <h1
+          class="text-balance text-[2.5rem] sm:text-[3.25rem] md:text-[3.75rem] font-black tracking-[-0.03em] leading-[1.05] text-text"
+        >
+          Your site got the lead.
+          <span class="text-accent glow-text">Then what happened?</span>
+        </h1>
+        <p
+          class="text-pretty mt-6 text-lg sm:text-xl text-text-muted leading-relaxed max-w-2xl mx-auto"
+        >
+          Most service businesses lose deals after the form gets filled out:
+          slow replies, forgotten quotes, no review ask, leads rotting in an
+          inbox. I wire systems that answer, follow up, and collect while you do
+          the actual work.
+        </p>
+        <!-- VSL SLOT: automation VSL embeds here when recorded
+             (script: directives/vsl-scripts.md) -->
+        <div
+          class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="/tools/missed-lead-calculator"
+            class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Calculate what slow follow-up costs &rarr;
+          </a>
+          <a
+            href="#booking"
+            class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
+          >
+            Book a Call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE FOUR SYSTEMS -->
+    <section
+      id="systems"
+      class="bg-bg-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12 sm:mb-16">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            What gets wired
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            Four systems.
+            <span class="text-accent">Zero babysitting.</span>
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          {
+            systems.map((s) => (
+              <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col">
+                <p class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3">
+                  {s.label}
+                </p>
+                <h3 class="text-balance text-xl font-bold text-text mb-2">
+                  {s.name}
+                </h3>
+                <p class="text-sm sm:text-base text-text-muted leading-relaxed">
+                  {s.body}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-10 max-w-3xl mx-auto text-center">
+          <p
+            class="text-pretty text-sm sm:text-base text-text-muted leading-relaxed"
+          >
+            Receipts over promises: I run autonomous AI systems in production,
+            including
+            <a
+              href="https://pharallax.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline underline-offset-4 hover:text-accent"
+              >Pharallax</a
+            >, an analysis engine that researches, writes, quality-scores, and
+            delivers reports end to end without a human in the loop. Client
+            automation runs on the same discipline: email flows currently live
+            in production for a specialty food brand, with the full case study
+            publishing after client sign-off.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATORS -->
+    <section class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Run your own numbers
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05]"
+          >
+            Don't take my word for it.
+            <span class="text-accent">Take the math.</span>
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <a
+            href="/tools/missed-lead-calculator"
+            class="group neu-raised rounded-2xl bg-bg p-6 flex flex-col no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <p
+              class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3"
+            >
+              Free calculator
+            </p>
+            <h3 class="text-balance text-lg font-bold text-text mb-2">
+              Missed-Lead Calculator
+            </h3>
+            <p class="text-sm text-text-muted leading-relaxed mb-4">
+              Your lead volume, your close rate, your response time. See what
+              slow replies cost per month.
+            </p>
+            <p
+              class="mt-auto text-sm font-semibold text-accent group-hover:underline underline-offset-4"
+            >
+              Run it &rarr;
+            </p>
+          </a>
+          <a
+            href="/tools/hire-vs-automate"
+            class="group neu-raised rounded-2xl bg-bg p-6 flex flex-col no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <p
+              class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3"
+            >
+              Free calculator
+            </p>
+            <h3 class="text-balance text-lg font-bold text-text mb-2">
+              Hire vs. Automate
+            </h3>
+            <p class="text-sm text-text-muted leading-relaxed mb-4">
+              The task you keep drowning in: cheaper to hire for it, or wire it
+              once? Real math, both columns.
+            </p>
+            <p
+              class="mt-auto text-sm font-semibold text-accent group-hover:underline underline-offset-4"
+            >
+              Run it &rarr;
+            </p>
+          </a>
+          <a
+            href="/tools/automation-score"
+            class="group neu-raised rounded-2xl bg-bg p-6 flex flex-col no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <p
+              class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3"
+            >
+              Free assessment
+            </p>
+            <h3 class="text-balance text-lg font-bold text-text mb-2">
+              Workflow Automation Score
+            </h3>
+            <p class="text-sm text-text-muted leading-relaxed mb-4">
+              Eight questions about how work moves through your business. Get
+              the hours and dollars recoverable.
+            </p>
+            <p
+              class="mt-auto text-sm font-semibold text-accent group-hover:underline underline-offset-4"
+            >
+              Run it &rarr;
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section
+      class="bg-bg-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-3xl mx-auto">
+        <h2
+          class="text-balance text-3xl sm:text-4xl font-black tracking-tight text-center mb-12"
+        >
+          Automation, <span class="text-accent">straight answers.</span>
+        </h2>
+        <div class="space-y-4">
+          {
+            faqs.map((f) => (
+              <details class="neu-raised rounded-2xl bg-bg p-6 group">
+                <summary class="cursor-pointer text-base sm:text-lg font-bold text-text list-none flex items-center justify-between gap-4">
+                  <span class="text-balance">{f.q}</span>
+                  <span class="text-accent shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none">
+                    +
+                  </span>
+                </summary>
+                <p class="text-pretty mt-3 text-sm sm:text-base text-text-muted leading-relaxed">
+                  {f.a}
+                </p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING + FORM -->
+    <section id="booking" class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <h2
+            class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05]"
+          >
+            Find your biggest leak
+            <span class="text-accent">in 30 minutes.</span>
+          </h2>
+          <p
+            class="text-pretty mt-4 text-base sm:text-lg text-text-muted max-w-xl mx-auto"
+          >
+            Free discovery call. We map where leads currently die in your
+            process, and you leave with the fix list whether we work together or
+            not.
+          </p>
+        </div>
+        <CalendarEmbed />
+
+        <div class="mt-12 neu-raised rounded-3xl bg-bg p-6 sm:p-8">
+          <div class="mb-5">
+            <p
+              class="text-[0.65rem] font-mono text-accent uppercase tracking-[0.2em] mb-1.5"
+            >
+              Not ready for a call?
+            </p>
+            <h3
+              class="text-balance text-lg sm:text-xl font-bold text-text mb-1.5"
+            >
+              Tell me where leads go quiet
+            </h3>
+            <p class="text-pretty text-sm text-text-muted leading-relaxed">
+              Two sentences about your follow-up today. I reply with the one
+              system that would move the most, no drip campaign attached.
+            </p>
+          </div>
+          <form
+            action={`https://formspree.io/f/${formspreeId}`}
+            method="POST"
+            class="flex flex-col gap-3"
+          >
+            <input
+              type="text"
+              name="_gotcha"
+              style="display:none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+            <input type="hidden" name="_subject" value="Automation inquiry" />
+            <input type="hidden" name="source" value="automation" />
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="flex-1">
+                <label class="sr-only" for="auto-email">Email address</label>
+                <input
+                  type="email"
+                  id="auto-email"
+                  name="email"
+                  required
+                  placeholder="you@yourbusiness.com"
+                  class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                />
+              </div>
+              <div class="flex-1">
+                <label class="sr-only" for="auto-stage"
+                  >Where's the business at?</label
+                >
+                <select
+                  id="auto-stage"
+                  name="business_stage"
+                  required
+                  class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px] appearance-none"
+                >
+                  <option value="" disabled selected>Business stage</option>
+                  <option value="established">Revenue coming in</option>
+                  <option value="early">Early, pre-revenue</option>
+                  <option value="exploring">Just exploring</option>
+                </select>
+              </div>
+            </div>
+            <textarea
+              name="message"
+              required
+              rows="3"
+              placeholder="Where do leads go quiet in your business today?"
+              class="w-full rounded-2xl bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 resize-none"
+            ></textarea>
+            <button
+              type="submit"
+              class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)] sm:self-start"
+            >
+              Get the fix list &rarr;
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

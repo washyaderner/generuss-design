@@ -1,0 +1,542 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xgolkboq";
+
+const qualifiers = [
+  {
+    label: "01",
+    name: "A real business with revenue",
+    body: "Customers exist and money comes in. This program multiplies something that already works; it cannot invent demand.",
+  },
+  {
+    label: "02",
+    name: "You own the decision",
+    body: "You are the owner or you sign off directly. Free does not mean slow, and committees make everything slow.",
+  },
+  {
+    label: "03",
+    name: "A genuine site or lead problem",
+    body: "Your current site embarrasses you, leads go quiet, or you are invisible in search. Something measurable is broken.",
+  },
+  {
+    label: "04",
+    name: "Ready to start within 2 weeks",
+    body: "One build ships per week, in order. A claimed slot that stalls gets released to the next applicant.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What exactly do I get in a free build?",
+    a: "A Launch-Page-scope website, hand-coded and conversion-engineered, the same standard as the $500 paid tier, plus one working automation: instant lead reply, a follow-up sequence, or a review engine. Live on your domain, you own everything.",
+  },
+  {
+    q: "What's the catch?",
+    a: "There is no catch, there is a trade, and it is stated up front: a written case study with your real numbers, a public review, and two introductions to people who could use the same work. That is the entire price.",
+  },
+  {
+    q: "Why would you work for free?",
+    a: "Because I am building a case-study library in a new niche, and documented results with real businesses are worth more to me right now than one-off fees. You get the work, I get the proof. Five slots is the honest limit of what I can deliver at full quality while running everything else.",
+  },
+  {
+    q: "What happens after I apply?",
+    a: "I review applications within 24 hours. If you qualify, you get a link to book a 15-minute scope call and we lock your slot and start date. If the fit is not there, I will say so straight, and point you at the free tools so you still leave with something useful.",
+  },
+  {
+    q: "What if all five slots are taken?",
+    a: "The application stays open as a waitlist. Slots that stall get released, and paid builds always have room: the Launch Page is $500 and ships on the same one-week rhythm.",
+  },
+];
+
+const programSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://generussdesign.com/free-build#service",
+      name: "Free-Build Case-Study Program",
+      serviceType: "Website build in exchange for a case study",
+      description:
+        "Five free Launch-Page-scope website builds with one automation each, for qualified service businesses, in exchange for a written case study, a public review, and two referral introductions.",
+      provider: { "@id": "https://generussdesign.com/#org" },
+      url: "https://generussdesign.com/free-build",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://generussdesign.com/free-build#faq",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Free-Build Program: 5 Slots, Real Terms | generuss design"
+  description="Five free website builds for qualified service businesses. Launch-Page scope plus one automation, in exchange for a case study, a public review, and two introductions. Honest terms, stated up front."
+>
+  <Nav bookingHref="#apply" offerHref="#terms" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(programSchema)} />
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section
+      class="relative flex min-h-[80vh] items-center overflow-hidden px-6 sm:px-10 lg:px-16 pt-28 pb-12"
+    >
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <span
+          class="inline-flex items-center gap-2 mb-5 text-[0.7rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em]"
+        >
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"
+          ></span>
+          The Free-Build Program
+        </span>
+        <h1
+          class="text-balance text-[2.5rem] sm:text-[3.25rem] md:text-[3.75rem] font-black tracking-[-0.03em] leading-[1.05] text-text"
+        >
+          Five free builds.
+          <span class="text-accent glow-text">One honest trade.</span>
+        </h1>
+        <p
+          class="text-pretty mt-6 text-lg sm:text-xl text-text-muted leading-relaxed max-w-2xl mx-auto"
+        >
+          I build your site free, at the exact standard clients pay for. You
+          trade me a case study with real numbers, a public review, and two
+          introductions. Five slots, because I am one person and the quality bar
+          does not bend.
+        </p>
+        <div class="mt-8">
+          <a
+            href="#apply"
+            class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
+          >
+            Apply for a slot &rarr;
+          </a>
+        </div>
+        <p
+          class="mt-6 text-xs font-mono text-text-muted/70 uppercase tracking-widest"
+        >
+          Slot 1 claimed &middot; 4 open
+        </p>
+      </div>
+    </section>
+
+    <!-- THE DEAL -->
+    <section
+      id="terms"
+      class="bg-bg-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12 sm:mb-16">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            The terms, in full
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            What you get. <span class="text-accent">What I get.</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8">
+            <p
+              class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-4"
+            >
+              You get
+            </p>
+            <ul
+              class="space-y-3 text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold"
+                    >A Launch-Page-scope site</strong
+                  >: one-page, hand-coded, conversion-engineered, live on your
+                  domain. Same standard as the paid tier.</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold"
+                    >One working automation</strong
+                  >: instant lead reply, follow-up sequence, or review engine.
+                  Your pick, wired and documented.</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold"
+                    >Full ownership</strong
+                  >: code, domain, accounts, everything. No hostage clauses,
+                  ever.</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold"
+                    >30 days of post-launch support</strong
+                  >, same as every paid build.</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="neu-raised rounded-2xl bg-bg p-6 sm:p-8">
+            <p
+              class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-4"
+            >
+              I get
+            </p>
+            <ul
+              class="space-y-3 text-sm sm:text-base text-text-muted leading-relaxed"
+            >
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold"
+                    >A written case study</strong
+                  > with your real before-and-after numbers, published on this site.</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold"
+                    >A public review</strong
+                  > in your own words, on Google or the platform that fits.</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-accent mt-1 shrink-0">&rarr;</span>
+                <span
+                  ><strong class="text-text font-semibold"
+                    >Two introductions</strong
+                  > to people in your world who could use the same work. Warm intros,
+                  not a contact dump.</span
+                >
+              </li>
+            </ul>
+            <p
+              class="text-pretty mt-5 text-xs text-text-muted/70 leading-relaxed"
+            >
+              That is the whole trade. It is written here so neither of us has
+              to pretend the free build is charity. It is a fair exchange that
+              only works if your results are real, which is exactly why the
+              build gets my full standard.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUALIFICATION -->
+    <section class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Who qualifies
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05]"
+          >
+            Four boxes. <span class="text-accent">All must check.</span>
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          {
+            qualifiers.map((qual) => (
+              <div class="neu-inset rounded-2xl p-6 sm:p-7 flex gap-4">
+                <span class="font-mono text-accent text-sm shrink-0 mt-1">
+                  {qual.label}
+                </span>
+                <div>
+                  <h3 class="text-balance text-lg font-bold text-text mb-1.5">
+                    {qual.name}
+                  </h3>
+                  <p class="text-sm text-text-muted leading-relaxed">
+                    {qual.body}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section
+      class="bg-bg-secondary px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-3xl mx-auto">
+        <h2
+          class="text-balance text-3xl sm:text-4xl font-black tracking-tight text-center mb-12"
+        >
+          Asked and <span class="text-accent">answered.</span>
+        </h2>
+        <div class="space-y-4">
+          {
+            faqs.map((f) => (
+              <details class="neu-raised rounded-2xl bg-bg p-6 group">
+                <summary class="cursor-pointer text-base sm:text-lg font-bold text-text list-none flex items-center justify-between gap-4">
+                  <span class="text-balance">{f.q}</span>
+                  <span class="text-accent shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none">
+                    +
+                  </span>
+                </summary>
+                <p class="text-pretty mt-3 text-sm sm:text-base text-text-muted leading-relaxed">
+                  {f.a}
+                </p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- APPLICATION -->
+    <section id="apply" class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-10">
+          <h2
+            class="text-balance text-3xl sm:text-4xl font-black tracking-tight leading-[1.05]"
+          >
+            Apply for a <span class="text-accent">slot.</span>
+          </h2>
+          <p class="text-pretty mt-4 text-base text-text-muted">
+            Five minutes, straight questions. I reply within 24 hours either
+            way.
+          </p>
+        </div>
+
+        <form
+          id="free-build-form"
+          action={`https://formspree.io/f/${formspreeId}`}
+          method="POST"
+          class="neu-raised rounded-3xl bg-bg p-6 sm:p-8 space-y-4"
+        >
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+          <input
+            type="hidden"
+            name="_subject"
+            value="Free-Build Program application"
+          />
+          <input type="hidden" name="source" value="free-build" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="fb-name" class="block text-sm text-text-muted mb-1"
+                >Your name</label
+              >
+              <input
+                type="text"
+                id="fb-name"
+                name="name"
+                required
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+                placeholder="First and last"
+              />
+            </div>
+            <div>
+              <label for="fb-email" class="block text-sm text-text-muted mb-1"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="fb-email"
+                name="email"
+                required
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+                placeholder="you@yourbusiness.com"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="fb-business" class="block text-sm text-text-muted mb-1"
+              >Business name + current website, if one exists</label
+            >
+            <input
+              type="text"
+              id="fb-business"
+              name="business"
+              required
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50"
+              placeholder="Acme Plumbing, acmeplumbing.com"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="fb-revenue" class="block text-sm text-text-muted mb-1"
+                >Is the business making money today?</label
+              >
+              <select
+                id="fb-revenue"
+                name="qualifier_revenue"
+                required
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 appearance-none"
+              >
+                <option value="" disabled selected>Pick one</option>
+                <option value="yes-steady">Yes, steady revenue</option>
+                <option value="yes-early">Yes, but early</option>
+                <option value="no">Not yet</option>
+              </select>
+            </div>
+            <div>
+              <label
+                for="fb-authority"
+                class="block text-sm text-text-muted mb-1"
+                >Are you the decision maker?</label
+              >
+              <select
+                id="fb-authority"
+                name="qualifier_authority"
+                required
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 appearance-none"
+              >
+                <option value="" disabled selected>Pick one</option>
+                <option value="owner">I own the business</option>
+                <option value="signoff">I sign off directly</option>
+                <option value="no">Someone else decides</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="fb-start" class="block text-sm text-text-muted mb-1"
+                >Could you start within 2 weeks?</label
+              >
+              <select
+                id="fb-start"
+                name="qualifier_start"
+                required
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 appearance-none"
+              >
+                <option value="" disabled selected>Pick one</option>
+                <option value="yes">Yes</option>
+                <option value="no">No, later</option>
+              </select>
+            </div>
+            <div>
+              <label for="fb-trade" class="block text-sm text-text-muted mb-1"
+                >Good with the trade? (case study, review, 2 intros)</label
+              >
+              <select
+                id="fb-trade"
+                name="qualifier_trade"
+                required
+                class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 appearance-none"
+              >
+                <option value="" disabled selected>Pick one</option>
+                <option value="yes">Yes, fair trade</option>
+                <option value="questions">I have questions</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="fb-problem" class="block text-sm text-text-muted mb-1"
+              >What's broken right now?</label
+            >
+            <textarea
+              id="fb-problem"
+              name="problem"
+              required
+              rows="3"
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 resize-none"
+              placeholder="Leads go quiet, the site embarrasses me, nobody can find us..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+          >
+            Submit application &rarr;
+          </button>
+        </form>
+
+        <!-- Success state: routed by revenue qualifier -->
+        <div id="fb-success" class="hidden text-center py-10">
+          <p class="text-lg text-text mb-2">
+            Application in. <span class="text-accent">Reply within 24h.</span>
+          </p>
+          <a
+            id="fb-success-tools"
+            href="/tools"
+            class="hidden mt-4 inline-flex items-center justify-center rounded-full border border-accent px-7 py-3 text-sm font-semibold text-accent min-h-[44px] transition-colors duration-200 hover:bg-accent hover:text-[#0C0C0C]"
+          >
+            While you wait: run the free tools on your site &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script>
+    const fbForm = document.getElementById(
+      "free-build-form",
+    ) as HTMLFormElement;
+    const fbSuccess = document.getElementById("fb-success");
+    const fbTools = document.getElementById("fb-success-tools");
+    const fbBtn = fbForm?.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
+
+    fbForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(fbForm);
+      fbBtn.disabled = true;
+      fbBtn.textContent = "Submitting...";
+      try {
+        const res = await fetch(fbForm.action, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          fbForm.classList.add("hidden");
+          fbSuccess?.classList.remove("hidden");
+          fbTools?.classList.remove("hidden");
+        } else {
+          fbBtn.disabled = false;
+          fbBtn.textContent = "Submit application →";
+          alert("Something went wrong. Please try again.");
+        }
+      } catch {
+        fbBtn.disabled = false;
+        fbBtn.textContent = "Submit application →";
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+</BaseLayout>

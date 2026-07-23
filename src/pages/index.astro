@@ -146,16 +146,16 @@ const homeFaqs = [
             class="hero-enter hero-enter-4 mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
           >
             <a
-              href="#booking"
+              href="/tools/website-leak-scanner"
               class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_30px_var(--color-accent-mid)]"
             >
-              Book a Call &rarr;
+              Find your site's leaks, free &rarr;
             </a>
             <a
-              href="#offer"
+              href="#booking"
               class="rounded-full border border-border px-7 py-3.5 text-base font-semibold text-text min-h-[44px] inline-flex items-center justify-center transition-colors duration-200 hover:border-accent/50 hover:text-accent"
             >
-              See the Offer
+              Book a Call
             </a>
           </div>
 
@@ -163,25 +163,40 @@ const homeFaqs = [
           <div
             class="hero-enter hero-enter-5 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs sm:text-sm text-text-muted"
           >
-            <div class="flex items-center gap-1.5">
+            <a
+              href="https://www.upwork.com/freelancers/generuss"
+              target="_blank"
+              rel="noopener"
+              class="flex items-center gap-1.5 transition-colors hover:text-text"
+            >
               <span class="text-accent text-base leading-none tracking-tight"
                 >&#9733;&#9733;&#9733;&#9733;&#9733;</span
               >
               <span class="font-mono text-text">5.0</span>
-              <span class="text-text-muted/70">from named clients</span>
-            </div>
+              <span
+                class="text-text-muted/70 underline decoration-text-muted/30 underline-offset-4"
+                >from named clients</span
+              >
+            </a>
             <span class="hidden sm:inline text-text-muted/40">|</span>
             <span
               ><span class="text-text font-semibold">17+</span> sites shipped</span
             >
             <span class="hidden sm:inline text-text-muted/40">|</span>
-            <span
-              ><span class="text-text font-semibold">96/100</span> avg speed score</span
+            <a href="/process" class="transition-colors hover:text-text"
+              ><span class="text-text font-semibold">100</span> desktop /
+              <span class="text-text font-semibold">86</span> mobile speed,
+              <span
+                class="underline decoration-text-muted/30 underline-offset-4"
+                >dated receipts</span
+              ></a
             >
           </div>
         </div>
 
         <!-- RIGHT: Hero image - Pharallax desktop + mobile mosaic -->
+        <!-- VSL SLOT: when the homepage VSL is recorded (script: directives/vsl-scripts.md),
+             this mosaic swaps for a <video> poster+play block. One edit, marked here. -->
         <div
           class="hero-enter hero-enter-3 lg:col-span-5 xl:col-span-5 relative"
         >
@@ -394,7 +409,8 @@ const homeFaqs = [
               therapist or a SaaS company.
             </p>
             <p class="text-xs sm:text-sm text-accent/90 font-mono mt-auto">
-              Cost: 30-50% of qualified traffic, lost to slow, generic builds
+              Cost: qualified traffic bouncing off a site built for nobody in
+              particular
             </p>
           </div>
           <div
@@ -433,7 +449,11 @@ const homeFaqs = [
               third-party script soup that compounds with every plugin.
             </p>
             <p class="text-xs sm:text-sm text-accent/90 font-mono mt-auto">
-              Cost: 1 second slower = 7% conversion drop, every visit
+              Cost: every extra second of load time bleeds conversions. <a
+                href="/tools/slow-site-cost"
+                class="underline underline-offset-4 hover:text-accent"
+                >Run your own numbers &rarr;</a
+              >
             </p>
           </div>
           <div
@@ -472,8 +492,11 @@ const homeFaqs = [
               the page to guide people toward action. Pretty is not a strategy.
             </p>
             <p class="text-xs sm:text-sm text-accent/90 font-mono mt-auto">
-              Cost: 2x to 3x fewer leads on the same traffic you're already
-              paying for
+              Cost: the same traffic, a fraction of the leads. <a
+                href="/tools/website-leak-scanner"
+                class="underline underline-offset-4 hover:text-accent"
+                >The free scanner shows where they leak &rarr;</a
+              >
             </p>
           </div>
           <div
@@ -538,6 +561,119 @@ const homeFaqs = [
       </div>
     </section>
 
+    <!-- S3.5: Pick your path (3 site types, each with a live exemplar) -->
+    <section
+      id="paths-preview"
+      class="px-6 sm:px-10 lg:px-16 py-(--spacing-section)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12 sm:mb-16">
+          <p
+            class="inline-flex items-center gap-2 text-[0.65rem] sm:text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4"
+          >
+            <span class="h-px w-8 bg-accent/60"></span>
+            Pick your path
+          </p>
+          <h2
+            class="text-balance text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05]"
+          >
+            Three ways to build.
+            <span class="text-accent">One standard.</span>
+          </h2>
+          <p
+            class="text-pretty mt-4 text-base sm:text-lg text-text-muted max-w-2xl mx-auto"
+          >
+            Every path ships hand-coded, fast, and conversion-engineered. The
+            difference is the job your site has to do. Each one links to a live
+            build you can click around right now.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <a
+            href="/paths#launch-page"
+            class="group neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <p
+              class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3"
+            >
+              Launch Page
+            </p>
+            <h3 class="text-balance text-xl font-bold text-text mb-2">
+              Bookable in days, not months
+            </h3>
+            <p class="text-sm text-text-muted leading-relaxed mb-4">
+              A one-page conversion site that makes you easy to hire: offer,
+              proof, booking. Nothing that slows the yes.
+            </p>
+            <p class="mt-auto text-xs font-mono text-text-muted/70">
+              Live exemplar: <span class="text-text">Vibe N Thrive</span>
+            </p>
+            <p
+              class="mt-2 text-sm font-semibold text-accent group-hover:underline underline-offset-4"
+            >
+              See this path &rarr;
+            </p>
+          </a>
+
+          <a
+            href="/paths#growth-site"
+            class="group neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <p
+              class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3"
+            >
+              Growth Site
+            </p>
+            <h3 class="text-balance text-xl font-bold text-text mb-2">
+              Built to get found, and cited
+            </h3>
+            <p class="text-sm text-text-muted leading-relaxed mb-4">
+              A compounding engine: pillar content, local visibility, and
+              AI-answer optimization so search engines and chatbots both send
+              you work.
+            </p>
+            <p class="mt-auto text-xs font-mono text-text-muted/70">
+              Live exemplar: <span class="text-text">Pharallax, 199 pages</span>
+            </p>
+            <p
+              class="mt-2 text-sm font-semibold text-accent group-hover:underline underline-offset-4"
+            >
+              See this path &rarr;
+            </p>
+          </a>
+
+          <a
+            href="/paths#signature-scroll"
+            class="group neu-raised rounded-2xl bg-bg p-6 sm:p-7 flex flex-col no-underline transition-shadow duration-300 hover:shadow-[8px_8px_20px_rgba(0,0,0,0.8),-4px_-4px_12px_rgba(255,255,255,0.06),0_0_30px_var(--color-accent-dim)]"
+          >
+            <p
+              class="text-[0.6rem] font-mono text-accent uppercase tracking-widest mb-3"
+            >
+              Signature Scroll
+            </p>
+            <h3 class="text-balance text-xl font-bold text-text mb-2">
+              The site people send to friends
+            </h3>
+            <p class="text-sm text-text-muted leading-relaxed mb-4">
+              A cinematic, art-directed build for brands that need to be felt:
+              motion, story, and craft that stops the scroll cold.
+            </p>
+            <p class="mt-auto text-xs font-mono text-text-muted/70">
+              Live exemplar: <span class="text-text"
+                >Styx Stones &amp; Bones</span
+              >
+            </p>
+            <p
+              class="mt-2 text-sm font-semibold text-accent group-hover:underline underline-offset-4"
+            >
+              See this path &rarr;
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- S4: Portfolio -->
     <section
       id="portfolio"
@@ -553,7 +689,7 @@ const homeFaqs = [
         <h2
           class="portfolio-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
         >
-          Real URLs. <span class="text-accent">Real users.</span> Zero abandoned.
+          Real URLs. <span class="text-accent">Real users.</span>
         </h2>
         <p class="text-sm sm:text-base text-text-muted max-w-xl mx-auto">
           Six shipped projects. All running in production right now. Click any
@@ -2972,7 +3108,15 @@ const homeFaqs = [
             </div>
             <div>
               <p class="text-sm font-semibold text-text">Jonny</p>
-              <p class="text-xs text-text-muted font-mono">Invincible Media</p>
+              <p class="text-xs text-text-muted font-mono">
+                Invincible Media &middot; <a
+                  href="https://www.upwork.com/freelancers/generuss"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline underline-offset-2 hover:text-accent"
+                  >verified on Upwork</a
+                >
+              </p>
             </div>
           </div>
         </div>
@@ -3006,7 +3150,15 @@ const homeFaqs = [
             </div>
             <div>
               <p class="text-sm font-semibold text-text">Carson</p>
-              <p class="text-xs text-text-muted font-mono">Vibe N Thrive</p>
+              <p class="text-xs text-text-muted font-mono">
+                <a
+                  href="https://www.vibenthrivetherapy.com"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline underline-offset-2 hover:text-accent"
+                  >Vibe N Thrive &middot; live site</a
+                >
+              </p>
             </div>
           </div>
         </div>
@@ -3023,27 +3175,50 @@ const homeFaqs = [
           <blockquote
             class="text-base sm:text-lg text-text leading-relaxed max-w-[58ch]"
           >
-            "This was our second time working with Russell, and once again, he
-            delivered flawlessly. The project was a focused optimisation of our
-            GPT-based GTM/RevOps proposal builder, and Russell approached it
-            with the same clarity, structure, and commercial instinct that
-            impressed us the first time around. He took an already-solid system
-            and made it smarter, faster, and sharper. His ability to balance
-            logic, tone, and usability in prompt engineering is next-level.
-            Nothing is ever too much trouble, and he remains thoughtful, fast,
-            and genuinely enjoyable to work with. Still highly recommended - if
-            not even more so now!"
+            "Exceeded my expectations by miles."
           </blockquote>
           <div class="mt-4 flex items-center gap-3">
             <div
               class="h-10 w-10 rounded-full neu-raised bg-bg flex items-center justify-center text-accent font-bold text-base shrink-0"
               aria-hidden="true"
             >
-              J
+              L
             </div>
             <div>
-              <p class="text-sm font-semibold text-text">Jonny</p>
-              <p class="text-xs text-text-muted font-mono">Invincible Media</p>
+              <p class="text-sm font-semibold text-text">Leon McConnell</p>
+              <p class="text-xs text-text-muted font-mono">
+                Resist Entertainment &middot; artist site
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-item gsap-hidden">
+          <div class="review-stars flex gap-1 mb-3">
+            <span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span><span class="text-accent"
+              >&#9733;</span
+            ><span class="text-accent">&#9733;</span>
+          </div>
+          <blockquote
+            class="text-base sm:text-lg text-text leading-relaxed max-w-[58ch]"
+          >
+            "You took a simple thing and brought it to life."
+          </blockquote>
+          <div class="mt-4 flex items-center gap-3">
+            <div
+              class="h-10 w-10 rounded-full neu-raised bg-bg flex items-center justify-center text-accent font-bold text-base shrink-0"
+              aria-hidden="true"
+            >
+              D
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-text">Dirty Chai</p>
+              <p class="text-xs text-text-muted font-mono">
+                Struggle Crew &middot; band site
+              </p>
             </div>
           </div>
         </div>
@@ -3419,11 +3594,12 @@ const homeFaqs = [
                   Not ready to book?
                 </p>
                 <h3 class="text-lg sm:text-xl font-bold text-text mb-1.5">
-                  The 5-Leak Teardown
+                  The 5-Leak Website Teardown
                 </h3>
                 <p class="text-pretty text-sm text-text-muted leading-relaxed">
-                  The five patterns that are quietly killing service-business
-                  conversion, with the exact fix for each. Free. No drip
+                  Drop your URL and I tear down your actual site: your five
+                  biggest leaks, with the fix for each, in your inbox same day.
+                  The generic five-pattern guide opens instantly. Free. No drip
                   campaign.
                 </p>
               </div>
@@ -3432,7 +3608,7 @@ const homeFaqs = [
               id="lead-magnet-form"
               action={`https://formspree.io/f/${formspreeId}`}
               method="POST"
-              class="flex flex-col sm:flex-row gap-3"
+              class="flex flex-col gap-3"
             >
               <input
                 type="text"
@@ -3444,8 +3620,9 @@ const homeFaqs = [
               <input
                 type="hidden"
                 name="_subject"
-                value="5-Leak Teardown request"
+                value="Website Leak Scanner request"
               />
+              <input type="hidden" name="source" value="teardown" />
               <input type="hidden" name="lead_magnet" value="5-site-teardown" />
               <!-- Formspree: redirect to the actual deliverable on success -->
               <input
@@ -3453,20 +3630,45 @@ const homeFaqs = [
                 name="_next"
                 value="https://generussdesign.com/resources/5-site-teardown/index.html"
               />
-              <label class="sr-only" for="lead-email">Email address</label>
+              <label class="sr-only" for="lead-url">Your website URL</label>
               <input
-                type="email"
-                id="lead-email"
-                name="email"
+                type="url"
+                id="lead-url"
+                name="website_url"
                 required
-                placeholder="you@company.com"
-                class="w-full flex-1 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                placeholder="https://yoursite.com"
+                class="w-full rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
               />
+              <div class="flex flex-col sm:flex-row gap-3">
+                <label class="sr-only" for="lead-email">Email address</label>
+                <input
+                  type="email"
+                  id="lead-email"
+                  name="email"
+                  required
+                  placeholder="you@company.com"
+                  class="w-full flex-1 rounded-full bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px]"
+                />
+                <label class="sr-only" for="lead-stage"
+                  >Where's the business at?</label
+                >
+                <select
+                  id="lead-stage"
+                  name="business_stage"
+                  required
+                  class="w-full sm:w-auto rounded-full bg-bg px-4 py-3 text-sm text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 min-h-[44px] appearance-none"
+                >
+                  <option value="" disabled selected>Business stage</option>
+                  <option value="established">Revenue coming in</option>
+                  <option value="early">Early, pre-revenue</option>
+                  <option value="exploring">Just exploring</option>
+                </select>
+              </div>
               <button
                 type="submit"
                 class="rounded-full bg-accent px-5 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] inline-flex items-center justify-center transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
               >
-                Get the teardown
+                Tear my site down &rarr;
               </button>
             </form>
           </div>
@@ -3474,7 +3676,8 @@ const homeFaqs = [
             id="lead-magnet-success"
             class="hidden text-center text-sm text-accent mt-4 font-mono"
           >
-            Opened in a new tab. Saved your email for the next one.
+            Generic guide opened in a new tab. Your personalized teardown lands
+            in your inbox same day.
           </p>
         </div>
       </div>
@@ -3533,6 +3736,27 @@ const homeFaqs = [
           </div>
 
           <div>
+            <label
+              for="business-stage"
+              class="block text-sm text-text-muted mb-1"
+              >Where's the business at?</label
+            >
+            <select
+              id="business-stage"
+              name="business_stage"
+              required
+              class="w-full rounded-xl bg-bg px-4 py-3 text-text neu-inset focus:outline-none focus:ring-1 focus:ring-accent/50 appearance-none"
+            >
+              <option value="" disabled selected>Pick the closest fit</option>
+              <option value="established">
+                Up and running, revenue coming in
+              </option>
+              <option value="early">Early days, pre-revenue</option>
+              <option value="exploring">Just exploring for now</option>
+            </select>
+          </div>
+
+          <div>
             <label for="message" class="block text-sm text-text-muted mb-1"
               >Message</label
             >
@@ -3553,11 +3777,26 @@ const homeFaqs = [
           </button>
         </form>
 
-        <!-- Success state -->
+        <!-- Success state: CTA routed by qualifier (Hormozi: qualified see the
+             calendar, everyone else gets pointed at the free tools) -->
         <div id="form-success" class="hidden text-center py-8">
           <p class="text-lg text-text">
             Message sent. I'll be <span class="text-accent">in touch.</span>
           </p>
+          <a
+            id="form-success-booking"
+            href="#booking"
+            class="hidden mt-5 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3 text-sm font-semibold text-[#0C0C0C] min-h-[44px] transition-shadow duration-200 hover:shadow-[0_0_20px_var(--color-accent-mid)]"
+          >
+            Skip the wait, grab a call slot &rarr;
+          </a>
+          <a
+            id="form-success-tools"
+            href="/tools"
+            class="hidden mt-5 inline-flex items-center justify-center rounded-full border border-accent px-7 py-3 text-sm font-semibold text-accent min-h-[44px] transition-colors duration-200 hover:bg-accent hover:text-[#0C0C0C]"
+          >
+            Meanwhile, run the free tools on your site &rarr;
+          </a>
         </div>
       </div>
     </section>
@@ -3589,6 +3828,16 @@ const homeFaqs = [
           if (res.ok) {
             form.classList.add("hidden");
             successMsg?.classList.remove("hidden");
+            // Qualifier routing: revenue businesses get the calendar, everyone
+            // else gets the free tools.
+            const stage = (data.get("business_stage") as string) || "";
+            const bookingCta = document.getElementById("form-success-booking");
+            const toolsCta = document.getElementById("form-success-tools");
+            if (stage === "established") {
+              bookingCta?.classList.remove("hidden");
+            } else {
+              toolsCta?.classList.remove("hidden");
+            }
           } else {
             submitBtn.disabled = false;
             submitBtn.textContent = submitText ?? "Send Message →";
