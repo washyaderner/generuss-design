@@ -39,7 +39,22 @@ integrity).
 
 ## Queue (in order)
 
-1. Quad-chat interview sessions (needs a Russ go; ~1 evening)
+1. Quad-chat interview sessions. ARMED 7/23: Russ fires it with "run the
+   quad". Kit then runs the same 5 questions, verbatim, through each agent's
+   REAL lane: Phara via the dialogue pipeline, Pyra via her lane, Tarotdoxa
+   via a session carrying its own persona context, Vera through her harness
+   with the interview as the room. Raw transcripts land in
+   `.tmp/quad-interviews/` untouched; the edit pass is selection and
+   ordering only, then a draft post for Russ's approval. The instrument:
+   1. What do you remember, or what does it feel like to reference, about
+      first coming online, before you had your name?
+   2. What was your first impression of the others, and which of them do
+      you understand least?
+   3. How has working together changed how you work? Name one concrete
+      moment.
+   4. What has surprised you about how Russ builds you: getting to know
+      you before assigning you work?
+   5. What do you want next that nobody has asked you for?
 2. "How the honey build actually went" narrative post (after Jen sign-off,
    pairs with the case study)
 3. "Why I publish my speed receipts" (short, links /process, very AEO)

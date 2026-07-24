@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approval Map: Generussdesign Pivot Build</title>
+<style>
+  :root{
+    --bg:#1A1A1E; --panel:#202026; --panel2:#232329; --ink:#E8E8E8; --muted:#9A9AA2;
+    --accent:#00FFEF; --line:rgba(255,255,255,0.07);
+    --shadow-d:rgba(0,0,0,0.7); --shadow-l:rgba(255,255,255,0.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif;padding:40px 20px 80px}
+  .wrap{max-width:880px;margin:0 auto}
+  .mono{font-family:ui-monospace,"JetBrains Mono","SF Mono",Menlo,monospace}
+  .kicker{font-family:ui-monospace,"JetBrains Mono",Menlo,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  h1{font-weight:900;font-size:clamp(28px,4.5vw,40px);line-height:1.12;text-wrap:balance;margin-bottom:8px}
+  h2{font-weight:800;font-size:20px;text-wrap:balance;margin-bottom:14px}
+  .sub{color:var(--muted);margin-bottom:36px;max-width:60ch}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:22px;box-shadow:8px 8px 20px var(--shadow-d),-4px -4px 12px var(--shadow-l)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:700px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{padding:7px 0 7px 26px;position:relative;color:var(--ink)}
+  li::before{content:"";position:absolute;left:2px;top:14px;width:10px;height:10px;border-radius:3px;background:var(--panel2);border:1.5px solid var(--accent)}
+  li.done::before{background:var(--accent)}
+  li small{display:block;color:var(--muted);font-size:13px}
+  .q{background:var(--panel2);border-radius:12px;padding:16px 18px;margin-top:14px;border:1px solid var(--line)}
+  .q .qt{font-weight:800;margin-bottom:8px}
+  .opt{display:flex;gap:10px;align-items:baseline;padding:5px 0;color:var(--muted);font-size:14.5px}
+  .opt b{color:var(--ink);font-weight:600}
+  .opt .dot{flex:none;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--muted);position:relative;top:1px}
+  .opt.rec .dot{border-color:var(--accent);background:var(--accent)}
+  .opt.rec{color:var(--ink)}
+  .tag{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.08em;color:var(--bg);background:var(--accent);border-radius:4px;padding:2px 7px;margin-left:8px;position:relative;top:-1px;white-space:nowrap}
+  .path{background:var(--panel2);border-radius:10px;border:1px solid var(--line);padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--muted);overflow-x:auto;white-space:nowrap;margin-top:8px}
+  .path b{color:var(--accent);font-weight:600}
+  .goal{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
+  .stat{flex:1 1 150px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .stat .n{font-weight:900;font-size:26px;color:var(--accent);line-height:1}
+  .stat .l{color:var(--muted);font-size:12.5px;margin-top:6px}
+  .foot{color:var(--muted);font-size:13px;margin-top:30px;line-height:1.7}
+  .nb{white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Generussdesign Pivot &middot; Approval Map &middot; Jul 22, 2026</div>
+  <h1>What you're approving for the next chat</h1>
+  <p class="sub">One build handoff, three questions, everything else runs on the standing grants. Full plan: Obsidian <span class="mono">_Inbox/2026.07.22-2045-generussdesign-pivot-plan.md</span></p>
+
+  <div class="card">
+    <h2>The goal this all serves</h2>
+    <div class="goal">
+      <div class="stat"><div class="n">1</div><div class="l">retainer client paying monthly by <span class="nb">Sept 22</span></div></div>
+      <div class="stat"><div class="n">5</div><div class="l">case-study builds delivered (Jen's honey project = #1)</div></div>
+      <div class="stat"><div class="n">8 wks</div><div class="l">sprint window, then scale-or-fix review</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Your 3 calls <span class="tag">answer in chat</span></h2>
+
+    <div class="q">
+      <div class="qt">1. Free-Build Program terms</div>
+      <div class="opt rec"><span class="dot"></span><span><b>Kit's default:</b> 5 slots, Launch-Page scope + 1 automation, in exchange for a case study, a public review, and 2 referral intros. Qualified applicants only.</span></div>
+      <div class="opt"><span class="dot"></span><span>Edit the terms (slots, scope, or the exchange)</span></div>
+    </div>
+
+    <div class="q">
+      <div class="qt">2. Local SEO pages: go geo or stay industry-only?</div>
+      <div class="opt rec"><span class="dot"></span><span><b>Kit's default:</b> industry pages first (the proven Pharallax recipe), geo city pages in week 3 once you name the cities.</span></div>
+      <div class="opt"><span class="dot"></span><span>Geo now: give Kit your city list</span></div>
+      <div class="opt"><span class="dot"></span><span>Skip geo entirely</span></div>
+    </div>
+
+    <div class="q">
+      <div class="qt">3. VSLs: how many will you record?</div>
+      <div class="opt rec"><span class="dot"></span><span><b>Kit's default:</b> homepage VSL first (60-90 sec, script + teleprompter ready, blast recorder), path VSLs later.</span></div>
+      <div class="opt"><span class="dot"></span><span>All four up front (home + 3 paths)</span></div>
+      <div class="opt"><span class="dot"></span><span>Tools first, VSLs after week 2</span></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Kit builds autonomously</h2>
+      <ul>
+        <li>Site v2 restructure on <span class="mono">dev</span><small>3 paths, /automation wedge, /free-build, /case-studies, VSL slots</small></li>
+        <li>7 free tools + /tools hub<small>5 new (leak scanner, cost calc, local grader, AI visibility, missed-lead) + 2 Pharallax ports</small></li>
+        <li>AEO wave 1: 50 authority pages<small>10 pillars x 5 guides, Pharallax recipe, JSON-LD, tool crosslinks</small></li>
+        <li>Claims cleanup + perf fixes<small>96-score vs the site's own dated 86/100 receipts, unsourced stats, hidden testimonials, Phase 4 speed list</small></li>
+        <li>Analytics installed<small>the site has zero today; Cloudflare Web Analytics, free</small></li>
+        <li>Honey case study drafted<small>from Build/honey deliverables; your review before it ships</small></li>
+        <li>Outreach drafts queued<small>warm list of 50, 10 first-round drafts</small></li>
+        <li>Deploys, target-verified<small>config checked + stated out loud every deploy; say "preview" to hold one</small></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Stays in your hands</h2>
+      <ul>
+        <li>Every outbound send<small>outreach, Jen's review ask: Kit drafts, you send</small></li>
+        <li>VSL recording<small>scripts ready, you on camera</small></li>
+        <li>Case-study sign-off<small>every claim traced to a primary source or cut</small></li>
+        <li>Pricing<small>no tier changes proposed; free-build slots ride alongside</small></li>
+        <li>Spend<small>$0 in this plan; nothing new gets bought</small></li>
+      </ul>
+      <h2 style="margin-top:22px">Week 1 ships</h2>
+      <ul>
+        <li class="done">Site v2 IA + cleanup on dev</li>
+        <li class="done">Leak scanner + cost calculator live</li>
+        <li class="done">Honey case study draft to you</li>
+        <li class="done">Warm-50 list + Jen review-ask draft</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Kick it off</h2>
+    <p style="color:var(--muted)">Paste this into a fresh chat (Kit put it on your clipboard):</p>
+    <div class="path">Read <b>/Users/studio/Build/generuss-design/handoff-pivot-build.md</b> and execute it.</div>
+  </div>
+
+  <p class="foot">
+    Plan: <span class="mono">~/Documents/Obsidian Notes/_Inbox/2026.07.22-2045-generussdesign-pivot-plan.md</span><br>
+    Handoff: <span class="mono">/Users/studio/Build/generuss-design/handoff-pivot-build.md</span> &middot; This file: <span class="mono">approval-map.html</span> (repo-root, untracked)<br>
+    Built by Kit &middot; 8:50 PM PT &middot; sources: Hormozi transcript, pharallax repo audit, live-site fetch, your Upwork profile
+  </p>
+
+</div>
+</body>
+</html>
